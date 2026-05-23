@@ -1,21 +1,35 @@
 # DECIFER Launch Checklist
 
-> Pre-launch tasks for www.decifer.io. Last updated: 2026-05-24 (Sprint 3).
+> Pre-launch tasks for www.decifer.io. Last updated: 2026-05-24 (Sprint 4).
 
 Tick off each item before announcing publicly.
 
 ---
 
-## Current status (Sprint 3)
+## Before sharing the live link
+
+Complete these steps in order before sending the URL to anyone:
+
+- [ ] Add `RESEND_API_KEY` to Vercel Environment Variables for **Production** and **Preview** environments. (Vercel Dashboard > decifer-parent-site > Settings > Environment Variables)
+- [ ] Submit a test entry using the live form at `https://www.decifer.io/#early-access`.
+- [ ] Confirm the notification email arrives at `hello@decifer.io`.
+- [ ] Open Vercel Dashboard > decifer-parent-site > Functions and confirm the `[DECIFER Early Access]` log line appears.
+- [ ] Note: Legal counsel review is still pending. All 7 legal pages are clearly marked as early-access drafts. This is acceptable for a controlled soft-launch but must be resolved before any broad public promotion.
+- [ ] Note: Supabase persistence is not active. Submissions are captured via Vercel Function logs and, once `RESEND_API_KEY` is set, by email. This is sufficient for a controlled soft-launch.
+
+---
+
+## Current status (Sprint 4)
 
 | Item | Status | Notes |
 |---|---|---|
 | Vercel deployment | Done | Auto-deploys from `main`. Production: www.decifer.io |
 | Domains | Done | Both `www.decifer.io` and `decifer.io` verified. Apex redirects to www. |
 | Early-access form | Done | Validated, honeypot, error/success states. Logs every submission to Vercel Function logs. |
-| `RESEND_API_KEY` | Pending | Add to Vercel env vars to enable email notification. Form works without it. |
-| Supabase env vars | Pending | Optional. Uncomment block in `src/app/api/early-access/route.ts` when ready. |
-| Legal review | Pending | All 7 pages are early-access drafts. Legal counsel required before commercial launch. |
+| Nav anchors | Done | All nav links point to valid section IDs. Pricing link removed (Sprint 3). |
+| `RESEND_API_KEY` | **Action required** | Add to Vercel env vars (Production + Preview) to enable email notification. Form logs submissions without it. |
+| Supabase persistence | Future optional | Not active. Uncomment block in `src/app/api/early-access/route.ts` when ready. |
+| Legal review | Pending — NOT complete | All 7 pages are early-access drafts. Legal counsel required before commercial launch. Do not represent as finalised. |
 | Cloudflare Redirect Rule | Pending | Currently handled by Next.js. Optional edge-level optimisation. |
 | SSL Full (Strict) | Pending | Currently on SSL Full. Upgrade in Cloudflare Dashboard once Vercel cert confirmed. |
 | DNSSEC | Pending | Enable in Cloudflare DNS > Settings once nameservers are stable. |
@@ -105,7 +119,7 @@ Tick off each item before announcing publicly.
 
 - [ ] **Write full legal document bodies** for each of the 7 policy pages (currently draft quality).
 
-- [ ] **Add a Pricing section** — The nav links to `#pricing` but no Pricing section exists yet. Either add one or remove the nav link before launch.
+- [x] **Pricing nav link removed** — The nav previously linked to `#pricing` with no matching section. Link removed in Sprint 3. No Pricing section is planned for soft-launch.
 
 - [ ] **Hero A/B test** — Consider testing the hero headline and CTA before broad traffic.
 
