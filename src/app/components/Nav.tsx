@@ -8,7 +8,6 @@ const navLinks = [
   { label: "Products", href: "#products" },
   { label: "How It Works", href: "#method" },
   { label: "Trust", href: "#trust" },
-  { label: "Pricing", href: "#pricing" },
 ];
 
 export default function Nav() {

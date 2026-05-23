@@ -1,8 +1,25 @@
 # DECIFER Launch Checklist
 
-> Pre-launch tasks for www.decifer.io. Last updated: May 2026.
+> Pre-launch tasks for www.decifer.io. Last updated: 2026-05-24 (Sprint 3).
 
 Tick off each item before announcing publicly.
+
+---
+
+## Current status (Sprint 3)
+
+| Item | Status | Notes |
+|---|---|---|
+| Vercel deployment | Done | Auto-deploys from `main`. Production: www.decifer.io |
+| Domains | Done | Both `www.decifer.io` and `decifer.io` verified. Apex redirects to www. |
+| Early-access form | Done | Validated, honeypot, error/success states. Logs every submission to Vercel Function logs. |
+| `RESEND_API_KEY` | Pending | Add to Vercel env vars to enable email notification. Form works without it. |
+| Supabase env vars | Pending | Optional. Uncomment block in `src/app/api/early-access/route.ts` when ready. |
+| Legal review | Pending | All 7 pages are early-access drafts. Legal counsel required before commercial launch. |
+| Cloudflare Redirect Rule | Pending | Currently handled by Next.js. Optional edge-level optimisation. |
+| SSL Full (Strict) | Pending | Currently on SSL Full. Upgrade in Cloudflare Dashboard once Vercel cert confirmed. |
+| DNSSEC | Pending | Enable in Cloudflare DNS > Settings once nameservers are stable. |
+| Analytics | Pending | No provider active. Choose and configure `NEXT_PUBLIC_ANALYTICS_ID`. |
 
 ---
 

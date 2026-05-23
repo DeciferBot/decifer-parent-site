@@ -12,6 +12,15 @@ export default function Page() {
       currentHref="/legal/financial-disclaimer"
     >
       <div className="legal-prose">
+        <p>
+          <strong>
+            DECIFER provides intelligence, not financial, investment, or trading
+            advice. Nothing on this platform constitutes a recommendation to
+            buy, sell, or hold any security or asset. Financial markets carry
+            risk. Your decisions are your own.
+          </strong>
+        </p>
+
         <h2>This is not financial advice</h2>
         <p>
           DECIFER and Decifer Trading provide market intelligence. This means

@@ -60,7 +60,6 @@ export default function EarlyAccessForm() {
     }
     setErrors({});
     setStatus("submitting");
-    track("early_access_submitted");
 
     try {
       const res = await fetch("/api/early-access", {
@@ -69,6 +68,7 @@ export default function EarlyAccessForm() {
         body: JSON.stringify(form),
       });
       if (res.ok) {
+        track("early_access_submitted");
         setStatus("success");
       } else {
         setStatus("error");

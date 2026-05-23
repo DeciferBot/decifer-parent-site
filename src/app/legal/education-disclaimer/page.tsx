@@ -12,6 +12,14 @@ export default function Page() {
       currentHref="/legal/education-disclaimer"
     >
       <div className="legal-prose">
+        <p>
+          <strong>
+            Decifer Learning supports learning and does not replace teachers,
+            schools, tutors, or parental judgement. We make no claims about
+            academic outcomes.
+          </strong>
+        </p>
+
         <h2>Decifer Learning is a support tool</h2>
         <p>
           Decifer Learning uses AI to help children learn more effectively and
