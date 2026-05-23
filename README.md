@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DECIFER — Parent Marketing Site
 
-## Getting Started
+Marketing website for [decifer.io](https://www.decifer.io) — the parent brand for DECIFER, an AI intelligence company.
 
-First, run the development server:
+Built with Next.js 15, TypeScript, and Tailwind CSS v4. Deployed on Vercel.
+
+---
+
+## Prerequisites
+
+- Node.js 20+
+- npm 10+
+
+---
+
+## Local development
 
 ```bash
+# Install dependencies
+npm install
+
+# Copy environment variables
+cp .env.example .env.local
+# Edit .env.local and fill in any values you want active locally
+
+# Start the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment variables
 
-## Learn More
+See [`.env.example`](.env.example) for all supported variables.
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Required | Purpose |
+|---|---|---|
+| `RESEND_API_KEY` | Optional | Sends email notification on early-access form submission. Without this, submissions are logged to Vercel Function logs only. |
+| `NEXT_PUBLIC_SUPABASE_URL` | Optional | Supabase project URL for storing early-access submissions. |
+| `SUPABASE_SERVICE_ROLE_KEY` | Optional | Supabase service role key (server-side only). Uncomment the Supabase block in `src/app/api/early-access/route.ts` to activate. |
+| `NEXT_PUBLIC_ANALYTICS_ID` | Optional | Analytics provider ID (e.g. GA4 measurement ID). Add alongside the analytics script tag in `src/app/layout.tsx`. |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Set these in Vercel Dashboard > Project > Settings > Environment Variables for production and preview.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Project structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/app/
+  components/
+    DeciferMark.tsx      # Shared ‹ DECIFER › wordmark
+    Nav.tsx              # Fixed header with mobile hamburger
+    Footer.tsx           # 4-column footer with legal links
+    LegalLayout.tsx      # Shared layout for all legal pages
+    EarlyAccessForm.tsx  # Early-access sign-up form (client component)
+  api/
+    early-access/
+      route.ts           # POST handler: validates, logs, emails via Resend
+  legal/
+    privacy/
+    terms/
+    financial-disclaimer/
+    education-disclaimer/
+    ai-policy/
+    child-safety/
+    refunds/
+  globals.css            # Tailwind v4 design tokens and base styles
+  layout.tsx             # Root layout with Inter font and metadata
+  page.tsx               # Homepage
+docs/
+  BRAND_GUIDELINES.md    # Naming, colour, tone, disclaimer language
+  LAUNCH_CHECKLIST.md    # Pre-launch tasks (infrastructure, legal, analytics)
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Available scripts
+
+```bash
+npm run dev       # Development server (http://localhost:3000)
+npm run build     # Production build
+npm run start     # Start production server locally
+npm run lint      # ESLint
+```
+
+---
+
+## Deployment
+
+The site deploys automatically on every push to `main` via Vercel.
+
+Production URL: [https://www.decifer.io](https://www.decifer.io)
+
+The apex domain (`decifer.io`) redirects to `www` via Next.js redirects in `next.config.ts`.
+
+---
+
+## Related products
+
+| Product | Domain | Notes |
+|---|---|---|
+| Decifer Trading | decifertrading.com | Separate repo and deployment |
+| Decifer Learning | deciferlearning.com | Separate repo and deployment |
+
+Do not modify DNS, Cloudflare, or Vercel settings for those domains from this repo.

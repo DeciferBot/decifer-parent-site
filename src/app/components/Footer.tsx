@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DeciferMark from "./DeciferMark";
 
 const legalLinks = [
   { label: "Privacy Policy", href: "/legal/privacy" },
@@ -14,15 +15,15 @@ const siteLinks = [
   { label: "Products", href: "#products" },
   { label: "How It Works", href: "#method" },
   { label: "Trust", href: "#trust" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Early Access", href: "#early-access" },
 ];
 
 const products = [
-  { label: "Decifer Trading", href: "#products", live: true },
-  { label: "Decifer Learning", href: "#products", live: true },
-  { label: "Decifer Money", href: null, live: false },
-  { label: "Decifer World", href: null, live: false },
-  { label: "Decifer Work", href: null, live: false },
+  { label: "Decifer Trading", href: "https://decifertrading.com", external: true, live: true },
+  { label: "Decifer Learning", href: "https://deciferlearning.com", external: true, live: true },
+  { label: "Decifer Money", href: null, external: false, live: false },
+  { label: "Decifer World", href: null, external: false, live: false },
+  { label: "Decifer Work", href: null, external: false, live: false },
 ];
 
 export default function Footer() {
@@ -32,10 +33,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="mb-3 text-lg font-semibold text-ink">Decifer</div>
+            <DeciferMark size="sm" className="mb-4" />
             <p className="max-w-xs text-sm leading-relaxed text-muted">
               AI-assisted intelligence that reduces noise, organises context,
-              and explains what matters.
+              and explains what matters in plain language.
             </p>
           </div>
 
@@ -69,6 +70,8 @@ export default function Footer() {
                   {p.href && p.live ? (
                     <a
                       href={p.href}
+                      target={p.external ? "_blank" : undefined}
+                      rel={p.external ? "noopener noreferrer" : undefined}
                       className="text-sm text-muted transition-colors hover:text-ink"
                     >
                       {p.label}
@@ -103,10 +106,10 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-line pt-8 sm:flex-row">
           <p className="text-sm text-faint">
-            &copy; 2026 Decifer. All rights reserved.
+            &copy; 2026 DECIFER. All rights reserved.
           </p>
           <p className="text-xs text-faint">
-            Decifer provides intelligence, not financial advice.
+            DECIFER provides intelligence, not financial advice.
           </p>
         </div>
       </div>

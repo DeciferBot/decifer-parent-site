@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DeciferMark from "./DeciferMark";
 
 const allLegal = [
   { title: "Privacy Policy", href: "/legal/privacy" },
@@ -13,12 +14,14 @@ const allLegal = [
 interface LegalLayoutProps {
   title: string;
   currentHref: string;
+  lastUpdated?: string;
   children?: React.ReactNode;
 }
 
 export default function LegalLayout({
   title,
   currentHref,
+  lastUpdated = "May 2026",
   children,
 }: LegalLayoutProps) {
   return (
@@ -40,23 +43,45 @@ export default function LegalLayout({
           >
             <path d="M10 4L6 8l4 4" />
           </svg>
-          Back to Decifer
+          Back to DECIFER
         </Link>
 
+        {/* Brand */}
+        <div className="mb-6">
+          <DeciferMark size="sm" />
+        </div>
+
         {/* Heading */}
-        <h1 className="mb-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+        <h1 className="mb-2 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
           {title}
         </h1>
-        <p className="mb-10 text-sm text-faint">
-          Effective date: to be confirmed
-        </p>
+        <p className="mb-8 text-sm text-faint">Last updated: {lastUpdated}</p>
 
-        {/* Placeholder notice */}
-        <div className="mb-10 rounded-xl border border-line bg-surface p-6">
+        {/* Draft notice */}
+        <div className="mb-10 rounded-xl border border-brand/20 bg-brand/5 p-5">
+          <div className="mb-1 flex items-center gap-2">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="#3d7eff"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            >
+              <circle cx="8" cy="8" r="6" />
+              <path d="M8 5v3.5M8 11v.5" />
+            </svg>
+            <span className="text-xs font-semibold text-brand">
+              Early Access Draft
+            </span>
+          </div>
           <p className="text-sm leading-relaxed text-muted">
-            This policy is currently being drafted and will be published before
-            Decifer&apos;s public launch. If you have questions in the interim,
-            contact us at{" "}
+            This is a draft policy for DECIFER&apos;s early access period. It
+            is written in plain English and is intended to be transparent, not
+            as a substitute for formal legal advice. Final versions will be
+            reviewed by legal counsel before commercial launch. Questions?
+            Contact{" "}
             <a
               href="mailto:hello@decifer.io"
               className="text-brand hover:underline"
@@ -67,7 +92,8 @@ export default function LegalLayout({
           </p>
         </div>
 
-        {children}
+        {/* Policy content */}
+        <div className="legal-prose">{children}</div>
 
         {/* Other policies */}
         <div className="mt-14 border-t border-line pt-10">

@@ -11,16 +11,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Decifer — AI Intelligence",
+  title: "DECIFER — AI Intelligence",
   description:
-    "Decifer uses AI-assisted intelligence to reduce noise, organise context, and explain what matters, starting with markets and learning.",
+    "DECIFER combines structured data, verified sources, and AI-assisted interpretation to deliver plain-language intelligence on markets, learning, and the world.",
   metadataBase: new URL("https://www.decifer.io"),
   openGraph: {
-    title: "Decifer — AI Intelligence",
+    title: "DECIFER — AI Intelligence",
     description: "Make sense of complex worlds.",
     url: "https://www.decifer.io",
-    siteName: "Decifer",
+    siteName: "DECIFER",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DECIFER — AI Intelligence",
+    description: "Make sense of complex worlds.",
   },
 };
 

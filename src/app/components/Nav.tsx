@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import DeciferMark from "./DeciferMark";
 
 const navLinks = [
   { label: "Products", href: "#products" },
@@ -29,15 +30,11 @@ export default function Nav() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        {/* Wordmark */}
-        <Link
-          href="/"
-          className="select-none text-lg font-semibold tracking-tight text-ink"
-        >
-          Decifer
+        <Link href="/" aria-label="DECIFER home">
+          <DeciferMark size="sm" />
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop */}
         <div className="hidden items-center gap-7 md:flex">
           {navLinks.map((l) => (
             <a
@@ -49,10 +46,10 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="#"
-            className="rounded-lg border border-brand/30 bg-brand/5 px-4 py-2 text-sm font-medium text-brand transition-all duration-200 hover:border-brand hover:bg-brand hover:text-white"
+            href="#early-access"
+            className="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-brand/20 transition-all duration-200 hover:bg-brand/90"
           >
-            Login
+            Join Early Access
           </a>
         </div>
 
@@ -106,10 +103,11 @@ export default function Nav() {
             ))}
             <div className="pt-2">
               <a
-                href="#"
-                className="block rounded-lg border border-brand/30 bg-brand/5 py-3 text-center text-sm font-medium text-brand transition-all hover:bg-brand hover:text-white"
+                href="#early-access"
+                onClick={() => setOpen(false)}
+                className="block rounded-lg bg-brand py-3 text-center text-sm font-semibold text-white transition-all hover:bg-brand/90"
               >
-                Login
+                Join Early Access
               </a>
             </div>
           </div>
