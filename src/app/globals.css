@@ -1,17 +1,43 @@
 @import "tailwindcss";
 
 @theme {
+  /* ── Surface & ink ── */
   --color-canvas: #060b18;
   --color-surface: #0b1328;
   --color-surface-alt: #101c3a;
   --color-ink: #eef2ff;
-  --color-muted: #5d7299;
+  --color-muted: #6e88a8;
   --color-faint: #2a3860;
+  --color-line: #172038;
+
+  /* ── Product colours ── */
   --color-brand: #3d7eff;
-  --color-learn: #7c5ce0;
+  --color-trading: #3d7eff;
+  --color-learn: #9578e8;
   --color-live: #0dc47c;
   --color-mark: #F05A28;
-  --color-line: #172038;
+  --color-cta: #F05A28;
+
+  /* ── State colours ── */
+  --color-success: #0dc47c;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* ── Data signal colours ── */
+  --color-data-positive: #0dc47c;
+  --color-data-negative: #ef4444;
+  --color-data-neutral: #6e88a8;
+  --color-data-highlight: #F05A28;
+
+  /* ── Radius scale ── */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+
+  /* ── Typography ── */
   --font-display: var(--font-instrument), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
 }
@@ -156,15 +182,15 @@ body {
 
 .glow-learn {
   box-shadow:
-    0 0 0 1px rgba(124, 92, 224, 0.16),
-    0 0 40px rgba(124, 92, 224, 0.09),
+    0 0 0 1px rgba(149, 120, 232, 0.16),
+    0 0 40px rgba(149, 120, 232, 0.09),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
   transition: box-shadow 0.3s ease;
 }
 .glow-learn:hover {
   box-shadow:
-    0 0 0 1px rgba(124, 92, 224, 0.3),
-    0 0 60px rgba(124, 92, 224, 0.18),
+    0 0 0 1px rgba(149, 120, 232, 0.3),
+    0 0 60px rgba(149, 120, 232, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
@@ -193,7 +219,7 @@ body {
 }
 
 select.form-input {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%235d7299' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%236e88a8' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.875rem center;
   padding-right: 2.5rem;
@@ -230,7 +256,7 @@ select.form-input {
 
 .legal-prose p {
   font-size: 0.9375rem;
-  color: #5d7299;
+  color: #6e88a8;
   line-height: 1.75;
   margin-bottom: 1rem;
 }
@@ -242,7 +268,7 @@ select.form-input {
 
 .legal-prose ul li {
   font-size: 0.9375rem;
-  color: #5d7299;
+  color: #6e88a8;
   line-height: 1.75;
   margin-bottom: 0.375rem;
   list-style-type: disc;
@@ -259,4 +285,17 @@ select.form-input {
 
 .legal-prose a:hover {
   text-decoration: underline;
+}
+
+/* ── Motion: respect user preference ───────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
