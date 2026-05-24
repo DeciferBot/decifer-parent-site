@@ -32,24 +32,26 @@ When referring to a product within a sentence, use: "Decifer Trading" or "the De
 
 ## Logo and wordmark
 
-**DECIFER wordmark:**
-The DECIFER mark uses the bracket concept: `‹ DECIFER ›`
+> Full mark system documentation: `docs/DECIFER_BRAND_MARK_SYSTEM.md`
 
-- Left guillemet `‹` (U+2039) in brand blue (`#3d7eff`)
-- `DECIFER` in bold, tracked wide, in white/near-white (`#eef2ff`)
-- Right guillemet `›` (U+203A) in learn violet (`#7c5ce0`)
+**The DECIFER mark** is two opposing orange angle brackets, facing each other like two voices in dialogue.
 
-The brackets suggest dialogue between two perspectives, the act of interpretation, and meaning-making. They should always appear in colour, never in greyscale.
+- Both brackets are `#F05A28` (DECIFER orange). Never split the colours.
+- The left bracket is offset slightly upward; the right bracket is offset slightly downward.
+- The mark is SVG-based. Do not recreate it as text characters or guillemets.
 
-**Component:** `src/app/components/DeciferMark.tsx`
+**Components:**
+- `DeciferMark` — bracket symbol only
+- `DeciferLogo` — mark + DECIFER wordmark (use in nav and footer)
+- `DeciferProductLogo` — mark + DECIFER + product name (use in product headers)
 
-Sizes: `sm` (nav), `md` (default), `lg` (hero/standalone use).
+**Static assets:** `/public/brand/decifer-*.svg`
 
 **Do not:**
-- Stretch or distort the mark
-- Use the wordmark on backgrounds where contrast is below 4.5:1
-- Recreate the mark in a different font
-- Use angle brackets `< >` instead of guillemets `‹ ›`
+- Use the old guillemet mark (`‹ DECIFER ›`) — it is retired
+- Use blue or purple for the brackets
+- Recreate the mark as keyboard characters (`< >`)
+- Stretch, rotate, or distort the mark
 
 ---
 
@@ -57,6 +59,7 @@ Sizes: `sm` (nav), `md` (default), `lg` (hero/standalone use).
 
 | Token | Hex | Usage |
 |---|---|---|
+| `--color-mark` | `#F05A28` | DECIFER bracket mark — all products |
 | `--color-brand` | `#3d7eff` | Primary blue, CTAs, Trading accent |
 | `--color-learn` | `#7c5ce0` | Learning accent, violet gradient |
 | `--color-live` | `#0dc47c` | Success, live status, confirmations |

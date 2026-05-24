@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DeciferMark from "./DeciferMark";
+import DeciferLogo from "./DeciferLogo";
 
 const legalLinks = [
   { label: "Privacy Policy", href: "/legal/privacy" },
@@ -33,7 +33,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <DeciferMark size="sm" className="mb-4" />
+            <DeciferLogo size="sm" className="mb-4" />
             <p className="max-w-xs text-sm leading-relaxed text-muted">
               AI-assisted intelligence that reduces noise, organises context,
               and explains what matters in plain language.

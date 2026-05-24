@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DeciferMark from "./DeciferMark";
+import DeciferLogo from "./DeciferLogo";
 
 const allLegal = [
   { title: "Privacy Policy", href: "/legal/privacy" },
@@ -48,7 +48,7 @@ export default function LegalLayout({
 
         {/* Brand */}
         <div className="mb-6">
-          <DeciferMark size="sm" />
+          <DeciferLogo size="sm" />
         </div>
 
         {/* Heading */}

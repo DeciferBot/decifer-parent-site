@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import DeciferMark from "./DeciferMark";
+import DeciferLogo from "./DeciferLogo";
 
 const navLinks = [
   { label: "Products", href: "#products" },
@@ -30,7 +30,7 @@ export default function Nav() {
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
         <Link href="/" aria-label="DECIFER home">
-          <DeciferMark size="sm" />
+          <DeciferLogo size="sm" />
         </Link>
 
         {/* Desktop */}

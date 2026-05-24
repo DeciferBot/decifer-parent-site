@@ -23,6 +23,12 @@ export const metadata: Metadata = {
   description:
     "DECIFER combines structured data, verified sources, and AI-assisted interpretation to deliver plain-language intelligence on markets, learning, and the world.",
   metadataBase: new URL("https://www.decifer.io"),
+  icons: {
+    icon: [
+      { url: "/brand/decifer-favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/brand/decifer-app-icon.svg",
+  },
   openGraph: {
     title: "DECIFER — AI Intelligence",
     description: "Make sense of complex worlds.",
