@@ -14,16 +14,13 @@ const legalLinks = [
 const siteLinks = [
   { label: "Products", href: "#products" },
   { label: "How It Works", href: "#method" },
-  { label: "Trust", href: "#trust" },
+  { label: "Boundaries", href: "#trust" },
   { label: "Early Access", href: "#early-access" },
 ];
 
 const products = [
-  { label: "Decifer Trading", href: "https://decifertrading.com", external: true, live: true },
-  { label: "Decifer Learning", href: "https://deciferlearning.com", external: true, live: true },
-  { label: "Decifer Money", href: null, external: false, live: false },
-  { label: "Decifer World", href: null, external: false, live: false },
-  { label: "Decifer Work", href: null, external: false, live: false },
+  { label: "DECIFER Trading", href: "https://decifertrading.com", external: true, live: true },
+  { label: "DECIFER Learning", href: "https://deciferlearning.com", external: true, live: true },
 ];
 
 export default function Footer() {
@@ -35,7 +32,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <DeciferLogo size="sm" className="mb-4" />
             <p className="max-w-xs text-sm leading-relaxed text-muted">
-              AI-assisted intelligence that reduces noise, organises context,
+              Structured intelligence that reduces noise, organises context,
               and explains what matters in plain language.
             </p>
           </div>
@@ -67,20 +64,19 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {products.map((p) => (
                 <li key={p.label}>
-                  {p.href && p.live ? (
-                    <a
-                      href={p.href}
-                      target={p.external ? "_blank" : undefined}
-                      rel={p.external ? "noopener noreferrer" : undefined}
-                      className="text-sm text-muted transition-colors hover:text-ink"
-                    >
-                      {p.label}
-                    </a>
-                  ) : (
-                    <span className="text-sm text-faint">{p.label}</span>
-                  )}
+                  <a
+                    href={p.href}
+                    target={p.external ? "_blank" : undefined}
+                    rel={p.external ? "noopener noreferrer" : undefined}
+                    className="text-sm text-muted transition-colors hover:text-ink"
+                  >
+                    {p.label}
+                  </a>
                 </li>
               ))}
+              <li>
+                <span className="text-sm text-faint">More domains coming</span>
+              </li>
             </ul>
           </div>
 

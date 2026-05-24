@@ -19,9 +19,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "DECIFER — AI Intelligence",
+  title: "DECIFER — Structured Intelligence",
   description:
-    "DECIFER combines structured data, verified sources, and AI-assisted interpretation to deliver plain-language intelligence on markets, learning, and the world.",
+    "DECIFER builds structured intelligence systems. We organise complex signals into plain-language context — for markets, learning, and the world.",
   metadataBase: new URL("https://www.decifer.io"),
   icons: {
     icon: [
@@ -30,16 +30,16 @@ export const metadata: Metadata = {
     apple: "/brand/decifer-app-icon.svg",
   },
   openGraph: {
-    title: "DECIFER — AI Intelligence",
-    description: "Make sense of complex worlds.",
+    title: "DECIFER — Structured Intelligence",
+    description: "The layer between noise and understanding.",
     url: "https://www.decifer.io",
     siteName: "DECIFER",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DECIFER — AI Intelligence",
-    description: "Make sense of complex worlds.",
+    title: "DECIFER — Structured Intelligence",
+    description: "The layer between noise and understanding.",
   },
 };
 

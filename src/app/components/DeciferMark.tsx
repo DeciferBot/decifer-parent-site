@@ -1,8 +1,8 @@
-// Two opposing dialogue brackets — the DECIFER master mark.
-// Left bracket offset up, right bracket offset down. Both orange.
-// ViewBox 40×32: 10% vertical offset (2 units each side of centre).
+// Two opposing brackets — the DECIFER master mark.
+// Both brackets are #F05A28 (DECIFER orange). Split-colour treatment is prohibited.
+// ViewBox 40×32. `height` overrides the named size scale.
 
-const MARK_ORANGE = '#F05A28'
+const ORANGE = '#F05A28'
 
 type MarkSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
@@ -16,16 +16,20 @@ const HEIGHT: Record<MarkSize, number> = {
 
 export interface DeciferMarkProps {
   size?: MarkSize
+  /** Override height in px; width is computed proportionally. */
+  height?: number
+  /** If set, both brackets use this colour (monochrome override). */
   color?: string
   className?: string
 }
 
 export default function DeciferMark({
   size = 'md',
-  color = MARK_ORANGE,
+  height: heightOverride,
+  color,
   className = '',
 }: DeciferMarkProps) {
-  const h = HEIGHT[size]
+  const h = heightOverride ?? HEIGHT[size]
   const w = Math.round(h * 40 / 32)
 
   return (
@@ -39,14 +43,14 @@ export default function DeciferMark({
     >
       <polyline
         points="13,5 5,15 13,25"
-        stroke={color}
+        stroke={color ?? ORANGE}
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <polyline
         points="27,7 35,17 27,27"
-        stroke={color}
+        stroke={color ?? ORANGE}
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"

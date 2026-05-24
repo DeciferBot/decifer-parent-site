@@ -73,49 +73,22 @@ body {
   50% { opacity: 0.35; }
 }
 
-@keyframes caret-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
-
-@keyframes beam-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
 /* ── Hero background ────────────────────────────── */
 
-/* Structured signal beam from above — replaces generic floating orbs */
+/* Orange-anchored structural beam — no looping animation */
 .hero-beam {
   background: radial-gradient(
     ellipse 70% 65% at 50% -5%,
-    rgba(61, 126, 255, 0.16) 0%,
-    rgba(124, 92, 224, 0.07) 45%,
+    rgba(240, 90, 40, 0.09) 0%,
+    rgba(240, 90, 40, 0.03) 45%,
     transparent 72%
   );
-  animation: beam-pulse 8s ease-in-out infinite;
 }
 
-.hero-accent {
-  background: radial-gradient(
-    ellipse 45% 40% at 85% 110%,
-    rgba(124, 92, 224, 0.1) 0%,
-    transparent 65%
-  );
-}
-
+/* Neutral structural dot grid */
 .dot-grid {
-  background-image: radial-gradient(rgba(61, 126, 255, 0.07) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(42, 56, 96, 0.55) 1px, transparent 1px);
   background-size: 28px 28px;
-}
-
-/* ── Typography ─────────────────────────────────── */
-
-.gradient-text {
-  background: linear-gradient(135deg, #3d7eff 0%, #a280ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* ── Entrance animations ─────────────────────────── */
@@ -166,14 +139,14 @@ body {
 
 /* ── Card glows ─────────────────────────────────── */
 
-.glow-brand {
+.glow-trading {
   box-shadow:
     0 0 0 1px rgba(61, 126, 255, 0.16),
     0 0 40px rgba(61, 126, 255, 0.09),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
   transition: box-shadow 0.3s ease;
 }
-.glow-brand:hover {
+.glow-trading:hover {
   box-shadow:
     0 0 0 1px rgba(61, 126, 255, 0.3),
     0 0 60px rgba(61, 126, 255, 0.18),
@@ -196,8 +169,7 @@ body {
 
 /* ── Utilities ──────────────────────────────────── */
 
-.dot-live   { animation: pulse-dot 2.2s ease-in-out infinite; }
-.caret-bounce { animation: caret-bounce 1.8s ease-in-out infinite; }
+.dot-live { animation: pulse-dot 2.2s ease-in-out infinite; }
 
 /* ── Form inputs ─────────────────────────────────── */
 
@@ -227,8 +199,8 @@ select.form-input {
 }
 
 .form-input:focus {
-  border-color: rgba(61, 126, 255, 0.5);
-  box-shadow: 0 0 0 3px rgba(61, 126, 255, 0.1);
+  border-color: rgba(240, 90, 40, 0.5);
+  box-shadow: 0 0 0 3px rgba(240, 90, 40, 0.1);
 }
 
 .form-input:focus::placeholder {
@@ -280,7 +252,7 @@ select.form-input {
 }
 
 .legal-prose a {
-  color: #3d7eff;
+  color: #F05A28;
 }
 
 .legal-prose a:hover {

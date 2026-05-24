@@ -5,12 +5,10 @@ import { useState } from "react";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const INTERESTS = [
-  { value: "Trading", label: "Decifer Trading — Market Intelligence" },
-  { value: "Learning", label: "Decifer Learning — AI-Assisted Learning" },
-  { value: "Money", label: "Decifer Money (Coming Soon)" },
-  { value: "World", label: "Decifer World (Coming Soon)" },
-  { value: "Work", label: "Decifer Work (Coming Soon)" },
-  { value: "General", label: "General — All Products" },
+  { value: "Trading", label: "DECIFER Trading — Market Intelligence" },
+  { value: "Learning", label: "DECIFER Learning — Learning Intelligence" },
+  { value: "Future", label: "Future DECIFER products" },
+  { value: "General", label: "General — All products" },
 ];
 
 function track(event: string) {
@@ -219,7 +217,7 @@ export default function EarlyAccessForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="w-full rounded-xl bg-brand px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition-all duration-200 hover:bg-brand/90 disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full rounded-xl bg-cta px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cta/20 transition-all duration-200 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "submitting" ? "Submitting..." : "Request Early Access"}
         </button>
