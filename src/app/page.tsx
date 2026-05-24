@@ -542,6 +542,43 @@ export default function Home() {
       </section>
 
       {/* ──────────────────────────────────────────
+          FOUNDER
+      ────────────────────────────────────────── */}
+      <section className="bg-canvas py-24 sm:py-32">
+        <div className="mx-auto max-w-3xl px-5 sm:px-8">
+          <div className="relative rounded-2xl border border-line bg-surface p-10 sm:p-14">
+            {/* Large open-quote mark */}
+            <div
+              className="absolute -top-5 left-10 select-none text-7xl font-bold leading-none text-brand/15"
+              aria-hidden="true"
+            >
+              &ldquo;
+            </div>
+
+            <p className="relative z-10 text-lg leading-relaxed text-ink sm:text-xl">
+              I built DECIFER because I kept seeing the same problem. Intelligent
+              people, overwhelmed by information, making poor decisions, not from
+              lack of effort, but from lack of clarity. Markets, learning, money,
+              the world: in every domain the signal is buried. DECIFER is my
+              attempt to fix that, carefully, domain by domain.
+            </p>
+
+            <div className="mt-8 flex items-center gap-4">
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-brand/25 bg-brand/8 text-sm font-bold tracking-wide text-brand">
+                AC
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-ink">
+                  Amit Chopra
+                </div>
+                <div className="text-xs text-faint">Founder, DECIFER</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────────────────────────────────
           EARLY ACCESS
       ────────────────────────────────────────── */}
       <section id="early-access" className="relative overflow-hidden bg-surface py-24 sm:py-32">
