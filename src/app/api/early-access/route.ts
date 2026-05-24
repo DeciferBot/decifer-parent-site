@@ -58,9 +58,14 @@ export async function POST(req: NextRequest) {
   // Always log to server logs (visible in Vercel Function logs)
   console.log("[DECIFER Early Access]", submission);
 
-  // Send notification email via Resend if configured
+  // Send notification email via Resend if configured.
+  // Requires RESEND_API_KEY and RESEND_NOTIFY_EMAIL in Vercel env vars.
+  // RESEND_FROM must be a verified sending domain in Resend (e.g. noreply@decifer.io).
   const resendApiKey = process.env.RESEND_API_KEY;
-  if (resendApiKey) {
+  const notifyEmail = process.env.RESEND_NOTIFY_EMAIL;
+  const fromAddress = process.env.RESEND_FROM ?? "DECIFER <onboarding@resend.dev>";
+
+  if (resendApiKey && notifyEmail) {
     try {
       const emailRes = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -69,8 +74,8 @@ export async function POST(req: NextRequest) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "DECIFER <noreply@decifer.io>",
-          to: ["hello@decifer.io"],
+          from: fromAddress,
+          to: [notifyEmail],
           subject: `Early Access Request: ${name} (${interest})`,
           text: [
             `New early access request received.`,
@@ -94,6 +99,8 @@ export async function POST(req: NextRequest) {
       // Don't fail the request if email delivery fails — submission is still logged
       console.error("[DECIFER Early Access] Resend exception:", err);
     }
+  } else if (resendApiKey && !notifyEmail) {
+    console.warn("[DECIFER Early Access] RESEND_API_KEY set but RESEND_NOTIFY_EMAIL is missing — skipping email.");
   }
 
   // TODO: Persist to Supabase when NEXT_PUBLIC_SUPABASE_URL and
