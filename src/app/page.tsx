@@ -8,8 +8,8 @@ export default function Home() {
       ────────────────────────────────────────── */}
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 dot-grid" />
-        <div className="absolute -left-[10%] -top-[20%] h-[70%] w-[55%] orb-blue opacity-30" />
-        <div className="absolute -bottom-[10%] -right-[10%] h-[60%] w-[50%] orb-violet opacity-25" />
+        <div className="absolute inset-0 hero-beam" />
+        <div className="absolute inset-0 hero-accent" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-canvas" />
 
         <div className="relative z-10 mx-auto max-w-4xl px-5 text-center sm:px-8">
@@ -20,10 +20,10 @@ export default function Home() {
             </span>
           </div>
 
-          <h1 className="anim-fade-up-1 mb-6 text-5xl font-extrabold leading-[1.04] tracking-tight text-ink sm:text-6xl lg:text-7xl">
+          <h1 className="anim-fade-up-1 mb-6 font-display text-5xl font-normal leading-[1.06] tracking-tight text-ink sm:text-6xl lg:text-7xl">
             Make sense of
             <br />
-            <span className="gradient-text">complex worlds.</span>
+            <span className="gradient-text italic">complex worlds.</span>
           </h1>
 
           <p className="anim-fade-up-2 mx-auto mb-4 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
@@ -47,7 +47,7 @@ export default function Home() {
             </a>
             <a
               href="#products"
-              className="w-full rounded-xl border border-line px-7 py-3.5 text-sm font-semibold text-muted transition-all duration-200 hover:border-muted hover:text-ink sm:w-auto"
+              className="w-full rounded-xl border border-muted/30 px-7 py-3.5 text-sm font-semibold text-muted transition-all duration-200 hover:border-muted/60 hover:text-ink sm:w-auto"
             >
               Explore Products
             </a>
@@ -74,11 +74,11 @@ export default function Home() {
       {/* ──────────────────────────────────────────
           PROBLEM
       ────────────────────────────────────────── */}
-      <section className="bg-canvas py-24 sm:py-32">
+      <section className="bg-canvas py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="mb-16 text-center">
+          <div className="mb-14 text-center">
             <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand">
-              The Problem
+              <span className="opacity-40">[ </span>The Problem<span className="opacity-40"> ]</span>
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               More information.
@@ -94,6 +94,7 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {[
               {
+                scrollClass: "scroll-reveal-1",
                 icon: (
                   <svg
                     width="28"
@@ -115,6 +116,7 @@ export default function Home() {
                 desc: "Data, headlines, and alerts compete for attention. Volume has far outpaced the human capacity to process what actually matters.",
               },
               {
+                scrollClass: "scroll-reveal-2",
                 icon: (
                   <svg
                     width="28"
@@ -141,6 +143,7 @@ export default function Home() {
                 desc: "A language model trained on the internet can summarise, but it can also hallucinate, oversimplify, or miss what is domain-critical. Confidence without accuracy is dangerous.",
               },
               {
+                scrollClass: "scroll-reveal-3",
                 icon: (
                   <svg
                     width="28"
@@ -172,7 +175,7 @@ export default function Home() {
             ].map((card) => (
               <div
                 key={card.title}
-                className="group rounded-2xl border border-line bg-surface p-8 transition-all duration-300 hover:border-faint"
+                className={`group rounded-2xl border border-line bg-surface p-8 transition-all duration-300 hover:border-faint ${card.scrollClass ?? ""}`}
               >
                 <div className="mb-5 text-muted transition-colors duration-300 group-hover:text-brand">
                   {card.icon}
@@ -190,11 +193,11 @@ export default function Home() {
       {/* ──────────────────────────────────────────
           METHOD
       ────────────────────────────────────────── */}
-      <section id="method" className="py-24 sm:py-32">
+      <section id="method" className="py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="mb-16 text-center">
+          <div className="mb-14 text-center">
             <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand">
-              How It Works
+              <span className="opacity-40">[ </span>How It Works<span className="opacity-40"> ]</span>
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               The DECIFER Approach
@@ -207,7 +210,7 @@ export default function Home() {
           </div>
 
           <div className="relative">
-            <div className="absolute left-[calc(16.7%+2rem)] right-[calc(16.7%+2rem)] top-6 hidden h-px bg-line md:block" />
+            <div className="absolute left-[calc(16.7%+2rem)] right-[calc(16.7%+2rem)] top-6 hidden h-px bg-gradient-to-r from-brand/40 via-learn/30 to-live/40 md:block" />
 
             <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6">
               {[
@@ -216,26 +219,29 @@ export default function Home() {
                   title: "Collect",
                   desc: "We gather signals from structured, verified sources. Market data, academic content, curated feeds. No scraping rumour sites or unverified commentary.",
                   ring: "border-brand/40 bg-brand/6 text-brand",
+                  scrollClass: "scroll-reveal-1",
                 },
                 {
                   step: "02",
                   title: "Contextualise",
                   desc: "Domain-specific AI models map relationships and meaning. The model knows the rules of the domain, which sources matter, and what to filter out.",
                   ring: "border-learn/40 bg-learn/6 text-learn",
+                  scrollClass: "scroll-reveal-2",
                 },
                 {
                   step: "03",
                   title: "Clarify",
                   desc: "Plain-language intelligence is delivered to you. Every output is source-referenced and confidence-bounded. You know what DECIFER knows and does not know.",
                   ring: "border-live/40 bg-live/6 text-live",
+                  scrollClass: "scroll-reveal-3",
                 },
               ].map((s) => (
                 <div
                   key={s.step}
-                  className="flex flex-col items-start md:items-center md:text-center"
+                  className={`flex flex-col items-start md:items-center md:text-center ${s.scrollClass}`}
                 >
                   <div
-                    className={`relative z-10 mb-6 flex h-12 w-12 items-center justify-center rounded-xl border text-sm font-bold ${s.ring}`}
+                    className={`relative z-10 mb-6 flex h-12 w-12 items-center justify-center rounded-full border text-sm font-bold ${s.ring}`}
                   >
                     {s.step}
                   </div>
@@ -253,11 +259,11 @@ export default function Home() {
       {/* ──────────────────────────────────────────
           PRODUCTS
       ────────────────────────────────────────── */}
-      <section id="products" className="bg-canvas py-24 sm:py-32">
+      <section id="products" className="bg-canvas py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="mb-16 text-center">
+          <div className="mb-14 text-center">
             <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand">
-              Products
+              <span className="opacity-40">[ </span>Products<span className="opacity-40"> ]</span>
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               Intelligence, applied.
@@ -270,7 +276,7 @@ export default function Home() {
 
           <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
             {/* Decifer Trading */}
-            <div className="glow-brand rounded-2xl bg-surface p-8 transition-all duration-300">
+            <div className="glow-brand scroll-reveal-1 rounded-2xl bg-surface p-8 transition-all duration-300">
               <div className="mb-6 flex items-start justify-between">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-brand/20 bg-brand/8">
                   <svg
@@ -327,7 +333,7 @@ export default function Home() {
             </div>
 
             {/* Decifer Learning */}
-            <div className="glow-learn rounded-2xl bg-surface p-8 transition-all duration-300">
+            <div className="glow-learn scroll-reveal-2 rounded-2xl bg-surface p-8 transition-all duration-300">
               <div className="mb-6 flex items-start justify-between">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-learn/20 bg-learn/8">
                   <svg
@@ -401,17 +407,21 @@ export default function Home() {
             ].map((p) => (
               <div
                 key={p.name}
-                className="rounded-xl border border-line bg-surface/40 p-6 opacity-55"
+                className="group rounded-xl border border-line/60 bg-surface/30 p-6 transition-colors duration-200 hover:border-line"
               >
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-sm font-semibold text-muted">
+                  <span className="text-sm font-semibold text-faint group-hover:text-muted transition-colors duration-200">
                     {p.name}
                   </span>
-                  <span className="rounded-full border border-line px-2.5 py-0.5 text-xs text-faint">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-line/50 px-2.5 py-0.5 text-xs text-faint">
+                    <svg width="9" height="11" viewBox="0 0 9 11" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="0.75" y="4.75" width="7.5" height="5.5" rx="1.25" />
+                      <path d="M2.5 4.75V3.25a2 2 0 0 1 4 0v1.5" />
+                    </svg>
                     Coming soon
                   </span>
                 </div>
-                <p className="text-xs text-faint">{p.desc}</p>
+                <p className="text-xs text-faint/70">{p.desc}</p>
               </div>
             ))}
           </div>
@@ -421,11 +431,11 @@ export default function Home() {
       {/* ──────────────────────────────────────────
           TRUST AND SAFETY
       ────────────────────────────────────────── */}
-      <section id="trust" className="py-24 sm:py-32">
+      <section id="trust" className="py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="mb-16 text-center">
+          <div className="mb-14 text-center">
             <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand">
-              Trust and Safety
+              <span className="opacity-40">[ </span>Trust and Safety<span className="opacity-40"> ]</span>
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               We set clear limits.
@@ -441,6 +451,7 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {[
               {
+                scrollClass: "scroll-reveal-1",
                 color: "text-brand",
                 bg: "bg-brand/5 border-brand/15",
                 icon: (
@@ -461,6 +472,7 @@ export default function Home() {
                 desc: "DECIFER Trading provides structured market intelligence to help you understand what is happening. It does not provide financial, investment, or trading recommendations. Financial markets carry real risk. All decisions are yours.",
               },
               {
+                scrollClass: "scroll-reveal-2",
                 color: "text-learn",
                 bg: "bg-learn/5 border-learn/15",
                 icon: (
@@ -481,6 +493,7 @@ export default function Home() {
                 desc: "Decifer Learning supports children and parents in building understanding. It does not replace qualified teachers, tutors, or formal education. We make no claims about academic outcomes.",
               },
               {
+                scrollClass: "scroll-reveal-1",
                 color: "text-live",
                 bg: "bg-live/5 border-live/15",
                 icon: (
@@ -501,6 +514,7 @@ export default function Home() {
                 desc: "Decifer Learning is built for families. All content is age-appropriate, curriculum-linked, and supervised. We do not collect unnecessary data from children. Parental involvement is part of the design.",
               },
               {
+                scrollClass: "scroll-reveal-2",
                 color: "text-muted",
                 bg: "bg-surface border-line",
                 icon: (
@@ -524,7 +538,7 @@ export default function Home() {
             ].map((item) => (
               <div
                 key={item.title}
-                className={`flex gap-5 rounded-2xl border p-7 transition-colors duration-300 ${item.bg}`}
+                className={`flex gap-5 rounded-2xl border p-7 transition-colors duration-300 ${item.bg} ${item.scrollClass ?? ""}`}
               >
                 <div className={`mt-0.5 flex-shrink-0 ${item.color}`}>
                   {item.icon}
@@ -544,18 +558,18 @@ export default function Home() {
       {/* ──────────────────────────────────────────
           FOUNDER
       ────────────────────────────────────────── */}
-      <section className="bg-canvas py-24 sm:py-32">
+      <section className="bg-canvas py-20 sm:py-28">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          <div className="relative rounded-2xl border border-line bg-surface p-10 sm:p-14">
+          <div className="scroll-reveal relative rounded-2xl border border-line bg-surface p-10 sm:p-14 border-l-2 border-l-brand/40">
             {/* Large open-quote mark */}
             <div
-              className="absolute -top-5 left-10 select-none text-7xl font-bold leading-none text-brand/15"
+              className="absolute -top-6 left-10 select-none font-display text-[5.5rem] font-normal leading-none text-brand/35 italic"
               aria-hidden="true"
             >
               &ldquo;
             </div>
 
-            <p className="relative z-10 text-lg leading-relaxed text-ink sm:text-xl">
+            <p className="relative z-10 font-display text-xl leading-relaxed text-ink italic sm:text-2xl">
               I built DECIFER because I kept seeing the same problem. Intelligent
               people, overwhelmed by information, making poor decisions, not from
               lack of effort, but from lack of clarity. Markets, learning, money,
@@ -564,14 +578,14 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex items-center gap-4">
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-brand/25 bg-brand/8 text-sm font-bold tracking-wide text-brand">
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-brand/30 bg-brand/10 text-sm font-bold tracking-wide text-brand">
                 AC
               </div>
               <div>
                 <div className="text-sm font-semibold text-ink">
                   Amit Chopra
                 </div>
-                <div className="text-xs text-faint">Founder, DECIFER</div>
+                <div className="text-xs text-muted">Founder, DECIFER</div>
               </div>
             </div>
           </div>
@@ -581,13 +595,12 @@ export default function Home() {
       {/* ──────────────────────────────────────────
           EARLY ACCESS
       ────────────────────────────────────────── */}
-      <section id="early-access" className="relative overflow-hidden bg-surface py-24 sm:py-32">
-        <div className="absolute -bottom-1/4 -right-1/4 h-[70%] w-[60%] orb-blue opacity-8" />
-        <div className="absolute -left-1/4 -top-1/4 h-[60%] w-[50%] orb-violet opacity-6" />
+      <section id="early-access" className="relative overflow-hidden bg-surface py-20 sm:py-28">
+        <div className="absolute inset-0 hero-beam opacity-40" />
         <div className="relative z-10 mx-auto max-w-xl px-5 sm:px-8">
           <div className="mb-10 text-center">
             <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand">
-              Early Access
+              <span className="opacity-40">[ </span>Early Access<span className="opacity-40"> ]</span>
             </div>
             <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
               Get early access.

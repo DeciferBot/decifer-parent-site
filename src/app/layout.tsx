@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Instrument_Serif, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
-const inter = Inter({
-  variable: "--font-inter",
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  style: ["normal", "italic"],
   subsets: ["latin"],
+  variable: "--font-instrument",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -33,7 +41,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${instrumentSerif.variable} ${dmSans.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-canvas text-ink">
         <Nav />
         <main className="flex-1">{children}</main>

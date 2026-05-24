@@ -11,7 +11,8 @@
   --color-learn: #7c5ce0;
   --color-live: #0dc47c;
   --color-line: #172038;
-  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-instrument), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
 }
 
 *,
@@ -35,18 +36,6 @@ body {
 
 /* ── Keyframes ──────────────────────────────────── */
 
-@keyframes orb-a {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(4%, -3%) scale(1.06); }
-  66% { transform: translate(-3%, 4%) scale(0.96); }
-}
-
-@keyframes orb-b {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  40% { transform: translate(-5%, 3%) scale(1.08); }
-  70% { transform: translate(3%, -4%) scale(0.94); }
-}
-
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(22px); }
   to { opacity: 1; transform: translateY(0); }
@@ -62,23 +51,35 @@ body {
   50% { transform: translateY(6px); }
 }
 
-/* ── Hero background orbs ───────────────────────── */
-
-.orb-blue {
-  background: radial-gradient(circle, rgba(61, 126, 255, 0.55) 0%, transparent 70%);
-  filter: blur(72px);
-  animation: orb-a 16s ease-in-out infinite;
+@keyframes beam-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
-.orb-violet {
-  background: radial-gradient(circle, rgba(124, 92, 224, 0.45) 0%, transparent 70%);
-  filter: blur(90px);
-  animation: orb-b 22s ease-in-out infinite;
+/* ── Hero background ────────────────────────────── */
+
+/* Structured signal beam from above — replaces generic floating orbs */
+.hero-beam {
+  background: radial-gradient(
+    ellipse 70% 65% at 50% -5%,
+    rgba(61, 126, 255, 0.16) 0%,
+    rgba(124, 92, 224, 0.07) 45%,
+    transparent 72%
+  );
+  animation: beam-pulse 8s ease-in-out infinite;
+}
+
+.hero-accent {
+  background: radial-gradient(
+    ellipse 45% 40% at 85% 110%,
+    rgba(124, 92, 224, 0.1) 0%,
+    transparent 65%
+  );
 }
 
 .dot-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 30px 30px;
+  background-image: radial-gradient(rgba(61, 126, 255, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 /* ── Typography ─────────────────────────────────── */
@@ -97,6 +98,44 @@ body {
 .anim-fade-up-2 { opacity: 0; animation: fade-up 0.65s 0.24s ease both; }
 .anim-fade-up-3 { opacity: 0; animation: fade-up 0.65s 0.38s ease both; }
 .anim-fade-up-4 { opacity: 0; animation: fade-up 0.65s 0.54s ease both; }
+
+/* ── Scroll-driven reveal (CSS, no JS) ──────────── */
+
+/* Fallback: always visible in non-supporting browsers */
+.scroll-reveal,
+.scroll-reveal-1,
+.scroll-reveal-2,
+.scroll-reveal-3 {}
+
+@supports (animation-timeline: view()) {
+  .scroll-reveal {
+    opacity: 0;
+    animation: fade-up 0.55s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 32%;
+  }
+
+  .scroll-reveal-1 {
+    opacity: 0;
+    animation: fade-up 0.55s ease both;
+    animation-timeline: view();
+    animation-range: entry 2% entry 34%;
+  }
+
+  .scroll-reveal-2 {
+    opacity: 0;
+    animation: fade-up 0.55s ease both;
+    animation-timeline: view();
+    animation-range: entry 5% entry 37%;
+  }
+
+  .scroll-reveal-3 {
+    opacity: 0;
+    animation: fade-up 0.55s ease both;
+    animation-timeline: view();
+    animation-range: entry 8% entry 40%;
+  }
+}
 
 /* ── Card glows ─────────────────────────────────── */
 
