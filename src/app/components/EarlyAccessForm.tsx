@@ -5,10 +5,9 @@ import { useState } from "react";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const INTERESTS = [
-  { value: "Trading", label: "DECIFER Trading — Market Intelligence" },
-  { value: "Learning", label: "DECIFER Learning — Learning Intelligence" },
-  { value: "Future", label: "Future DECIFER products" },
-  { value: "General", label: "General — All products" },
+  { value: "Trading", label: "Decifer Trading" },
+  { value: "Learning", label: "Decifer Learning" },
+  { value: "General", label: "General interest in DECIFER" },
 ];
 
 function track(event: string) {
@@ -78,14 +77,14 @@ export default function EarlyAccessForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-live/25 bg-live/6 p-8 text-center">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-live/30 bg-live/10">
+      <div className="rounded-2xl border border-live/35 bg-live/8 p-8 text-center">
+        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-live/40 bg-live/15">
           <svg
             width="22"
             height="22"
             viewBox="0 0 22 22"
             fill="none"
-            stroke="#0dc47c"
+            stroke="#1ad385"
             strokeWidth="1.75"
             strokeLinecap="round"
           >
@@ -95,7 +94,7 @@ export default function EarlyAccessForm() {
         <h3 className="mb-2 text-xl font-bold text-ink">
           {"You're on the list."}
         </h3>
-        <p className="text-sm text-muted">
+        <p className="text-[15px] leading-relaxed text-body">
           {"We'll be in touch when your access is ready. No spam, ever."}
         </p>
       </div>
@@ -181,7 +180,7 @@ export default function EarlyAccessForm() {
             className={inputClass("interest")}
           >
             <option value="" disabled>
-              Select a product
+              Select an interest
             </option>
             {INTERESTS.map((i) => (
               <option key={i.value} value={i.value}>
@@ -198,10 +197,10 @@ export default function EarlyAccessForm() {
         <div>
           <label
             htmlFor="ea-message"
-            className="mb-1.5 block text-sm font-medium text-muted"
+            className="mb-1.5 block text-sm font-medium text-ink"
           >
             Anything else?{" "}
-            <span className="text-faint font-normal">(optional)</span>
+            <span className="font-normal text-muted">(optional)</span>
           </label>
           <textarea
             id="ea-message"
@@ -217,15 +216,18 @@ export default function EarlyAccessForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="w-full rounded-xl bg-cta px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cta/20 transition-all duration-200 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full rounded-xl bg-cta px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cta/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#ff6a36] hover:shadow-xl hover:shadow-cta/30 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
         >
-          {status === "submitting" ? "Submitting..." : "Request Early Access"}
+          {status === "submitting" ? "Submitting…" : "Request early access"}
         </button>
 
         {status === "error" && (
           <p className="text-center text-sm text-red-400">
             Something went wrong. Please try again or email{" "}
-            <a href="mailto:hello@decifer.io" className="underline">
+            <a
+              href="mailto:hello@decifer.io"
+              className="font-medium underline-offset-2 hover:underline"
+            >
               hello@decifer.io
             </a>
             .

@@ -8,14 +8,7 @@ interface EarlyAccessPayload {
   website?: string; // honeypot field
 }
 
-const VALID_INTERESTS = [
-  "Trading",
-  "Learning",
-  "Money",
-  "World",
-  "Work",
-  "General",
-];
+const VALID_INTERESTS = ["Trading", "Learning", "General"];
 
 export async function POST(req: NextRequest) {
   let body: EarlyAccessPayload;

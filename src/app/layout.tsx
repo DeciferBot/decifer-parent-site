@@ -34,7 +34,7 @@ const organizationJsonLd = {
         url: "https://www.decifer.io/brand/decifer-mark.svg",
       },
       description:
-        "DECIFER builds structured intelligence systems — for markets, learning, and the world.",
+        "DECIFER builds AI intelligence products that help people make sense of complex information. Parent company of Decifer Trading and Decifer Learning.",
     },
     {
       "@type": "WebSite",
@@ -48,19 +48,20 @@ const organizationJsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: "DECIFER — Structured Intelligence",
+    default: "DECIFER — Information is everywhere. Understanding is not.",
     template: "%s | DECIFER",
   },
   description:
-    "DECIFER builds structured intelligence systems. We organise complex signals into plain-language context — for markets, learning, and the world.",
+    "DECIFER builds AI intelligence products that help people make sense of complex information. Parent company of Decifer Trading and Decifer Learning.",
   metadataBase: new URL("https://www.decifer.io"),
   icons: {
     icon: [{ url: "/brand/decifer-favicon.svg", type: "image/svg+xml" }],
     apple: "/brand/decifer-app-icon.svg",
   },
   openGraph: {
-    title: "DECIFER — Structured Intelligence",
-    description: "The layer between noise and understanding.",
+    title: "DECIFER — Information is everywhere. Understanding is not.",
+    description:
+      "DECIFER builds AI intelligence products that help people make sense of complex information.",
     url: "https://www.decifer.io",
     siteName: "DECIFER",
     type: "website",
@@ -68,8 +69,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DECIFER — Structured Intelligence",
-    description: "The layer between noise and understanding.",
+    title: "DECIFER — Information is everywhere. Understanding is not.",
+    description:
+      "DECIFER builds AI intelligence products that help people make sense of complex information.",
   },
   robots: {
     index: true,

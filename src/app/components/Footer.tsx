@@ -12,45 +12,47 @@ const legalLinks = [
 ];
 
 const siteLinks = [
-  { label: "Products", href: "#products" },
-  { label: "How It Works", href: "#method" },
-  { label: "Boundaries", href: "#trust" },
-  { label: "Early Access", href: "#early-access" },
+  { label: "Problem", href: "/#problem" },
+  { label: "Method", href: "/#method" },
+  { label: "Products", href: "/#products" },
+  { label: "Principles", href: "/#principles" },
+  { label: "Early access", href: "/#early-access" },
 ];
 
 const products = [
-  { label: "DECIFER Trading", href: "https://decifertrading.com", external: true, live: true },
-  { label: "DECIFER Learning", href: "https://deciferlearning.com", external: true, live: true },
+  { label: "Decifer Trading", href: "https://decifertrading.com", external: true },
+  { label: "Decifer Learning", href: "https://deciferlearning.com", external: true },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-canvas">
+    <footer className="border-t border-line-strong bg-canvas">
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <DeciferLogo size="sm" className="mb-4" />
-            <p className="max-w-xs text-sm leading-relaxed text-muted">
-              Structured intelligence that reduces noise, organises context,
-              and explains what matters in plain language.
+            <p className="max-w-xs text-sm leading-relaxed text-body">
+              DECIFER is the parent company behind Decifer Trading and Decifer
+              Learning. We build AI intelligence products that help people
+              understand complex information.
             </p>
           </div>
 
-          {/* Company */}
+          {/* Site */}
           <div>
-            <div className="mb-4 text-xs font-semibold uppercase tracking-widest text-faint">
-              Company
+            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+              Site
             </div>
             <ul className="space-y-2.5">
               {siteLinks.map((l) => (
                 <li key={l.label}>
-                  <a
+                  <Link
                     href={l.href}
-                    className="text-sm text-muted transition-colors hover:text-ink"
+                    className="text-sm text-body transition-colors hover:text-ink"
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -58,7 +60,7 @@ export default function Footer() {
 
           {/* Products */}
           <div>
-            <div className="mb-4 text-xs font-semibold uppercase tracking-widest text-faint">
+            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
               Products
             </div>
             <ul className="space-y-2.5">
@@ -68,21 +70,18 @@ export default function Footer() {
                     href={p.href}
                     target={p.external ? "_blank" : undefined}
                     rel={p.external ? "noopener noreferrer" : undefined}
-                    className="text-sm text-muted transition-colors hover:text-ink"
+                    className="text-sm text-body transition-colors hover:text-ink"
                   >
                     {p.label}
                   </a>
                 </li>
               ))}
-              <li>
-                <span className="text-sm text-faint">More domains coming</span>
-              </li>
             </ul>
           </div>
 
           {/* Legal */}
           <div>
-            <div className="mb-4 text-xs font-semibold uppercase tracking-widest text-faint">
+            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
               Legal
             </div>
             <ul className="space-y-2.5">
@@ -90,7 +89,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="text-sm text-muted transition-colors hover:text-ink"
+                    className="text-sm text-body transition-colors hover:text-ink"
                   >
                     {l.label}
                   </Link>
@@ -100,12 +99,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-line pt-8 sm:flex-row">
-          <p className="text-sm text-faint">
+        <div className="mt-14 space-y-3 border-t border-line-strong pt-8">
+          <div className="grid gap-2 text-xs leading-relaxed text-muted sm:grid-cols-2">
+            <p>Decifer Trading is not financial advice.</p>
+            <p>
+              Decifer Learning supports learning and does not replace teachers,
+              schools or parents.
+            </p>
+          </div>
+          <p className="text-xs text-muted">
             &copy; 2026 DECIFER. All rights reserved.
-          </p>
-          <p className="text-xs text-faint">
-            DECIFER provides intelligence, not financial advice.
           </p>
         </div>
       </div>
