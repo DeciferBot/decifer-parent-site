@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'DECIFER — Structured Intelligence'
+export const alt = 'DECIFER — Information is everywhere. Understanding is not.'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -47,7 +47,7 @@ export default async function Image() {
           </div>
           <div
             style={{
-              color: '#eef2ff',
+              color: '#f4f7ff',
               fontSize: 26,
               fontWeight: 700,
               letterSpacing: '0.18em',
@@ -62,42 +62,49 @@ export default async function Image() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
           <div
             style={{
-              color: '#eef2ff',
-              fontSize: 80,
+              color: '#f4f7ff',
+              fontSize: 72,
               fontWeight: 700,
-              lineHeight: 1.05,
+              lineHeight: 1.06,
               letterSpacing: '-0.02em',
               display: 'flex',
               flexDirection: 'column',
             }}
           >
-            <span>Structured</span>
-            <span>Intelligence.</span>
+            <span>Information is everywhere.</span>
+            <span style={{ color: '#F05A28' }}>Understanding is not.</span>
           </div>
           <div
             style={{
-              color: '#6b7db3',
+              color: '#c6d0e6',
               fontSize: 28,
               fontWeight: 400,
-              maxWidth: 660,
+              maxWidth: 820,
               display: 'flex',
             }}
           >
-            The layer between noise and understanding.
+            DECIFER builds AI intelligence products that help people make sense
+            of complex information.
           </div>
         </div>
 
         {/* Bottom: product tags + domain */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+          }}
+        >
           <div style={{ display: 'flex', gap: 10 }}>
-            {['Markets', 'Learning', 'World'].map((label) => (
+            {['Decifer Trading', 'Decifer Learning'].map((label) => (
               <div
                 key={label}
                 style={{
                   background: 'rgba(240,90,40,0.1)',
-                  border: '1px solid rgba(240,90,40,0.28)',
+                  border: '1px solid rgba(240,90,40,0.32)',
                   borderRadius: 6,
-                  padding: '7px 16px',
+                  padding: '8px 18px',
                   color: '#F05A28',
                   fontSize: 18,
                   fontWeight: 600,
@@ -109,12 +116,19 @@ export default async function Image() {
               </div>
             ))}
           </div>
-          <div style={{ color: '#3d4a6b', fontSize: 20, fontWeight: 500, display: 'flex' }}>
+          <div
+            style={{
+              color: '#97a6c4',
+              fontSize: 20,
+              fontWeight: 500,
+              display: 'flex',
+            }}
+          >
             decifer.io
           </div>
         </div>
       </div>
     ),
-    { ...size }
+    { ...size },
   )
 }
