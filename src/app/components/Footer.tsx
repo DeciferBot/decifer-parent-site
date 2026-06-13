@@ -16,6 +16,7 @@ const siteLinks = [
   { label: "Method", href: "/#method" },
   { label: "Products", href: "/#products" },
   { label: "Principles", href: "/#principles" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Early access", href: "/#early-access" },
 ];
 
