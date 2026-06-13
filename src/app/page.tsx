@@ -59,12 +59,14 @@ export default function Home() {
           <div className="anim-fade-up-3 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="#products"
+              data-event="cta_explore_products"
               className="w-full rounded-xl bg-cta px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cta/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#ff6a36] hover:shadow-xl hover:shadow-cta/30 sm:w-auto"
             >
               Explore products
             </a>
             <a
               href="#early-access"
+              data-event="cta_join_early_access"
               className="w-full rounded-xl border border-line-strong bg-surface/60 px-7 py-3.5 text-sm font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-cta/60 hover:bg-surface sm:w-auto"
             >
               Join early access
@@ -273,9 +275,9 @@ export default function Home() {
                 Decifer Trading
               </h3>
               <p className="mb-5 text-[15px] leading-relaxed text-body">
-                Decifer Trading helps active investors understand market
-                movement, catalysts, signals and portfolio context in plain
-                language.
+                Decifer Trading turns market noise into a plain-English read on
+                what is moving, why it matters and what to watch, across stocks,
+                themes and catalysts.
               </p>
 
               <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
@@ -283,10 +285,10 @@ export default function Home() {
               </p>
               <ul className="mb-6 space-y-2">
                 {[
-                  "What is moving",
-                  "Why it may matter",
-                  "Which signals have changed",
-                  "What needs closer attention",
+                  "A plain-English daily market briefing",
+                  "The forces and catalysts moving prices",
+                  "Themes that connect related stocks",
+                  "Company research without the jargon",
                 ].map((item) => (
                   <li
                     key={item}
@@ -358,8 +360,9 @@ export default function Home() {
                 Decifer Learning
               </h3>
               <p className="mb-5 text-[15px] leading-relaxed text-body">
-                Decifer Learning helps children practise and understand lessons
-                while giving parents a clearer view of progress.
+                Decifer Learning is a guided companion for the UK National
+                Curriculum. Children learn, practise and quiz through each topic
+                while parents see real progress.
               </p>
 
               <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
@@ -367,10 +370,10 @@ export default function Home() {
               </p>
               <ul className="mb-6 space-y-2">
                 {[
-                  "Practice and feedback",
-                  "Topic understanding",
-                  "Parent-visible progress",
-                  "Safer, structured learning support",
+                  "Guided Learn, Practise and Quiz for each topic",
+                  "Curriculum-aligned practice and feedback",
+                  "A parent view of progress and weak areas",
+                  "Encouraging support that never punishes mistakes",
                 ].map((item) => (
                   <li
                     key={item}
