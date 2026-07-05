@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { validInterestValues as VALID_INTERESTS } from "@/app/data/products";
 
 interface EarlyAccessPayload {
   name: string;
@@ -7,8 +8,6 @@ interface EarlyAccessPayload {
   message?: string;
   website?: string; // honeypot field
 }
-
-const VALID_INTERESTS = ["Trading", "Learning", "General"];
 
 export async function POST(req: NextRequest) {
   let body: EarlyAccessPayload;

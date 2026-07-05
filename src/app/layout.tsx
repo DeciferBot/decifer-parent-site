@@ -7,6 +7,7 @@ import "./globals.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import AnalyticsEvents from "./components/AnalyticsEvents";
+import { products } from "./data/products";
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -22,49 +23,39 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+const SITE = "https://www.decifer.io";
+const productNodeId = (key: string) => `${SITE}/#decifer-${key}`;
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://www.decifer.io/#organization",
+      "@id": `${SITE}/#organization`,
       name: "DECIFER",
-      url: "https://www.decifer.io",
+      url: SITE,
       logo: {
         "@type": "ImageObject",
-        url: "https://www.decifer.io/brand/decifer-mark.svg",
+        url: `${SITE}/brand/decifer-mark.svg`,
       },
       description:
-        "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Parent company of Decifer Trading and Decifer Learning.",
-      subOrganization: [
-        { "@id": "https://www.decifer.io/#decifer-trading" },
-        { "@id": "https://www.decifer.io/#decifer-learning" },
-      ],
+        "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Parent company of Decifer Trading, Decifer Learning and Decifer Marketing.",
+      subOrganization: products.map((p) => ({ "@id": productNodeId(p.key) })),
     },
-    {
+    ...products.map((p) => ({
       "@type": "Organization",
-      "@id": "https://www.decifer.io/#decifer-trading",
-      name: "Decifer Trading",
-      url: "https://decifertrading.com",
-      parentOrganization: { "@id": "https://www.decifer.io/#organization" },
-      description:
-        "Decifer Trading turns market noise into a plain-English read on what is moving, why it matters and what to watch. Market intelligence and equity research, not financial advice.",
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://www.decifer.io/#decifer-learning",
-      name: "Decifer Learning",
-      url: "https://deciferlearning.com",
-      parentOrganization: { "@id": "https://www.decifer.io/#organization" },
-      description:
-        "Decifer Learning is a guided companion for the UK National Curriculum. Children learn, practise and quiz through each topic while parents see real progress.",
-    },
+      "@id": productNodeId(p.key),
+      name: p.name,
+      ...(p.href ? { url: p.href } : {}),
+      parentOrganization: { "@id": `${SITE}/#organization` },
+      description: p.tagline,
+    })),
     {
       "@type": "WebSite",
-      "@id": "https://www.decifer.io/#website",
-      url: "https://www.decifer.io",
+      "@id": `${SITE}/#website`,
+      url: SITE,
       name: "DECIFER",
-      publisher: { "@id": "https://www.decifer.io/#organization" },
+      publisher: { "@id": `${SITE}/#organization` },
     },
   ],
 };
@@ -75,7 +66,7 @@ export const metadata: Metadata = {
     template: "%s | DECIFER",
   },
   description:
-    "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Makers of Decifer Trading market intelligence and Decifer Learning.",
+    "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Makers of Decifer Trading, Decifer Learning and Decifer Marketing.",
   metadataBase: new URL("https://www.decifer.io"),
   alternates: { canonical: "/" },
   keywords: [
@@ -86,6 +77,8 @@ export const metadata: Metadata = {
     "market intelligence",
     "Decifer Learning",
     "UK National Curriculum learning app",
+    "Decifer Marketing",
+    "marketing intelligence",
     "make sense of complex information",
   ],
   icons: {

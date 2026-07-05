@@ -1,14 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { earlyAccessInterests as INTERESTS } from "../data/products";
 
 type Status = "idle" | "submitting" | "success" | "error";
-
-const INTERESTS = [
-  { value: "Trading", label: "Decifer Trading" },
-  { value: "Learning", label: "Decifer Learning" },
-  { value: "General", label: "General interest in DECIFER" },
-];
 
 function track(event: string) {
   if (typeof window === "undefined") return;
