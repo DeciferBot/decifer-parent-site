@@ -1,5 +1,6 @@
 import Link from "next/link";
 import DeciferLogo from "./DeciferLogo";
+import { products } from "../data/products";
 
 const legalLinks = [
   { label: "Privacy Policy", href: "/legal/privacy" },
@@ -20,11 +21,6 @@ const siteLinks = [
   { label: "Early access", href: "/#early-access" },
 ];
 
-const products = [
-  { label: "Decifer Trading", href: "https://decifertrading.com", external: true },
-  { label: "Decifer Learning", href: "https://deciferlearning.com", external: true },
-];
-
 export default function Footer() {
   return (
     <footer className="border-t border-line-strong bg-canvas">
@@ -34,9 +30,9 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <DeciferLogo size="sm" className="mb-4" />
             <p className="max-w-xs text-sm leading-relaxed text-body">
-              DECIFER is the parent company behind Decifer Trading and Decifer
-              Learning. We build AI intelligence products that help people
-              understand complex information.
+              DECIFER is the parent company behind Decifer Trading, Decifer
+              Learning and Decifer Marketing. We build AI intelligence products
+              that help people understand complex information.
             </p>
           </div>
 
@@ -65,18 +61,25 @@ export default function Footer() {
               Products
             </div>
             <ul className="space-y-2.5">
-              {products.map((p) => (
-                <li key={p.label}>
-                  <a
-                    href={p.href}
-                    target={p.external ? "_blank" : undefined}
-                    rel={p.external ? "noopener noreferrer" : undefined}
-                    className="text-sm text-body transition-colors hover:text-ink"
-                  >
-                    {p.label}
-                  </a>
-                </li>
-              ))}
+              {products.map((p) =>
+                p.href ? (
+                  <li key={p.key}>
+                    <a
+                      href={p.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-body transition-colors hover:text-ink"
+                    >
+                      {p.name}
+                    </a>
+                  </li>
+                ) : (
+                  <li key={p.key} className="text-sm text-muted">
+                    {p.name}{" "}
+                    <span className="text-faint">(soon)</span>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
@@ -101,12 +104,12 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 space-y-3 border-t border-line-strong pt-8">
-          <div className="grid gap-2 text-xs leading-relaxed text-muted sm:grid-cols-2">
-            <p>Decifer Trading is not financial advice.</p>
-            <p>
-              Decifer Learning supports learning and does not replace teachers,
-              schools or parents.
-            </p>
+          <div className="grid gap-2 text-xs leading-relaxed text-muted sm:grid-cols-3">
+            {products.map((p) => (
+              <p key={p.key}>
+                {p.name} {p.boundaryShort}
+              </p>
+            ))}
           </div>
           <p className="text-xs text-muted">
             &copy; 2026 DECIFER. All rights reserved.

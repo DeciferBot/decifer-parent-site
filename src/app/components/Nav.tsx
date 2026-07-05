@@ -49,10 +49,7 @@ export default function Nav() {
               {l.label}
             </Link>
           ))}
-          <Link
-            href="/#early-access"
-            className="rounded-lg bg-cta px-4 py-2 text-sm font-semibold text-white shadow-md shadow-cta/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#ff6a36] hover:shadow-lg hover:shadow-cta/30"
-          >
+          <Link href="/#early-access" className="btn btn-primary px-4 py-2">
             Early access
           </Link>
         </div>
@@ -110,7 +107,7 @@ export default function Nav() {
               <Link
                 href="/#early-access"
                 onClick={() => setOpen(false)}
-                className="block rounded-lg bg-cta py-3 text-center text-sm font-semibold text-white transition-all hover:bg-[#ff6a36]"
+                className="btn btn-primary w-full py-3"
               >
                 Early access
               </Link>

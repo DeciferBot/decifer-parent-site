@@ -22,6 +22,7 @@ Product names use title case. Never all caps for product names.
 |---|---|---|
 | Market intelligence | Decifer Trading | DECIFER TRADING |
 | AI-assisted learning | Decifer Learning | DECIFER Learning |
+| Marketing intelligence | Decifer Marketing | DECIFER MARKETING |
 | Personal finance (future) | Decifer Money | DECIFER Money |
 | Global context (future) | Decifer World | DECIFER World |
 | Work intelligence (future) | Decifer Work | DECIFER Work |
@@ -127,6 +128,9 @@ These phrases must appear wherever relevant. Do not soften or remove them.
 **Learning / education:**
 > Decifer Learning supports learning. It does not replace qualified teachers, tutors, or formal education. We make no claims about academic outcomes.
 
+**Marketing:**
+> Decifer Marketing provides marketing insight, not a substitute for professional marketing advice. It is for research and context only. We make no guarantees about campaign performance or results.
+
 **AI outputs:**
 > AI-generated outputs are source-referenced and confidence-bounded. They may contain errors. Apply your own judgement for important decisions.
 
@@ -156,6 +160,7 @@ Standard events to use across all DECIFER product surfaces:
 | `product_card_clicked` | Any product card interaction |
 | `trading_clicked` | Decifer Trading card or link clicked |
 | `learning_clicked` | Decifer Learning card or link clicked |
+| `marketing_clicked` | Decifer Marketing card or link clicked |
 | `legal_page_viewed` | Any legal page visited |
 
 ---

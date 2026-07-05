@@ -150,6 +150,7 @@ Environment: dark. The parent site is a prestige document — deep navy, conside
 | `--color-brand` | `#3d7eff` | Trading product accent on parent site |
 | `--color-trading` | `#3d7eff` | Explicit Trading accent (preferred alias) |
 | `--color-learn` | `#9578e8` | Learning product accent (contrast-corrected) |
+| `--color-market` | `#2dd4bf` | Marketing product accent (teal, per §5.3 business & productivity intelligence) |
 | `--color-mark` | `#F05A28` | Master mark, primary CTA |
 | `--color-live` | `#0dc47c` | Live status, success signals |
 | `--color-line` | `#172038` | Borders |

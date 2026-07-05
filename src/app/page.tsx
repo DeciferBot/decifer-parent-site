@@ -1,6 +1,8 @@
+import type { CSSProperties } from "react";
 import DeciferMark from "./components/DeciferMark";
 import EarlyAccessForm from "./components/EarlyAccessForm";
 import MethodSteps from "./components/MethodSteps";
+import { products, type Product } from "./data/products";
 
 /* ── Section label component ──────────────────────── */
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -13,11 +15,71 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+/* ── Per-product icons (data stays pure; icons live here) ── */
+const PRODUCT_ICONS: Record<Product["key"], React.ReactNode> = {
+  trading: (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M3 16l5-5 4 3.5 7-9" />
+      <path d="M17 7h3v3" opacity="0.7" />
+    </svg>
+  ),
+  learning: (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M2 8l9-6 9 6v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8z" />
+      <path d="M8 22V12h6v10" />
+    </svg>
+  ),
+  marketing: (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M3 20V13M9 20V4M15 20V9M21 20V6" />
+      <path d="M2 20h19" opacity="0.7" />
+    </svg>
+  ),
+};
+
+/* Style object carrying the card accent as CSS variables. */
+function accentVars(p: Product): CSSProperties {
+  return {
+    "--accent": p.accent.hex,
+    "--accent-rgb": p.accent.rgb,
+  } as CSSProperties;
+}
+
 /* ── FAQ data (kept in sync with FAQPage structured data) ── */
 const FAQ_ITEMS = [
   {
     q: "What is DECIFER?",
-    a: "DECIFER is an AI intelligence company. It builds products that turn complex information into clear, plain-language understanding. Its current products are Decifer Trading and Decifer Learning.",
+    a: "DECIFER is an AI intelligence company. It builds products that turn complex information into clear, plain-language understanding. Its current products are Decifer Trading, Decifer Learning and Decifer Marketing.",
   },
   {
     q: "Is DECIFER the same as the word decipher?",
@@ -30,6 +92,10 @@ const FAQ_ITEMS = [
   {
     q: "What is Decifer Learning?",
     a: "Decifer Learning is a guided learning companion for the UK National Curriculum. Children learn, practise and quiz through each topic while parents see progress. It supports learning and does not replace teachers, schools or parents.",
+  },
+  {
+    q: "What is Decifer Marketing?",
+    a: "Decifer Marketing is a marketing intelligence product. It turns campaign, channel and audience data into a plain-English read on what is working, why, and what to do next. It is for insight and research context only, not a substitute for professional marketing advice.",
   },
   {
     q: "How does DECIFER work?",
@@ -66,7 +132,7 @@ export default function Home() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 mx-auto max-w-4xl px-5 text-center sm:px-8">
+        <div className="relative z-10 mx-auto max-w-4xl px-5 py-24 text-center sm:px-8">
           <div className="anim-fade-up mb-8 flex justify-center">
             <div style={{ filter: "drop-shadow(0 0 20px rgba(240,90,40,0.32))" }}>
               <DeciferMark height={52} />
@@ -77,9 +143,12 @@ export default function Home() {
             DECIFER
           </p>
 
-          <h1 className="anim-fade-up-1 mb-6 text-5xl font-bold leading-[1.06] tracking-tight text-ink sm:text-6xl lg:text-7xl">
-            Information is everywhere.<br />
-            <span className="text-cta">Understanding is not.</span>
+          <h1 className="anim-fade-up-1 mb-6 text-5xl font-bold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl">
+            Information is everywhere.
+            <br />
+            <span className="font-display font-normal italic text-cta">
+              Understanding is not.
+            </span>
           </h1>
 
           <p className="anim-fade-up-2 mx-auto mb-5 max-w-2xl text-lg leading-relaxed text-body sm:text-xl">
@@ -87,28 +156,39 @@ export default function Home() {
             of complex information.
           </p>
 
-          <p className="anim-fade-up-2 mx-auto mb-10 max-w-2xl text-base leading-relaxed text-muted">
+          <p className="anim-fade-up-2 mx-auto mb-9 max-w-2xl text-base leading-relaxed text-muted">
             We start with trusted inputs, apply domain-specific logic, and turn
-            the result into plain-language context. Our first products focus on
-            markets and learning, where more information does not always mean
+            the result into plain-language context. Our products span markets,
+            learning and marketing, where more information does not always mean
             more clarity.
           </p>
 
-          <div className="anim-fade-up-3 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="anim-fade-up-3 mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="#products"
               data-event="cta_explore_products"
-              className="w-full rounded-xl bg-cta px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cta/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#ff6a36] hover:shadow-xl hover:shadow-cta/30 sm:w-auto"
+              className="btn btn-primary w-full px-7 py-3.5 sm:w-auto"
             >
               Explore products
             </a>
             <a
               href="#early-access"
               data-event="cta_join_early_access"
-              className="w-full rounded-xl border border-line-strong bg-surface/60 px-7 py-3.5 text-sm font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-cta/60 hover:bg-surface sm:w-auto"
+              className="btn btn-secondary w-full px-7 py-3.5 sm:w-auto"
             >
               Join early access
             </a>
+          </div>
+
+          {/* Product family row */}
+          <div className="anim-fade-up-4 flex flex-wrap items-center justify-center gap-2.5">
+            {products.map((p) => (
+              <a key={p.key} href="#products" className="chip" style={accentVars(p)}>
+                <span className="chip-dot" aria-hidden="true" />
+                {p.name.replace("Decifer ", "")}
+                <span className="text-muted">{p.status}</span>
+              </a>
+            ))}
           </div>
         </div>
 
@@ -266,192 +346,114 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════════════════
-          4. CURRENT PRODUCTS
+          4. PRODUCTS
       ════════════════════════════════════════════ */}
       <section id="products" className="bg-canvas py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="mb-14 text-center">
-            <SectionLabel>Current Products</SectionLabel>
+            <SectionLabel>The Family</SectionLabel>
             <h2 className="mx-auto max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">
-              Where DECIFER is starting.
+              Three products, one method.
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-body">
-              DECIFER is starting with two areas where people face the same
-              problem in different ways: too much information, not enough
-              clarity.
+              DECIFER builds a family of intelligence products. Each one turns
+              the noise of its own domain into plain-language understanding,
+              using the same underlying method.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {/* Decifer Trading */}
-            <article className="glow-trading scroll-reveal-1 flex flex-col rounded-2xl bg-surface p-8">
-              <header className="mb-6 flex items-start justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-trading/25 bg-trading/10">
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="none"
-                    stroke="#5a92ff"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M3 16l5-5 4 3.5 7-9" />
-                    <path d="M17 7h3v3" opacity="0.7" />
-                  </svg>
-                </div>
-                <span className="rounded-full border border-live/35 bg-live/10 px-3 py-1 text-xs font-semibold text-live">
-                  Live
-                </span>
-              </header>
-
-              <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-                Market intelligence
-              </p>
-              <h3 className="mb-3 text-2xl font-bold text-ink">
-                Decifer Trading
-              </h3>
-              <p className="mb-5 text-[15px] leading-relaxed text-body">
-                Decifer Trading turns market noise into a plain-English read on
-                what is moving, why it matters and what to watch, across stocks,
-                themes and catalysts.
-              </p>
-
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
-                What it helps with
-              </p>
-              <ul className="mb-6 space-y-2">
-                {[
-                  "A plain-English daily market briefing",
-                  "The forces and catalysts moving prices",
-                  "Themes that connect related stocks",
-                  "Company research without the jargon",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-2.5 text-sm text-body"
-                  >
-                    <span
-                      className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-trading"
-                      aria-hidden="true"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <p className="mb-6 mt-auto rounded-lg border border-line-strong bg-canvas/50 px-3.5 py-2.5 text-xs leading-relaxed text-muted">
-                For intelligence and research context only. Not financial
-                advice.
-              </p>
-
-              <a
-                href="https://decifertrading.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 self-start text-sm font-semibold text-trading transition-colors hover:text-ink"
-                data-event="trading_clicked"
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {products.map((p, i) => (
+              <article
+                key={p.key}
+                className={`product-card scroll-reveal-${(i % 3) + 1} p-8`}
+                style={accentVars(p)}
               >
-                Visit Decifer Trading
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                >
-                  <path d="M3 8h10M9 4l4 4-4 4" />
-                </svg>
-              </a>
-            </article>
-
-            {/* Decifer Learning */}
-            <article className="glow-learn scroll-reveal-2 flex flex-col rounded-2xl bg-surface p-8">
-              <header className="mb-6 flex items-start justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-learn/25 bg-learn/10">
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="none"
-                    stroke="#a48eee"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M2 8l9-6 9 6v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8z" />
-                    <path d="M8 22V12h6v10" />
-                  </svg>
-                </div>
-                <span className="rounded-full border border-learn/35 bg-learn/10 px-3 py-1 text-xs font-semibold text-learn">
-                  Beta
-                </span>
-              </header>
-
-              <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-                Learning intelligence
-              </p>
-              <h3 className="mb-3 text-2xl font-bold text-ink">
-                Decifer Learning
-              </h3>
-              <p className="mb-5 text-[15px] leading-relaxed text-body">
-                Decifer Learning is a guided companion for the UK National
-                Curriculum. Children learn, practise and quiz through each topic
-                while parents see real progress.
-              </p>
-
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
-                What it helps with
-              </p>
-              <ul className="mb-6 space-y-2">
-                {[
-                  "Guided Learn, Practise and Quiz for each topic",
-                  "Curriculum-aligned practice and feedback",
-                  "A parent view of progress and weak areas",
-                  "Encouraging support that never punishes mistakes",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-2.5 text-sm text-body"
-                  >
+                <header className="mb-6 flex items-start justify-between">
+                  <div className="product-icon flex h-12 w-12 items-center justify-center rounded-xl">
+                    {PRODUCT_ICONS[p.key]}
+                  </div>
+                  {p.status === "Live" ? (
+                    <span className="rounded-full border border-live/35 bg-live/10 px-3 py-1 text-xs font-semibold text-live">
+                      Live
+                    </span>
+                  ) : (
                     <span
-                      className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-learn"
+                      className="rounded-full px-3 py-1 text-xs font-semibold"
+                      style={{
+                        color: "var(--accent)",
+                        borderColor: "rgba(var(--accent-rgb),0.35)",
+                        backgroundColor: "rgba(var(--accent-rgb),0.10)",
+                        borderWidth: "1px",
+                      }}
+                    >
+                      {p.status}
+                    </span>
+                  )}
+                </header>
+
+                <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
+                  {p.category}
+                </p>
+                <h3 className="mb-3 text-2xl font-bold text-ink">{p.name}</h3>
+                <p className="mb-5 text-[15px] leading-relaxed text-body">
+                  {p.tagline}
+                </p>
+
+                <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
+                  What it helps with
+                </p>
+                <ul className="mb-6 space-y-2">
+                  {p.bullets.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm text-body"
+                    >
+                      <span
+                        className="mt-2 h-1 w-1 flex-shrink-0 rounded-full"
+                        style={{ backgroundColor: "var(--accent)" }}
+                        aria-hidden="true"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="mb-6 mt-auto rounded-lg border border-line-strong bg-canvas/50 px-3.5 py-2.5 text-xs leading-relaxed text-muted">
+                  {p.boundary}
+                </p>
+
+                {p.href ? (
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link inline-flex items-center gap-2 self-start text-sm font-semibold transition-colors"
+                    style={{ color: "var(--accent)" }}
+                    data-event={p.event}
+                  >
+                    Visit {p.name}
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      className="transition-transform duration-200 group-hover/link:translate-x-0.5"
                       aria-hidden="true"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <p className="mb-6 mt-auto rounded-lg border border-line-strong bg-canvas/50 px-3.5 py-2.5 text-xs leading-relaxed text-muted">
-                Supports learning. Does not replace teachers, schools or
-                parents.
-              </p>
-
-              <a
-                href="https://deciferlearning.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 self-start text-sm font-semibold text-learn transition-colors hover:text-ink"
-                data-event="learning_clicked"
-              >
-                Visit Decifer Learning
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                >
-                  <path d="M3 8h10M9 4l4 4-4 4" />
-                </svg>
-              </a>
-            </article>
+                    >
+                      <path d="M3 8h10M9 4l4 4-4 4" />
+                    </svg>
+                  </a>
+                ) : (
+                  <span className="self-start text-sm font-semibold text-muted">
+                    Coming soon
+                  </span>
+                )}
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -493,7 +495,7 @@ export default function Home() {
               {
                 scrollClass: "scroll-reveal-2",
                 title: "Safety depends on the domain",
-                desc: "Markets and learning require different safeguards. Each DECIFER product must respect the limits of its domain.",
+                desc: "Every domain requires different safeguards. Each DECIFER product must respect the limits of its own field.",
               },
             ].map((item) => (
               <div
@@ -511,20 +513,23 @@ export default function Home() {
           </div>
 
           {/* Product-specific boundary lines */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <p className="rounded-xl border border-trading/25 bg-trading/5 px-5 py-4 text-sm leading-relaxed text-body">
-              <span className="font-semibold text-trading">
-                Decifer Trading
-              </span>{" "}
-              is not financial advice.
-            </p>
-            <p className="rounded-xl border border-learn/25 bg-learn/5 px-5 py-4 text-sm leading-relaxed text-body">
-              <span className="font-semibold text-learn">
-                Decifer Learning
-              </span>{" "}
-              supports learning and does not replace teachers, schools or
-              parents.
-            </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {products.map((p) => (
+              <p
+                key={p.key}
+                className="rounded-xl border px-5 py-4 text-sm leading-relaxed text-body"
+                style={{
+                  borderColor: "rgba(var(--accent-rgb),0.25)",
+                  backgroundColor: "rgba(var(--accent-rgb),0.05)",
+                  ...accentVars(p),
+                }}
+              >
+                <span className="font-semibold" style={{ color: "var(--accent)" }}>
+                  {p.name}
+                </span>{" "}
+                {p.boundaryShort}
+              </p>
+            ))}
           </div>
         </div>
       </section>
@@ -556,9 +561,9 @@ export default function Home() {
                 ever, but still struggle to make sense of it.
               </p>
               <p>
-                A market screen, a learning app, a report or an AI summary can
-                all create the same feeling: there is too much to process and
-                not enough clarity.
+                A market screen, a learning app, a marketing dashboard, a report
+                or an AI summary can all create the same feeling: there is too
+                much to process and not enough clarity.
               </p>
               <p>
                 DECIFER is being built to slow the noise down, apply structure,

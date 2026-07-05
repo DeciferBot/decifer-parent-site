@@ -104,5 +104,11 @@ The apex domain (`decifer.io`) redirects to `www` via Next.js redirects in `next
 |---|---|---|
 | Decifer Trading | decifertrading.com | Separate repo and deployment |
 | Decifer Learning | deciferlearning.com | Separate repo and deployment |
+| Decifer Marketing | decifermarketing.com | Separate repo and deployment |
 
 Do not modify DNS, Cloudflare, or Vercel settings for those domains from this repo.
+
+The product family shown on the homepage is defined in a single place:
+[`src/app/data/products.ts`](src/app/data/products.ts). The product cards, footer,
+early-access form, early-access API validation, and Organization structured data all
+read from it, so adding or changing a product is one edit.
