@@ -25,12 +25,22 @@ DECIFER is an AI intelligence company. It builds products that turn complex info
 - Industry: Artificial intelligence / software
 - Products: Decifer Trading, Decifer Learning, Decifer Marketing
 - GitHub: https://github.com/DeciferBot
+- LinkedIn (parent): https://www.linkedin.com/company/deciferdxb/
 
-## Profiles to create, in priority order
+## Existing profiles — already created, already linked from `sameAs`
 
-1. LinkedIn company page (highest value; use the boilerplate paragraph as the About text)
-2. Crunchbase organization profile
-3. Wellfound / product directories as relevant per product (e.g. G2 or Capterra for Decifer Marketing once it has users)
+- **LinkedIn**: `linkedin.com/company/deciferdxb` is the real parent-company page.
+  **`linkedin.com/company/decifer` (no "dxb") is a different, unrelated or
+  unclaimed page** — decifermarketing.com's footer currently links to the
+  wrong one. Fix that in the decifermarketing.com repo.
+- **X / Twitter**: `x.com/DeciferInt` belongs to Decifer Trading specifically
+  (market commentary), not the parent company. It should appear in Decifer
+  Trading's own Organization schema `sameAs`, not the parent's.
+
+## Profiles still to create, in priority order
+
+1. Crunchbase organization profile
+2. Wellfound / product directories as relevant per product (e.g. G2 or Capterra for Decifer Marketing once it has users)
 
 ## After each profile is created
 
