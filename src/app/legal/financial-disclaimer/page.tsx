@@ -3,6 +3,7 @@ import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Financial Information Disclaimer — DECIFER",
+  alternates: { canonical: "/legal/financial-disclaimer" },
 };
 
 export default function Page() {

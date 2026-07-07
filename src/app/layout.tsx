@@ -40,6 +40,13 @@ const organizationJsonLd = {
       },
       description:
         "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Parent company of Decifer Trading, Decifer Learning and Decifer Marketing.",
+      // Only list profiles that exist and are verified. Add Crunchbase
+      // once that page is created. Do not add linkedin.com/company/decifer
+      // (unrelated/unclaimed) — the parent company's page is deciferdxb.
+      sameAs: [
+        "https://github.com/DeciferBot",
+        "https://www.linkedin.com/company/deciferdxb/",
+      ],
       subOrganization: products.map((p) => ({ "@id": productNodeId(p.key) })),
     },
     ...products.map((p) => ({
@@ -68,7 +75,6 @@ export const metadata: Metadata = {
   description:
     "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Makers of Decifer Trading, Decifer Learning and Decifer Marketing.",
   metadataBase: new URL("https://www.decifer.io"),
-  alternates: { canonical: "/" },
   keywords: [
     "DECIFER",
     "AI intelligence",

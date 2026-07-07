@@ -1,0 +1,29 @@
+# DECIFER
+
+> DECIFER is an AI intelligence company. It builds products that turn complex information into clear, plain-language understanding. Its current products are Decifer Trading, Decifer Learning and Decifer Marketing.
+
+DECIFER is a company name, spelled with an e. It is not the dictionary word decipher, and it is not affiliated with Decipher AI, Deciphr AI, Decifer Analytics (decifer.com), Decifer Studio (decifer.tech), linkedin.com/company/decifer, or any other similarly named company or page. The official website is https://www.decifer.io, and the official LinkedIn page is linkedin.com/company/deciferdxb.
+
+Every DECIFER product follows the same method: collect trusted inputs, connect them with domain logic, and explain the result in plain language, while keeping sources and uncertainty visible.
+
+## Products
+
+- [Decifer Trading](https://decifertrading.com): market intelligence. Explains what is moving in markets, why it may matter and what to watch, in plain English. For research and context only. Not financial advice.
+- [Decifer Learning](https://deciferlearning.com): a guided learning companion for the UK National Curriculum. Children learn, practise and quiz through each topic while parents see progress. It supports learning and does not replace teachers, schools or parents.
+- [Decifer Marketing](https://decifermarketing.com): marketing intelligence. Turns campaign, channel and audience data into a plain-English read on what is working, why, and what to do next.
+
+## Company
+
+- [DECIFER homepage](https://www.decifer.io): the problem, the method, the products, the principles and a FAQ
+- [LinkedIn](https://www.linkedin.com/company/deciferdxb/): DECIFER's official company page. Note: linkedin.com/company/decifer (without "dxb") is a different, unrelated page.
+- [GitHub](https://github.com/DeciferBot): DECIFER's engineering organisation
+
+Decifer Trading also has its own account, [@DeciferInt on X](https://x.com/DeciferInt), for market commentary specific to that product.
+
+## Policies
+
+- [Privacy Policy](https://www.decifer.io/legal/privacy)
+- [Terms of Use](https://www.decifer.io/legal/terms)
+- [AI Accuracy and Source Policy](https://www.decifer.io/legal/ai-policy)
+- [Financial Information Disclaimer](https://www.decifer.io/legal/financial-disclaimer)
+- [Education Disclaimer](https://www.decifer.io/legal/education-disclaimer)

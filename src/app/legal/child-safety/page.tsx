@@ -3,6 +3,7 @@ import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Child Safety Policy — DECIFER",
+  alternates: { canonical: "/legal/child-safety" },
 };
 
 export default function Page() {
