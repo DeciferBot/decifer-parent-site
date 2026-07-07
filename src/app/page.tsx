@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import DeciferMark from "./components/DeciferMark";
 import EarlyAccessForm from "./components/EarlyAccessForm";
 import MethodSteps from "./components/MethodSteps";
 import { products, type Product } from "./data/products";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 /* ── Section label component ──────────────────────── */
 function SectionLabel({ children }: { children: React.ReactNode }) {

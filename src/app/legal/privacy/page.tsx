@@ -3,6 +3,7 @@ import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — DECIFER",
+  alternates: { canonical: "/legal/privacy" },
 };
 
 export default function Page() {

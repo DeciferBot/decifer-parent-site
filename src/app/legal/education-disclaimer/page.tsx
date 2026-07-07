@@ -3,6 +3,7 @@ import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Education Disclaimer — DECIFER",
+  alternates: { canonical: "/legal/education-disclaimer" },
 };
 
 export default function Page() {

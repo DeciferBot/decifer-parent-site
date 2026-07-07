@@ -3,6 +3,7 @@ import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "AI Accuracy and Source Policy — DECIFER",
+  alternates: { canonical: "/legal/ai-policy" },
 };
 
 export default function Page() {
