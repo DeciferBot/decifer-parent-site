@@ -1,0 +1,29 @@
+# DECIFER
+
+> DECIFER is an AI intelligence company. It builds products that turn complex information into clear, plain-language understanding. DECIFER (all caps) is the parent brand; its products are named in title case. Current products: Decifer Trading, Decifer Learning and Decifer Marketing.
+
+DECIFER's method is the same across every product: collect trusted inputs, connect them with domain-specific logic, and explain the result in plain language while keeping sources and uncertainty visible. DECIFER is designed to support human judgement, not replace it.
+
+Primary site: https://www.decifer.io
+
+## Products
+
+- [Decifer Trading](https://decifertrading.com): Market intelligence (Live). Turns market noise into a plain-English read on what is moving, why it matters and what to watch, across stocks, themes and catalysts. Boundary: for intelligence and research context only. Not financial advice.
+- [Decifer Learning](https://deciferlearning.com): Learning intelligence (Beta). A guided companion for the UK National Curriculum. Children learn, practise and quiz through each topic while parents see progress. Boundary: supports learning. Does not replace teachers, schools or parents.
+- [Decifer Marketing](https://decifermarketing.com): Marketing intelligence (Live). Turns campaign, channel and audience data into a plain-English read on what is working, why, and what to do next. Boundary: for insight and research context only. Not a substitute for professional marketing advice.
+
+## Key pages
+
+- [Homepage](https://www.decifer.io): What DECIFER is, the problem it addresses, the method, the product family, principles and boundaries, and early access.
+- [Privacy Policy](https://www.decifer.io/legal/privacy): How DECIFER collects, uses and protects information during early access.
+- [Terms of Use](https://www.decifer.io/legal/terms): Terms for the DECIFER parent website and early access programme.
+- [AI Accuracy and Source Policy](https://www.decifer.io/legal/ai-policy): How DECIFER products use AI, handle sources and show uncertainty.
+- [Financial Information Disclaimer](https://www.decifer.io/legal/financial-disclaimer): Decifer Trading is for research context only and is not financial advice.
+- [Education Disclaimer](https://www.decifer.io/legal/education-disclaimer): Decifer Learning supports learning and does not replace teachers, schools or parents.
+- [Child Safety Policy](https://www.decifer.io/legal/child-safety): How Decifer Learning protects children.
+- [Refund Policy](https://www.decifer.io/legal/refunds): Refund terms for DECIFER products and early access.
+
+## Notes
+
+- DECIFER is a company name, spelled with an e. It is related to the word decipher but refers to the company and its products, not the dictionary word.
+- Contact: hello@decifer.io

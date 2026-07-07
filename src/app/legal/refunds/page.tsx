@@ -3,6 +3,9 @@ import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Refund Policy — DECIFER",
+  description:
+    "The refund policy for DECIFER products and early access. No payment is required to join early access.",
+  alternates: { canonical: "/legal/refunds" },
 };
 
 export default function Page() {

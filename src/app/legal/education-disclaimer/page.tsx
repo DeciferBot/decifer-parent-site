@@ -3,6 +3,9 @@ import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Education Disclaimer — DECIFER",
+  description:
+    "Decifer Learning supports learning and does not replace teachers, schools or parents. Read the full education disclaimer for DECIFER.",
+  alternates: { canonical: "/legal/education-disclaimer" },
 };
 
 export default function Page() {

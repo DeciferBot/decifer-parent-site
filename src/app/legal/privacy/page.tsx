@@ -3,6 +3,9 @@ import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — DECIFER",
+  description:
+    "How DECIFER collects, uses and protects your information during early access. We do not sell your data or share it for marketing.",
+  alternates: { canonical: "/legal/privacy" },
 };
 
 export default function Page() {

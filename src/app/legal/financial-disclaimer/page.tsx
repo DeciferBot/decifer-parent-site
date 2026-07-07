@@ -3,6 +3,9 @@ import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Financial Information Disclaimer — DECIFER",
+  description:
+    "Decifer Trading is for intelligence and research context only. It is not financial advice. Read the full financial information disclaimer.",
+  alternates: { canonical: "/legal/financial-disclaimer" },
 };
 
 export default function Page() {

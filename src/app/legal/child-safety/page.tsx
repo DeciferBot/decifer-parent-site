@@ -3,6 +3,9 @@ import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Child Safety Policy — DECIFER",
+  description:
+    "How Decifer Learning protects children, including data handling, safeguards and parental oversight across the DECIFER platform.",
+  alternates: { canonical: "/legal/child-safety" },
 };
 
 export default function Page() {

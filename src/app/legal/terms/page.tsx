@@ -3,6 +3,9 @@ import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
   title: "Terms of Use — DECIFER",
+  description:
+    "The terms of use for the DECIFER parent website and early access programme, including your responsibilities and our limits of liability.",
+  alternates: { canonical: "/legal/terms" },
 };
 
 export default function Page() {
