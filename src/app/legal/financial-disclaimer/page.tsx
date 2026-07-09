@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Financial Information Disclaimer — DECIFER",
+  title: "Financial Information Disclaimer",
+  description:
+    "DECIFER and Decifer Trading provide market intelligence, not financial advice. Read the full financial information disclaimer and the risks involved.",
   alternates: { canonical: "/legal/financial-disclaimer" },
 };
 

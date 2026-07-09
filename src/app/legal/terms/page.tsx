@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — DECIFER",
+  title: "Terms of Use",
+  description:
+    "The terms for using the DECIFER platform and requesting early access, including what DECIFER is, acceptable use and your responsibilities.",
   alternates: { canonical: "/legal/terms" },
 };
 

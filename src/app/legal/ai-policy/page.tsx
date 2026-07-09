@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "AI Accuracy and Source Policy — DECIFER",
+  title: "AI Accuracy and Source Policy",
+  description:
+    "How DECIFER uses AI to interpret data and produce plain-language outputs, how sources are handled, and why AI outputs should be checked before you rely on them.",
   alternates: { canonical: "/legal/ai-policy" },
 };
 

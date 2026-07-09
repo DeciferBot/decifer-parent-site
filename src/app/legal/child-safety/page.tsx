@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Child Safety Policy — DECIFER",
+  title: "Child Safety Policy",
+  description:
+    "How Decifer Learning is designed to keep children safe, including our commitment, the safeguards we build in and the role of parental oversight.",
   alternates: { canonical: "/legal/child-safety" },
 };
 

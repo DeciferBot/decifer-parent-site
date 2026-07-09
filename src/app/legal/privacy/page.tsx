@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — DECIFER",
+  title: "Privacy Policy",
+  description:
+    "How DECIFER handles personal information during early access: what we collect, how we use it, storage and security, your rights and cookies.",
   alternates: { canonical: "/legal/privacy" },
 };
 

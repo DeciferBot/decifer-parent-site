@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Education Disclaimer — DECIFER",
+  title: "Education Disclaimer",
+  description:
+    "Decifer Learning supports learning and does not replace teachers, schools or tutors. Read the education disclaimer and what we do and do not claim.",
   alternates: { canonical: "/legal/education-disclaimer" },
 };
 
