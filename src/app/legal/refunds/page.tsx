@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import LegalLayout from "@/app/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Refund Policy — DECIFER",
+  title: "Refund Policy",
+  description:
+    "DECIFER's refund policy for the early access period and any paid beta programmes, including how to contact us about a charge made in error.",
   alternates: { canonical: "/legal/refunds" },
 };
 
