@@ -26,7 +26,7 @@ export default function Page() {
         <h2>Sources first</h2>
         <p>
           DECIFER outputs are grounded in structured, verified sources. For
-          Decifer Trading, this includes market data feeds, regulatory
+          Decifer Markets, this includes market data feeds, regulatory
           announcements, and structured financial information. For Decifer
           Learning, this includes curriculum-linked academic content. AI models
           interpret this material; they do not generate it from scratch.
