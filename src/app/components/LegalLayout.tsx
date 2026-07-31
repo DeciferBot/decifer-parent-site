@@ -11,6 +11,8 @@ const allLegal = [
   { title: "Refund Policy", href: "/legal/refunds" },
 ];
 
+const SITE = "https://www.decifer.io";
+
 interface LegalLayoutProps {
   title: string;
   currentHref: string;
@@ -24,6 +26,20 @@ export default function LegalLayout({
   lastUpdated = "May 2026",
   children,
 }: LegalLayoutProps) {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "DECIFER", item: SITE },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: title,
+        item: `${SITE}${currentHref}`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-canvas pb-24 pt-32">
       <div className="mx-auto max-w-2xl px-5 sm:px-8">
@@ -116,6 +132,10 @@ export default function LegalLayout({
           </ul>
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
     </div>
   );
 }
