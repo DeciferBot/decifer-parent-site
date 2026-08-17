@@ -69,7 +69,7 @@ const organizationJsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: "DECIFER — Information is everywhere. Understanding is not.",
+    default: "DECIFER: Information is everywhere. Understanding is not.",
     template: "%s | DECIFER",
   },
   description:
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
     apple: "/brand/decifer-app-icon.svg",
   },
   openGraph: {
-    title: "DECIFER — Information is everywhere. Understanding is not.",
+    title: "DECIFER: Information is everywhere. Understanding is not.",
     description:
       "DECIFER builds AI intelligence products that help people make sense of complex information.",
     url: "https://www.decifer.io",
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DECIFER — Information is everywhere. Understanding is not.",
+    title: "DECIFER: Information is everywhere. Understanding is not.",
     description:
       "DECIFER builds AI intelligence products that help people make sense of complex information.",
   },
