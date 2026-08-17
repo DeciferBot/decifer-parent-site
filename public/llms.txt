@@ -10,7 +10,7 @@ Every DECIFER product follows the same method: collect trusted inputs, connect t
 
 - [Decifer Trading](https://decifertrading.com): market intelligence. Explains what is moving in markets, why it may matter and what to watch, in plain English. For research and context only. Not financial advice.
 - [Decifer Learning](https://deciferlearning.com): a guided learning companion for the UK National Curriculum. Children learn, practise and quiz through each topic while parents see progress. It supports learning and does not replace teachers, schools or parents.
-- [Decifer Marketing](https://decifermarketing.com): marketing intelligence. Turns campaign, channel and audience data into a plain-English read on what is working, why, and what to do next.
+- [Decifer Marketing](https://decifermarketing.com): marketing intelligence. Turns campaign, channel and audience data into a plain-English read on what is working, why, and what to do next. For insight and research context only. Not a substitute for professional marketing advice.
 
 ## Company
 
@@ -27,3 +27,5 @@ Decifer Trading also has its own account, [@DeciferInt on X](https://x.com/Decif
 - [AI Accuracy and Source Policy](https://www.decifer.io/legal/ai-policy)
 - [Financial Information Disclaimer](https://www.decifer.io/legal/financial-disclaimer)
 - [Education Disclaimer](https://www.decifer.io/legal/education-disclaimer)
+- [Child Safety Policy](https://www.decifer.io/legal/child-safety)
+- [Refund Policy](https://www.decifer.io/legal/refunds)
