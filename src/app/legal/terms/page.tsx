@@ -30,7 +30,7 @@ export default function Page() {
         <ul>
           <li>
             <strong>Not financial advice.</strong> Nothing on DECIFER or
-            Decifer Trading constitutes financial, investment, or trading advice.
+            Decifer Markets constitutes financial, investment, or trading advice.
             Financial markets carry risk. You are responsible for your own
             decisions.
           </li>

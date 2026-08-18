@@ -4,7 +4,7 @@ import LegalLayout from "@/app/components/LegalLayout";
 export const metadata: Metadata = {
   title: "Financial Information Disclaimer",
   description:
-    "DECIFER and Decifer Trading provide market intelligence, not financial advice. Read the full financial information disclaimer and the risks involved.",
+    "DECIFER and Decifer Markets provide market intelligence, not financial advice. Read the full financial information disclaimer and the risks involved.",
   alternates: { canonical: "/legal/financial-disclaimer" },
 };
 
@@ -26,7 +26,7 @@ export default function Page() {
 
         <h2>This is not financial advice</h2>
         <p>
-          DECIFER and Decifer Trading provide market intelligence. This means
+          DECIFER and Decifer Markets provide market intelligence. This means
           structured information to help you understand what financial markets
           are doing, why they may be moving, and where signals are forming. It
           does not mean financial advice, investment advice, or trading

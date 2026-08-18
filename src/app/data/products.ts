@@ -43,14 +43,14 @@ export interface Product {
 export const products: Product[] = [
   {
     key: "trading",
-    name: "Decifer Trading",
+    name: "Decifer Markets",
     category: "Market intelligence",
     status: "Live",
     accent: { hex: "#5a92ff", rgb: "90,146,255" },
     href: "https://decifertrading.com",
     event: "trading_clicked",
     tagline:
-      "Decifer Trading turns market noise into a plain-English read on what is moving, why it matters and what to watch, across stocks, themes and catalysts.",
+      "Decifer Markets turns market noise into a plain-English read on what is moving, why it matters and what to watch, across stocks, themes and catalysts.",
     bullets: [
       "A plain-English daily market briefing",
       "The forces and catalysts moving prices",

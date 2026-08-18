@@ -19,7 +19,7 @@ export default function Page() {
           stated area of interest, and any optional message you include.
         </p>
         <p>
-          If you use Decifer Trading or Decifer Learning, those products may
+          If you use Decifer Markets or Decifer Learning, those products may
           collect additional information described in their own product-level
           policies. This policy covers the DECIFER parent platform and the
           early access process only.

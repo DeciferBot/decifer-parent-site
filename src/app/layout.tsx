@@ -39,7 +39,7 @@ const organizationJsonLd = {
         url: `${SITE}/brand/decifer-mark.svg`,
       },
       description:
-        "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Parent company of Decifer Trading, Decifer Learning and Decifer Marketing.",
+        "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Parent company of Decifer Markets, Decifer Learning and Decifer Marketing.",
       // Only list profiles that exist and are verified. Add Crunchbase
       // once that page is created. Do not add linkedin.com/company/decifer
       // (unrelated/unclaimed) — the parent company's page is deciferdxb.
@@ -73,13 +73,13 @@ export const metadata: Metadata = {
     template: "%s | DECIFER",
   },
   description:
-    "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Makers of Decifer Trading, Decifer Learning and Decifer Marketing.",
+    "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Makers of Decifer Markets, Decifer Learning and Decifer Marketing.",
   metadataBase: new URL("https://www.decifer.io"),
   keywords: [
     "DECIFER",
     "AI intelligence",
     "plain-language intelligence",
-    "Decifer Trading",
+    "Decifer Markets",
     "market intelligence",
     "Decifer Learning",
     "UK National Curriculum learning app",

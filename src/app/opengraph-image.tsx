@@ -97,7 +97,7 @@ export default async function Image() {
           }}
         >
           <div style={{ display: 'flex', gap: 10 }}>
-            {['Decifer Trading', 'Decifer Learning'].map((label) => (
+            {['Decifer Markets', 'Decifer Learning'].map((label) => (
               <div
                 key={label}
                 style={{

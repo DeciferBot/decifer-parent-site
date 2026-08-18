@@ -84,15 +84,15 @@ function accentVars(p: Product): CSSProperties {
 const FAQ_ITEMS = [
   {
     q: "What is DECIFER?",
-    a: "DECIFER is an AI intelligence company. It builds products that turn complex information into clear, plain-language understanding. Its current products are Decifer Trading, Decifer Learning and Decifer Marketing.",
+    a: "DECIFER is an AI intelligence company. It builds products that turn complex information into clear, plain-language understanding. Its current products are Decifer Markets, Decifer Learning and Decifer Marketing.",
   },
   {
     q: "Is DECIFER the same as the word decipher?",
     a: "No. DECIFER is a company name, spelled with an e. The idea is related, because the products help people decipher complex information, but DECIFER refers to the company and its products, not the dictionary word.",
   },
   {
-    q: "What is Decifer Trading?",
-    a: "Decifer Trading is a market intelligence product. It explains what is moving in markets, why it may matter and what to watch, in plain English. It is for research and context only and is not financial advice.",
+    q: "What is Decifer Markets?",
+    a: "Decifer Markets is a market intelligence product. It explains what is moving in markets, why it may matter and what to watch, in plain English. It is for research and context only and is not financial advice.",
   },
   {
     q: "What is Decifer Learning?",

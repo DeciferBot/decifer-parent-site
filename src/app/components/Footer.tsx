@@ -30,7 +30,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <DeciferLogo size="sm" className="mb-4" />
             <p className="max-w-xs text-sm leading-relaxed text-body">
-              DECIFER is the parent company behind Decifer Trading, Decifer
+              DECIFER is the parent company behind Decifer Markets, Decifer
               Learning and Decifer Marketing. We build AI intelligence products
               that help people understand complex information.
             </p>
