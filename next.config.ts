@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
+  // Required by @next/mdx. No .mdx lives under app/, so this has no routing
+  // effect; content sits in src/content and is imported by /blog/[slug].
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   async redirects() {
     return [
       {
@@ -18,4 +22,13 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Turbopack is the default builder in Next 16, so plugins must be named as
+// strings with serialisable options. Functions cannot be passed to Rust.
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: ["remark-frontmatter", "remark-gfm"],
+    rehypePlugins: ["rehype-slug", ["rehype-autolink-headings", { behavior: "wrap" }]],
+  },
+});
+
+export default withMDX(nextConfig);

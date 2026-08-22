@@ -16,6 +16,7 @@ const legalLinks = [
 
 const siteLinks = [
   { label: "Work", href: "/work" },
+  { label: "Blog", href: "/blog" },
   { label: "Tools we build with", href: "/stack" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
