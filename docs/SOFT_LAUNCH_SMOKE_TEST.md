@@ -40,7 +40,7 @@ Test each nav link. On desktop, click; on mobile, open hamburger then click.
 
 | Link | Target | Expected |
 |---|---|---|
-| Products | `#products` | Scrolls to the Decifer Trading / Decifer Learning cards |
+| Products | `#products` | Scrolls to the Decifer Markets / Decifer Learning cards |
 | How It Works | `#method` | Scrolls to The DECIFER Approach (3-step section) |
 | Trust | `#trust` | Scrolls to the "We set clear limits" section |
 | Join Early Access | `#early-access` | Scrolls to the form section |
@@ -98,7 +98,7 @@ From the footer, click each legal link and confirm:
 
 ## 7. Footer links
 
-- [ ] Products section: "Decifer Trading" opens `https://decifertrading.com` in a new tab.
+- [ ] Products section: "Decifer Markets" opens `https://decifertrading.com` in a new tab.
 - [ ] Products section: "Decifer Learning" opens `https://deciferlearning.com` in a new tab.
 - [ ] Products section: "Decifer Money", "Decifer World", "Decifer Work" are shown as plain text (not links).
 - [ ] Company section: all anchor links scroll to correct sections.
