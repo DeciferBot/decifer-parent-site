@@ -8,6 +8,9 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import AnalyticsEvents from "./components/AnalyticsEvents";
 import { products } from "./data/products";
+import { servicesOrdered } from "./data/services";
+import { stack } from "./data/stack";
+import { jsonLd } from "@/lib/jsonld";
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -30,19 +33,53 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      // Dual type so existing @id references keep resolving. No address,
+      // telephone or geo until the registered values are confirmed: a
+      // placeholder here is a trust signal that can be disproven.
+      "@type": ["Organization", "ProfessionalService"],
       "@id": `${SITE}/#organization`,
       name: "DECIFER",
       url: SITE,
+      email: "hello@decifer.io",
       logo: {
         "@type": "ImageObject",
         url: `${SITE}/brand/decifer-mark.svg`,
       },
+      image: `${SITE}/opengraph-image`,
       description:
-        "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Parent company of Decifer Markets, Decifer Learning and Decifer Marketing.",
+        "DECIFER is an AI solutions company based in Dubai. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses, and it builds and runs its own products using the same method.",
+      areaServed: [
+        { "@type": "Country", name: "United Arab Emirates" },
+        { "@type": "AdministrativeArea", name: "Gulf Cooperation Council" },
+        { "@type": "Country", name: "Singapore" },
+        { "@type": "Country", name: "United Kingdom" },
+      ],
+      founder: { "@type": "Person", "@id": `${SITE}/about#amit-chopra`, name: "Amit Chopra" },
+      knowsAbout: [
+        "AI agents",
+        "Workflow automation",
+        "Data and reporting automation",
+        "AI product development",
+        ...stack.map((t) => t.name),
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "AI services",
+        itemListElement: servicesOrdered.map((s) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            "@id": `${SITE}/services/${s.key}#service`,
+            name: s.name,
+            description: s.summary,
+            url: `${SITE}/services/${s.key}`,
+            provider: { "@id": `${SITE}/#organization` },
+          },
+        })),
+      },
       // Only list profiles that exist and are verified. Add Crunchbase
       // once that page is created. Do not add linkedin.com/company/decifer
-      // (unrelated/unclaimed) — the parent company's page is deciferdxb.
+      // (unrelated/unclaimed). The parent company's page is deciferdxb.
       sameAs: [
         "https://github.com/DeciferBot",
         "https://www.linkedin.com/company/deciferdxb/",
@@ -69,42 +106,43 @@ const organizationJsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: "DECIFER: Information is everywhere. Understanding is not.",
+    default: "DECIFER: AI agents, automation and products, built in Dubai",
     template: "%s | DECIFER",
   },
   description:
-    "DECIFER builds AI intelligence products that turn complex information into clear, plain-language understanding. Makers of Decifer Markets, Decifer Learning and Decifer Marketing.",
+    "DECIFER is an AI company in Dubai that builds AI agents, workflow automation, reporting systems and complete products for businesses. It runs three public products with the same method. AI that does a job, not AI that demos well.",
   metadataBase: new URL("https://www.decifer.io"),
   keywords: [
     "DECIFER",
-    "AI intelligence",
-    "plain-language intelligence",
+    "AI company Dubai",
+    "AI agent development Dubai",
+    "AI consultant Dubai",
+    "workflow automation Dubai",
+    "AI automation UAE",
+    "AI product development Dubai",
+    "data and reporting automation",
     "Decifer Markets",
-    "market intelligence",
     "Decifer Learning",
-    "UK National Curriculum learning app",
     "Decifer Marketing",
-    "marketing intelligence",
-    "make sense of complex information",
   ],
   icons: {
     icon: [{ url: "/brand/decifer-favicon.svg", type: "image/svg+xml" }],
     apple: "/brand/decifer-app-icon.svg",
   },
   openGraph: {
-    title: "DECIFER: Information is everywhere. Understanding is not.",
+    title: "DECIFER: AI that does a job, not AI that demos well",
     description:
-      "DECIFER builds AI intelligence products that help people make sense of complex information.",
+      "An AI company in Dubai building agents, automation and complete products for businesses. Three public products, one method.",
     url: "https://www.decifer.io",
     siteName: "DECIFER",
     type: "website",
-    locale: "en_GB",
+    locale: "en_AE",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DECIFER: Information is everywhere. Understanding is not.",
+    title: "DECIFER: AI that does a job, not AI that demos well",
     description:
-      "DECIFER builds AI intelligence products that help people make sense of complex information.",
+      "An AI company in Dubai building agents, automation and complete products for businesses. Three public products, one method.",
   },
   robots: {
     index: true,
@@ -133,7 +171,7 @@ export default function RootLayout({
         <Footer />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(organizationJsonLd) }}
         />
         <AnalyticsEvents />
         <Analytics />

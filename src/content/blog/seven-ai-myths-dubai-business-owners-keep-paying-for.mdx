@@ -1,0 +1,80 @@
+---
+title: "Seven AI myths Dubai business owners keep paying for"
+description: "The AI market in Dubai is loud, and most of the noise is selling something. Seven beliefs we hear in almost every first meeting, each one broken by something we have actually shipped."
+publishedAt: "2026-08-24"
+updatedAt: "2026-08-24"
+author: "Amit Chopra"
+topic: "Myths"
+tags: ["ai myths", "dubai", "small business", "automation"]
+readingMinutes: 7
+relatedServiceKeys: ["ai-advisory"]
+relatedPostSlugs: ["where-we-deleted-the-ai"]
+---
+
+Dubai is in the middle of an AI push. In June, a plan was approved to bring agentic AI to 295,000 companies over two years, with training, incubators and funding behind it. That is good news, and it also means every business owner here is about to be sold a lot of things.
+
+We build AI systems, we run three of our own, and we have sat in enough first meetings to know which beliefs walk in the door. Here are seven. Each one is broken not by argument but by something we have actually built and run.
+
+## Myth 1: AI makes building software easy now
+
+**The belief:** you describe what you want, the AI writes it, you are done.
+
+**What is true:** a demo takes a day. We have done it many times. Production takes logins, backups, rate limits, a way to see what the system did, a plan for when the model is wrong, and a person who answers when it breaks at two in the morning.
+
+We learned this the hard way. One of our systems has a scheduled job that checks the health of every other scheduled job, because at one point an agent had failed thirteen of its last sixteen runs on an empty API balance and nobody noticed for three weeks. Another has a watchdog that restores its own scheduler from a known-good copy, because the scheduler was wiped three separate times by tools that meant to edit it. The note in the code says: a note is not a mechanism, and the failure repeated. This is the mechanism.
+
+Nobody writes that watchdog on day one. You write it after the third time. AI did not make that part easier. It made the first day easier, which is a different thing.
+
+## Myth 2: You can vibe-code your way to a real product
+
+**The belief:** if the screens look right and the demo works, the product is basically done.
+
+**What is true:** vibe coding gets you a screen. It does not get you the nine thousand automated tests in our largest system, the forty-two-question evaluation suite that grades our concierge against the live database, or the eight-case regression test that fails the build if a property agent can be tricked into quoting a price the brokerage cannot fulfil.
+
+Those are not decoration. They are the difference between a thing that worked once and a thing that works on Tuesday. When someone shows you a product built in a weekend, ask to see the tests. If the answer is a shrug, you are looking at a demo.
+
+## Myth 3: More AI is better
+
+**The belief:** every step of the process should have a model in it.
+
+**What is true:** we have removed AI from working systems five times. A nightly check that invented the wrong airport. A daily message that could not be allowed to paraphrase a time. A counselling intake where no client should ever meet a model. Each time, the system got better when the model came out, because the step needed to be right, not clever.
+
+The skill is not knowing how to add AI. Anyone can do that now. The skill is knowing where it does not belong. We wrote a whole article on the five cases, because we think it is the most useful thing we know.
+
+## Myth 4: The AI will handle the numbers
+
+**The belief:** the model can read the data and tell you what it means, figures included.
+
+**What is true:** never let a model produce a number a customer will see. In our reporting product, every figure in a sentence the model writes must already exist in the set that plain code computed. If the model writes a number that is not in that set, the sentence is thrown away and a template is used. In our learning product, algebra is checked by a symbolic maths engine and grammar by a grammar engine; the model writes the question and never decides what is correct.
+
+We call this the rule we build by: code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test. If a vendor cannot tell you where in their system that boundary is, there is no boundary.
+
+## Myth 5: AI will replace your employees
+
+**The belief:** the point of this is headcount.
+
+**What is true:** the systems that actually work in production keep a human at every point where a mistake is expensive. Our travel concierge drafts an itinerary; a consultant approves it before a traveller sees it. Our outreach agent writes a pitch; it lands in a person's inbox, not a brand's. Our property agent hands a lead to a closer with a dossier; it does not close.
+
+What changes is where people spend their time. The consultant starts from a draft instead of a blank page. The owner reads a report that assembled itself instead of spending Friday building it. If the main goal of a project is to remove people rather than remove delay, we will say so in the first meeting, and we will usually decline the project.
+
+## Myth 6: A pilot proves it works
+
+**The belief:** we ran it for a month, it looked fine, ship it.
+
+**What is true:** a pilot proves it demos. Production is proven by months of uptime, by incidents survived, and by a log you can read afterwards. Our market intelligence system has run continuously for five months on a broker paper account. In that time it has had an options pricing incident, a scheduler wipe, a six-day silent outage at a model provider, and a credit failure mid-session. Every one of those is written up, dated, and turned into a mechanism that prevents it happening again.
+
+A pilot has not had those months. It has not met the failure that teaches you what the system actually needs. When a vendor says the pilot went well, ask what broke. If nothing broke, it was not run long enough.
+
+## Myth 7: The Dubai AI plan is a deadline
+
+**The belief:** there is a compliance requirement coming, and you need to act before a cutoff.
+
+**What is true:** read the coverage. The plan approved in June is a support programme: training tracks, incubators and funding through Dubai Chamber, aimed at helping 295,000 companies adopt agentic AI over two years. It is an opportunity with help attached. It is not a fine with a date.
+
+Some vendors are framing it as a deadline because urgency converts. That framing is the fastest way to end up buying the wrong thing quickly. The right response to the plan is the same as it would be without it: work out which three things in your business are worth automating, which are not, and what the first one would actually cost to run. Then start with that one.
+
+## What to do instead
+
+If you take one thing from this: the question is never "should we use AI". The question is "which step in our business needs judgement, and which step needs to be right". Models are for the first. Code is for the second. Most of the money wasted on AI in this city will be wasted by putting a model where a rule belonged.
+
+We run a two-week audit that answers exactly that question for your business, at a fixed fee, credited against any build. It comes with a list of things not to automate yet. If the honest answer is that you do not need us, the audit will say so.

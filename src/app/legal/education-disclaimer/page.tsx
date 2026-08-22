@@ -13,6 +13,7 @@ export default function Page() {
     <LegalLayout
       title="Education Disclaimer"
       currentHref="/legal/education-disclaimer"
+      lastUpdated="August 2026"
     >
       <div className="legal-prose">
         <p>
@@ -21,6 +22,14 @@ export default function Page() {
             schools, tutors, or parental judgement. We make no claims about
             academic outcomes.
           </strong>
+        </p>
+
+        <h2>Scope</h2>
+        <p>
+          This disclaimer applies to Decifer Learning. It does not apply to
+          DECIFER&apos;s services to business clients, which do not involve
+          children and are governed by the statement of work for each
+          engagement.
         </p>
 
         <h2>Decifer Learning is a support tool</h2>

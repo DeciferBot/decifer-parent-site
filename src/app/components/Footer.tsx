@@ -1,6 +1,7 @@
 import Link from "next/link";
 import DeciferLogo from "./DeciferLogo";
 import { products } from "../data/products";
+import { servicesOrdered } from "../data/services";
 
 const legalLinks = [
   { label: "Privacy Policy", href: "/legal/privacy" },
@@ -10,15 +11,16 @@ const legalLinks = [
   { label: "AI Policy", href: "/legal/ai-policy" },
   { label: "Child Safety", href: "/legal/child-safety" },
   { label: "Refund Policy", href: "/legal/refunds" },
+  { label: "Client Confidentiality", href: "/legal/client-confidentiality" },
 ];
 
 const siteLinks = [
-  { label: "Problem", href: "/#problem" },
-  { label: "Method", href: "/#method" },
-  { label: "Products", href: "/#products" },
-  { label: "Principles", href: "/#principles" },
+  { label: "Work", href: "/work" },
+  { label: "Blog", href: "/blog" },
+  { label: "Tools we build with", href: "/stack" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
   { label: "FAQ", href: "/#faq" },
-  { label: "Early access", href: "/#early-access" },
 ];
 
 export default function Footer() {
@@ -30,18 +32,29 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <DeciferLogo size="sm" className="mb-4" />
             <p className="max-w-xs text-sm leading-relaxed text-body">
-              DECIFER is the parent company behind Decifer Markets, Decifer
-              Learning and Decifer Marketing. We build AI intelligence products
-              that help people understand complex information.
+              DECIFER is an AI company in Dubai. We build agents, automation
+              and complete products for businesses, and we run Decifer
+              Markets, Decifer Learning and Decifer Marketing with the same
+              method.
             </p>
           </div>
 
-          {/* Site */}
+          {/* Services */}
           <div>
             <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
-              Site
+              Services
             </div>
             <ul className="space-y-2.5">
+              {servicesOrdered.map((s) => (
+                <li key={s.key}>
+                  <Link
+                    href={`/services/${s.key}`}
+                    className="text-sm text-body transition-colors hover:text-ink"
+                  >
+                    {s.navLabel}
+                  </Link>
+                </li>
+              ))}
               {siteLinks.map((l) => (
                 <li key={l.label}>
                   <Link
@@ -61,6 +74,14 @@ export default function Footer() {
               Products
             </div>
             <ul className="space-y-2.5">
+              <li>
+                <Link
+                  href="/products"
+                  className="text-sm text-body transition-colors hover:text-ink"
+                >
+                  All products
+                </Link>
+              </li>
               {products.map((p) =>
                 p.href ? (
                   <li key={p.key}>

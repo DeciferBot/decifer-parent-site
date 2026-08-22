@@ -10,8 +10,19 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <LegalLayout title="Refund Policy" currentHref="/legal/refunds">
+    <LegalLayout title="Refund Policy" currentHref="/legal/refunds" lastUpdated="August 2026">
       <div className="legal-prose">
+        <h2>Scope</h2>
+        <p>
+          This policy covers the DECIFER products: Decifer Markets, Decifer
+          Learning and Decifer Marketing. Client engagements for services
+          (AI agents, automation, reporting and product builds) are governed
+          by the signed statement of work for that engagement, which sets out
+          the fee stages, what is delivered at each stage, and how either side
+          may end the work. Where a statement of work is silent, the section
+          on services below applies.
+        </p>
+
         <h2>Early access period</h2>
         <p>
           During early access, DECIFER does not currently charge for access.
@@ -28,8 +39,10 @@ export default function Page() {
         </p>
         <ul>
           <li>
-            A 14-day cooling-off period for new subscribers, in line with UK
-            consumer protection law.
+            A 14-day cooling-off period for new subscribers. We offer this as
+            a matter of our own policy, in every country we sell in, in
+            addition to any rights you have under the consumer law that
+            applies to you.
           </li>
           <li>
             Pro-rata refunds for annual plans cancelled within the first 30
@@ -46,6 +59,15 @@ export default function Page() {
           materially affects your paid access, we will credit your account or
           offer a refund at our discretion. We will communicate clearly when
           this occurs.
+        </p>
+
+        <h2>Services engagements</h2>
+        <p>
+          Service fees are invoiced in stages against delivered work. Work
+          delivered and accepted is not refundable. If an engagement ends
+          early, you pay for the stages completed and nothing for the stages
+          not started. The audit fee is credited in full against any build
+          that follows it, as stated on the services pages.
         </p>
 
         <h2>How to request a refund</h2>

@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { validInterestValues as VALID_INTERESTS } from "@/app/data/products";
+import {
+  validInterestValues as VALID_INTERESTS,
+  earlyAccessInterests,
+} from "@/app/data/products";
+import { sendEmail, confirmEarlyAccessToSubmitter } from "@/lib/notify";
+import { insertLead, hashIp } from "@/lib/leads";
 
 interface EarlyAccessPayload {
   name: string;
@@ -52,58 +57,48 @@ export async function POST(req: NextRequest) {
 
   // Send notification email via Resend if configured.
   // Requires RESEND_API_KEY and RESEND_NOTIFY_EMAIL in Vercel env vars.
-  // RESEND_FROM must be a verified sending domain in Resend (e.g. noreply@decifer.io).
-  const resendApiKey = process.env.RESEND_API_KEY;
   const notifyEmail = process.env.RESEND_NOTIFY_EMAIL;
-  const fromAddress = process.env.RESEND_FROM ?? "DECIFER <onboarding@resend.dev>";
-
-  if (resendApiKey && notifyEmail) {
-    try {
-      const emailRes = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendApiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: fromAddress,
-          to: [notifyEmail],
-          subject: `Early Access Request: ${name} (${interest})`,
-          text: [
-            `New early access request received.`,
-            ``,
-            `Name:      ${name}`,
-            `Email:     ${email}`,
-            `Interest:  ${interest}`,
-            `Message:   ${message || "None"}`,
-            `Time:      ${submission.timestamp}`,
-          ].join("\n"),
-        }),
-      });
-
-      if (!emailRes.ok) {
-        console.error(
-          "[DECIFER Early Access] Resend error:",
-          await emailRes.text()
-        );
-      }
-    } catch (err) {
-      // Don't fail the request if email delivery fails — submission is still logged
-      console.error("[DECIFER Early Access] Resend exception:", err);
-    }
-  } else if (resendApiKey && !notifyEmail) {
+  if (process.env.RESEND_API_KEY && notifyEmail) {
+    await sendEmail({
+      to: [notifyEmail],
+      subject: `Early Access Request: ${name} (${interest})`,
+      text: [
+        `New early access request received.`,
+        ``,
+        `Name:      ${name}`,
+        `Email:     ${email}`,
+        `Interest:  ${interest}`,
+        `Message:   ${message || "None"}`,
+        `Time:      ${submission.timestamp}`,
+      ].join("\n"),
+      logTag: "[DECIFER Early Access]",
+    });
+  } else if (process.env.RESEND_API_KEY && !notifyEmail) {
     console.warn("[DECIFER Early Access] RESEND_API_KEY set but RESEND_NOTIFY_EMAIL is missing — skipping email.");
   }
 
-  // TODO: Persist to Supabase when NEXT_PUBLIC_SUPABASE_URL and
-  // SUPABASE_SERVICE_ROLE_KEY are configured. Example:
-  //
-  // const { createClient } = await import("@supabase/supabase-js");
-  // const supabase = createClient(
-  //   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  //   process.env.SUPABASE_SERVICE_ROLE_KEY!
-  // );
-  // await supabase.from("early_access").insert([submission]);
+  // Persist to the shared leads table (best effort; logs above are the fallback).
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("x-real-ip") ||
+    null;
+  await insertLead({
+    kind: "early_access",
+    name,
+    email,
+    product_interest: interest,
+    problem: message || null,
+    referrer: req.headers.get("referer"),
+    consent: true,
+    consent_text: "Requested early access via the DECIFER website form.",
+    ip_hash: hashIp(ip),
+    user_agent: req.headers.get("user-agent"),
+  });
+
+  // Acknowledge the submitter. Previously they received nothing.
+  const interestLabel =
+    earlyAccessInterests.find((i) => i.value === interest)?.label ?? interest;
+  await confirmEarlyAccessToSubmitter({ name, email, interestLabel });
 
   return NextResponse.json({ ok: true });
 }

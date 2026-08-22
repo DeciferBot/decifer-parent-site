@@ -5,10 +5,11 @@ import Link from "next/link";
 import DeciferLogo from "./DeciferLogo";
 
 const navLinks = [
-  { label: "Problem", href: "/#problem" },
-  { label: "Method", href: "/#method" },
-  { label: "Products", href: "/#products" },
-  { label: "Principles", href: "/#principles" },
+  { label: "Services", href: "/services" },
+  { label: "Work", href: "/work" },
+  { label: "Products", href: "/products" },
+  { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about" },
 ];
 
 export default function Nav() {
@@ -49,8 +50,12 @@ export default function Nav() {
               {l.label}
             </Link>
           ))}
-          <Link href="/#early-access" className="btn btn-primary px-4 py-2">
-            Early access
+          <Link
+            href="/contact"
+            data-event="nav_book_call"
+            className="btn btn-primary px-4 py-2"
+          >
+            Book a call
           </Link>
         </div>
 
@@ -105,11 +110,12 @@ export default function Nav() {
             ))}
             <div className="pt-2">
               <Link
-                href="/#early-access"
+                href="/contact"
                 onClick={() => setOpen(false)}
+                data-event="nav_book_call"
                 className="btn btn-primary w-full py-3"
               >
-                Early access
+                Book a call
               </Link>
             </div>
           </div>

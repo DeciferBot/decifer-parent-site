@@ -16,14 +16,17 @@ DECIFER builds AI intelligence products that turn complex information into clear
 
 ## Boilerplate paragraph
 
-DECIFER is an AI intelligence company. It builds products that turn complex information into clear, plain-language understanding. Its current products are Decifer Trading (market intelligence), Decifer Learning (a guided learning companion for the UK National Curriculum) and Decifer Marketing (marketing intelligence). Every DECIFER product follows the same method: collect trusted inputs, connect them with domain logic, and explain the result in plain language, while keeping sources and uncertainty visible.
+DECIFER is an AI solutions company based in Dubai, United Arab Emirates. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses in the UAE and abroad, and it builds and runs three public products of its own with the same method: Decifer Markets (market intelligence), Decifer Learning (a guided learning companion for the UK National Curriculum) and Decifer Marketing (marketing intelligence). The rule DECIFER builds by: code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test. Clients are never named. The founder is Amit Chopra.
 
 ## Facts to keep identical everywhere
 
 - Name: DECIFER (all caps for the parent brand; "Decifer" in product names)
 - Website: https://www.decifer.io
 - Industry: Artificial intelligence / software
-- Products: Decifer Trading, Decifer Learning, Decifer Marketing
+- Location: Dubai, United Arab Emirates (UAE company registration in progress; add legal name, licence number and registered address once issued)
+- Founder: Amit Chopra
+- Services: AI agent development, data and reporting automation, AI product development, AI consulting and audit
+- Products: Decifer Markets, Decifer Learning, Decifer Marketing
 - GitHub: https://github.com/DeciferBot
 - LinkedIn (parent): https://www.linkedin.com/company/deciferdxb/
 
@@ -33,7 +36,7 @@ DECIFER is an AI intelligence company. It builds products that turn complex info
   **`linkedin.com/company/decifer` (no "dxb") is a different, unrelated or
   unclaimed page** — decifermarketing.com's footer currently links to the
   wrong one. Fix that in the decifermarketing.com repo.
-- **X / Twitter**: `x.com/DeciferInt` belongs to Decifer Trading specifically
+- **X / Twitter**: `x.com/DeciferInt` belongs to Decifer Markets specifically
   (market commentary), not the parent company. It should appear in Decifer
   Trading's own Organization schema `sameAs`, not the parent's.
 

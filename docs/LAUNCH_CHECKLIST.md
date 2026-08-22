@@ -62,7 +62,7 @@ Complete these steps in order before sending the URL to anyone:
   - Child Safety Policy
   - Refund Policy
 
-- [ ] **FCA consideration** — If Decifer Trading is publicly accessible and provides market intelligence in the UK, seek legal advice on whether FCA authorisation or an exemption applies.
+- [ ] **FCA consideration** — If Decifer Markets is publicly accessible and provides market intelligence in the UK, seek legal advice on whether FCA authorisation or an exemption applies.
 
 - [ ] **GDPR / UK GDPR** — Register with the ICO as a data controller if not already done.
 

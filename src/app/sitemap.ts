@@ -1,40 +1,97 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts, lastPostChange } from "@/lib/blog";
+import { servicesOrdered } from "./data/services";
+import { publishedCaseShapes } from "./data/caseShapes";
 
 const BASE = "https://www.decifer.io";
 
 /**
- * The legal pages state "Last updated: May 2026" (LegalLayout default), so the
- * sitemap reports that date rather than the build date. Reporting today's date
- * for a page that has not changed is a false freshness signal. Update this when
- * the policies themselves change.
+ * Principle (from commit efd9b85): never report `new Date()`. Every route's
+ * lastModified comes from the data that generates it, so a deploy that
+ * changes nothing does not restamp anything as fresh.
+ *
+ * Data-driven routes read updatedAt from services.ts, caseShapes.ts and the
+ * blog frontmatter. Hand-written pages carry a constant here; bump it when
+ * the page content actually changes.
  */
-const LEGAL_LAST_MODIFIED = new Date("2026-05-01T00:00:00.000Z");
+const HOME_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z");
+const STATIC_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z"); // /about /stack /contact /products /services /work /blog
+const LEGAL_LAST_MODIFIED = new Date("2026-05-01T00:00:00.000Z"); // privacy, terms, ai-policy
+const SCOPED_LEGAL_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z"); // refunds, disclaimers, child-safety
+const CONFIDENTIALITY_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z");
 
-/**
- * Same principle for the homepage. It used to report `new Date()`, which meant
- * every deploy restamped it as freshly changed even when the page itself was
- * untouched. `src/app/page.tsx` last changed on 2026-07-08. Update this date
- * when the homepage content actually changes.
- */
-const HOME_LAST_MODIFIED = new Date("2026-07-08T00:00:00.000Z");
-
-const legalPaths = [
-  "/legal/privacy",
-  "/legal/terms",
-  "/legal/ai-policy",
-  "/legal/child-safety",
-  "/legal/education-disclaimer",
-  "/legal/financial-disclaimer",
-  "/legal/refunds",
+const legalPaths: { path: string; lastModified: Date }[] = [
+  { path: "/legal/privacy", lastModified: LEGAL_LAST_MODIFIED },
+  { path: "/legal/terms", lastModified: LEGAL_LAST_MODIFIED },
+  { path: "/legal/ai-policy", lastModified: LEGAL_LAST_MODIFIED },
+  { path: "/legal/child-safety", lastModified: SCOPED_LEGAL_LAST_MODIFIED },
+  { path: "/legal/education-disclaimer", lastModified: SCOPED_LEGAL_LAST_MODIFIED },
+  { path: "/legal/financial-disclaimer", lastModified: SCOPED_LEGAL_LAST_MODIFIED },
+  { path: "/legal/refunds", lastModified: SCOPED_LEGAL_LAST_MODIFIED },
 ];
 
+function newest(dates: string[], floor: Date): Date {
+  const max = Math.max(floor.getTime(), ...dates.map((d) => +new Date(d)));
+  return new Date(max);
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const posts = getAllPosts();
+  const blogTouched = lastPostChange() ?? STATIC_LAST_MODIFIED;
+
   return [
     { url: BASE, lastModified: HOME_LAST_MODIFIED, changeFrequency: "monthly", priority: 1 },
-    ...legalPaths.map((path) => ({
-      url: `${BASE}${path}`,
-      lastModified: LEGAL_LAST_MODIFIED,
+
+    {
+      url: `${BASE}/services`,
+      lastModified: newest(servicesOrdered.map((s) => s.updatedAt), STATIC_LAST_MODIFIED),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    ...servicesOrdered.map((s) => ({
+      url: `${BASE}/services/${s.key}`,
+      lastModified: new Date(s.updatedAt),
       changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+
+    { url: `${BASE}/contact`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.9 },
+
+    {
+      url: `${BASE}/work`,
+      lastModified: newest(publishedCaseShapes.map((c) => c.updatedAt), STATIC_LAST_MODIFIED),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    ...publishedCaseShapes.map((c) => ({
+      url: `${BASE}/work/${c.key}`,
+      lastModified: new Date(c.updatedAt),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    })),
+
+    { url: `${BASE}/blog`, lastModified: blogTouched, changeFrequency: "weekly", priority: 0.8 },
+    ...posts.map((p) => ({
+      url: `${BASE}/blog/${p.slug}`,
+      lastModified: new Date(p.updatedAt ?? p.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+
+    { url: `${BASE}/about`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.7 },
+    { url: `${BASE}/products`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/stack`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.5 },
+
+    {
+      url: `${BASE}/legal/client-confidentiality`,
+      lastModified: CONFIDENTIALITY_LAST_MODIFIED,
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+    ...legalPaths.map(({ path, lastModified }) => ({
+      url: `${BASE}${path}`,
+      lastModified,
+      changeFrequency: "yearly" as const,
       priority: 0.3,
     })),
   ];

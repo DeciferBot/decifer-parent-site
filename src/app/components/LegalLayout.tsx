@@ -9,6 +9,7 @@ const allLegal = [
   { title: "AI Accuracy and Source Policy", href: "/legal/ai-policy" },
   { title: "Child Safety Policy", href: "/legal/child-safety" },
   { title: "Refund Policy", href: "/legal/refunds" },
+  { title: "Client Confidentiality", href: "/legal/client-confidentiality" },
 ];
 
 const SITE = "https://www.decifer.io";

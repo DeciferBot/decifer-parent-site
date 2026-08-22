@@ -20,14 +20,14 @@ Product names use title case. Never all caps for product names.
 
 | Product | Correct | Incorrect |
 |---|---|---|
-| Market intelligence | Decifer Trading | DECIFER TRADING |
+| Market intelligence | Decifer Markets | DECIFER MARKETS |
 | AI-assisted learning | Decifer Learning | DECIFER Learning |
 | Marketing intelligence | Decifer Marketing | DECIFER MARKETING |
 | Personal finance (future) | Decifer Money | DECIFER Money |
 | Global context (future) | Decifer World | DECIFER World |
 | Work intelligence (future) | Decifer Work | DECIFER Work |
 
-When referring to a product within a sentence, use: "Decifer Trading" or "the Decifer Trading product". Do not add a comma after "Decifer".
+When referring to a product within a sentence, use: "Decifer Markets" or "the Decifer Markets product". Do not add a comma after "Decifer".
 
 ---
 
@@ -75,7 +75,7 @@ When referring to a product within a sentence, use: "Decifer Trading" or "the De
 
 ## Typography
 
-Font: **Inter** (loaded via `next/font/google`)
+Fonts: **Instrument Serif** (display, italic accents) and **DM Sans** (body), loaded via `next/font/google`
 
 | Role | Style |
 |---|---|
@@ -143,7 +143,7 @@ These phrases must appear wherever relevant. Do not soften or remove them.
 
 1. **Primary CTA:** "Join Early Access" (bg-brand, white text)
 2. **Secondary CTA:** "Explore Products" (bordered, muted text)
-3. **Product link:** "Visit Decifer Trading / Decifer Learning" (text link with arrow)
+3. **Product link:** "Visit Decifer Markets / Decifer Learning" (text link with arrow)
 
 Avoid: "Sign Up", "Start Free", "Try Now" (too generic or implies a free tier that may not exist).
 
@@ -158,7 +158,7 @@ Standard events to use across all DECIFER product surfaces:
 | `early_access_viewed` | User scrolls to or lands on the early access section |
 | `early_access_submitted` | Successful form submission |
 | `product_card_clicked` | Any product card interaction |
-| `trading_clicked` | Decifer Trading card or link clicked |
+| `trading_clicked` | Decifer Markets card or link clicked |
 | `learning_clicked` | Decifer Learning card or link clicked |
 | `marketing_clicked` | Decifer Marketing card or link clicked |
 | `legal_page_viewed` | Any legal page visited |

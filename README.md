@@ -2,7 +2,7 @@
 
 Marketing website for [decifer.io](https://www.decifer.io) — the parent brand for DECIFER, an AI intelligence company.
 
-Built with Next.js 15, TypeScript, and Tailwind CSS v4. Deployed on Vercel.
+Built with Next.js 16, TypeScript, and Tailwind CSS v4. Deployed on Vercel.
 
 ---
 
@@ -40,7 +40,7 @@ See [`.env.example`](.env.example) for all supported variables.
 | `RESEND_API_KEY` | Optional | Sends email notification on early-access form submission. Without this, submissions are logged to Vercel Function logs only. |
 | `NEXT_PUBLIC_SUPABASE_URL` | Optional | Supabase project URL for storing early-access submissions. |
 | `SUPABASE_SERVICE_ROLE_KEY` | Optional | Supabase service role key (server-side only). Uncomment the Supabase block in `src/app/api/early-access/route.ts` to activate. |
-| `NEXT_PUBLIC_ANALYTICS_ID` | Optional | Analytics provider ID (e.g. GA4 measurement ID). Add alongside the analytics script tag in `src/app/layout.tsx`. |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional | GA4 measurement ID. Read by `src/app/layout.tsx`; GA4 does not load without it. |
 
 Set these in Vercel Dashboard > Project > Settings > Environment Variables for production and preview.
 
@@ -68,7 +68,7 @@ src/app/
     child-safety/
     refunds/
   globals.css            # Tailwind v4 design tokens and base styles
-  layout.tsx             # Root layout with Inter font and metadata
+  layout.tsx             # Root layout with Instrument Serif + DM Sans fonts, metadata and Organization schema
   page.tsx               # Homepage
 docs/
   BRAND_GUIDELINES.md    # Naming, colour, tone, disclaimer language
@@ -102,7 +102,7 @@ The apex domain (`decifer.io`) redirects to `www` via Next.js redirects in `next
 
 | Product | Domain | Notes |
 |---|---|---|
-| Decifer Trading | decifertrading.com | Separate repo and deployment |
+| Decifer Markets | decifertrading.com | Separate repo and deployment |
 | Decifer Learning | deciferlearning.com | Separate repo and deployment |
 | Decifer Marketing | decifermarketing.com | Separate repo and deployment |
 
