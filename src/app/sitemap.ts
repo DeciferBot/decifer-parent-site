@@ -16,17 +16,18 @@ const BASE = "https://www.decifer.io";
  */
 const HOME_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z");
 const STATIC_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z"); // /about /stack /contact /products /services /work /blog
-const LEGAL_LAST_MODIFIED = new Date("2026-05-01T00:00:00.000Z");
+const LEGAL_LAST_MODIFIED = new Date("2026-05-01T00:00:00.000Z"); // privacy, terms, ai-policy
+const SCOPED_LEGAL_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z"); // refunds, disclaimers, child-safety
 const CONFIDENTIALITY_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z");
 
-const legalPaths = [
-  "/legal/privacy",
-  "/legal/terms",
-  "/legal/ai-policy",
-  "/legal/child-safety",
-  "/legal/education-disclaimer",
-  "/legal/financial-disclaimer",
-  "/legal/refunds",
+const legalPaths: { path: string; lastModified: Date }[] = [
+  { path: "/legal/privacy", lastModified: LEGAL_LAST_MODIFIED },
+  { path: "/legal/terms", lastModified: LEGAL_LAST_MODIFIED },
+  { path: "/legal/ai-policy", lastModified: LEGAL_LAST_MODIFIED },
+  { path: "/legal/child-safety", lastModified: SCOPED_LEGAL_LAST_MODIFIED },
+  { path: "/legal/education-disclaimer", lastModified: SCOPED_LEGAL_LAST_MODIFIED },
+  { path: "/legal/financial-disclaimer", lastModified: SCOPED_LEGAL_LAST_MODIFIED },
+  { path: "/legal/refunds", lastModified: SCOPED_LEGAL_LAST_MODIFIED },
 ];
 
 function newest(dates: string[], floor: Date): Date {
@@ -87,9 +88,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.4,
     },
-    ...legalPaths.map((path) => ({
+    ...legalPaths.map(({ path, lastModified }) => ({
       url: `${BASE}${path}`,
-      lastModified: LEGAL_LAST_MODIFIED,
+      lastModified,
       changeFrequency: "yearly" as const,
       priority: 0.3,
     })),

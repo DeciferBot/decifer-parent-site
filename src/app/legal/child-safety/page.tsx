@@ -13,13 +13,17 @@ export default function Page() {
     <LegalLayout
       title="Child Safety Policy"
       currentHref="/legal/child-safety"
+      lastUpdated="August 2026"
     >
       <div className="legal-prose">
         <h2>Our commitment</h2>
         <p>
           Child safety is a core part of how Decifer Learning is designed, not
-          an afterthought. This policy applies to the Decifer Learning product
-          and any part of the DECIFER platform that children may access.
+          an afterthought. This policy applies to the Decifer Learning product,
+          which is the only DECIFER product designed for children. DECIFER&apos;s
+          services to business clients do not involve children. Where client
+          work touches data about minors, the handling rules are agreed in
+          writing for that engagement and this policy is the minimum standard.
         </p>
 
         <h2>Age requirements</h2>

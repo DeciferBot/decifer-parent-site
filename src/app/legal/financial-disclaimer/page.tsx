@@ -13,6 +13,7 @@ export default function Page() {
     <LegalLayout
       title="Financial Information Disclaimer"
       currentHref="/legal/financial-disclaimer"
+      lastUpdated="August 2026"
     >
       <div className="legal-prose">
         <p>
@@ -22,6 +23,14 @@ export default function Page() {
             buy, sell, or hold any security or asset. Financial markets carry
             risk. Your decisions are your own.
           </strong>
+        </p>
+
+        <h2>Scope</h2>
+        <p>
+          This disclaimer applies to Decifer Markets and to any market
+          commentary published by DECIFER. It does not describe DECIFER&apos;s
+          services to business clients, which are governed by the statement of
+          work for each engagement and never include investment advice.
         </p>
 
         <h2>This is not financial advice</h2>
@@ -56,7 +65,11 @@ export default function Page() {
           <li>Buy, sell, or hold recommendations on any security or asset.</li>
           <li>
             Regulated investment services of any kind. DECIFER is not
-            authorised or regulated as a financial adviser or broker.
+            authorised or regulated as a financial adviser or broker. DECIFER
+            is not licensed by the UAE Securities and Commodities Authority,
+            is not authorised by the UK Financial Conduct Authority, and does
+            not provide investment advice, arrange deals in investments, or
+            manage money for anyone.
           </li>
         </ul>
 
