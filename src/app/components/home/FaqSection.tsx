@@ -1,5 +1,6 @@
 import SectionLabel from "../SectionLabel";
 import { FAQ_ITEMS, faqJsonLd } from "../../data/faq";
+import { jsonLd } from "@/lib/jsonld";
 
 export default function FaqSection() {
   return (
@@ -44,7 +45,7 @@ export default function FaqSection() {
       </div>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(faqJsonLd()) }}
       />
     </section>
   );

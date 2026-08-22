@@ -8,16 +8,16 @@ export default function MethodSection() {
         <div className="mb-14 text-center">
           <SectionLabel>The Method</SectionLabel>
           <h2 className="mx-auto max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">
-            How DECIFER turns information into intelligence.
+            One method. Our products, and your business.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-body">
-            Every DECIFER product follows the same basic method: collect
-            trusted inputs, connect them with domain logic, and explain the
-            result in plain language.
+            Collect inputs that can be checked. Connect them with the rules of
+            the domain. Explain the result so a person can act on it. The same
+            three steps run every product we make and every engagement we take.
           </p>
         </div>
 
-        <MethodSteps />
+        <MethodSteps variant="both" />
       </div>
     </section>
   );

@@ -10,45 +10,62 @@ type Step = {
   body: string;
 };
 
-const STEPS: Step[] = [
-  {
-    step: "01",
-    label: "Collect",
-    short: "Start with inputs that can be checked.",
-    body: "DECIFER begins with structured, relevant and trusted inputs. Each product uses sources suited to its own domain.",
-  },
-  {
-    step: "02",
-    label: "Connect",
-    short: "Put information in the right context.",
-    body: "The system applies domain rules, relationships and user context so information is not treated as generic content.",
-  },
-  {
-    step: "03",
-    label: "Explain",
-    short: "Make the answer understandable.",
-    body: "DECIFER turns complex information into clear language, showing what matters, what is known and what remains uncertain.",
-  },
-];
+type Variant = "products" | "both";
 
-const INPUTS = [
-  "Trusted sources",
-  "Structured data",
-  "Domain rules",
-  "User context",
-  "Product-specific evidence",
-];
+const COPY: Record<Variant, { steps: Step[]; inputs: string[]; outputs: string[] }> = {
+  products: {
+    steps: [
+      {
+        step: "01",
+        label: "Collect",
+        short: "Start with inputs that can be checked.",
+        body: "DECIFER begins with structured, relevant and trusted inputs. Each product uses sources suited to its own domain.",
+      },
+      {
+        step: "02",
+        label: "Connect",
+        short: "Put information in the right context.",
+        body: "The system applies domain rules, relationships and user context so information is not treated as generic content.",
+      },
+      {
+        step: "03",
+        label: "Explain",
+        short: "Make the answer understandable.",
+        body: "DECIFER turns complex information into clear language, showing what matters, what is known and what remains uncertain.",
+      },
+    ],
+    inputs: ["Trusted sources", "Structured data", "Domain rules", "User context", "Product-specific evidence"],
+    outputs: ["What happened", "Why it matters", "What changed", "What is uncertain", "What to look at next"],
+  },
+  both: {
+    steps: [
+      {
+        step: "01",
+        label: "Collect",
+        short: "Start with inputs that can be checked.",
+        body: "In a product, that means trusted sources and structured data. In your business, it means seeing how the work actually runs, not how the process document says it runs.",
+      },
+      {
+        step: "02",
+        label: "Connect",
+        short: "Put information in the right context.",
+        body: "Domain rules, relationships and the systems you already pay for. AI goes only where it earns its place, and the numbers are always computed in code.",
+      },
+      {
+        step: "03",
+        label: "Explain",
+        short: "Hand back something a person can act on.",
+        body: "Plain language, sources visible, uncertainty stated. For a client that also means a log you can read, a runbook, and a system you can switch off.",
+      },
+    ],
+    inputs: ["Trusted sources", "Your existing systems", "Domain rules", "How the work really runs", "A written boundary"],
+    outputs: ["What happened", "Why it matters", "What changed", "What is uncertain", "What a person should do next"],
+  },
+};
 
-const OUTPUTS = [
-  "What happened",
-  "Why it matters",
-  "What changed",
-  "What is uncertain",
-  "What to look at next",
-];
-
-export default function MethodSteps() {
+export default function MethodSteps({ variant = "products" }: { variant?: Variant }) {
   const [active, setActive] = useState<number>(0);
+  const { steps: STEPS, inputs: INPUTS, outputs: OUTPUTS } = COPY[variant];
 
   return (
     <>

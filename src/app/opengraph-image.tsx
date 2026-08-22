@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'DECIFER: Information is everywhere. Understanding is not.'
+export const alt = 'DECIFER: AI that does a job, not AI that demos well. Built in Dubai.'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -71,8 +71,8 @@ export default async function Image() {
               flexDirection: 'column',
             }}
           >
-            <span>Information is everywhere.</span>
-            <span style={{ color: '#F05A28' }}>Understanding is not.</span>
+            <span>AI that does a job.</span>
+            <span style={{ color: '#F05A28' }}>Not AI that demos well.</span>
           </div>
           <div
             style={{
@@ -83,8 +83,8 @@ export default async function Image() {
               display: 'flex',
             }}
           >
-            DECIFER builds AI intelligence products that help people make sense
-            of complex information.
+            AI agents, automation and complete products for businesses.
+            Built in Dubai. Three public products, one method.
           </div>
         </div>
 
@@ -97,7 +97,7 @@ export default async function Image() {
           }}
         >
           <div style={{ display: 'flex', gap: 10 }}>
-            {['Decifer Markets', 'Decifer Learning'].map((label) => (
+            {['AI agents', 'Automation', 'Reporting', 'Product builds'].map((label) => (
               <div
                 key={label}
                 style={{

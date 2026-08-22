@@ -13,32 +13,36 @@ export interface FaqItem {
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "What is DECIFER?",
-    a: "DECIFER is an AI intelligence company. It builds products that turn complex information into clear, plain-language understanding. Its current products are Decifer Markets, Decifer Learning and Decifer Marketing.",
+    q: "What does DECIFER do?",
+    a: "DECIFER is an AI company based in Dubai. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses in the UAE and abroad. It also builds and runs three public products of its own: Decifer Markets, Decifer Learning and Decifer Marketing.",
+  },
+  {
+    q: "You run your own products. Will you be around for my project?",
+    a: "Yes. The products are where the methods get tested, and client work gets the tested version. Enquiries are read and answered by the founder within one working day, and every build carries a named owner and a runbook.",
+  },
+  {
+    q: "How does an engagement start?",
+    a: "Usually with a two-week audit at a fixed fee, credited in full against any build that follows. It maps where time goes in your business, scores what is worth automating, and lists plainly what not to automate yet. You get a written recommendation you can act on with or without us.",
+  },
+  {
+    q: "Why are no clients named on the site?",
+    a: "Some asked us not to, and for the rest we chose not to. Work is described by sector and shape instead, with what we built, what changed, how it is measured and what we deliberately did not automate. Any number is published only with the method and written permission.",
+  },
+  {
+    q: "What do you mean by \"code computes, the model narrates\"?",
+    a: "Every figure a customer sees is produced by ordinary code that can be read and tested. A model may write the sentence around the figure or pull a fact from a document, but it never invents the number, and a test fails the build if it tries. Sometimes the right answer is no AI at all, and we say so.",
   },
   {
     q: "Is DECIFER the same as the word decipher?",
-    a: "No. DECIFER is a company name, spelled with an e. The idea is related, because the products help people decipher complex information, but DECIFER refers to the company and its products, not the dictionary word.",
+    a: "No. DECIFER is a company name, spelled with an e. The idea is related, because we help people and businesses make sense of complex information, but DECIFER refers to the company and its products, not the dictionary word.",
   },
   {
-    q: "What is Decifer Markets?",
-    a: "Decifer Markets is a market intelligence product. It explains what is moving in markets, why it may matter and what to watch, in plain English. It is for research and context only and is not financial advice.",
+    q: "What are Decifer Markets, Decifer Learning and Decifer Marketing?",
+    a: "Three public products DECIFER builds and runs with the same method it uses for client work. Decifer Markets is market intelligence in plain English, for research only and not financial advice. Decifer Learning is a guided companion for the UK National Curriculum that supports learning and does not replace teachers. Decifer Marketing turns campaign data into a plain read on what is working and why.",
   },
   {
-    q: "What is Decifer Learning?",
-    a: "Decifer Learning is a guided learning companion for the UK National Curriculum. Children learn, practise and quiz through each topic while parents see progress. It supports learning and does not replace teachers, schools or parents.",
-  },
-  {
-    q: "What is Decifer Marketing?",
-    a: "Decifer Marketing is a marketing intelligence product. It turns campaign, channel and audience data into a plain-English read on what is working, why, and what to do next. It is for insight and research context only, not a substitute for professional marketing advice.",
-  },
-  {
-    q: "How does DECIFER work?",
-    a: "Every DECIFER product follows the same method: collect trusted inputs, connect them with domain logic, and explain the result in plain language, while keeping sources and uncertainty visible.",
-  },
-  {
-    q: "How can I get early access?",
-    a: "You can join early access from this page. Tell us which product you are interested in, and access will open gradually as each product becomes ready. No payment is required for early access.",
+    q: "How can I get early access to the products?",
+    a: "Join early access from the products page. Tell us which product you are interested in, and access will open gradually as each one becomes ready. No payment is required for early access.",
   },
 ];
 

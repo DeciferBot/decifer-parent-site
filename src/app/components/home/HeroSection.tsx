@@ -1,3 +1,4 @@
+import Link from "next/link";
 import DeciferMark from "../DeciferMark";
 import { products } from "../../data/products";
 import { accentVars } from "../ProductCard";
@@ -20,50 +21,61 @@ export default function HeroSection() {
         </div>
 
         <p className="anim-fade-up-1 mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-cta">
-          DECIFER
+          DECIFER <span className="text-muted">/</span> AI solutions, Dubai
         </p>
 
         <h1 className="anim-fade-up-1 mb-6 text-5xl font-bold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl">
-          Information is everywhere.
+          AI that does a job.
           <br />
           <span className="font-display font-normal italic text-cta">
-            Understanding is not.
+            Not AI that demos well.
           </span>
         </h1>
 
         <p className="anim-fade-up-2 mx-auto mb-5 max-w-2xl text-lg leading-relaxed text-body sm:text-xl">
-          DECIFER builds AI intelligence products that help people make sense
-          of complex information.
+          DECIFER builds AI agents, automation and complete products for
+          businesses in Dubai and beyond. In production, on your accounts,
+          with a log you can read.
         </p>
 
         <p className="anim-fade-up-2 mx-auto mb-9 max-w-2xl text-base leading-relaxed text-muted">
-          We start with trusted inputs, apply domain-specific logic, and turn
-          the result into plain-language context. Our products span markets,
-          learning and marketing, where more information does not always mean
-          more clarity.
+          We run three public products with the same method, so the work you
+          can see is the work you would get. And we write down where AI does
+          not belong, then enforce it with a test.
         </p>
 
         <div className="anim-fade-up-3 mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href="#products"
-            data-event="cta_explore_products"
+          <Link
+            href="/contact"
+            data-event="cta_book_call"
             className="btn btn-primary w-full px-7 py-3.5 sm:w-auto"
           >
-            Explore products
-          </a>
-          <a
-            href="#early-access"
-            data-event="cta_join_early_access"
+            Book a discovery call
+          </Link>
+          <Link
+            href="/services"
+            data-event="cta_explore_services"
             className="btn btn-secondary w-full px-7 py-3.5 sm:w-auto"
           >
-            Join early access
-          </a>
+            See the services
+          </Link>
         </div>
 
-        {/* Product family row */}
+        {/* Product family row: proof, not the pitch */}
+        <p className="anim-fade-up-4 mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
+          Our own products, open to anyone
+        </p>
         <div className="anim-fade-up-4 flex flex-wrap items-center justify-center gap-2.5">
           {products.map((p) => (
-            <a key={p.key} href="#products" className="chip" style={accentVars(p)}>
+            <a
+              key={p.key}
+              href={p.href ?? "/products"}
+              target={p.href ? "_blank" : undefined}
+              rel={p.href ? "noopener noreferrer" : undefined}
+              data-event={p.event}
+              className="chip"
+              style={accentVars(p)}
+            >
               <span className="chip-dot" aria-hidden="true" />
               {p.name.replace("Decifer ", "")}
               <span className="text-muted">{p.status}</span>
