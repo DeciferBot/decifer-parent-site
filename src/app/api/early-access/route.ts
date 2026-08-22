@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { validInterestValues as VALID_INTERESTS } from "@/app/data/products";
-import { sendEmail } from "@/lib/notify";
+import {
+  validInterestValues as VALID_INTERESTS,
+  earlyAccessInterests,
+} from "@/app/data/products";
+import { sendEmail, confirmEarlyAccessToSubmitter } from "@/lib/notify";
+import { insertLead, hashIp } from "@/lib/leads";
 
 interface EarlyAccessPayload {
   name: string;
@@ -73,7 +77,28 @@ export async function POST(req: NextRequest) {
     console.warn("[DECIFER Early Access] RESEND_API_KEY set but RESEND_NOTIFY_EMAIL is missing — skipping email.");
   }
 
-  // TODO(phase 4): persist to Supabase via lib/leads.ts once the leads table exists.
+  // Persist to the shared leads table (best effort; logs above are the fallback).
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("x-real-ip") ||
+    null;
+  await insertLead({
+    kind: "early_access",
+    name,
+    email,
+    product_interest: interest,
+    problem: message || null,
+    referrer: req.headers.get("referer"),
+    consent: true,
+    consent_text: "Requested early access via the DECIFER website form.",
+    ip_hash: hashIp(ip),
+    user_agent: req.headers.get("user-agent"),
+  });
+
+  // Acknowledge the submitter. Previously they received nothing.
+  const interestLabel =
+    earlyAccessInterests.find((i) => i.value === interest)?.label ?? interest;
+  await confirmEarlyAccessToSubmitter({ name, email, interestLabel });
 
   return NextResponse.json({ ok: true });
 }

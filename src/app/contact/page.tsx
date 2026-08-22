@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/app/components/PageHero";
 import SectionLabel from "@/app/components/SectionLabel";
+import EnquiryForm from "@/app/components/EnquiryForm";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
@@ -46,67 +47,60 @@ export default function ContactPage() {
       />
 
       <section className="pb-20 sm:pb-28">
-        <div className="mx-auto grid max-w-5xl gap-8 px-5 sm:px-8 md:grid-cols-2">
-          <div className="card-lift rounded-2xl border border-line-strong bg-surface p-8">
-            <SectionLabel>Write to us</SectionLabel>
-            <h2 className="mb-3 text-2xl font-bold text-ink">hello@decifer.io</h2>
-            <p className="mb-6 text-[15px] leading-relaxed text-body">
-              One paragraph is enough. What is slow, what is being done by hand,
-              what you have tried. Amit reads every enquiry and replies within
-              one working day.
-            </p>
-            <a
-              href="mailto:hello@decifer.io?subject=Discovery%20call"
-              data-event="contact_email"
-              className="btn btn-primary px-6 py-3"
-            >
-              Email hello@decifer.io
-            </a>
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[1.5fr_1fr]">
+          <div className="rounded-2xl border border-line-strong bg-surface p-7 sm:p-9">
+            <SectionLabel>The enquiry</SectionLabel>
+            <h2 className="mb-6 text-2xl font-bold text-ink">One form, read by a person.</h2>
+            <EnquiryForm />
           </div>
-          <div className="card-lift rounded-2xl border border-line-strong bg-surface p-8">
-            <SectionLabel>Pick a time</SectionLabel>
-            <h2 className="mb-3 text-2xl font-bold text-ink">A 30-minute call</h2>
-            <p className="mb-6 text-[15px] leading-relaxed text-body">
-              Dubai hours, with slots for Singapore and the UK. You will talk to
-              the person who would do the work, not a salesperson.
-            </p>
-            {bookingUrl ? (
-              <a
-                href={bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-event="contact_book_call"
-                className="btn btn-secondary px-6 py-3"
-              >
-                Choose a time
-              </a>
-            ) : (
-              <p className="text-sm text-muted">
-                Booking link coming shortly. Email us and we will send times.
-              </p>
-            )}
-          </div>
-        </div>
-      </section>
 
-      <section className="bg-canvas py-16">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          <SectionLabel>What happens next</SectionLabel>
-          <ol className="mt-4 space-y-4">
-            {[
-              "You get a reply from a named person within one working day.",
-              "We talk for thirty minutes about what you want to change.",
-              "If it makes sense, we propose a two-week audit at a fixed fee, credited against any build.",
-              "If it does not make sense, we say so, and suggest what would.",
-            ].map((step, i) => (
-              <li key={step} className="flex gap-4 text-[15px] leading-relaxed text-body">
-                <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-cta/35 bg-cta/10 text-xs font-bold text-cta">
-                  {i + 1}
-                </span>
-                {step}
-              </li>
-            ))}
-          </ol>
+          <div className="space-y-6">
+            <div className="rounded-2xl border border-line-strong bg-surface p-7">
+              <SectionLabel>Prefer to pick a time</SectionLabel>
+              <h2 className="mb-3 text-xl font-bold text-ink">A 30-minute call</h2>
+              <p className="mb-5 text-[15px] leading-relaxed text-body">
+                Dubai hours, with slots for Singapore and the UK. You will talk
+                to the person who would do the work.
+              </p>
+              {bookingUrl ? (
+                <a href={bookingUrl} target="_blank" rel="noopener noreferrer" data-event="contact_book_call" className="btn btn-secondary px-5 py-2.5">
+                  Choose a time
+                </a>
+              ) : (
+                <p className="text-sm text-muted">Send the form and we will offer times by email.</p>
+              )}
+            </div>
+
+            <div className="rounded-2xl border border-line-strong bg-surface p-7">
+              <SectionLabel>Or just email</SectionLabel>
+              <a href="mailto:hello@decifer.io?subject=Discovery%20call" data-event="contact_email" className="text-lg font-semibold text-cta hover:underline">
+                hello@decifer.io
+              </a>
+              <p className="mt-3 text-sm leading-relaxed text-body">
+                One paragraph is enough. Amit reads every enquiry and replies
+                within one working day.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-line-strong bg-canvas/60 p-7">
+              <SectionLabel>What happens next</SectionLabel>
+              <ol className="mt-2 space-y-3">
+                {[
+                  "A reply from a named person within one working day.",
+                  "Thirty minutes on what you want to change.",
+                  "If it makes sense, a two-week audit at a fixed fee, credited against any build.",
+                  "If it does not, we say so and suggest what would.",
+                ].map((step, i) => (
+                  <li key={step} className="flex gap-3 text-sm leading-relaxed text-body">
+                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-cta/35 bg-cta/10 text-[11px] font-bold text-cta">
+                      {i + 1}
+                    </span>
+                    {step}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
         </div>
       </section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
