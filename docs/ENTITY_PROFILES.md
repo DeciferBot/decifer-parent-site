@@ -23,7 +23,7 @@ DECIFER is an AI solutions company based in Dubai, United Arab Emirates. It buil
 - Name: DECIFER (all caps for the parent brand; "Decifer" in product names)
 - Website: https://www.decifer.io
 - Industry: Artificial intelligence / software
-- Location: Dubai, United Arab Emirates (licensed entity; registered address to be added once confirmed)
+- Location: Dubai, United Arab Emirates (UAE company registration in progress; add legal name, licence number and registered address once issued)
 - Founder: Amit Chopra
 - Services: AI agent development, data and reporting automation, AI product development, AI consulting and audit
 - Products: Decifer Markets, Decifer Learning, Decifer Marketing

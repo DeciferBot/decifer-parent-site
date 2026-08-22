@@ -11,7 +11,7 @@ import { jsonLd, SITE } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "About DECIFER: an AI company in Dubai that ships",
   description:
-    "DECIFER is a licensed AI company based in Dubai, founded by Amit Chopra. It builds agents, automation and complete products for businesses, and runs three public products with the same method.",
+    "DECIFER is an AI company based in Dubai, founded by Amit Chopra. It builds agents, automation and complete products for businesses, and runs three public products with the same method.",
   alternates: { canonical: "/about" },
 };
 
@@ -52,7 +52,7 @@ export default function AboutPage() {
             </span>
           </>
         }
-        lede="DECIFER is a licensed AI company in Dubai, United Arab Emirates. It builds AI agents, automation and complete products for businesses here and abroad, and it runs three public products using exactly the same method."
+        lede="DECIFER is an AI company based in Dubai, United Arab Emirates. It builds AI agents, automation and complete products for businesses here and abroad, and it runs three public products using exactly the same method."
       />
 
       {/* The doctrine */}
@@ -200,11 +200,11 @@ export default function AboutPage() {
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           <SectionLabel>Company</SectionLabel>
           <h2 className="mb-6 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-            A licensed entity, a named person, a real reply.
+            A named person in Dubai, and a real reply.
           </h2>
           <div className="space-y-5 text-[15px] leading-relaxed text-body">
             <p>
-              DECIFER is a licensed company in Dubai, United Arab Emirates. It
+              DECIFER is based in Dubai, United Arab Emirates, and its UAE company registration is in progress. It
               serves clients in the UAE, the wider Gulf, Singapore and the
               United Kingdom. Client work is never named on this site, and the
               reasons are written down in our{" "}
