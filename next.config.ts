@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
         destination: "https://www.decifer.io/:path*",
         permanent: true,
       },
+      // Memorable aliases for conversation and ads; one canonical page each.
+      { source: "/book-a-call", destination: "/contact", permanent: true },
+      { source: "/case-studies", destination: "/work", permanent: true },
+      { source: "/case-studies/:slug", destination: "/work/:slug", permanent: true },
     ];
   },
 };
