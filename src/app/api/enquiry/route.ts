@@ -4,7 +4,7 @@ import {
   insertLead,
   recentSubmissionCount,
   hashIp,
-  isLeadStoreConfigured,
+  isSupabaseConfigured,
   memoryRateLimited,
 } from "@/lib/leads";
 import { notifyInternalEnquiry, confirmEnquiryToSubmitter } from "@/lib/notify";
@@ -100,7 +100,7 @@ export async function POST(req: NextRequest) {
     req.headers.get("x-real-ip") ||
     null;
   const ipHash = hashIp(ip);
-  const limited = isLeadStoreConfigured()
+  const limited = isSupabaseConfigured()
     ? (await recentSubmissionCount(ipHash ?? "")) >= MAX_PER_HOUR
     : memoryRateLimited(ipHash ?? "anon", MAX_PER_HOUR);
   if (limited) {
