@@ -3,10 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/app/components/PageHero";
 import CtaBand from "@/app/components/CtaBand";
+import SectionHead from "@/app/components/SectionHead";
 import SectionLabel from "@/app/components/SectionLabel";
-import StackChips from "@/app/components/StackChips";
+import StackList from "@/app/components/StackChips";
 import ProofStrip from "@/app/components/ProofStrip";
-import CaseShapeCard from "@/app/components/CaseShapeCard";
+import CaseRow from "@/app/components/CaseShapeCard";
+import ProductFrame from "@/app/components/ProductFrame";
+import Arrow from "@/app/components/Arrow";
 import { services, servicesByKey, servicesOrdered, type ServiceKey } from "@/app/data/services";
 import { caseShapesForService } from "@/app/data/caseShapes";
 import { products } from "@/app/data/products";
@@ -62,7 +65,7 @@ export default async function ServicePage({ params }: Params) {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "DECIFER", item: SITE },
+          { "@type": "ListItem", position: 1, name: "Decifer", item: SITE },
           { "@type": "ListItem", position: 2, name: "Services", item: `${SITE}/services` },
           { "@type": "ListItem", position: 3, name: s.name, item: `${SITE}/services/${s.key}` },
         ],
@@ -72,29 +75,21 @@ export default async function ServicePage({ params }: Params) {
 
   return (
     <>
-      <PageHero
-        label={s.navLabel}
-        title={s.cardHeadline}
-        lede={s.summary}
-        align="left"
-      >
-        <StackChips keys={s.stackKeys} />
+      <PageHero kicker={s.name} title={s.cardHeadline} lede={s.summary}>
+        <StackList keys={s.stackKeys} />
       </PageHero>
 
-      {/* Problem + what we do */}
-      <section className="pb-20 sm:pb-28">
-        <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-2">
-          <div>
-            <SectionLabel>The situation</SectionLabel>
-            <h2 className="mb-4 text-2xl font-bold tracking-tight text-ink">
-              {s.name}
-            </h2>
-            <p className="text-[15px] leading-relaxed text-body">{s.problem}</p>
+      {/* Situation and approach */}
+      <section className="pb-16 sm:pb-24">
+        <div className="container-x grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <SectionLabel>The situation you are probably in</SectionLabel>
+            <p className="t-body">{s.problem}</p>
           </div>
-          <div>
-            <SectionLabel>What we do</SectionLabel>
-            <p className="text-[15px] leading-relaxed text-body">{s.description}</p>
-            <p className="mt-5 rounded-xl border border-line-strong bg-surface/60 px-5 py-4 text-sm leading-relaxed text-muted">
+          <div className="md:col-span-6 md:col-start-7">
+            <SectionLabel>What we do about it</SectionLabel>
+            <p className="t-body">{s.description}</p>
+            <p className="mt-6 border-t border-line pt-4 text-[0.9375rem] leading-relaxed text-body">
               <span className="font-semibold text-ink">Typical engagement. </span>
               {s.typicalEngagement}
             </p>
@@ -103,24 +98,19 @@ export default async function ServicePage({ params }: Params) {
       </section>
 
       {/* Deliverables */}
-      <section className="bg-canvas py-20 sm:py-28">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="mb-10">
-            <SectionLabel>What you receive</SectionLabel>
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              Concrete things, not outcomes on a slide.
-            </h2>
-          </div>
-          <ol className="grid gap-4 md:grid-cols-2">
+      <section className="border-t border-line">
+        <div className="container-x section">
+          <SectionHead
+            title="What you receive."
+            lede="Concrete things, not outcomes on a slide. This list is the scope of the engagement."
+          />
+          <ol className="ruled mt-12">
             {s.deliverables.map((d, i) => (
-              <li
-                key={d}
-                className="card-lift flex gap-4 rounded-2xl border border-line-strong bg-surface p-6"
-              >
-                <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-cta/35 bg-cta/10 text-xs font-bold text-cta">
-                  {String(i + 1).padStart(2, "0")}
+              <li key={d} className="grid gap-2 py-5 md:grid-cols-12 md:gap-8">
+                <span className="text-sm font-semibold text-muted md:col-span-2">
+                  {i + 1} of {s.deliverables.length}
                 </span>
-                <p className="text-[15px] leading-relaxed text-body">{d}</p>
+                <p className="text-[1.0625rem] leading-relaxed text-ink md:col-span-9">{d}</p>
               </li>
             ))}
           </ol>
@@ -128,34 +118,30 @@ export default async function ServicePage({ params }: Params) {
       </section>
 
       {/* Fit */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto grid max-w-6xl gap-6 px-5 sm:px-8 md:grid-cols-2">
-          <div className="rounded-2xl border border-live/30 bg-live/5 p-8">
-            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-live">
-              A good fit when
-            </p>
-            <ul className="space-y-3">
+      <section className="border-t border-line">
+        <div className="container-x section grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <h2 className="t-h3 text-ink">A good fit when</h2>
+            <ul className="mt-5 space-y-3">
               {s.goodFit.map((g) => (
-                <li key={g} className="flex items-start gap-3 text-[15px] leading-relaxed text-body">
-                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-live" aria-hidden="true" />
+                <li key={g} className="flex gap-3 text-[1.0625rem] leading-relaxed text-body">
+                  <span className="mt-[0.7rem] h-1.5 w-1.5 shrink-0 rounded-full bg-live" aria-hidden="true" />
                   {g}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border border-line-strong bg-surface p-8">
-            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-              Not a fit when
-            </p>
-            <ul className="space-y-3">
+          <div className="md:col-span-6 md:col-start-7">
+            <h2 className="t-h3 text-ink">Not a fit when</h2>
+            <ul className="mt-5 space-y-3">
               {s.notAFit.map((n) => (
-                <li key={n} className="flex items-start gap-3 text-[15px] leading-relaxed text-body">
-                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-faint" aria-hidden="true" />
+                <li key={n} className="flex gap-3 text-[1.0625rem] leading-relaxed text-body">
+                  <span className="mt-[0.7rem] h-1.5 w-1.5 shrink-0 rounded-full bg-orange" aria-hidden="true" />
                   {n}
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-xs leading-relaxed text-muted">
+            <p className="mt-6 text-sm text-muted">
               If that describes you, the audit is still useful. It will say so plainly.
             </p>
           </div>
@@ -163,70 +149,58 @@ export default async function ServicePage({ params }: Params) {
       </section>
 
       {/* Proof */}
-      <section className="bg-canvas py-20 sm:py-28">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="mb-10">
-            <SectionLabel>Proof</SectionLabel>
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              Things you can check.
-            </h2>
+      <section className="border-t border-line">
+        <div className="container-x section">
+          <SectionHead
+            title="Things you can check."
+            lede="Figures from our own systems that this service draws on. Each one names its source."
+          />
+          <div className="mt-12">
+            <ProofStrip keys={s.proofRefs} />
           </div>
-          <ProofStrip keys={s.proofRefs} compact />
 
           {proofProduct ? (
-            <div className="mt-8 rounded-2xl border border-line-strong bg-surface p-7 sm:flex sm:items-center sm:justify-between sm:gap-8">
-              <div>
-                <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-                  Built this way for ourselves
-                </p>
-                <p className="text-[15px] leading-relaxed text-body">
-                  <span className="font-semibold text-ink">{proofProduct.name}</span> is
-                  a public product we run with the same method. Open it before you hire us.
+            <div className="mt-14 grid gap-8 md:grid-cols-12 md:items-start">
+              <div className="md:col-span-5">
+                <h3 className="t-h3 text-ink">Built this way for ourselves</h3>
+                <p className="t-body mt-3">
+                  {proofProduct.name} is a public product we run with the same method this
+                  service uses. Open it before you hire us.
                 </p>
               </div>
-              {proofProduct.href ? (
-                <a
-                  href={proofProduct.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-event={proofProduct.event}
-                  className="btn btn-secondary mt-5 px-5 py-2.5 sm:mt-0"
-                >
-                  Open {proofProduct.name}
-                </a>
-              ) : null}
+              <div className="md:col-span-6 md:col-start-7">
+                <ProductFrame product={proofProduct} tone="ink" />
+              </div>
             </div>
           ) : null}
 
           {shapes.length ? (
-            <div className="mt-12">
-              <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-                Work of this shape
-              </p>
-              <div className="grid gap-6 md:grid-cols-2">
+            <div className="mt-14">
+              <h3 className="t-h3 text-ink">Work of this shape</h3>
+              <ul className="ruled mt-6">
                 {shapes.map((c) => (
-                  <CaseShapeCard key={c.key} shape={c} />
+                  <CaseRow key={c.key} shape={c} />
                 ))}
-              </div>
+              </ul>
             </div>
           ) : null}
         </div>
       </section>
 
       {/* Other services */}
-      <section className="py-16">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-            Other services
-          </p>
-          <div className="flex flex-wrap gap-2">
+      <section className="border-t border-line">
+        <div className="container-x section-tight">
+          <p className="text-sm font-semibold text-ink">Other services</p>
+          <ul className="mt-3 flex flex-wrap gap-x-8 gap-y-2">
             {others.map((o) => (
-              <Link key={o.key} href={`/services/${o.key}`} className="chip">
-                <span className="chip-dot" aria-hidden="true" />
-                {o.navLabel}
-              </Link>
+              <li key={o.key}>
+                <Link href={`/services/${o.key}`} className="arrow-link text-[0.9375rem]">
+                  {o.name}
+                  <Arrow size={14} />
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 

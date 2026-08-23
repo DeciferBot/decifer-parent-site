@@ -13,16 +13,20 @@ export interface FaqItem {
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "What does DECIFER do?",
-    a: "DECIFER is an AI company based in Dubai. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses in the UAE and abroad. It also builds and runs three public products of its own: Decifer Markets, Decifer Learning and Decifer Marketing.",
+    q: "What does Decifer do?",
+    a: "Decifer is an AI company based in Dubai. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses of roughly 10 to 200 people in the UAE and abroad. It also builds and runs three public products of its own: Decifer Markets, Decifer Learning and Decifer Marketing.",
   },
   {
-    q: "You run your own products. Will you be around for my project?",
+    q: "How does an engagement start, and what does it cost?",
+    a: "Usually with a two-week audit at a fixed fee, credited in full against any build that follows. It maps where time goes in your business, scores what is worth automating, and lists plainly what not to automate yet. We do not publish prices because the honest answer depends on scope; you get a number after the first call.",
+  },
+  {
+    q: "You run your own products. Will you have time for my project?",
     a: "Yes. The products are where the methods get tested, and client work gets the tested version. Enquiries are read and answered by the founder within one working day, and every build carries a named owner and a runbook.",
   },
   {
-    q: "How does an engagement start?",
-    a: "Usually with a two-week audit at a fixed fee, credited in full against any build that follows. It maps where time goes in your business, scores what is worth automating, and lists plainly what not to automate yet. You get a written recommendation you can act on with or without us.",
+    q: "Who owns what gets built?",
+    a: "You do. Every account is opened in your name, the repository transfers to you at handover, and the data lives in standard Postgres you can export. Listing a tool on this site means we use it, not that we resell it.",
   },
   {
     q: "Why are no clients named on the site?",
@@ -33,16 +37,8 @@ export const FAQ_ITEMS: FaqItem[] = [
     a: "Every figure a customer sees is produced by ordinary code that can be read and tested. A model may write the sentence around the figure or pull a fact from a document, but it never invents the number, and a test fails the build if it tries. Sometimes the right answer is no AI at all, and we say so.",
   },
   {
-    q: "Is DECIFER the same as the word decipher?",
-    a: "No. DECIFER is a company name, spelled with an e. The idea is related, because we help people and businesses make sense of complex information, but DECIFER refers to the company and its products, not the dictionary word.",
-  },
-  {
-    q: "What are Decifer Markets, Decifer Learning and Decifer Marketing?",
-    a: "Three public products DECIFER builds and runs with the same method it uses for client work. Decifer Markets is market intelligence in plain English, for research only and not financial advice. Decifer Learning is a guided companion for the UK National Curriculum that supports learning and does not replace teachers. Decifer Marketing turns campaign data into a plain read on what is working and why.",
-  },
-  {
-    q: "How can I get early access to the products?",
-    a: "Join early access from the products page. Tell us which product you are interested in, and access will open gradually as each one becomes ready. No payment is required for early access.",
+    q: "Is Decifer the same as the word decipher?",
+    a: "No. Decifer is a company name, spelled with an e. The idea is related, because we help people and businesses make sense of complex information, but Decifer refers to the company and its products, not the dictionary word.",
   },
 ];
 

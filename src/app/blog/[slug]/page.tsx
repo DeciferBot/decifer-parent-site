@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import SectionLabel from "@/app/components/SectionLabel";
 import CtaBand from "@/app/components/CtaBand";
-import PostCard from "@/app/components/blog/PostCard";
+import PostRow from "@/app/components/blog/PostCard";
 import { getAllPosts, getPost, formatDate } from "@/lib/blog";
 import { servicesByKey } from "@/app/data/services";
 import { jsonLd, SITE } from "@/lib/jsonld";
@@ -35,7 +34,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       authors: [post.author],
       tags: post.tags,
       locale: "en_AE",
-      siteName: "DECIFER",
+      siteName: "Decifer",
     },
     twitter: { card: "summary_large_image", title: post.title, description: post.description },
   };
@@ -74,7 +73,7 @@ export default async function PostPage({ params }: Params) {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "DECIFER", item: SITE },
+          { "@type": "ListItem", position: 1, name: "Decifer", item: SITE },
           { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog` },
           { "@type": "ListItem", position: 3, name: post.title, item: `${SITE}/blog/${slug}` },
         ],
@@ -84,65 +83,63 @@ export default async function PostPage({ params }: Params) {
 
   return (
     <>
-      <article className="pt-32 pb-20 sm:pt-40 sm:pb-28">
-        <header className="mx-auto mb-12 max-w-3xl px-5 sm:px-8">
-          <Link href="/blog" className="mb-8 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M10 4L6 8l4 4" /></svg>
+      <article className="pt-28 pb-20 sm:pt-36 sm:pb-28">
+        <header className="container-x mb-12">
+          <Link href="/blog" className="arrow-link mb-8 text-sm text-muted hover:text-ink">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true"><path d="M10 4L6 8l4 4" /></svg>
             All articles
           </Link>
-          <SectionLabel>{post.topic}</SectionLabel>
-          <h1 className="mb-5 text-balance text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl">
-            {post.title}
-          </h1>
-          <p className="mb-6 text-lg leading-relaxed text-body">{post.description}</p>
-          <p className="text-sm text-muted">
-            <span className="text-ink">{post.author}</span>
-            <span className="mx-2 opacity-50">/</span>
+          <p className="mb-4 text-sm font-medium text-muted">{post.topic}</p>
+          <h1 className="t-h1 max-w-4xl text-ink">{post.title}</h1>
+          <p className="t-lede mt-6 max-w-2xl">{post.description}</p>
+          <p className="mt-6 text-sm text-muted">
+            <span className="font-medium text-ink">{post.author}</span>
+            <span className="mx-2">&middot;</span>
             <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
             {post.updatedAt && post.updatedAt !== post.publishedAt ? (
               <>
-                <span className="mx-2 opacity-50">/</span>
+                <span className="mx-2">&middot;</span>
                 Updated <time dateTime={post.updatedAt}>{formatDate(post.updatedAt)}</time>
               </>
             ) : null}
-            <span className="mx-2 opacity-50">/</span>
+            <span className="mx-2">&middot;</span>
             {post.readingMinutes} min read
           </p>
         </header>
 
-        <div className="prose-decifer mx-auto max-w-3xl px-5 sm:px-8">
-          <Body />
+        <div className="container-x">
+          <div className="prose-decifer max-w-3xl">
+            <Body />
+          </div>
         </div>
 
         {services.length ? (
-          <aside className="mx-auto mt-16 max-w-3xl px-5 sm:px-8">
-            <div className="rounded-2xl border border-cta/30 bg-cta/5 p-7">
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-cta">
-                If this is your situation
-              </p>
-              <p className="mb-4 text-[15px] leading-relaxed text-body">
+          <aside className="container-x mt-16">
+            <div className="max-w-3xl border-t border-line pt-6">
+              <p className="text-sm font-semibold text-ink">If this is your situation</p>
+              <p className="t-body mt-2">
                 This is the kind of work we do under{" "}
                 {services.map((s, i) => (
                   <span key={s.key}>
-                    <Link href={`/services/${s.key}`} className="font-semibold text-ink hover:underline">{s.navLabel}</Link>
+                    <Link href={`/services/${s.key}`} className="link">{s.name}</Link>
                     {i < services.length - 1 ? " and " : ""}
                   </span>
                 ))}
                 . Most engagements start with a two-week audit.
               </p>
-              <Link href="/contact" data-event={`blog_${slug}_cta`} className="btn btn-primary px-5 py-2.5">
-                Book a discovery call
+              <Link href="/contact" data-event={`blog_${slug}_cta`} className="btn btn-primary mt-5">
+                Book a 30-minute call
               </Link>
             </div>
           </aside>
         ) : null}
 
         {related.length ? (
-          <aside className="mx-auto mt-16 max-w-6xl px-5 sm:px-8">
-            <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">Related</p>
-            <div className="grid gap-6 md:grid-cols-2">
-              {related.map((p) => <PostCard key={p.slug} post={p} />)}
-            </div>
+          <aside className="container-x mt-16">
+            <h2 className="t-h3 text-ink">Related</h2>
+            <ul className="ruled mt-4">
+              {related.map((p) => <PostRow key={p.slug} post={p} />)}
+            </ul>
           </aside>
         ) : null}
       </article>

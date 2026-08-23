@@ -13,7 +13,7 @@ import "server-only";
  */
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const FROM_ADDRESS = process.env.RESEND_FROM ?? "DECIFER <onboarding@resend.dev>";
+const FROM_ADDRESS = process.env.RESEND_FROM ?? "Decifer <onboarding@resend.dev>";
 
 export interface SendEmailOptions {
   to: string[];
@@ -144,7 +144,7 @@ export async function confirmEnquiryToSubmitter(e: EnquiryNotification): Promise
       ``,
       `If anything above is wrong, just reply to this email and correct it.`,
       ``,
-      `DECIFER`,
+      `Decifer`,
       `Dubai, United Arab Emirates`,
       `https://www.decifer.io`,
     ]
@@ -168,7 +168,7 @@ export async function confirmEarlyAccessToSubmitter(opts: {
     idempotencyKey: `early-access:${opts.email.toLowerCase()}:${minuteBucket}`,
     subject: `You are on the list, ${first}`,
     text: [
-      `Thanks for joining DECIFER early access.`,
+      `Thanks for joining Decifer early access.`,
       ``,
       `You asked about: ${opts.interestLabel}`,
       ``,
@@ -177,7 +177,7 @@ export async function confirmEarlyAccessToSubmitter(opts: {
       ``,
       `If you have a question in the meantime, reply to this email.`,
       ``,
-      `DECIFER`,
+      `Decifer`,
       `Dubai, United Arab Emirates`,
       `https://www.decifer.io`,
     ].join("\n"),

@@ -3,8 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/app/components/PageHero";
 import CtaBand from "@/app/components/CtaBand";
-import SectionLabel from "@/app/components/SectionLabel";
-import StackChips from "@/app/components/StackChips";
+import StackList from "@/app/components/StackChips";
+import Arrow from "@/app/components/Arrow";
 import { publishedCaseShapes, caseShapesByKey } from "@/app/data/caseShapes";
 import { servicesByKey } from "@/app/data/services";
 import { jsonLd, SITE } from "@/lib/jsonld";
@@ -29,30 +29,22 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 function Block({
-  label,
   title,
   items,
-  tone = "default",
+  marker = "ink",
 }: {
-  label: string;
   title: string;
   items: string[];
-  tone?: "default" | "boundary";
+  marker?: "ink" | "orange";
 }) {
-  const boundary = tone === "boundary";
   return (
-    <div
-      className={`rounded-2xl border p-8 ${boundary ? "border-cta/30 bg-cta/5" : "border-line-strong bg-surface"}`}
-    >
-      <p className={`mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] ${boundary ? "text-cta" : "text-muted"}`}>
-        {label}
-      </p>
-      <h2 className="mb-5 text-xl font-bold text-ink">{title}</h2>
-      <ul className="space-y-3">
+    <div className="border-t border-line pt-5">
+      <h2 className="t-h3 text-ink">{title}</h2>
+      <ul className="mt-5 space-y-3">
         {items.map((item) => (
-          <li key={item} className="flex items-start gap-3 text-[15px] leading-relaxed text-body">
+          <li key={item} className="flex gap-3 text-[1.0625rem] leading-relaxed text-body">
             <span
-              className={`mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full ${boundary ? "bg-cta" : "bg-brand"}`}
+              className={`mt-[0.7rem] h-1.5 w-1.5 shrink-0 rounded-full ${marker === "orange" ? "bg-orange" : "bg-ink"}`}
               aria-hidden="true"
             />
             {item}
@@ -85,7 +77,7 @@ export default async function CaseShapePage({ params }: Params) {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "DECIFER", item: SITE },
+          { "@type": "ListItem", position: 1, name: "Decifer", item: SITE },
           { "@type": "ListItem", position: 2, name: "Work", item: `${SITE}/work` },
           { "@type": "ListItem", position: 3, name: c.title, item: `${SITE}/work/${c.key}` },
         ],
@@ -95,65 +87,50 @@ export default async function CaseShapePage({ params }: Params) {
 
   return (
     <>
-      <PageHero
-        label={`${c.sector} / ${c.region}`}
-        title={c.title}
-        lede={`${c.clientShape}.`}
-        align="left"
-      >
-        <StackChips keys={c.stackKeys} />
+      <PageHero kicker={`${c.sector}, ${c.region}`} title={c.title} lede={`${c.clientShape}.`}>
+        <StackList keys={c.stackKeys} />
       </PageHero>
 
-      <section className="pb-16">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          <SectionLabel>The situation</SectionLabel>
-          <p className="text-lg leading-relaxed text-body">{c.situation}</p>
+      <section className="pb-16 sm:pb-20">
+        <div className="container-x grid gap-6 md:grid-cols-12">
+          <h2 className="t-h3 text-ink md:col-span-3">Before</h2>
+          <p className="t-lede md:col-span-8 md:col-start-4">{c.situation}</p>
         </div>
       </section>
 
-      <section className="pb-20 sm:pb-28">
-        <div className="mx-auto grid max-w-6xl gap-6 px-5 sm:px-8 md:grid-cols-2">
-          <Block label="What we built" title="The work" items={c.work} />
-          <Block label="What changed" title="The outcome" items={c.outcome} />
-          <Block
-            label="What we deliberately did not automate"
-            title="The boundaries"
-            items={c.boundaries}
-            tone="boundary"
-          />
-          <div className="rounded-2xl border border-line-strong bg-surface p-8">
-            <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-              How it is measured
-            </p>
-            <h2 className="mb-5 text-xl font-bold text-ink">The check</h2>
-            <p className="text-[15px] leading-relaxed text-body">{c.measurement}</p>
-            <p className="mt-6 mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-              What we cannot tell you
-            </p>
-            <p className="text-[15px] leading-relaxed text-body">{c.withheld}</p>
+      <section className="pb-16 sm:pb-24">
+        <div className="container-x grid gap-12 md:grid-cols-2 md:gap-x-10">
+          <Block title="What we built" items={c.work} />
+          <Block title="What changed" items={c.outcome} />
+          <Block title="What we deliberately did not automate" items={c.boundaries} marker="orange" />
+          <div className="border-t border-line pt-5">
+            <h2 className="t-h3 text-ink">How it is measured</h2>
+            <p className="t-body mt-5">{c.measurement}</p>
+            <h2 className="t-h3 mt-10 text-ink">What we cannot tell you</h2>
+            <p className="t-body mt-5">{c.withheld}</p>
           </div>
         </div>
       </section>
 
-      <section className="bg-canvas py-16">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-            Services this came from
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {c.serviceKeys.map((k) => {
-              const s = servicesByKey[k];
-              return (
-                <Link key={k} href={`/services/${k}`} className="chip">
-                  <span className="chip-dot" aria-hidden="true" />
-                  {s.navLabel}
+      <section className="border-t border-line">
+        <div className="container-x section-tight">
+          <p className="text-sm font-semibold text-ink">Services this came from</p>
+          <ul className="mt-3 flex flex-wrap gap-x-8 gap-y-2">
+            {c.serviceKeys.map((k) => (
+              <li key={k}>
+                <Link href={`/services/${k}`} className="arrow-link text-[0.9375rem]">
+                  {servicesByKey[k].name}
+                  <Arrow size={14} />
                 </Link>
-              );
-            })}
-            <Link href="/work" className="chip">
-              All work
-            </Link>
-          </div>
+              </li>
+            ))}
+            <li>
+              <Link href="/work" className="arrow-link text-[0.9375rem]">
+                All work
+                <Arrow size={14} />
+              </Link>
+            </li>
+          </ul>
         </div>
       </section>
 

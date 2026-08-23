@@ -72,21 +72,9 @@ export default function EarlyAccessForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-live/35 bg-live/8 p-8 text-center">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-live/40 bg-live/15">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 22 22"
-            fill="none"
-            stroke="#1ad385"
-            strokeWidth="1.75"
-            strokeLinecap="round"
-          >
-            <path d="M4 11l5 5 9-9" />
-          </svg>
-        </div>
-        <h3 className="mb-2 text-xl font-bold text-ink">
+      <div className="border-t border-line pt-6" role="status">
+        <p className="status text-live"><span className="text-ink">Sent</span></p>
+        <h3 className="mt-3 mb-2 text-xl font-semibold text-ink">
           {"You're on the list."}
         </h3>
         <p className="text-[15px] leading-relaxed text-body">
@@ -122,7 +110,7 @@ export default function EarlyAccessForm() {
             htmlFor="ea-name"
             className="mb-1.5 block text-sm font-medium text-ink"
           >
-            Name <span className="text-brand">*</span>
+            Name <span className="text-orange-text">*</span>
           </label>
           <input
             id="ea-name"
@@ -134,7 +122,7 @@ export default function EarlyAccessForm() {
             className={inputClass("name")}
           />
           {errors.name && (
-            <p className="mt-1.5 text-xs text-red-400">{errors.name}</p>
+            <p className="mt-1.5 text-xs text-error">{errors.name}</p>
           )}
         </div>
 
@@ -144,7 +132,7 @@ export default function EarlyAccessForm() {
             htmlFor="ea-email"
             className="mb-1.5 block text-sm font-medium text-ink"
           >
-            Email <span className="text-brand">*</span>
+            Email <span className="text-orange-text">*</span>
           </label>
           <input
             id="ea-email"
@@ -156,7 +144,7 @@ export default function EarlyAccessForm() {
             className={inputClass("email")}
           />
           {errors.email && (
-            <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>
+            <p className="mt-1.5 text-xs text-error">{errors.email}</p>
           )}
         </div>
 
@@ -166,7 +154,7 @@ export default function EarlyAccessForm() {
             htmlFor="ea-interest"
             className="mb-1.5 block text-sm font-medium text-ink"
           >
-            Most interested in <span className="text-brand">*</span>
+            Most interested in <span className="text-orange-text">*</span>
           </label>
           <select
             id="ea-interest"
@@ -184,7 +172,7 @@ export default function EarlyAccessForm() {
             ))}
           </select>
           {errors.interest && (
-            <p className="mt-1.5 text-xs text-red-400">{errors.interest}</p>
+            <p className="mt-1.5 text-xs text-error">{errors.interest}</p>
           )}
         </div>
 
@@ -200,10 +188,10 @@ export default function EarlyAccessForm() {
           <textarea
             id="ea-message"
             rows={3}
-            placeholder="Tell us how you plan to use DECIFER, or anything you'd like us to know."
+            placeholder="Tell us how you plan to use it, or anything you would like us to know."
             value={form.message}
             onChange={set("message")}
-            className="form-input resize-none"
+            className="form-input"
           />
         </div>
 
@@ -211,13 +199,13 @@ export default function EarlyAccessForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="w-full rounded-xl bg-cta px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cta/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#ff6a36] hover:shadow-xl hover:shadow-cta/30 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+          className="btn btn-primary w-full sm:w-auto"
         >
           {status === "submitting" ? "Submitting…" : "Request early access"}
         </button>
 
         {status === "error" && (
-          <p className="text-center text-sm text-red-400">
+          <p className="text-center text-sm text-error">
             Something went wrong. Please try again or email{" "}
             <a
               href="mailto:hello@decifer.io"

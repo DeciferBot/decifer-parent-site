@@ -1,18 +1,16 @@
 /**
- * Bracketed section eyebrow, e.g. "[ The Problem ]".
- * Used by every homepage section and by the standalone pages
- * (/services, /work, /products, /stack, /about, /contact).
+ * Small semibold label. Used sparingly, only where a list really needs a
+ * name (for example "A good fit when" above a list of qualifiers). Not a
+ * section eyebrow; sections use SectionHead.
  */
 export default function SectionLabel({
   children,
+  className = "",
 }: {
   children: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <div className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-muted">
-      <span className="opacity-60">[ </span>
-      {children}
-      <span className="opacity-60"> ]</span>
-    </div>
+    <p className={`mb-3 text-sm font-semibold text-ink ${className}`}>{children}</p>
   );
 }

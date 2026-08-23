@@ -1,16 +1,14 @@
-# DECIFER Brand Guidelines
+# Decifer Brand Guidelines
 
-> Internal reference. Last updated: May 2026.
+> Internal reference. Last updated: 23 August 2026 (marketing overhaul). Visual system detail lives in `DESIGN.md` at the repo root.
 
 ---
 
 ## Parent brand
 
-**DECIFER** (all caps) is the parent company and platform.
+**Decifer** (title case) is the parent company and platform.
 
-Use `DECIFER` wherever you refer to the company, the platform as a whole, or the brand identity.
-
-Never write `Decifer` when referring to the parent brand in marketing, product, or legal copy.
+Changed 23 August 2026: the three product sites all set the wordmark as `Decifer`, so the parent site now matches. Write `Decifer` in marketing, product and email copy. The all-caps form survives only in existing legal pages (untouched until the UAE registration is issued) and in code comments and log tags.
 
 ---
 
@@ -58,32 +56,40 @@ When referring to a product within a sentence, use: "Decifer Markets" or "the De
 
 ## Colour palette
 
-| Token | Hex | Usage |
+Light theme, cool-neutral greys, one committed orange. Full token list in `src/app/globals.css` and `DESIGN.md`.
+
+| Token | Value | Usage |
 |---|---|---|
-| `--color-mark` | `#F05A28` | DECIFER bracket mark — all products |
-| `--color-brand` | `#3d7eff` | Primary blue, CTAs, Trading accent |
-| `--color-learn` | `#7c5ce0` | Learning accent, violet gradient |
-| `--color-live` | `#0dc47c` | Success, live status, confirmations |
-| `--color-canvas` | `#060b18` | Page background |
-| `--color-surface` | `#0b1328` | Card background |
-| `--color-ink` | `#eef2ff` | Primary text |
-| `--color-muted` | `#5d7299` | Secondary text |
-| `--color-faint` | `#2a3860` | Disabled/tertiary |
-| `--color-line` | `#172038` | Borders |
+| `--color-orange` | `#F05A28` | Locked. The mark, primary buttons, the orange drench sections (the rule, the CTA band) |
+| `--color-orange-text` | `oklch(52% 0.19 36)` | Orange as small text or links on white (passes AA) |
+| `--color-canvas` | `#FFFFFF` | Page background |
+| `--color-surface` | `oklch(97% 0.004 250)` | Quiet panels |
+| `--color-dark` | `oklch(15% 0.012 250)` | The products band and the footer only |
+| `--color-ink` | `oklch(18% 0.012 250)` | Headings |
+| `--color-body` | `oklch(32% 0.012 250)` | Paragraphs |
+| `--color-muted` | `oklch(46% 0.014 250)` | Metadata (5:1 on white) |
+| `--color-line` | `oklch(89% 0.006 250)` | Hairlines |
+| `--color-live` | `oklch(52% 0.15 155)` | Live status |
+
+Rules: text on orange is ink, never white below 24px. Product accent colours (blue, violet, teal) appear only as a small status dot on product cards. No gradients, no glows, no dot grids.
 
 ---
 
 ## Typography
 
-Fonts: **Instrument Serif** (display, italic accents) and **DM Sans** (body), loaded via `next/font/google`
+One family: **Schibsted Grotesk** (variable), loaded via `next/font/google` as `--font-grotesk`. Hierarchy comes from weight and size, not from a second face.
 
-| Role | Style |
-|---|---|
-| Page headline | 800 weight, tight tracking, large |
-| Section headline | 700 weight |
-| Body | 400 weight, relaxed line-height |
-| Label / caption | 500 weight, uppercase, widest tracking |
-| Form input | 400 weight, 0.9375rem |
+| Role | Class | Style |
+|---|---|---|
+| Home headline | `.t-display` | 700, clamp to 68px, -0.025em |
+| Page headline | `.t-h1` | 700, clamp to 56px, -0.022em |
+| Section headline | `.t-h2` | 700, clamp to 44px, -0.02em |
+| Sub heading | `.t-h3` | 600, 20 to 24px |
+| Lede | `.t-lede` | 400, 17 to 20px, 1.55 leading |
+| Body | `.t-body` | 400, 16px, 1.6 leading |
+| Mono | `.t-mono` | System mono, only inside log or code examples |
+
+No uppercase tracked labels above sections. No numbered section markers unless the section is a real ordered sequence.
 
 ---
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { enquiryServiceOptions as SERVICES } from "../data/services";
 
@@ -47,7 +47,7 @@ function track(event: string) {
 export default function EnquiryForm() {
   const pathname = usePathname();
   const [status, setStatus] = useState<Status>("idle");
-  const [mountedAt, setMountedAt] = useState<number>(0);
+  const mountedAt = useRef<number>(0);
   const [serverError, setServerError] = useState<string>("");
   const [form, setForm] = useState({
     name: "",
@@ -64,7 +64,9 @@ export default function EnquiryForm() {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof typeof form, string>>>({});
 
-  useEffect(() => setMountedAt(Date.now()), []);
+  useEffect(() => {
+    mountedAt.current = Date.now();
+  }, []);
 
   const set =
     (field: keyof typeof form) =>
@@ -106,7 +108,7 @@ export default function EnquiryForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
-          elapsedMs: mountedAt ? Date.now() - mountedAt : undefined,
+          elapsedMs: mountedAt.current ? Date.now() - mountedAt.current : undefined,
           sourcePath: pathname,
         }),
       });
@@ -125,13 +127,9 @@ export default function EnquiryForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-live/35 bg-live/8 p-8 text-center">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-live/40 bg-live/15">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#1ad385" strokeWidth="1.75" strokeLinecap="round">
-            <path d="M4 11l5 5 9-9" />
-          </svg>
-        </div>
-        <h3 className="mb-2 text-xl font-bold text-ink">Got it. Thank you.</h3>
+      <div className="border-t border-line pt-6" role="status">
+        <p className="status text-live"><span className="text-ink">Sent</span></p>
+        <h3 className="mt-3 mb-2 text-xl font-semibold text-ink">Got it. Thank you.</h3>
         <p className="text-[15px] leading-relaxed text-body">
           A confirmation is on its way to your inbox. Amit will read your enquiry
           and reply within one working day.
@@ -143,8 +141,8 @@ export default function EnquiryForm() {
   const inputClass = (field: keyof typeof errors) =>
     `form-input ${errors[field] ? "form-input-error" : ""}`;
 
-  const Err = ({ field }: { field: keyof typeof errors }) =>
-    errors[field] ? <p className="mt-1.5 text-xs text-red-400">{errors[field]}</p> : null;
+  const err = (field: keyof typeof errors) =>
+    errors[field] ? <p className="mt-1.5 text-xs text-error">{errors[field]}</p> : null;
 
   return (
     <form onSubmit={handleSubmit} noValidate>
@@ -157,17 +155,17 @@ export default function EnquiryForm() {
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="enq-name" className="mb-1.5 block text-sm font-medium text-ink">
-              Name <span className="text-brand">*</span>
+              Name <span className="text-orange-text">*</span>
             </label>
             <input id="enq-name" type="text" autoComplete="name" placeholder="Your name" value={form.name} onChange={set("name")} className={inputClass("name")} />
-            <Err field="name" />
+            {err("name")}
           </div>
           <div>
             <label htmlFor="enq-email" className="mb-1.5 block text-sm font-medium text-ink">
-              Email <span className="text-brand">*</span>
+              Email <span className="text-orange-text">*</span>
             </label>
             <input id="enq-email" type="email" autoComplete="email" placeholder="you@company.com" value={form.email} onChange={set("email")} className={inputClass("email")} />
-            <Err field="email" />
+            {err("email")}
           </div>
         </div>
 
@@ -180,19 +178,19 @@ export default function EnquiryForm() {
           </div>
           <div>
             <label htmlFor="enq-based" className="mb-1.5 block text-sm font-medium text-ink">
-              Where are you based <span className="text-brand">*</span>
+              Where are you based <span className="text-orange-text">*</span>
             </label>
             <select id="enq-based" value={form.basedIn} onChange={set("basedIn")} className={inputClass("basedIn")}>
               <option value="" disabled>Select</option>
               {BASED_IN.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
             </select>
-            <Err field="basedIn" />
+            {err("basedIn")}
           </div>
         </div>
 
         <div>
           <label htmlFor="enq-problem" className="mb-1.5 block text-sm font-medium text-ink">
-            What do you want to change <span className="text-brand">*</span>
+            What do you want to change <span className="text-orange-text">*</span>
           </label>
           <textarea
             id="enq-problem"
@@ -203,7 +201,7 @@ export default function EnquiryForm() {
             className={`${inputClass("problem")} resize-none`}
           />
           <div className="mt-1.5 flex items-center justify-between">
-            <Err field="problem" />
+            {err("problem")}
             <span className="ml-auto text-xs text-faint">{form.problem.trim().length} / {MIN_PROBLEM_CHARS} min</span>
           </div>
         </div>
@@ -211,23 +209,23 @@ export default function EnquiryForm() {
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="enq-service" className="mb-1.5 block text-sm font-medium text-ink">
-              Closest service <span className="text-brand">*</span>
+              Closest service <span className="text-orange-text">*</span>
             </label>
             <select id="enq-service" value={form.service} onChange={set("service")} className={inputClass("service")}>
               <option value="" disabled>Select</option>
               {SERVICES.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
             </select>
-            <Err field="service" />
+            {err("service")}
           </div>
           <div>
             <label htmlFor="enq-timeline" className="mb-1.5 block text-sm font-medium text-ink">
-              When do you want to start <span className="text-brand">*</span>
+              When do you want to start <span className="text-orange-text">*</span>
             </label>
             <select id="enq-timeline" value={form.timeline} onChange={set("timeline")} className={inputClass("timeline")}>
               <option value="" disabled>Select</option>
               {TIMELINES.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
             </select>
-            <Err field="timeline" />
+            {err("timeline")}
           </div>
         </div>
 
@@ -251,25 +249,25 @@ export default function EnquiryForm() {
 
         <div>
           <label className="flex items-start gap-3 text-sm leading-relaxed text-body">
-            <input type="checkbox" checked={form.consent} onChange={set("consent")} className="mt-1 h-4 w-4 flex-shrink-0 accent-[#F05A28]" />
+            <input type="checkbox" checked={form.consent} onChange={set("consent")} className="form-check mt-0.5" />
             <span>
-              I am happy for DECIFER to contact me about this enquiry. See the{" "}
-              <a href="/legal/privacy" className="text-cta underline-offset-2 hover:underline">Privacy Policy</a>.
+              I am happy for Decifer to contact me about this enquiry. See the{" "}
+              <a href="/legal/privacy" className="link">privacy policy</a>.
             </span>
           </label>
-          <Err field="consent" />
+          {err("consent")}
         </div>
 
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="w-full rounded-xl bg-cta px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cta/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#ff6a36] hover:shadow-xl hover:shadow-cta/30 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+          className="btn btn-primary w-full sm:w-auto"
         >
           {status === "submitting" ? "Sending..." : "Send the enquiry"}
         </button>
 
         {status === "error" && (
-          <p className="text-center text-sm text-red-400">
+          <p className="text-sm text-error">
             {serverError || "Something went wrong."} Please try again or email{" "}
             <a href="mailto:hello@decifer.io" className="font-medium underline-offset-2 hover:underline">hello@decifer.io</a>.
           </p>

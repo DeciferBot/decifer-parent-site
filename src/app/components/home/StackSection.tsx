@@ -1,29 +1,21 @@
 import Link from "next/link";
-import SectionLabel from "../SectionLabel";
-import { stack } from "../../data/stack";
+import SectionHead from "../SectionHead";
+import LogoRow from "../LogoRow";
 
 export default function StackSection() {
-  const items = stack.slice().sort((a, b) => a.order - b.order);
   return (
-    <section id="stack" className="py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="mb-8 text-center">
-          <SectionLabel>Tools we build with</SectionLabel>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-body">
-            These are the tools we build with, not partnerships. Every account
-            is set up in your name, so what we build is yours to keep.
-          </p>
+    <section id="stack" className="border-t border-line">
+      <div className="container-x section">
+        <SectionHead
+          title="Built with tools you will own."
+          lede="Every account is opened in your name. At handover the repository, the accounts and a runbook transfer to you, so nothing of yours is something only we can reach."
+        />
+        <div className="mt-12">
+          <LogoRow />
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-2.5">
-          {items.map((t) => (
-            <Link key={t.key} href="/stack" className="chip" title={t.role}>
-              <span className="chip-dot" aria-hidden="true" />
-              {t.name}
-            </Link>
-          ))}
-        </div>
-        <p className="mt-6 text-center text-sm text-muted">
-          <Link href="/stack" className="text-cta hover:underline">
+        <p className="mt-10 text-sm text-muted">
+          Listing a tool means we use it, not that its maker endorses us.{" "}
+          <Link href="/stack" className="link">
             Why each one, and what you own
           </Link>
         </p>

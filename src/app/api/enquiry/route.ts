@@ -27,7 +27,7 @@ const MIN_ELAPSED_MS = 2500;
 const MAX_PER_HOUR = 5;
 
 const CONSENT_TEXT =
-  "I am happy for DECIFER to contact me about this enquiry. See the Privacy Policy.";
+  "I am happy for Decifer to contact me about this enquiry. See the Privacy Policy.";
 
 interface EnquiryPayload {
   name?: string;

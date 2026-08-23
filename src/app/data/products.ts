@@ -110,7 +110,7 @@ export const products: Product[] = [
 /** Early-access interest options: every product, plus a general option. */
 export const earlyAccessInterests: { value: string; label: string }[] = [
   ...products.map((p) => ({ value: p.interestValue, label: p.name })),
-  { value: "General", label: "General interest in DECIFER" },
+  { value: "General", label: "General interest in Decifer" },
 ];
 
 /** Valid interest values accepted by the early-access API. */

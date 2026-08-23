@@ -2,16 +2,20 @@ import Link from "next/link";
 import { getStackItems } from "../data/stack";
 import type { StackKey } from "../data/stack";
 
-/** Row of tool chips, each linking to /stack. */
-export default function StackChips({ keys }: { keys: StackKey[] }) {
+/** Plain inline list of tools, linking to /stack. */
+export default function StackList({ keys }: { keys: StackKey[] }) {
+  const items = getStackItems(keys);
   return (
-    <div className="flex flex-wrap gap-2">
-      {getStackItems(keys).map((t) => (
-        <Link key={t.key} href="/stack" className="chip" title={t.role}>
-          <span className="chip-dot" aria-hidden="true" />
-          {t.name}
-        </Link>
+    <p className="text-sm text-body">
+      <span className="font-semibold text-ink">Built with </span>
+      {items.map((t, i) => (
+        <span key={t.key}>
+          <Link href="/stack" className="link-quiet" title={t.role}>
+            {t.name}
+          </Link>
+          {i < items.length - 1 ? ", " : "."}
+        </span>
       ))}
-    </div>
+    </p>
   );
 }
