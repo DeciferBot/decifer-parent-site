@@ -5,9 +5,9 @@ import LogoRow from "@/app/components/LogoRow";
 import { stack, stackCategories } from "@/app/data/stack";
 
 export const metadata: Metadata = {
-  title: "The tools we build with, and why",
+  title: "The tools we know deeply, and why",
   description:
-    "Decifer builds on Claude, Codex, Next.js, Vercel, Supabase, Cloudflare, DigitalOcean, GitHub, Resend, Stripe, BigQuery and Google Analytics. Every account is held in the client's name.",
+    "Decifer has built and run production systems on Claude, Codex, Next.js, Vercel, Supabase, Cloudflare, DigitalOcean, GitHub, Resend, Stripe, BigQuery and Google Analytics. Every account is held in the client's name.",
   alternates: { canonical: "/stack" },
 };
 
@@ -15,9 +15,9 @@ export default function StackPage() {
   return (
     <>
       <PageHero
-        kicker="Tools we build with"
-        title="Your accounts. Your data. In your name."
-        lede="These are the tools we build with, not partnerships. Every one is set up in the client's own account, so what we build is an asset you own and can take elsewhere."
+        kicker="Expertise"
+        title="Tools we know deeply. Your accounts, your data, in your name."
+        lede="We have built and run live systems on every tool on this page. Each one is set up in the client's own account, so what we build is an asset you own and can take elsewhere."
       />
 
       <section className="pb-16 sm:pb-20">
@@ -65,9 +65,9 @@ export default function StackPage() {
           </div>
           <p className="mt-16 max-w-2xl text-sm leading-relaxed text-muted">
             Product names and marks belong to their owners. Listing a tool here
-            means we use it, not that its maker endorses us. We pick tools on one
-            test: can the client hold the account, read the data, and leave if
-            they want to.
+            means we have shipped production systems on it, not that its maker
+            endorses us. We pick tools on one test: can the client hold the
+            account, read the data, and leave if they want to.
           </p>
         </div>
       </section>

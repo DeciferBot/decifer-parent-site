@@ -5,7 +5,7 @@ import CtaBand from "@/app/components/CtaBand";
 import SectionHead from "@/app/components/SectionHead";
 import ProofStrip from "@/app/components/ProofStrip";
 import FounderSection from "@/app/components/home/FounderSection";
-import { proof, proofByKey } from "@/app/data/proof";
+import { publicProof, proofByKey } from "@/app/data/proof";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
@@ -168,7 +168,7 @@ export default function AboutPage() {
           />
           <div className="mt-12">
             <ProofStrip
-              keys={["liveProducts", "monthsLive", "repositories", "commits", "routes", "tables", "scheduledJobs", "integrations"]}
+              keys={["liveProducts", "monthsLive", "routes", "tables", "scheduledJobs", "integrations", "testFunctions", "deletedAi"]}
               showSourceLink={false}
             />
           </div>
@@ -183,7 +183,7 @@ export default function AboutPage() {
                 </tr>
               </thead>
               <tbody>
-                {proof.map((p) => (
+                {publicProof.map((p) => (
                   <tr key={p.key} className="border-b border-line align-top">
                     <td className="py-3 pr-6 font-semibold text-ink whitespace-nowrap">{p.value}</td>
                     <td className="py-3 pr-6 text-body">

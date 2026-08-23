@@ -7,14 +7,14 @@ export default function StackSection() {
     <section id="stack" className="border-t border-line">
       <div className="container-x section">
         <SectionHead
-          title="Built with tools you will own."
-          lede="Every account is opened in your name. At handover the repository, the accounts and a runbook transfer to you, so nothing of yours is something only we can reach."
+          title="Tools we know deeply. Accounts you will own."
+          lede="We have built and run production systems on every tool here, so the first week of a build is never spent learning it. Every account is opened in your name, and at handover the repository, the accounts and a runbook transfer to you."
         />
         <div className="mt-12">
           <LogoRow />
         </div>
         <p className="mt-10 text-sm text-muted">
-          Listing a tool means we use it, not that its maker endorses us.{" "}
+          Listing a tool means we have shipped production systems on it, not that its maker endorses us.{" "}
           <Link href="/stack" className="link">
             Why each one, and what you own
           </Link>

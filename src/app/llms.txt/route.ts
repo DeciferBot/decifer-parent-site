@@ -43,7 +43,7 @@ export function GET() {
       (c) => `- [${c.title}](${SITE}/work/${c.key}): ${c.clientShape}. ${c.sector}, ${c.region}.`
     ),
     "",
-    "## Tools Decifer builds with",
+    "## Tools Decifer has built production systems on",
     "",
     stack.map((t) => t.name).join(", ") + ". Every account is held in the client's name.",
     "",
