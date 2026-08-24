@@ -6,8 +6,8 @@ import Link from "next/link";
  * Ink text on orange passes AA at every size.
  */
 export default function CtaBand({
-  title = "Tell us what you want to change.",
-  body = "Thirty minutes with the founder, no slides. You leave knowing whether we can help, what it would take, and what we would not automate yet.",
+  title = "Make the next AI project one the business can measure.",
+  body = "Thirty minutes with the founder, no slides. You leave knowing whether the process is worth automating, what it would take, what it should return, and what we would not automate yet.",
   eventPrefix = "cta",
 }: {
   title?: string;
@@ -29,7 +29,7 @@ export default function CtaBand({
                 data-event={`${eventPrefix}_book_call`}
                 className="btn btn-on-orange"
               >
-                Book a 30-minute call
+                Discuss a business process
               </Link>
               <a
                 href="mailto:hello@decifer.io"

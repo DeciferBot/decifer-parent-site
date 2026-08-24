@@ -5,13 +5,14 @@ import CtaBand from "@/app/components/CtaBand";
 import SectionHead from "@/app/components/SectionHead";
 import ProofStrip from "@/app/components/ProofStrip";
 import FounderSection from "@/app/components/home/FounderSection";
+import BuiltSection from "@/app/components/home/BuiltSection";
 import { publicProof, proofByKey } from "@/app/data/proof";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "About Decifer: an AI company in Dubai that ships",
+  title: "About Decifer: an AI implementation company in Dubai",
   description:
-    "Decifer is an AI company based in Dubai, founded by Amit Chopra. It builds agents, automation and complete products for businesses, and runs three public products with the same method.",
+    "Decifer is an AI implementation company based in Dubai, founded by Amit Chopra. It takes business processes from AI pilot to dependable daily operation, and runs three public products on the same method.",
   alternates: { canonical: "/about" },
 };
 
@@ -52,8 +53,8 @@ const principles = [
     body: "Your accounts, your data, your repository. At handover there is nothing of yours that only we can reach.",
   },
   {
-    title: "Clients are never named",
-    body: "Work is described by shape. Numbers appear only with the method and written permission.",
+    title: "Clients are named only with written permission",
+    body: "By default, work is described by shape. Numbers appear only with the method and written permission.",
   },
 ];
 
@@ -86,7 +87,7 @@ export default function AboutPage() {
       <PageHero
         kicker="About"
         title="Based in Dubai. Built to be checked."
-        lede="Decifer is an AI company in Dubai, United Arab Emirates. It builds AI agents, reporting systems and complete products for businesses here and abroad, and it runs three public products with exactly the same method."
+        lede="Decifer is an AI implementation company in Dubai, United Arab Emirates. It takes business processes from AI pilot to dependable daily operation for businesses here and abroad, and it runs three public products with exactly the same method."
       />
 
       {/* Purpose */}
@@ -179,6 +180,8 @@ export default function AboutPage() {
 
       <FounderSection compact />
 
+      <BuiltSection />
+
       {/* Numbers */}
       <section id="numbers" className="border-t border-line">
         <div className="container-x section">
@@ -227,8 +230,8 @@ export default function AboutPage() {
             <p>
               Decifer is based in Dubai, United Arab Emirates, and its UAE company
               registration is in progress. It serves clients in the UAE, the wider
-              Gulf, Singapore and the United Kingdom. Client work is never named on
-              this site; the reasons are in our{" "}
+              Gulf, Singapore and the United Kingdom. Client work is named on this
+              site only with written permission; the reasons are in our{" "}
               <Link href="/legal/client-confidentiality" className="link">
                 client confidentiality statement
               </Link>

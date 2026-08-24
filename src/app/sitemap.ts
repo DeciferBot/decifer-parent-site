@@ -15,7 +15,7 @@ const BASE = "https://www.decifer.io";
  * the page content actually changes.
  */
 const HOME_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z");
-const STATIC_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z"); // /about /stack /contact /products /services /work /blog
+const STATIC_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z"); // /about /contact /services /work /blog /how-we-work
 const LEGAL_LAST_MODIFIED = new Date("2026-05-01T00:00:00.000Z"); // privacy, terms, ai-policy
 const SCOPED_LEGAL_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z"); // refunds, disclaimers, child-safety
 const CONFIDENTIALITY_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z");
@@ -57,7 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     { url: `${BASE}/contact`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.9 },
 
-    { url: `${BASE}/capabilities`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/how-we-work`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.85 },
 
     {
       url: `${BASE}/work`,
@@ -81,8 +81,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
 
     { url: `${BASE}/about`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.7 },
-    { url: `${BASE}/products`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/stack`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.5 },
 
     {
       url: `${BASE}/legal/client-confidentiality`,

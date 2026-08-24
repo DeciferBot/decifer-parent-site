@@ -15,10 +15,10 @@ const legalLinks = [
 ];
 
 const companyLinks = [
+  { label: "How we work", href: "/how-we-work" },
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
-  { label: "Tools and expertise", href: "/stack" },
-  { label: "Blog", href: "/blog" },
+  { label: "Insights", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -33,9 +33,9 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-4">
             <DeciferLogo size="sm" tone="light" />
             <p className="mt-5 max-w-xs text-[0.9375rem] leading-relaxed text-on-dark-2">
-              An AI company in Dubai. We build agents, reporting systems and
-              complete products for businesses, and we run three public
-              products with the same method.
+              An AI implementation company in Dubai. We take business
+              processes from AI pilot to dependable daily operation, and we
+              run three public products on the same method.
             </p>
             <p className="mt-5 text-[0.9375rem]">
               <a href="mailto:hello@decifer.io" className="link-quiet text-on-dark">
@@ -58,7 +58,7 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <p className={headClass}>Products</p>
+            <p className={headClass}>Built by Decifer</p>
             <ul className="space-y-2.5">
               {products.map((p) => (
                 <li key={p.key}>
@@ -71,11 +71,6 @@ export default function Footer() {
                   )}
                 </li>
               ))}
-              <li>
-                <Link href="/products" className={colClass}>
-                  Early access
-                </Link>
-              </li>
             </ul>
           </div>
 

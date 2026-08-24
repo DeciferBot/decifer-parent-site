@@ -55,6 +55,8 @@ export default function EnquiryForm() {
     company: "",
     basedIn: "",
     problem: "",
+    systems: "",
+    outcome: "",
     service: "",
     timeline: "",
     budget: "",
@@ -108,6 +110,15 @@ export default function EnquiryForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          // The optional qualifiers travel inside the free-text field so the
+          // API and the leads table need no schema change.
+          problem: [
+            form.problem.trim(),
+            form.systems.trim() && `Systems involved: ${form.systems.trim()}`,
+            form.outcome.trim() && `A successful outcome: ${form.outcome.trim()}`,
+          ]
+            .filter(Boolean)
+            .join("\n\n"),
           elapsedMs: mountedAt.current ? Date.now() - mountedAt.current : undefined,
           sourcePath: pathname,
         }),
@@ -203,6 +214,21 @@ export default function EnquiryForm() {
           <div className="mt-1.5 flex items-center justify-between">
             {err("problem")}
             <span className="ml-auto text-xs text-faint">{form.problem.trim().length} / {MIN_PROBLEM_CHARS} min</span>
+          </div>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="enq-systems" className="mb-1.5 block text-sm font-medium text-ink">
+              Which systems are involved <span className="font-normal text-muted">(optional)</span>
+            </label>
+            <input id="enq-systems" type="text" placeholder="CRM, spreadsheets, email, a booking tool" value={form.systems} onChange={set("systems")} className="form-input" />
+          </div>
+          <div>
+            <label htmlFor="enq-outcome" className="mb-1.5 block text-sm font-medium text-ink">
+              What would a successful outcome look like <span className="font-normal text-muted">(optional)</span>
+            </label>
+            <input id="enq-outcome" type="text" placeholder="Faster replies, fewer errors, one report" value={form.outcome} onChange={set("outcome")} className="form-input" />
           </div>
         </div>
 

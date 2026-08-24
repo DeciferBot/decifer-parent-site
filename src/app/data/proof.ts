@@ -10,7 +10,7 @@
  *   - The trading system runs on a broker PAPER account. Never imply real
  *     money. The wording in "paperAccount" is the only permitted framing.
  *   - Nothing abandoned, unpublished or deleted counts as proof.
- *   - No client is ever named.
+ *   - No client is named without written permission (see caseShapes.ts).
  */
 
 export type ProofKey =

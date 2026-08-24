@@ -18,8 +18,8 @@ export default function SolvedSection() {
       <div className="container-x">
         <div className="panel">
           <div className="panel-head">
-            <h2 className="label">What we&apos;ve solved</h2>
-            <Link href="/capabilities" className="link text-sm">
+            <h2 className="label">Processes we&apos;ve taken to production</h2>
+            <Link href="/how-we-work" className="link text-sm">
               The full matrix
             </Link>
           </div>
@@ -29,7 +29,7 @@ export default function SolvedSection() {
               return (
                 <li key={c.key}>
                   <Link
-                    href={proven ? `/work/${proven.key}` : "/capabilities"}
+                    href={proven ? `/work/${proven.key}` : "/how-we-work"}
                     className="row-link group grid gap-3 px-6 py-7 md:grid-cols-12 md:gap-8"
                   >
                     <div className="md:col-span-6">
@@ -62,7 +62,7 @@ export default function SolvedSection() {
               Don&apos;t see your industry above? That&apos;s exactly what the first call is for.
             </p>
             <Link href="/contact" data-event="solved_panel_cta" className="btn btn-primary px-4 py-2.5 text-sm">
-              Bring us the next one
+              Discuss a business process
             </Link>
           </div>
         </div>

@@ -35,7 +35,7 @@ export default function ProductFrame({
   return (
     <article className="flex flex-col">
       <a
-        href={p.href ?? "/products"}
+        href={p.href ?? "/about"}
         target={p.href ? "_blank" : undefined}
         rel={p.href ? "noopener noreferrer" : undefined}
         data-event={p.event}

@@ -6,12 +6,11 @@ import { usePathname } from "next/navigation";
 import DeciferLogo from "./DeciferLogo";
 
 const navLinks = [
-  { label: "Capabilities", href: "/capabilities" },
-  { label: "Services", href: "/services" },
+  { label: "What we do", href: "/services" },
+  { label: "How we work", href: "/how-we-work" },
   { label: "Work", href: "/work" },
-  { label: "Products", href: "/products" },
   { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
+  { label: "Insights", href: "/blog" },
 ];
 
 export default function Nav() {
@@ -66,7 +65,7 @@ export default function Nav() {
             data-event="nav_book_call"
             className="btn btn-primary px-4 py-2.5 text-sm"
           >
-            Book a call
+            Discuss a process
           </Link>
         </div>
 
@@ -127,7 +126,7 @@ export default function Nav() {
               data-event="nav_book_call"
               className="btn btn-primary w-full"
             >
-              Book a 30-minute call
+              Discuss a business process
             </Link>
             <p className="mt-4 text-sm text-muted">
               Or email{" "}

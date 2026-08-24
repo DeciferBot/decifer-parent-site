@@ -67,10 +67,10 @@ export const services: Service[] = [
   {
     key: "ai-agents",
     name: "AI agent development",
-    navLabel: "Intake and response",
-    cardHeadline: "Enquiries answered in minutes, not the next morning.",
+    navLabel: "Workflow automation and agents",
+    cardHeadline: "Remove manual work from processes that can be measured.",
     summary:
-      "Agents that do one defined job inside your business, with limits you can see and a log you can check.",
+      "We redesign the process, then build the system around it: agents scoped to one job, with limits you can see and a log you can check.",
     problem:
       "Enquiries arrive by email, WhatsApp, web form and phone, and every one is answered by hand. Quotes mean opening the same files and retyping the same paragraphs. The bottleneck is not selling. It is the hours between the enquiry and the reply, and slow replies lose the work to whoever answered first.",
     description:
@@ -101,16 +101,16 @@ export const services: Service[] = [
     commercial: "Scoped in writing",
     commercialSub: "Human review where a mistake is expensive",
     event: "service_ai_agents_clicked",
-    updatedAt: "2026-08-22",
+    updatedAt: "2026-08-24",
     order: 1,
   },
   {
     key: "data-and-reporting",
     name: "Data and reporting automation",
-    navLabel: "Data and reporting",
-    cardHeadline: "The numbers arrive without anyone building them.",
+    navLabel: "Data and decision intelligence",
+    cardHeadline: "Make business information usable.",
     summary:
-      "Your data lands in one place you can query, including the data trapped in documents, and the reports assemble themselves.",
+      "Your data lands in one place you can query, including the data trapped in documents, and the reports assemble themselves from figures computed in code.",
     problem:
       "The information exists. It is in spreadsheets, PDFs, proposals, six dashboards and one person's head. Every month someone spends days assembling a report that is out of date by the time it is read, and nobody can answer a simple question without a meeting.",
     description:
@@ -140,13 +140,13 @@ export const services: Service[] = [
     commercial: "Fixed fee",
     commercialSub: "Raw data exported to you",
     event: "service_data_reporting_clicked",
-    updatedAt: "2026-08-22",
+    updatedAt: "2026-08-24",
     order: 2,
   },
   {
     key: "ai-product-development",
     name: "AI product development",
-    navLabel: "Product build",
+    navLabel: "Custom AI products",
     cardHeadline: "From nothing to live in weeks, and you keep the repository.",
     summary:
       "A complete product: website, database, logins, payments, email and analytics, built in weeks and handed over with the code.",
@@ -179,16 +179,16 @@ export const services: Service[] = [
     commercial: "Fixed fee",
     commercialSub: "The repository transfers at handover",
     event: "service_product_build_clicked",
-    updatedAt: "2026-08-22",
+    updatedAt: "2026-08-24",
     order: 3,
   },
   {
     key: "ai-advisory",
     name: "AI consulting and audit",
-    navLabel: "AI advisory",
-    cardHeadline: "In two weeks you know what is worth automating, and what is not.",
+    navLabel: "AI opportunity assessment",
+    cardHeadline: "Find the opportunities worth funding, and the ones that are not.",
     summary:
-      "A fixed-scope audit that maps where time actually goes in your business and tells you plainly where AI helps, where it does not, and what to do first.",
+      "A fixed-scope assessment that maps where time actually goes, costs the current process as a baseline, and tells you plainly what to automate first and what to leave alone.",
     problem:
       "You keep being told to adopt AI. Every vendor has a pilot. Nobody has told you which three things in your business would actually change, what it would cost to run, or what could go wrong. So nothing starts, or the wrong thing does.",
     description:
@@ -196,6 +196,7 @@ export const services: Service[] = [
     deliverables: [
       "Interviews with the people who actually do the work",
       "A map of where the time goes, with the delays marked",
+      "A costed baseline of the process today, so any build that follows can be measured against it",
       "A shortlist of candidate automations, each with an honest estimate of effort, running cost and risk",
       "An explicit do-not-automate-yet list, with reasons",
       "A one-page recommendation you can act on with or without us",
@@ -218,7 +219,7 @@ export const services: Service[] = [
     commercial: "Fixed fee",
     commercialSub: "Credited in full against any build",
     event: "service_ai_advisory_clicked",
-    updatedAt: "2026-08-22",
+    updatedAt: "2026-08-24",
     order: 4,
   },
 ];

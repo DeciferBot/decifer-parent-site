@@ -6,27 +6,28 @@ export default function HeroSection() {
     <section className="pt-28 pb-14 sm:pt-36 sm:pb-20">
       <div className="container-x grid items-start gap-12 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-7">
-          <p className="label rise mb-5">AI that does real work in your business.</p>
+          <p className="label rise mb-5">AI implementation, Dubai</p>
           <h1 className="t-display rise text-ink">
-            We automate the repeatable work. AI only touches what needs judgement.
+            Turn AI investment into operating results.
           </h1>
           <p className="t-lede rise-1 mt-6 max-w-[34rem]">
-            Agents that do a defined job unattended, reporting that assembles
-            itself from facts a model is never allowed to invent, and a
-            written boundary for the part we leave to a person. Every system
-            runs on your accounts, with a log your team can read.
+            Companies are investing in AI, but too few projects make it into
+            daily use. Decifer takes responsibility for the whole path: the
+            business case, the workflow redesign, the build, the integration,
+            the rollout, and the measurement afterwards. Every system runs on
+            your accounts, with a log your team can read.
           </p>
           <div className="rise-2 mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="/contact" data-event="cta_book_call" className="btn btn-ink">
-              Book a 30-minute call
+              Discuss a business process
             </Link>
             <Link href="/work" data-event="cta_see_work" className="btn btn-secondary">
               See the work
             </Link>
           </div>
           <p className="rise-3 mt-5 text-sm text-muted">
-            Engagements start with a two-week audit at a fixed fee, credited in
-            full against any build.
+            Engagements start with a two-week assessment at a fixed fee,
+            credited in full against any build.
           </p>
         </div>
 
