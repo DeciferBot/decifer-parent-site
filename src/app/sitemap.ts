@@ -57,6 +57,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     { url: `${BASE}/contact`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.9 },
 
+    { url: `${BASE}/capabilities`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.85 },
+
     {
       url: `${BASE}/work`,
       lastModified: newest(publishedCaseShapes.map((c) => c.updatedAt), STATIC_LAST_MODIFIED),

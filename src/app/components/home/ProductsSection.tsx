@@ -8,9 +8,9 @@ export default function ProductsSection() {
       <div className="container-x">
         <div className="panel">
           <div className="panel-head">
-            <h2 className="label">Open before you hire us</h2>
+            <h2 className="label">Where the method runs, in public</h2>
             <Link href="/products" className="link text-sm">
-              The product family
+              Open them
             </Link>
           </div>
           <div className="grid gap-px bg-line md:grid-cols-3">

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import DeciferLogo from "./DeciferLogo";
 
 const navLinks = [
+  { label: "Capabilities", href: "/capabilities" },
   { label: "Services", href: "/services" },
   { label: "Work", href: "/work" },
   { label: "Products", href: "/products" },

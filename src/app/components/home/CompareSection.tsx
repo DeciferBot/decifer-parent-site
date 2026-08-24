@@ -8,9 +8,9 @@ import Link from "next/link";
 
 const rows = [
   {
-    q: "Something of theirs you can open today",
-    them: "A demo, on request",
-    us: "Three public products, open now",
+    q: "Where does AI actually touch the output",
+    them: "Wherever the demo looks impressive",
+    us: "Only at the point that needs judgement; named in writing before the build starts",
   },
   {
     q: "Who owns the accounts and the code",
@@ -18,19 +18,19 @@ const rows = [
     us: "You do, from day one, with a runbook at handover",
   },
   {
+    q: "Can a number in the output be invented",
+    them: "Usually possible; rarely tested for",
+    us: "No; a test fails the build if a model-written sentence contains a figure the code didn't compute",
+  },
+  {
     q: "A written list of what not to automate",
     them: "Not offered",
     us: "In every audit and every agent scope sheet",
   },
   {
-    q: "Results",
-    them: "Percentages without a source",
-    us: "Figures only with the method, the source and written permission",
-  },
-  {
-    q: "Who replies to your enquiry",
-    them: "A sales team, or nobody",
-    us: "The founder, within one working day",
+    q: "Evidence the boundary holds under load",
+    them: "A demo, on request",
+    us: "Five months of continuous unattended production operation, and an eval suite that fails the build on regression",
   },
   {
     q: "The first step",
@@ -45,7 +45,7 @@ export default function CompareSection() {
       <div className="container-x">
         <div className="panel">
           <div className="panel-head">
-            <h2 className="label">Choosing an AI partner in Dubai</h2>
+            <h2 className="label">What to check before an AI system touches your business</h2>
             <Link href="/contact" className="link text-sm">
               Ask us these questions
             </Link>

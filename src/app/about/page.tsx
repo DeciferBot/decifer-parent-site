@@ -89,6 +89,28 @@ export default function AboutPage() {
         lede="Decifer is an AI company in Dubai, United Arab Emirates. It builds AI agents, reporting systems and complete products for businesses here and abroad, and it runs three public products with exactly the same method."
       />
 
+      {/* Purpose */}
+      <section className="pb-16 sm:pb-24">
+        <div className="container-x">
+          <div className="board px-8 py-10 sm:px-10 sm:py-12">
+            <p className="label text-on-dark-2">Why the company exists</p>
+            <p className="t-h3 mt-4 max-w-3xl text-on-dark">
+              Decifer exists to put a working AI system inside a business, not a slide deck about
+              one.
+            </p>
+            <p className="mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-on-dark-2">
+              We run the method on our own systems first: three public products, operating
+              unattended, in public, for months, on the same rule we sell &mdash; code computes
+              the facts, AI narrates or extracts inside a written boundary, and a test enforces
+              the line. Most of a job can stay deterministic. AI earns its place only where a
+              decision genuinely needs judgement. We sell the discipline that decides where that
+              point is, and builds it, inside someone else&apos;s business, having already run it
+              inside our own.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* The rule */}
       <section className="pb-16 sm:pb-24">
         <div className="container-x grid gap-8 md:grid-cols-12">
