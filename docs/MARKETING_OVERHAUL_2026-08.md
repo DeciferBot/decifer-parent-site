@@ -1,4 +1,4 @@
-# Marketing overhaul, 23 August 2026
+# Marketing overhaul, 23 to 24 August 2026
 
 Branch: `claude/decifer-marketing-overhaul-2d419f`. Plain-English record of what changed, why, and what still needs Amit.
 
@@ -44,6 +44,10 @@ Two claims nobody else in the UAE makes are now the spine of the home page:
 - `simple-icons` added as a dependency.
 - `npm run build` passes. Typecheck and lint pass.
 
+## Revision, 24 August
+
+Amit rejected the bold single-colour headline look. The site moved to the "control room" direction: grey ground, white panels with instrument labels, Source Serif 4 headings at medium weight, a dark "Systems we run" board in the hero, and a "Choosing an AI partner in Dubai" comparison table. Repo and commit counts were taken off the public site at his request. The stack copy says expertise, not partnership. The agent scope sheet moved to the AI agents service page.
+
 ## What still needs Amit
 
 1. Founder photo. Drop a portrait at `public/founder/amit-chopra.jpg` (about 640 by 800). The block renders it automatically; without it there is no placeholder face.
@@ -53,6 +57,9 @@ Two claims nobody else in the UAE makes are now the spine of the home page:
 5. Resend env bug from the last session still stands: Vercel has `Resend_API_Key`, code reads `RESEND_API_KEY`. No email sends until it is renamed in the Vercel dashboard.
 6. `NEXT_PUBLIC_BOOKING_URL` is still unset, so the contact page says "send the form and we will offer times by email".
 7. Open a pull request from this branch and check the Vercel preview on a phone before merging.
+8. A WhatsApp business number. UAE buyers use WhatsApp; the site should carry a WhatsApp contact link with a stated reply time. Not added yet because there is no number to link.
+9. Permission from two clients to show their logos. Even two real logos changes how big the firm reads.
+10. A 90-second video of you walking through a live system, for the home page. Cheapest trust builder available.
 
 ## Verified
 
