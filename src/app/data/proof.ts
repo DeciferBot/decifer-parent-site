@@ -1,10 +1,19 @@
 /**
- * Every number the site is allowed to state, with where it came from.
+ * Every number about Decifer that the site is allowed to state, with where
+ * it came from.
  *
  * Read by: the homepage proof bar, /about, service pages (via
- * Service.proofRefs) and the pre-launch claims audit. If a figure is not in
- * this file it must not appear on the site. Each entry names its source so
- * anyone can re-check it. Dates are when the figure was last verified.
+ * Service.proofRefs) and the pre-launch claims audit. If a figure about
+ * Decifer is not in this file it must not appear on the site. Each entry
+ * names its source so anyone can re-check it. Dates are when the figure was
+ * last verified.
+ *
+ * Scope (clarified 2026-08-24): this file governs first-party figures, the
+ * ones only we can vouch for. Published third-party research may also be
+ * cited on the site, but only with the publisher and date rendered next to
+ * the figure, and only where the primary source has been checked. Those
+ * citations live with the copy that uses them; see EvidenceSection.tsx and
+ * docs/REPOSITIONING_2026-08-24.md for the current set and their links.
  *
  * Hard rules:
  *   - The trading system runs on a broker PAPER account. Never imply real

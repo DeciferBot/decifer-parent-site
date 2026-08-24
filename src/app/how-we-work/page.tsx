@@ -135,7 +135,8 @@ export default function HowWeWorkPage() {
               </table>
             </div>
             <p className="border-t border-line px-6 py-4 text-sm text-muted">
-              The middle column links to a real, anonymised engagement. The
+              The middle column links to a real engagement, anonymised unless
+              the client asked in writing to be named. The
               right column is our own judgement about where the same pattern
               would apply next. Every engagement behind this matrix runs at the
               scale of a single business; whether it holds at enterprise scale

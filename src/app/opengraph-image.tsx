@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Decifer: AI that does a job inside your business. Built in Dubai.";
+export const alt = "Decifer: turn AI investment into operating results. AI implementation, Dubai.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -77,7 +77,7 @@ export default async function Image() {
               display: "flex",
             }}
           >
-            AI that does a job inside your business.
+            Turn AI investment into operating results.
           </div>
           <div
             style={{
@@ -88,8 +88,8 @@ export default async function Image() {
               display: "flex",
             }}
           >
-            Agents, reporting systems and complete products for companies of 10
-            to 200 people. Built in weeks, run on your accounts, with a log you
+            AI implementation in Dubai: assessment, workflow redesign, build,
+            integration and measurement. Run on your accounts, with a log you
             can read.
           </div>
         </div>

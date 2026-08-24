@@ -8,7 +8,7 @@ export default function ServicesSection() {
       <div className="container-x">
         <div className="panel">
           <div className="panel-head">
-            <h2 className="label">What we build</h2>
+            <h2 className="label">What we do</h2>
             <Link href="/services" className="link text-sm">
               How engagements run
             </Link>
@@ -20,10 +20,10 @@ export default function ServicesSection() {
           </ul>
           <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line px-6 py-4">
             <p className="text-sm text-body">
-              Not sure which one fits? That is what the audit decides.
+              Not sure which one fits? That is what the assessment decides.
             </p>
             <Link href="/contact" data-event="services_panel_cta" className="btn btn-primary px-4 py-2.5 text-sm">
-              Book a 30-minute call
+              Discuss a business process
             </Link>
           </div>
         </div>

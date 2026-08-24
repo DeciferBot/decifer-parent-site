@@ -14,7 +14,7 @@ const stats = [
   {
     figure: "30%",
     claim:
-      "of GenAI projects at least were predicted to be abandoned after proof of concept, for poor data, weak controls, rising costs or unclear business value.",
+      "of GenAI projects at least would be abandoned after proof of concept by the end of 2025, Gartner predicted, blaming poor data, weak controls, rising costs or unclear business value.",
     source: "Gartner, July 2024",
   },
   {

@@ -26,6 +26,9 @@ create table if not exists public.leads (
   service_key      text,          -- services.ts key, or 'not-sure'
   product_interest text,          -- products.ts interestValue, early_access only
   problem          text,          -- the free-text qualifier
+  cost_today       text,          -- what the process costs today: the baseline
+  systems          text,          -- systems involved, if the enquirer knows
+  outcome          text,          -- what a successful outcome looks like
   timeline         text check (timeline is null or timeline in ('now', '1-3-months', '3-6-months', 'exploring')),
   budget_band      text check (budget_band is null or budget_band in
                      ('under-25k-aed', '25k-75k-aed', '75k-200k-aed', '200k-plus-aed', 'not-sure')),

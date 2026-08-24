@@ -180,14 +180,17 @@ export default function AboutPage() {
 
       <FounderSection compact />
 
-      <BuiltSection />
+      {/* compact: the "How we count" section below already renders these
+          figures and the paper-account line, so the stat grid is suppressed
+          here to avoid printing every number three times on one page. */}
+      <BuiltSection compact />
 
       {/* Numbers */}
       <section id="numbers" className="border-t border-line">
         <div className="container-x section">
           <SectionHead
             title="How we count."
-            lede="Every figure on this site comes from this list, and each one names where it was read from and when. If a number is not here, it must not appear on the site."
+            lede="Every figure about Decifer on this site comes from this list, and each one names where it was read from and when. If a number about us is not here, it must not appear on the site. Published third-party research is the one exception, and it is only ever shown with the publisher and date beside it."
           />
           <div className="mt-12">
             <ProofStrip

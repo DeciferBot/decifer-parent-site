@@ -16,7 +16,7 @@ DECIFER builds AI intelligence products that turn complex information into clear
 
 ## Boilerplate paragraph
 
-DECIFER is an AI solutions company based in Dubai, United Arab Emirates. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses in the UAE and abroad, and it builds and runs three public products of its own with the same method: Decifer Markets (market intelligence), Decifer Learning (a guided learning companion for the UK National Curriculum) and Decifer Marketing (marketing intelligence). The rule DECIFER builds by: code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test. Clients are never named. The founder is Amit Chopra.
+DECIFER is an AI implementation company based in Dubai, United Arab Emirates. It takes business processes from AI pilot to dependable daily operation for businesses in the UAE and abroad, covering assessment, workflow redesign, build, integration and measurement, and it builds and runs three public products of its own with the same method: Decifer Markets (market intelligence), Decifer Learning (a guided learning companion for the UK National Curriculum) and Decifer Marketing (marketing intelligence). The rule DECIFER builds by: code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test. Client work is anonymised by default and named only where the client has given written permission. The founder is Amit Chopra.
 
 ## Facts to keep identical everywhere
 

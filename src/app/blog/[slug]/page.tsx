@@ -125,10 +125,10 @@ export default async function PostPage({ params }: Params) {
                     {i < services.length - 1 ? " and " : ""}
                   </span>
                 ))}
-                . Most engagements start with a two-week audit.
+                . Most engagements start with a two-week assessment.
               </p>
               <Link href="/contact" data-event={`blog_${slug}_cta`} className="btn btn-primary mt-5">
-                Book a 30-minute call
+                Discuss a business process
               </Link>
             </div>
           </aside>

@@ -147,11 +147,11 @@ These phrases must appear wherever relevant. Do not soften or remove them.
 
 ## CTA hierarchy
 
-1. **Primary CTA:** "Join Early Access" (bg-brand, white text)
-2. **Secondary CTA:** "Explore Products" (bordered, muted text)
+1. **Primary CTA:** "Discuss a business process" (bg-brand, white text)
+2. **Secondary CTA:** "See the work" (bordered, muted text)
 3. **Product link:** "Visit Decifer Markets / Decifer Learning" (text link with arrow)
 
-Avoid: "Sign Up", "Start Free", "Try Now" (too generic or implies a free tier that may not exist).
+Avoid: "Sign Up", "Start Free", "Try Now" (too generic or implies a free tier that may not exist), and "Join Early Access" (the early-access signup was retired on 2026-08-24 with the repositioning).
 
 ---
 

@@ -6,7 +6,7 @@ import { getAllPosts } from "@/lib/blog";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Blog: AI in production, written by people who run it",
+  title: "Insights: AI in production, written by people who run it",
   description:
     "Plain-English writing on AI agents, automation and building products, from a Dubai company that runs its own. Costs shown, myths broken, mistakes admitted.",
   alternates: { canonical: "/blog" },
@@ -34,7 +34,7 @@ export default function BlogIndex() {
   return (
     <>
       <PageHero
-        kicker="Blog"
+        kicker="Insights"
         title="Written by the people who run it."
         lede="Plain English on AI agents, automation and building products. Costs shown, mistakes admitted. Each piece is written to be sent to a client who asked the question."
       />

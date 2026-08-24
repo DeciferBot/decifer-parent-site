@@ -7,7 +7,7 @@ import { publishedCaseShapes } from "@/app/data/caseShapes";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Work: AI systems in production, described by shape",
+  title: "Work: processes taken from pilot to daily operation",
   description:
     "Client work from Decifer in the UAE, UK, Spain and Singapore, anonymised unless a client has agreed in writing to be named. Each case states what was built, what changed, how it was measured, and what we deliberately did not automate.",
   alternates: { canonical: "/work" },

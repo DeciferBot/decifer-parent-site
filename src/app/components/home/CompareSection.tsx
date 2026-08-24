@@ -35,7 +35,7 @@ const rows = [
   {
     q: "The first step",
     them: "A free consultation that becomes a pitch",
-    us: "A two-week audit at a fixed fee, credited against any build",
+    us: "A two-week assessment at a fixed fee, credited against any build",
   },
 ];
 
