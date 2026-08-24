@@ -29,8 +29,8 @@ export default function CapabilitiesPage() {
     <>
       <PageHero
         kicker="Capabilities"
-        title="The pattern, not the client."
-        lede="Most of a job can stay deterministic. AI earns its place only at the point that needs judgement. These are the five places we've proven that split works, and, kept visibly separate, the industries the same pattern would apply to next."
+        title="One capability. Every industry it fits."
+        lede="Most of a job can stay deterministic. AI earns its place only at the point that needs judgement. These are the five places we've proven that split works, with the industries the same pattern would apply to next shown separately."
       />
 
       <section className="pb-16 sm:pb-24">
@@ -91,9 +91,9 @@ export default function CapabilitiesPage() {
               </table>
             </div>
             <p className="border-t border-line px-6 py-4 text-sm text-muted">
-              The middle column is a link to a real, anonymised engagement. The right column is
-              not &mdash; it is our judgement about where the same pattern would apply, stated as
-              a judgement, not sold as a client list.
+              The middle column links to a real, anonymised engagement. The right column is our
+              own judgement about where the same pattern would apply next &mdash; useful for
+              deciding whether to call us, not a client list.
             </p>
           </div>
         </div>
@@ -107,12 +107,12 @@ export default function CapabilitiesPage() {
           />
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
             <div className="border-t border-line pt-5">
-              <h3 className="text-lg font-semibold text-ink">The pattern is proven. The scale is not, yet.</h3>
+              <h3 className="text-lg font-semibold text-ink">Proven at this scale. Bigger scale is the open question.</h3>
               <p className="t-body mt-2">
-                Every engagement behind this matrix runs at the scale of a single business, not a
-                multinational. The discipline transfers; a claim that it has already run at
-                enterprise scale would not be true, so we don&apos;t make it. The audit below is
-                built to test the pattern on your scale before either of us commits further.
+                Every engagement behind this matrix runs at the scale of a single business. The
+                discipline transfers; whether it holds at enterprise scale is genuinely untested,
+                so we say that plainly instead of implying otherwise. The audit below exists to
+                test the pattern on your scale before either of us commits further.
               </p>
             </div>
             <div className="border-t border-line pt-5">
@@ -120,7 +120,7 @@ export default function CapabilitiesPage() {
               <p className="t-body mt-2">
                 &ldquo;Deliberate non-automation&rdquo; is in this matrix because it has stopped us
                 from building things. If your problem needs a licensed professional to sign off on
-                every case, that capability is the one that says so, not the one that oversells
+                every case, that capability is the one that says so honestly, before we oversell
                 an agent into it.
               </p>
             </div>
@@ -130,7 +130,7 @@ export default function CapabilitiesPage() {
 
       <CtaBand
         eventPrefix="capabilities"
-        title="Bring us the job, not the tech stack."
+        title="Tell us the job. We'll bring the pattern."
         body="A two-week audit at a fixed fee tells you which of these patterns fits, which doesn't, and what we would not automate yet. Credited in full against any build that follows."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />

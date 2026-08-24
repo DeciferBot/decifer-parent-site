@@ -8,7 +8,14 @@
  * rendered as if they carry the same weight. See PRODUCT.md: a claim
  * without a source does not ship.
  *
- * Read by: /capabilities and the homepage capability teaser.
+ * Naming rule: the capability, not the industry, leads. A reader outside
+ * the proven industry should still recognise their own problem in `name`
+ * and `pattern` before they ever see `provenIn` or `transfersTo`. See the
+ * 2026-08-24 positioning note: case studies must not read as
+ * industry-limited, or a reader outside that industry bounces before they
+ * see the capability applies to them too.
+ *
+ * Read by: /capabilities and the homepage "what we've solved" section.
  */
 
 import type { ServiceKey } from "./services";
@@ -22,13 +29,13 @@ export type CapabilityKey =
 
 export interface Capability {
   key: CapabilityKey;
-  /** Short name for the matrix row and card. */
+  /** The business value, stated first, industry-agnostic. Leads the card. */
   name: string;
-  /** One sentence: the pattern, stated generally. */
+  /** One sentence: the mechanism, stated generally. */
   pattern: string;
   /** Case shape keys (caseShapes.ts) this is proven in. Evidence. */
   provenIn: string[];
-  /** Short phrase naming what was proven, for the matrix cell. */
+  /** What was proven, in one sentence. May name a public product by name. */
   provenSummary: string;
   /** Industries the same pattern would apply to. Inference, labelled as such. */
   transfersTo: string[];
@@ -41,66 +48,66 @@ export interface Capability {
 export const capabilities: Capability[] = [
   {
     key: "records-from-chaos",
-    name: "Undocumented knowledge into a governed record",
+    name: "One system, instead of a filing cabinet of memory",
     pattern:
-      "Documents, spreadsheets and institutional memory scattered across a business, turned into one database that is queryable, auditable and correct, with nothing left that only lives in one person's head.",
+      "Documents, spreadsheets and years of institutional memory, turned into one record that is searchable, correct, and does not live in one person's head.",
     provenIn: ["catering-quotes-and-kitchen"],
-    provenSummary: "719 order documents from 30 years of trading became one priced, queryable menu and customer record.",
+    provenSummary: "719 order documents from 30 years of trading became one priced, queryable record.",
     transfersTo: ["Insurance claims history", "Legal matter files", "Banking back-office records", "Manufacturing specs and BOMs"],
     buyerAngle:
-      "Your data debt becomes an asset without an eighteen-month data-lake programme. The pattern does not care whether the source documents are function sheets or claim files.",
+      "Old paperwork becomes an asset your whole team can use, without a year-long IT project. The mechanism is the same whether the source is function sheets, claim files or contracts.",
     serviceKeys: ["data-and-reporting"],
     order: 1,
   },
   {
     key: "fact-computed-reporting",
-    name: "Reporting where the model narrates and code owns the number",
+    name: "A number everyone in the business already trusts",
     pattern:
-      "A single fact store, refreshed on a schedule from the systems already in use, with reports and memos composed from those facts in code. A model may write the sentence around a figure. It never invents the figure, and a test fails the build if it tries.",
+      "One fact store, refreshed on a schedule, with every report built from those facts in code. A model may write the sentence around a figure; the figure itself always comes from the code.",
     provenIn: ["group-marketing-one-view"],
-    provenSummary: "Nine operating companies on one dashboard, with a weekly board memo assembled from computed facts, not a person's summary.",
+    provenSummary: "Nine operating companies now read from one dashboard, refreshed nightly instead of assembled by hand each quarter.",
     transfersTo: ["FP&A and board reporting", "Multi-brand or multi-subsidiary groups", "PE portfolio company roll-ups"],
     buyerAngle:
-      "No hallucinated figure reaches a board deck, because the validator that blocks one already exists and has run in production for months.",
+      "Nobody has to fact-check the board deck: the validator that blocks an invented figure already runs in production. The same rule marks a child's maths homework in one of our own products — the solver decides right or wrong, and the model never gets a vote.",
     serviceKeys: ["data-and-reporting"],
     order: 2,
   },
   {
     key: "boundary-scoped-agents",
-    name: "Agents that do the job, inside a boundary that is written down",
+    name: "Work that finishes itself, and knows when to stop",
     pattern:
-      "An agent scoped to one job, connected to the systems that job needs, with a written definition of what it may do, what it must hand to a person, and a log of every action it takes. Autonomy where the task allows it; a person where a mistake is expensive.",
+      "An agent scoped to one job, wired into the systems it needs, with a written definition of what it may do, what it hands to a person, and a log of every action it takes.",
     provenIn: ["private-event-concierge"],
-    provenSummary: "A concierge that scored 40 out of 40 on a graded eval, partly by refusing what it could not verify, and logged every change it made under a name and a time.",
+    provenSummary: "A concierge scored 40 out of 40 on a graded eval, partly by refusing what it could not verify, and logged every change under a name and a time.",
     transfersTo: ["Contact centres and support queues", "Sales development and qualification", "Claims intake", "Internal helpdesks"],
     buyerAngle:
-      "This is what most agent vendors cannot show at once: real autonomy, and proof the boundary holds under an adversarial test, not just a demo script.",
+      "Real autonomy, with proof the boundary holds under an adversarial test — the two things most agent vendors only offer one of.",
     serviceKeys: ["ai-agents"],
     order: 3,
   },
   {
     key: "deliberate-non-automation",
-    name: "Knowing where AI should not go, and enforcing it structurally",
+    name: "Knowing exactly where AI does not belong",
     pattern:
-      "A domain-risk read that keeps AI out of specific paths entirely, not by a prompt instruction but by a structural constraint: no field to write the number into, no model in the path, an escalation that fires before a person sees anything.",
+      "A read on where AI genuinely carries risk, enforced structurally: no field to record a number in, no model in the path, an escalation that fires before a person sees anything.",
     provenIn: ["counselling-practice-intake"],
-    provenSummary: "Zero client-facing AI in a clinical intake system; screening scored by arithmetic against published cutoffs, not by a model.",
+    provenSummary: "Zero client-facing AI in a clinical intake system; screening scored by arithmetic against published cutoffs.",
     transfersTo: ["Healthcare and clinical operations", "HR and people decisions", "Legal advice", "Regulated financial advice"],
     buyerAngle:
-      "A governance capability, not just a build capability. The same team that ships AI can tell you in writing what should not ship, and has done it five times on its own systems.",
+      "The same team that ships AI can tell you, in writing, what should not ship — and has done exactly that five times on its own systems.",
     serviceKeys: ["ai-advisory"],
     order: 4,
   },
   {
     key: "product-grade-discipline",
-    name: "The uptime discipline of a live product, applied to a bespoke build",
+    name: "Built to run with nobody watching it",
     pattern:
-      "Every engagement is held to the same bar as a public product: monitoring, an eval suite, a runbook and a handover, so what is delivered is a system that can be trusted to run unattended, not a prototype with a demo script.",
+      "Every engagement held to the bar of a public product: monitoring, an eval suite, a runbook and a proper handover.",
     provenIn: ["catering-quotes-and-kitchen", "private-event-concierge"],
-    provenSummary: "Five months of continuous, unattended production operation on the largest public system, with an eval suite that fails the build on a regression.",
-    transfersTo: ["Any implementation where the real question is whether it can be trusted to run without supervision"],
+    provenSummary: "Decifer Markets has run five months straight, unattended, with an eval suite that fails the build on a regression.",
+    transfersTo: ["Any implementation where the real question is whether it survives without supervision"],
     buyerAngle:
-      "What gets handed over already has the monitoring and eval regime attached, because that is the only way we have ever shipped anything.",
+      "What gets handed over already carries its own monitoring and evals, because that is the only way we have ever shipped anything.",
     serviceKeys: ["ai-product-development"],
     order: 5,
   },

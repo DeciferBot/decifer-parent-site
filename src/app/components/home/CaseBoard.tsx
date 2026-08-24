@@ -28,7 +28,7 @@ const rows: Row[] = [
     job: "Nine companies, no shared view",
     complexity: "5 platforms, one fact store",
     change: "One board-level view",
-    changeSub: "Nightly, not quarterly",
+    changeSub: "Refreshed every night",
   },
   {
     sector: "Private events and travel",
@@ -67,7 +67,7 @@ export default function CaseBoard() {
         </div>
       ))}
       <p className="border-t border-line-dark px-4.5 py-3 text-[0.78125rem] text-on-dark-2">
-        Anonymised by policy, not by omission.{" "}
+        Every case anonymised on purpose, by policy.{" "}
         <Link href="/work" className="text-on-dark underline underline-offset-2">
           Read every case
         </Link>
