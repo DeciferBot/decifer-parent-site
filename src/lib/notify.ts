@@ -33,7 +33,12 @@ export interface SendEmailOptions {
 
 export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
   const tag = opts.logTag ?? "[DECIFER Email]";
-  if (!RESEND_API_KEY) return false;
+  if (!RESEND_API_KEY) {
+    // Say so. Returning false silently is why a misnamed key went unnoticed
+    // for three months while every enquiry email was dropped.
+    console.error(`${tag} No Resend API key set, so nothing was sent.`);
+    return false;
+  }
 
   try {
     const headers: Record<string, string> = {
