@@ -165,7 +165,7 @@ export const proof: ProofPoint[] = [
     key: "deletedAi",
     value: "5",
     label: "times we removed AI from a working system",
-    detail: "Each time a deterministic check was cheaper, faster and could not invent anything. We write about every one.",
+    detail: "Each time a simple, rule-based check was cheaper, faster and could not invent anything. We write about every one.",
     source: "rebiza, atlas, healcounselling: documented in code comments",
     verifiedAt: "2026-08-22",
   },

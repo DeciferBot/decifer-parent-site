@@ -48,7 +48,7 @@ export interface Capability {
 export const capabilities: Capability[] = [
   {
     key: "records-from-chaos",
-    name: "One system, instead of a filing cabinet of memory",
+    name: "One system instead of scattered paperwork and memory",
     pattern:
       "Documents, spreadsheets and years of institutional memory, turned into one record that is searchable, correct, and does not live in one person's head.",
     provenIn: ["catering-quotes-and-kitchen"],
@@ -74,22 +74,22 @@ export const capabilities: Capability[] = [
   },
   {
     key: "boundary-scoped-agents",
-    name: "Work that finishes itself, and knows when to stop",
+    name: "An agent that completes the task, or hands it to a person",
     pattern:
       "An agent scoped to one job, wired into the systems it needs, with a written definition of what it may do, what it hands to a person, and a log of every action it takes.",
     provenIn: ["private-event-concierge"],
     provenSummary: "A concierge scored 40 out of 40 on a graded eval, partly by refusing what it could not verify, and logged every change under a name and a time.",
     transfersTo: ["Contact centres and support queues", "Sales development and qualification", "Claims intake", "Internal helpdesks"],
     buyerAngle:
-      "Real autonomy, with proof the boundary holds under an adversarial test — the two things most agent vendors only offer one of.",
+      "Real autonomy, with proof it still works when someone tries to trip it up — the two things most AI vendors only offer one of.",
     serviceKeys: ["ai-agents"],
     order: 3,
   },
   {
     key: "deliberate-non-automation",
-    name: "Knowing exactly where AI does not belong",
+    name: "Knowing exactly where AI should not be used",
     pattern:
-      "A read on where AI genuinely carries risk, enforced structurally: no field to record a number in, no model in the path, an escalation that fires before a person sees anything.",
+      "We decide where AI is genuinely too risky, and remove it from that part of the system completely: no field to type a number into, no AI in that step at all, a person alerted before anything happens.",
     provenIn: ["counselling-practice-intake"],
     provenSummary: "Zero client-facing AI in a clinical intake system; screening scored by arithmetic against published cutoffs.",
     transfersTo: ["Healthcare and clinical operations", "HR and people decisions", "Legal advice", "Regulated financial advice"],

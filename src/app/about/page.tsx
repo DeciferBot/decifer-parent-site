@@ -22,7 +22,7 @@ const method = [
   },
   {
     step: "Connect",
-    body: "Apply the rules of the domain and the systems you already pay for. AI goes only where it earns its place, and the numbers are always computed in code.",
+    body: "Apply the rules of the domain and the systems you already pay for. AI is used only where a decision needs real judgement; every number is computed in code, never guessed by a model.",
   },
   {
     step: "Explain",
@@ -95,17 +95,15 @@ export default function AboutPage() {
           <div className="board px-8 py-10 sm:px-10 sm:py-12">
             <p className="label text-on-dark-2">Why the company exists</p>
             <p className="t-h3 mt-4 max-w-3xl text-on-dark">
-              Decifer exists to put a working AI system inside a business, not a slide deck about
-              one.
+              Decifer builds AI that actually runs inside a business, from week one.
             </p>
             <p className="mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-on-dark-2">
-              We run the method on our own systems first: three public products, operating
-              unattended, in public, for months, on the same rule we sell &mdash; code computes
-              the facts, AI narrates or extracts inside a written boundary, and a test enforces
-              the line. Most of a job can stay deterministic. AI earns its place only where a
-              decision genuinely needs judgement. We sell the discipline that decides where that
-              point is, and builds it, inside someone else&apos;s business, having already run it
-              inside our own.
+              We run the same rule on our own systems first: three public products, running day
+              and night for months. The software computes every number. AI only writes the words
+              or reads the documents, inside limits we write down in advance and test. Most of a
+              job does not need AI at all; it is only used where a decision needs real judgement.
+              We sell that discipline &mdash; deciding exactly where that point is, then building
+              it inside your business, the same way we already built it inside our own.
             </p>
           </div>
         </div>

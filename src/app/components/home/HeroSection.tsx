@@ -6,9 +6,9 @@ export default function HeroSection() {
     <section className="pt-28 pb-14 sm:pt-36 sm:pb-20">
       <div className="container-x grid items-start gap-12 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-7">
-          <p className="label rise mb-5">Deterministic by default. AI at the point that needs judgement.</p>
+          <p className="label rise mb-5">AI that does real work in your business.</p>
           <h1 className="t-display rise text-ink">
-            Most of the job stays code. We build the part that has to think.
+            We automate the repeatable work. AI only touches what needs judgement.
           </h1>
           <p className="t-lede rise-1 mt-6 max-w-[34rem]">
             Agents that do a defined job unattended, reporting that assembles

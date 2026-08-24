@@ -9,7 +9,7 @@ import { jsonLd, SITE } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "AI services in Dubai: agents, automation, reporting and product builds",
   description:
-    "Decifer builds AI agents, data and reporting automation and complete products for businesses in Dubai and the UAE. Fixed-scope audits, production builds, and plain advice about where AI does not belong.",
+    "Decifer builds AI agents, data and reporting automation and complete products for businesses in Dubai and the UAE. Fixed-scope audits, production builds, and plain advice about where AI should not be used.",
   alternates: { canonical: "/services" },
 };
 

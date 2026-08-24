@@ -10,7 +10,7 @@ import { jsonLd, SITE } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "The capability matrix: what we've proven, and where it transfers",
   description:
-    "Five patterns pulled from Decifer's own engagements, each showing what was proven and, separately, which industries the same pattern would apply to. Evidence and inference, kept visibly apart.",
+    "Five patterns pulled from Decifer's own engagements, each showing what was proven and, separately, which industries the same pattern would apply to. What's proven and what's our best guess, kept clearly apart.",
   alternates: { canonical: "/capabilities" },
 };
 
@@ -30,7 +30,7 @@ export default function CapabilitiesPage() {
       <PageHero
         kicker="Capabilities"
         title="One capability. Every industry it fits."
-        lede="Most of a job can stay deterministic. AI earns its place only at the point that needs judgement. These are the five places we've proven that split works, with the industries the same pattern would apply to next shown separately."
+        lede="Most of a job does not need AI at all. It is only used at the point that needs real judgement. These are the five places we've proven that works, with the industries the same idea would fit next shown separately."
       />
 
       <section className="pb-16 sm:pb-24">
@@ -47,8 +47,8 @@ export default function CapabilitiesPage() {
                 <thead>
                   <tr>
                     <th className="label px-6 py-4 font-medium">Capability</th>
-                    <th className="label px-6 py-4 font-medium">Proven in &mdash; evidence</th>
-                    <th className="label px-6 py-4 font-medium">Transfers to &mdash; inference</th>
+                    <th className="label px-6 py-4 font-medium">Proven in &mdash; real evidence</th>
+                    <th className="label px-6 py-4 font-medium">Could apply to &mdash; not proven yet</th>
                   </tr>
                 </thead>
                 <tbody>

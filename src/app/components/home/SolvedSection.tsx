@@ -59,7 +59,7 @@ export default function SolvedSection() {
           </ul>
           <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line px-6 py-4">
             <p className="text-sm text-body">
-              Proven in one field, or your field is next. Both are worth a call.
+              Don&apos;t see your industry above? That&apos;s exactly what the first call is for.
             </p>
             <Link href="/contact" data-event="solved_panel_cta" className="btn btn-primary px-4 py-2.5 text-sm">
               Bring us the next one
