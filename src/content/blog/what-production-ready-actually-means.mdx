@@ -1,0 +1,64 @@
+---
+title: "What production-ready actually means"
+description: "Everyone says production-ready. Almost nobody defines it. Here is the definition we build to, as six questions you can ask about any system, including one an AI wrote for you in a weekend."
+publishedAt: "2026-08-24"
+updatedAt: "2026-08-24"
+author: "Amit Chopra"
+topic: "Playbooks"
+tags: ["production ready", "vibe coding", "ai coding tools", "software quality"]
+readingMinutes: 6
+relatedServiceKeys: ["ai-product-development", "ai-advisory"]
+relatedPostSlugs: ["nine-vibe-coding-mistakes-that-follow-you-into-production", "how-to-automate-three-business-processes-with-ai"]
+---
+
+AI coding tools have made the first day of building software cheap. A working screen by dinner is now normal. That is genuinely new, and it has created a new confusion: the gap between "it works" and "it is ready" has never been wider, and the words used to describe that gap have never been vaguer.
+
+So here is a definition. Production-ready is not a feeling and not a vibe. It is six questions, each answerable with evidence. We apply them to everything we ship, and they work just as well on a system an AI wrote for you in a weekend.
+
+## 1. Does it survive a bad day?
+
+Every system has a good day, the one in the demo. Production is about the other days. The API you depend on goes down for six hours. The model provider has an outage. A payment fails halfway through.
+
+Ready means each of those has an answer written down before it happens: a retry, a fallback, a template that takes over, a person who gets notified. Our market intelligence system has run continuously for five months, and in that time it has survived an options pricing incident, a six-day silent outage at a model provider, and a credit failure mid-session. It survived because failure was part of the design, not a surprise to it.
+
+The test: name the three most likely failures. If the answer to "what happens then" is a shrug, it is not ready.
+
+## 2. Can you see what it did?
+
+A system you cannot see into is a system you find out about from customers. Every run should leave a line: when it started, what it did, whether it succeeded. Silence should trigger an alert, because the failures that hurt are the quiet ones. One of ours once failed thirteen of sixteen runs and nobody noticed for three weeks. Now a scheduled job checks the health of every other scheduled job.
+
+The test: ask "what did the system do yesterday?" If the answer takes longer than a minute to produce, it is not ready.
+
+## 3. Can you change it without fear?
+
+The demo worked once. A product gets changed every week, and each change is a chance to break what worked. Tests are how a change stops being a gamble: they encode the things that must never happen, and they run before every release, without anyone remembering to run them.
+
+The test: ask to see the tests, and ask what happens if one fails. The right answer is "the release is blocked". If the answer is a shrug, you are looking at a demo.
+
+## 4. Is the data safe?
+
+Real customer data changes the stakes of everything. Ready means development and production are separated, backups run automatically, and, this is the part everyone skips, a backup has been restored at least once. A backup you have never restored is a hope. Schema changes go through migration files, not through a tool reshaping live tables on a confident prompt.
+
+The test: "when did you last restore a backup?" A date is a pass. "We have backups" is not.
+
+## 5. Is it locked by default?
+
+Two checks cover most of what goes wrong. Every key and secret lives on the server, never in code and never in anything a browser downloads. And every endpoint checks who is asking, denying by default. Then test the system as a stranger: log out, take the raw URLs, try them.
+
+The test: has anyone ever attacked your own app on purpose? If the security has only ever been looked at by the person who built it, it has not been looked at.
+
+## 6. Does someone own it?
+
+Software is not ready if it is orphaned. The hosting, the domain, the database, the model keys: every account in the business's own name, not a freelancer's, not a personal Gmail. A short runbook that says what runs where. A named person who answers when it breaks at two in the morning.
+
+This is the least technical question and the most decisive. It is the difference between a bad night and a catastrophe.
+
+## The boundary question
+
+Behind the six there is one more, specific to systems with AI in them: where is the line between what the model does and what code does? The rule we build by is that code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test. Any system where a model can put a figure in front of a customer without code having computed it first fails this question, whatever else it does well.
+
+## Using the list
+
+Six questions, one page, no jargon. If you are building with AI tools, run the list before you invite real users, in the order written: survival, visibility, changeability, data, security, ownership. Most weekend builds fail four of the six, which is fine, because now you have a work list instead of a bad surprise.
+
+If you would rather have the list run for you, our two-week assessment does exactly that, in writing, at a fixed fee, credited against any build. Either way, the standard is the same, and now you have it.

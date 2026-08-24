@@ -72,6 +72,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     })),
 
+    { url: `${BASE}/learn`, lastModified: blogTouched, changeFrequency: "monthly", priority: 0.85 },
+
     { url: `${BASE}/blog`, lastModified: blogTouched, changeFrequency: "weekly", priority: 0.8 },
     ...posts.map((p) => ({
       url: `${BASE}/blog/${p.slug}`,

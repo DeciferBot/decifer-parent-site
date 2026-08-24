@@ -10,7 +10,7 @@ import AnalyticsEvents from "./components/AnalyticsEvents";
 import { products } from "./data/products";
 import { servicesOrdered } from "./data/services";
 import { stack } from "./data/stack";
-import { jsonLd } from "@/lib/jsonld";
+import { jsonLd, RSS_ALTERNATE_TYPES } from "@/lib/jsonld";
 
 const grotesk = Schibsted_Grotesk({
   subsets: ["latin"],
@@ -110,6 +110,7 @@ export const metadata: Metadata = {
   description:
     "Decifer turns AI investment into operating results: assessment, workflow redesign, build, integration, deployment and measurement, with client ownership at handover. Based in Dubai, working with the Gulf, UK and Singapore.",
   metadataBase: new URL("https://www.decifer.io"),
+  alternates: { types: RSS_ALTERNATE_TYPES },
   keywords: [
     "Decifer",
     "AI implementation company",

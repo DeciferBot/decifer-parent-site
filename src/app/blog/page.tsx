@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import PageHero from "@/app/components/PageHero";
 import PostRow from "@/app/components/blog/PostCard";
 import CtaBand from "@/app/components/CtaBand";
-import { getAllPosts } from "@/lib/blog";
-import { jsonLd, SITE } from "@/lib/jsonld";
+import { getAllPosts, BLOG_DESCRIPTION } from "@/lib/blog";
+import { jsonLd, SITE, RSS_ALTERNATE_TYPES } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   title: "Insights: AI in production, written by people who run it",
-  description:
-    "Plain-English writing on AI agents, automation and building products, from a Dubai company that runs its own. Costs shown, myths broken, mistakes admitted.",
-  alternates: { canonical: "/blog" },
+  description: BLOG_DESCRIPTION,
+  alternates: { canonical: "/blog", types: RSS_ALTERNATE_TYPES },
 };
 
 export default function BlogIndex() {

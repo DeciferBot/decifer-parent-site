@@ -1,0 +1,87 @@
+---
+title: "How to automate three business processes with AI, step by step"
+description: "The three automations businesses ask for most: weekly reporting, lead qualification and follow-up messages. Exactly how we build each one, what you need, and the mistakes that break them."
+publishedAt: "2026-08-24"
+updatedAt: "2026-08-24"
+author: "Amit Chopra"
+topic: "Playbooks"
+tags: ["ai automation", "ai agents", "reporting automation", "workflow automation", "dubai"]
+readingMinutes: 8
+relatedServiceKeys: ["ai-agents", "data-and-reporting"]
+relatedPostSlugs: ["where-we-deleted-the-ai", "nine-vibe-coding-mistakes-that-follow-you-into-production"]
+---
+
+Three automations come up in almost every first meeting: the weekly report someone builds by hand, the enquiries that go cold overnight, and the reminders that go out late or wrong. This article writes out how we build each one, step by step, including the failure points.
+
+We publish the full method on purpose. The steps are not the hard part; knowing which process to automate first in your specific business is. If you have a capable person in-house, they can build from this page. If you would rather use people who have built each one many times, that is what we sell.
+
+## 1. The weekly report that writes itself
+
+**What it does:** a short memo, in your inbox every Monday morning, saying what happened in the business last week, what changed, and what needs attention. It replaces the Friday afternoon someone currently spends assembling it by hand.
+
+**What you need:**
+
+- Read-only access to your data sources: analytics, advertising accounts, your accounting or sales system
+- A small database to hold one snapshot of the numbers per day
+- A scheduler that runs without anyone pressing a button
+- Exactly one model call, at the end
+
+**The steps:**
+
+1. Each day, plain code pulls the numbers from each source and stores a dated snapshot. No model is involved. This step must be boring.
+2. Each Monday, plain code computes the week's figures and the comparisons: this week against last week, against the same week last year. Every number the memo could possibly need now exists in one computed set.
+3. Before anything is written, a freshness check runs. If any source failed to deliver data this week, the memo says so plainly instead of reporting on stale numbers as if they were current.
+4. Now, the one model call: the model is handed the computed set and asked to write the narration. Which numbers matter this week, what moved, what to look at.
+5. Every sentence the model writes is checked by code. If a sentence contains a figure that is not in the computed set, the sentence is discarded and a plain template takes its place.
+6. The memo is sent, and a log line records what ran, what it read, and what it wrote.
+
+**Where it goes wrong:** three places. The model inventing a number: that is what step 5 exists for, and it is not optional. A source going quietly stale, so the memo confidently reports an old week: that is step 3. And metric definitions drifting, where "a lead" means one thing in the ads account and another in the sales system: fix the definition in code, in one place, before the first memo goes out.
+
+## 2. The lead qualifier that never quotes a price
+
+**What it does:** every enquiry answered within a minute, around the clock, and the good ones landing on a human closer's desk as a tidy dossier: who they are, what they want, budget, timeline. It replaces the enquiries that currently go cold overnight.
+
+**What you need:**
+
+- The channel your enquiries arrive on: a web form, email, or chat
+- A model call that extracts facts from the message
+- A short list of rules, written by you, that say what makes a lead worth a human's hour
+- Your CRM, so nothing lives in the bot
+- A test suite that tries to trick the agent, run before every change
+
+**The steps:**
+
+1. An enquiry arrives. The model reads it and extracts the facts into fields: name, need, budget, timeline. It extracts; it does not decide anything.
+2. Plain rules score those fields. The rules come from the person who currently does the qualifying, and they fit on one page.
+3. Below the threshold, the enquirer gets a polite, useful reply built from a template, and the record is filed in the CRM.
+4. Above the threshold, a human closer gets the dossier, and the enquirer is told a named person will be in touch. The agent never books the deal.
+5. The agent is bound by hard rules on what it may never say: no prices, no dates, no availability promises. Not "discouraged". Bound, in code.
+6. Before any change ships, a test suite tries to talk the agent into breaking those rules. One of our production agents carries an eight-case suite that tries to trick it into quoting a price the business cannot fulfil, and the build fails if any case succeeds.
+
+**Where it goes wrong:** the agent promising something the business cannot deliver. One invented discount can cost more than the system saves in a year, which is why step 6 matters most and is the step most often skipped. The other failure is quieter: automating the close itself. The moment a mistake is expensive, you want a person. The dossier is the automation. The closing is the job.
+
+## 3. The follow-up sequence with no AI in it
+
+**What it does:** every reminder, confirmation and follow-up going out on time, every time, with the details exactly right. Appointment reminders, payment follow-ups, onboarding steps.
+
+**What you need:**
+
+- A database that holds the facts: names, dates, times, amounts
+- A set of message templates, written once by a person
+- A trigger: three days before an appointment, seven days after an invoice
+- No model. That is the point.
+
+**The steps:**
+
+1. Store facts as values, never as sentences. The appointment time is a time in a column, not a phrase in a paragraph.
+2. Write the templates by hand, once, well. Each blank in the template maps to a column.
+3. Code fills the blanks and sends on the trigger. If a value is missing, the line is left out or the message is held for review. Nothing is ever guessed.
+4. When a fact changes, the message is regenerated by substitution. New time in, new message out, and it cannot be wrong.
+
+**Where it goes wrong:** one place: someone adds a model to this process because it feels behind the times. A model cannot be told "never paraphrase a time" with certainty, and a reminder that softens "23:30" into "late evening" sends someone to the wrong place. When the output is an instruction a person will follow, compose it from facts, not prose. We have written about [the five times we removed a model from a working system](/blog/where-we-deleted-the-ai); this is where that lesson applies.
+
+## The pattern behind all three
+
+Notice what the three have in common. The model appears exactly once, or not at all. Every number a customer sees is computed by code. A person sits wherever a mistake is expensive. And something checks the work. That is the same pattern we run our own products on.
+
+What this page cannot tell you is which of your processes to automate first, which to leave alone, and what your version costs to run. That is what our two-week assessment answers, at a fixed fee, credited against any build. It comes with a list of things not to automate yet, and if the honest answer is that you can build this yourself, the assessment will say so.

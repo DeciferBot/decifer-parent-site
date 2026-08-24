@@ -1,0 +1,80 @@
+---
+title: "Nine vibe coding mistakes that follow you into production"
+description: "Vibe coding is real and useful, and it is producing a generation of apps that fail the same nine ways. Each mistake below, why it happens, and the fix, from a company that gets called after the demo."
+publishedAt: "2026-08-24"
+updatedAt: "2026-08-24"
+author: "Amit Chopra"
+topic: "Field notes"
+tags: ["vibe coding", "ai coding tools", "production", "security", "small business"]
+readingMinutes: 8
+relatedServiceKeys: ["ai-product-development", "ai-advisory"]
+relatedPostSlugs: ["seven-ai-myths-dubai-business-owners-keep-paying-for", "how-to-automate-three-business-processes-with-ai"]
+---
+
+Vibe coding means describing what you want and letting an AI coding tool write it, while you judge the result by whether it looks and feels right. It works. We use AI coding tools every day, and this article is not a lecture against them.
+
+But we also get the phone calls that come three months later, when a vibe-coded app has real users, real data, and a real problem. Those calls repeat. The same nine mistakes come up so often that we now check for all nine in the first hour of looking at any inherited codebase. Here they are, with the fix for each.
+
+## 1. The API key is in the app
+
+**What happens:** the coding tool needs a key to call a payment provider or a model, and the fastest place to put it is right in the code. The key ships to the browser, or gets pushed to a public repository. Bots scan public repositories for keys constantly, and a leaked key can be found and abused within minutes.
+
+**The fix:** keys live on the server, in environment variables, never in code and never in anything the browser downloads. If a key has ever been in a public repository, it is burned. Rotate it today, not after you finish the feature. Then turn on secret scanning in your repository settings so the next leak is caught by a machine instead of a stranger.
+
+## 2. Every endpoint is public
+
+**What happens:** the tool scaffolds an API that does what the screen needs, and nobody asks who else can call it. The screen has a login. The API behind it does not check one. Anyone who opens the browser's network tab can copy the URL and read the database from their own laptop.
+
+**The fix:** every route checks who is asking, and denies by default. Then test the app as a stranger: log out, take the raw URLs, and try them. If any of them answer, that is the day's work. This is the single most common serious hole we find in vibe-coded apps, and it takes an afternoon to close on day one and a painful week to close after launch.
+
+## 3. The demo database is the production database
+
+**What happens:** the app was built against one database, users arrived, and now the tool that happily ran "delete everything and rebuild" during development is pointed at real customer data. One confident prompt, and the table is gone. There is no backup, because a demo does not need one.
+
+**The fix:** separate development from production the moment a real person's data enters the system. Turn on automatic backups and actually restore one once, because a backup you have never restored is a hope, not a backup. Make schema changes through migration files instead of letting a tool reshape live tables.
+
+## 4. Letting the tool regenerate whole files
+
+**What happens:** you ask for a small change and the tool rewrites the entire file, quietly dropping the fix you made last week. Nothing errors. The old bug simply comes back, and nobody connects it to the edit that caused it.
+
+We are not guessing about this one. In one of our own systems, a scheduler was wiped three separate times by tools that meant to edit it. The comment we wrote afterwards says: a note is not a mechanism, and the failure repeated. So now a watchdog restores the scheduler from a known-good copy whenever it goes missing.
+
+**The fix:** small changes, reviewed as differences against the previous version, in version control, committed often. If you cannot read the change the tool made, do not accept it. Version control is not bureaucracy; it is the undo button for exactly this failure.
+
+## 5. There are no tests, so every change is a gamble
+
+**What happens:** the demo worked, once, on the happy path, with the founder driving. Every change after that might break something and nobody would know until a customer does. So changes get scarier and slower, which is the opposite of what the AI tool was supposed to buy you.
+
+**The fix:** write tests for the things that must never happen, before the things that would be nice. One of our client-facing agents ships with a regression suite that tries eight different ways to trick it into quoting a price the business cannot fulfil, and the build fails if any of them succeed. When someone shows you a product built in a weekend, ask to see the tests. A shrug means you are looking at a demo.
+
+## 6. The model does the arithmetic
+
+**What happens:** a total, a price, a dosage, a date arrives in front of a customer because a language model wrote it. Models are persuasive and approximately right, and approximately right numbers are how you lose a customer or end up in a dispute.
+
+**The fix:** the rule we build every system by: code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test. In our reporting product, any sentence the model writes containing a figure that plain code did not already compute is thrown away and replaced with a template. If you cannot point to where that boundary is in your app, it does not have one.
+
+## 7. Nothing is logged
+
+**What happens:** the app cannot answer the question "what did it do yesterday". So the first sign of trouble is an angry customer, and the investigation is archaeology.
+
+One of our agents once failed thirteen of its last sixteen runs on an empty API balance, and nobody noticed for three weeks, because a failed run and a quiet run looked the same. That system now has a scheduled job whose only purpose is to check the health of every other scheduled job.
+
+**The fix:** every run writes a line: when it started, what it did, whether it succeeded. Silence gets an alert, because the failures that hurt are the quiet ones. And something has to watch the watcher.
+
+## 8. There is no plan for when the model is wrong
+
+**What happens:** the app assumes the model answers well every time. Then the model has a bad day, or the provider has an outage, and the app either falls over or, worse, confidently serves nonsense.
+
+**The fix:** decide, for every model call, what happens when the answer is wrong or missing. Sometimes the fallback is a template. Sometimes it is a retry. At every point where a mistake is expensive, it is a person: our travel concierge drafts itineraries, and a consultant approves every one before a traveller sees it. The draft is the automation. The approval is the product.
+
+## 9. Nobody owns it at two in the morning
+
+**What happens:** the app runs on the freelancer's hosting account, the domain is registered to someone's cousin, the model key belongs to a personal account, and the person who vibe-coded it has moved on. When it breaks at night, there is no one to call and nothing you can even log into.
+
+**The fix:** every account in the business's own name from day one: hosting, domain, database, model keys. A short runbook that says what runs where and what to do when it stops. A named person who answers. This is the least technical item on the list and the one that decides whether a bad night is an incident or a catastrophe.
+
+## Vibe code the demo. Engineer the product.
+
+The pattern in all nine is the same: vibe coding optimises for the moment the screen first works, and production is everything after that moment. The tools are genuinely good now. The first day is cheap. The mistakes above are what fill the gap between a thing that worked once and a thing that works on Tuesday.
+
+If you have a vibe-coded app that real customers now depend on, we run a two-week assessment at a fixed fee that checks all nine of these, in writing, credited against any build. The honest outcome is sometimes that your app is fine. The useful outcome is knowing which of the nine you are carrying before your customers find out for you.

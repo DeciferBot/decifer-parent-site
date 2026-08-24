@@ -5,7 +5,7 @@ import CtaBand from "@/app/components/CtaBand";
 import PostRow from "@/app/components/blog/PostCard";
 import { getAllPosts, getPost, formatDate } from "@/lib/blog";
 import { servicesByKey } from "@/app/data/services";
-import { jsonLd, SITE } from "@/lib/jsonld";
+import { jsonLd, SITE, RSS_ALTERNATE_TYPES } from "@/lib/jsonld";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
-    alternates: { canonical: post.canonical || `/blog/${slug}` },
+    alternates: { canonical: post.canonical || `/blog/${slug}`, types: RSS_ALTERNATE_TYPES },
     openGraph: {
       type: "article",
       url,
@@ -65,7 +65,7 @@ export default async function PostPage({ params }: Params) {
         dateModified: post.updatedAt ?? post.publishedAt,
         author: { "@type": "Person", "@id": `${SITE}/about#amit-chopra`, name: post.author, url: `${SITE}/about` },
         publisher: { "@id": `${SITE}/#organization` },
-        image: [post.image ? `${SITE}${post.image}` : `${SITE}/opengraph-image`],
+        image: [post.image ? `${SITE}${post.image}` : `${SITE}/blog/${slug}/opengraph-image`],
         isPartOf: { "@id": `${SITE}/blog#blog` },
         keywords: post.tags.join(", "),
         inLanguage: "en",

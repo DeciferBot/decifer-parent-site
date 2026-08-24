@@ -1,0 +1,64 @@
+---
+title: "Is your vibe-coded app safe to launch? Run these checks first"
+description: "Probably not yet: security research keeps finding that a large share of AI-generated code carries a serious vulnerability. The six checks to run before real users arrive, in plain English."
+publishedAt: "2026-08-24"
+updatedAt: "2026-08-24"
+author: "Amit Chopra"
+topic: "Playbooks"
+tags: ["vibe coding", "app security", "ai coding tools", "launch checklist"]
+readingMinutes: 7
+relatedServiceKeys: ["ai-product-development", "ai-advisory"]
+relatedPostSlugs: ["nine-vibe-coding-mistakes-that-follow-you-into-production", "what-production-ready-actually-means"]
+---
+
+Probably not yet, and that is not an insult to your app. Veracode's 2025 study of AI-generated code found that roughly 45 percent of samples contained at least one vulnerability from the OWASP Top 10, the industry's standard list of serious security flaws, and that asking the model to revise its own code over several rounds made things worse, not better. Your app was very likely built exactly that way.
+
+The good news: most of the risk is concentrated in a small number of known places, and you can check every one of them before launch. Here are the six checks, in the order we run them on any codebase we inherit.
+
+## Why AI-written code ships insecure
+
+A model writes code the way it writes everything: by producing what is most likely, learned from millions of public examples. A lot of those examples are insecure, because a lot of public code is insecure. The model also optimises for the thing you asked for, which was a working feature, not an attacked one. Nothing in the loop thinks like an intruder unless you make it.
+
+So assume the flaws are there and go looking. This is not paranoia. It is the same assumption professional teams make about their own hand-written code.
+
+## Check 1: Are your secrets in the code?
+
+Search the codebase for every API key, password and token. Any secret that appears in the code itself, in anything the browser downloads, or anywhere in your git history is exposed. Bots scan public repositories for keys continuously, and a leaked key can be found and abused within minutes.
+
+**Pass:** all secrets live on the server in environment variables. Any key that was ever committed has been rotated, today, and secret scanning is switched on in your repository settings.
+
+## Check 2: Does every endpoint check who is asking?
+
+This is the most common serious hole in vibe-coded apps. The screens have a login; the API behind them does not check one. Log out, open the browser's network tab, copy the raw API URLs, and request them as a stranger.
+
+**Pass:** every route answers only after verifying identity and permission, denying by default, and your stranger test came back with nothing.
+
+## Check 3: Can you lose the data?
+
+Three sub-questions. Is production separate from development, so a tool cannot "helpfully" rebuild live tables? Do backups run automatically? And the one everyone skips: have you actually restored a backup once? A backup that has never been restored is a hope, not a backup.
+
+**Pass:** separate environments, automatic backups, one successful restore with a date on it.
+
+## Check 4: Are your dependencies known-bad?
+
+AI tools pull in packages freely, and some of those packages have published vulnerabilities. Every ecosystem ships a free audit command that checks your dependency list against the public vulnerability database. Running it takes one minute.
+
+**Pass:** the audit runs clean, or every flagged package has been updated or consciously accepted, and the audit runs automatically on every build.
+
+## Check 5: Are payments and personal data handled by grown-ups?
+
+If your app touches card details, let your payment provider's hosted pages do it, so card data never crosses your servers. If it stores personal data, know exactly what you hold, encrypt it, and collect only what the product needs. This is also where legal obligations live, and they apply to a weekend build the moment real users arrive.
+
+**Pass:** no card data on your servers, a one-page list of the personal data you hold and why.
+
+## Check 6: Would you know if you were attacked?
+
+Every login attempt, failure and unusual pattern should leave a log line, and silence or spikes should alert someone. Without this, the first sign of a breach is a customer telling you. In our own systems something watches every job, because we once had an agent fail thirteen of sixteen runs unnoticed for three weeks, and we do not repeat that lesson.
+
+**Pass:** you can answer "what did the app do yesterday?" in under a minute, and a named person gets alerted when it misbehaves.
+
+## After the checks
+
+Passing all six does not make the app finished. It makes it safe enough to put in front of real users while you fix everything else, which is the point of launching. The wider list of what breaks next is in [nine vibe coding mistakes that follow you into production](/blog/nine-vibe-coding-mistakes-that-follow-you-into-production), and the standard to aim at is in [what production-ready actually means](/blog/what-production-ready-actually-means).
+
+If you would rather have the whole pass done for you, in writing, our two-week assessment covers all six checks and the production standard behind them, at a fixed fee, credited against any build. Sometimes the honest result is that your app is fine. The useful result is knowing it before your users test it for you.
