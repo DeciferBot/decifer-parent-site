@@ -9,7 +9,7 @@ import { jsonLd, SITE, RSS_ALTERNATE_TYPES } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "Learn: how to build production-ready software with AI",
   description:
-    "A free field guide for people building with AI coding tools. What production-ready means, the mistakes that follow vibe coders into production, and step-by-step automation recipes you can copy.",
+    "A free field guide for people building with AI coding tools. What production-ready means, the mistakes that follow vibe coders into production, and step-by-step guides to the most common automations.",
   alternates: { canonical: "/learn", types: RSS_ALTERNATE_TYPES },
 };
 
@@ -35,9 +35,9 @@ const PATH: { slug: string; stage: string; note: string }[] = [
     note: "The nine failures we check for in the first hour of looking at any inherited codebase, with the fix for each.",
   },
   {
-    slug: "three-ai-automation-recipes-you-can-copy",
+    slug: "how-to-automate-three-business-processes-with-ai",
     stage: "Build something real",
-    note: "Three automations written out like recipes: ingredients, method, and where each one burns.",
+    note: "The three most requested automations, written out step by step with the failure points marked.",
   },
   {
     slug: "where-we-deleted-the-ai",
@@ -105,7 +105,7 @@ export default function LearnPage() {
       <PageHero
         kicker="Learn"
         title="Build production-ready software with AI."
-        lede="AI tools make the first day cheap. This guide is about every day after that. Written by a Dubai company that builds and runs AI systems for a living, and published free, because the recipe was never the hard part."
+        lede="AI tools make the first day cheap. This guide is about every day after that. Written by a Dubai company that builds and runs AI systems for a living, and published free in full."
       />
 
       <section className="pb-16 sm:pb-20">
