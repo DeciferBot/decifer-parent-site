@@ -59,7 +59,7 @@ function Mark({ icon, label }: { icon?: SimpleIcon; label: string }) {
 export default function LogoRow({
   keys,
   tone = "ink",
-  linkTo = "/stack",
+  linkTo = "/how-we-work",
 }: {
   keys?: StackKey[];
   tone?: "ink" | "light";

@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
       { source: "/book-a-call", destination: "/contact", permanent: true },
       { source: "/case-studies", destination: "/work", permanent: true },
       { source: "/case-studies/:slug", destination: "/work/:slug", permanent: true },
+      // 2026-08-24 repositioning: capabilities and stack folded into
+      // /how-we-work; products demoted to About (Built by Decifer).
+      { source: "/capabilities", destination: "/how-we-work", permanent: true },
+      { source: "/stack", destination: "/how-we-work", permanent: true },
+      { source: "/products", destination: "/about", permanent: true },
     ];
   },
 };

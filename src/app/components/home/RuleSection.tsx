@@ -47,8 +47,8 @@ export default function RuleSection() {
             ))}
           </div>
           <p className="mt-10">
-            <Link href="/about" className="font-semibold underline underline-offset-4">
-              Read how we work
+            <Link href="/work" className="font-semibold underline underline-offset-4">
+              See it in the work
             </Link>
           </p>
         </div>

@@ -57,7 +57,7 @@ export default function CaseBoard() {
   return (
     <aside className="board" aria-label="Cases Decifer has solved">
       <div className="flex items-center justify-between px-4.5 py-3.5">
-        <span className="label text-on-dark-2">Cases we&apos;ve solved</span>
+        <span className="label text-on-dark-2">Taken to production</span>
         <span className="text-[0.8125rem] text-on-dark-2">5 industries, one method</span>
       </div>
       {rows.map((r) => (

@@ -16,9 +16,9 @@ export default function StackSection() {
       <div className="container-x">
         <div className="panel">
           <div className="panel-head">
-            <h2 className="label">Where the expertise runs</h2>
-            <Link href="/stack" className="link text-sm">
-              Why each tool
+            <h2 className="label">What we build on, and what you keep</h2>
+            <Link href="/work" className="link text-sm">
+              Where each tool shipped
             </Link>
           </div>
           <div className="panel-pad">

@@ -10,7 +10,7 @@ export default function StackList({ keys }: { keys: StackKey[] }) {
       <span className="font-semibold text-ink">Built with </span>
       {items.map((t, i) => (
         <span key={t.key}>
-          <Link href="/stack" className="link-quiet" title={t.role}>
+          <Link href="/how-we-work" className="link-quiet" title={t.role}>
             {t.name}
           </Link>
           {i < items.length - 1 ? ", " : "."}

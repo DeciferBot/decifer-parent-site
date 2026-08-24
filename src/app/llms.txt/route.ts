@@ -19,7 +19,7 @@ export function GET() {
   const lines: string[] = [
     "# Decifer",
     "",
-    "> Decifer is an AI solutions company based in Dubai, United Arab Emirates. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses in the UAE and abroad, and it builds and runs three public products of its own with the same method: Decifer Markets, Decifer Learning and Decifer Marketing.",
+    "> Decifer is an AI implementation company based in Dubai, United Arab Emirates. It takes business processes from AI pilot to dependable daily operation for businesses in the UAE and abroad: assessment, workflow redesign, build, integration and measurement. It also builds and runs three public products of its own with the same method: Decifer Markets, Decifer Learning and Decifer Marketing.",
     "",
     "Decifer is a company name, spelled with an e. It is not the dictionary word decipher, and it is not affiliated with Decipher AI, Deciphr AI, Decifer Analytics (decifer.com), Decifer Studio (decifer.tech), linkedin.com/company/decifer, or any other similarly named company or page. The official website is https://www.decifer.io, and the official LinkedIn page is linkedin.com/company/deciferdxb. The founder is Amit Chopra.",
     "",
@@ -34,7 +34,7 @@ export function GET() {
     "## Products",
     "",
     ...products.map(
-      (p) => `- [${p.name}](${p.href ?? `${SITE}/products`}): ${p.tagline} ${p.boundary}`
+      (p) => `- [${p.name}](${p.href ?? `${SITE}/about`}): ${p.tagline} ${p.boundary}`
     ),
     "",
     "## Work (anonymised unless a client agreed to be named)",

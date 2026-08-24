@@ -45,7 +45,7 @@ const organizationJsonLd = {
       },
       image: `${SITE}/opengraph-image`,
       description:
-        "Decifer is an AI solutions company based in Dubai. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses, and it builds and runs its own products using the same method.",
+        "Decifer is an AI implementation company based in Dubai. It takes business processes from AI pilot to dependable daily operation: assessment, workflow redesign, build, integration and measurement. It also builds and runs its own products using the same method.",
       areaServed: [
         { "@type": "Country", name: "United Arab Emirates" },
         { "@type": "AdministrativeArea", name: "Gulf Cooperation Council" },
@@ -104,18 +104,22 @@ const organizationJsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Decifer: AI agents, automation and products, built in Dubai",
+    default: "Decifer | AI implementation company in Dubai, from pilot to production",
     template: "%s | Decifer",
   },
   description:
-    "Decifer is an AI company in Dubai that builds AI agents, workflow automation, reporting systems and complete products for businesses of 10 to 200 people. It runs three public products with the same method. Every build runs on your accounts, with a log you can read.",
+    "Decifer turns AI investment into operating results: assessment, workflow redesign, build, integration, deployment and measurement, with client ownership at handover. Based in Dubai, working with the Gulf, UK and Singapore.",
   metadataBase: new URL("https://www.decifer.io"),
   keywords: [
     "Decifer",
+    "AI implementation company",
+    "AI implementation Dubai",
     "AI company Dubai",
     "AI agent development Dubai",
     "AI consultant Dubai",
+    "AI consulting Dubai",
     "workflow automation Dubai",
+    "AI workflow automation",
     "AI automation UAE",
     "AI product development Dubai",
     "data and reporting automation",
@@ -128,9 +132,9 @@ export const metadata: Metadata = {
     apple: "/brand/decifer-app-icon.svg",
   },
   openGraph: {
-    title: "Decifer: AI that does a job inside your business",
+    title: "Decifer: AI implementation, from pilot to production",
     description:
-      "An AI company in Dubai building agents, reporting systems and complete products for businesses. Three public products, one method, every account in your name.",
+      "An AI implementation company in Dubai. Assessment, workflow redesign, build, integration and measurement. Three public products run on the same method, every account in the client's name.",
     url: "https://www.decifer.io",
     siteName: "Decifer",
     type: "website",
@@ -138,9 +142,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Decifer: AI that does a job inside your business",
+    title: "Decifer: AI implementation, from pilot to production",
     description:
-      "An AI company in Dubai building agents, reporting systems and complete products for businesses. Three public products, one method, every account in your name.",
+      "An AI implementation company in Dubai. Assessment, workflow redesign, build, integration and measurement. Three public products run on the same method, every account in the client's name.",
   },
   robots: {
     index: true,
