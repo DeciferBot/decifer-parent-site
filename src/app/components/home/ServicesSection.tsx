@@ -18,6 +18,14 @@ export default function ServicesSection() {
               <ServiceRow key={s.key} service={s} />
             ))}
           </ul>
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line px-6 py-4">
+            <p className="text-sm text-body">
+              Not sure which one fits? That is what the audit decides.
+            </p>
+            <Link href="/contact" data-event="services_panel_cta" className="btn btn-primary px-4 py-2.5 text-sm">
+              Book a 30-minute call
+            </Link>
+          </div>
         </div>
       </div>
     </section>

@@ -54,11 +54,9 @@ export default function WorkPage() {
             </ul>
           </div>
           <p className="mt-10 max-w-2xl text-[0.9375rem] leading-relaxed text-muted">
-            No case carries a percentage. We publish a figure only with the
-            before measurement, the after measurement taken the same way, the
-            period, the things that could have caused it instead, and the
-            client&apos;s written permission. Until all five exist, the words
-            carry it.
+            A figure appears here only with the before measurement, the after
+            measurement taken the same way, and the client&apos;s written
+            permission. That is why you can believe the ones you see.
           </p>
         </div>
       </section>

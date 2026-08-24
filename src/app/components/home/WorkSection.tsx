@@ -8,9 +8,9 @@ export default function WorkSection() {
       <div className="container-x">
         <div className="panel">
           <div className="panel-head">
-            <h2 className="label">Client work, described by shape</h2>
-            <Link href="/legal/client-confidentiality" className="link text-sm">
-              Why clients are not named
+            <h2 className="label">Recent results</h2>
+            <Link href="/work" className="link text-sm">
+              All work
             </Link>
           </div>
           <ul className="divide-y divide-line">
@@ -18,13 +18,18 @@ export default function WorkSection() {
               <CaseRow key={c.key} shape={c} />
             ))}
           </ul>
-          <p className="border-t border-line px-6 py-4 text-sm text-muted">
-            Each case states what was built, what changed, how it is measured,
-            and what we chose not to automate.{" "}
-            <Link href="/work" className="link">
-              Read the full cases
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line px-6 py-4">
+            <p className="text-sm text-muted">
+              Clients are anonymised by policy. Every case states what was
+              built, what changed and how it is measured.{" "}
+              <Link href="/legal/client-confidentiality" className="link">
+                Why
+              </Link>
+            </p>
+            <Link href="/contact" data-event="work_panel_cta" className="btn btn-primary px-4 py-2.5 text-sm">
+              Get results like these
             </Link>
-          </p>
+          </div>
         </div>
       </div>
     </section>

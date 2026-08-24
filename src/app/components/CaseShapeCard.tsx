@@ -21,7 +21,7 @@ export default function CaseRow({ shape: c }: { shape: CaseShape }) {
           <h3 className="t-h3 text-ink">{c.title}</h3>
           <p className="t-body measure mt-2">{c.clientShape}.</p>
           <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink">
-            <span className="font-semibold">After: </span>
+            <span className="font-semibold">Result: </span>
             {c.outcome[0]}.
           </p>
         </div>

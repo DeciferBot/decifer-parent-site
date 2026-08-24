@@ -21,7 +21,7 @@ type Row = {
 const rows: Row[] = [
   {
     name: "Decifer Markets",
-    sub: "Daily market read, paper account",
+    sub: "Plain-English daily market read",
     value: "Live",
     valueSub: "5 months continuous",
     status: "Running",
@@ -108,11 +108,10 @@ export default function SystemsBoard() {
         </div>
       ))}
       <p className="border-t border-line-dark px-4.5 py-3 text-[0.78125rem] text-on-dark-2">
-        Figures verified 23 August 2026.{" "}
+        Every figure has a named source.{" "}
         <Link href="/about#numbers" className="text-on-dark underline underline-offset-2">
           How we count
         </Link>
-        . The market system trades a paper account, not real money.
       </p>
     </aside>
   );
