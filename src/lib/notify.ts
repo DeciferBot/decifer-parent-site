@@ -8,11 +8,16 @@ import "server-only";
  * a side effect and must not fail the request that triggered it.
  *
  * Env:
- *   RESEND_API_KEY       required to send anything
+ *   RESEND_API_KEY       required to send anything (Resend_API_Key also read)
  *   RESEND_FROM          verified sender, defaults to Resend's onboarding address
  */
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
+// The Vercel variable was created as `Resend_API_Key`, which is why no email
+// ever sent from this site. Vercel marks production variables sensitive, so
+// the value cannot be read back to rename it from the CLI; it has to be
+// renamed in the dashboard. Until then, accept either spelling. Drop the
+// fallback once the dashboard shows RESEND_API_KEY.
+const RESEND_API_KEY = process.env.RESEND_API_KEY ?? process.env.Resend_API_Key;
 const FROM_ADDRESS = process.env.RESEND_FROM ?? "Decifer <onboarding@resend.dev>";
 
 export interface SendEmailOptions {
