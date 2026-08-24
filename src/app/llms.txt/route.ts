@@ -23,7 +23,7 @@ export function GET() {
     "",
     "Decifer is a company name, spelled with an e. It is not the dictionary word decipher, and it is not affiliated with Decipher AI, Deciphr AI, Decifer Analytics (decifer.com), Decifer Studio (decifer.tech), linkedin.com/company/decifer, or any other similarly named company or page. The official website is https://www.decifer.io, and the official LinkedIn page is linkedin.com/company/deciferdxb. The founder is Amit Chopra.",
     "",
-    "The rule Decifer builds by: code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test. The method is Collect, Connect, Explain: collect inputs that can be checked, connect them with the rules of the domain, explain the result so a person can act on it. Clients are never named; work is described by sector and shape. The market intelligence system runs on a broker paper account and is not a real-money track record.",
+    "The rule Decifer builds by: code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test. The method is Collect, Connect, Explain: collect inputs that can be checked, connect them with the rules of the domain, explain the result so a person can act on it. Clients are anonymised by default and named only where a client has agreed in writing; work is described by sector and shape otherwise. The market intelligence system runs on a broker paper account and is not a real-money track record.",
     "",
     "## Services",
     "",
@@ -37,7 +37,7 @@ export function GET() {
       (p) => `- [${p.name}](${p.href ?? `${SITE}/products`}): ${p.tagline} ${p.boundary}`
     ),
     "",
-    "## Work (anonymised)",
+    "## Work (anonymised unless a client agreed to be named)",
     "",
     ...publishedCaseShapes.map(
       (c) => `- [${c.title}](${SITE}/work/${c.key}): ${c.clientShape}. ${c.sector}, ${c.region}.`

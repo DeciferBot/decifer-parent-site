@@ -77,8 +77,8 @@ export const capabilities: Capability[] = [
     name: "An agent that completes the task, or hands it to a person",
     pattern:
       "An agent scoped to one job, wired into the systems it needs, with a written definition of what it may do, what it hands to a person, and a log of every action it takes.",
-    provenIn: ["private-event-concierge"],
-    provenSummary: "A concierge scored 40 out of 40 on a graded eval, partly by refusing what it could not verify, and logged every change under a name and a time.",
+    provenIn: ["private-event-concierge", "creator-business-engine"],
+    provenSummary: "A concierge scored 40 out of 40 on a graded eval, partly by refusing what it could not verify. A second build hard-caps ad spend in code and gates every brand-outreach number to what the data actually says right now.",
     transfersTo: ["Contact centres and support queues", "Sales development and qualification", "Claims intake", "Internal helpdesks"],
     buyerAngle:
       "Real autonomy, with proof it still works when someone tries to trip it up — the two things most AI vendors only offer one of.",

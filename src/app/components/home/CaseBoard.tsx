@@ -44,6 +44,13 @@ const rows: Row[] = [
     change: "A report within minutes",
     changeSub: "No AI a client can touch",
   },
+  {
+    sector: "Creator and personal brand",
+    job: "One person's memory ran the whole business",
+    complexity: "Ad spend hard-capped in code",
+    change: "Publishing runs on a schedule",
+    changeSub: "Blog fails closed if a check does not pass",
+  },
 ];
 
 export default function CaseBoard() {
@@ -51,7 +58,7 @@ export default function CaseBoard() {
     <aside className="board" aria-label="Cases Decifer has solved">
       <div className="flex items-center justify-between px-4.5 py-3.5">
         <span className="label text-on-dark-2">Cases we&apos;ve solved</span>
-        <span className="text-[0.8125rem] text-on-dark-2">4 industries, one method</span>
+        <span className="text-[0.8125rem] text-on-dark-2">5 industries, one method</span>
       </div>
       {rows.map((r) => (
         <div key={r.sector} className="board-row">
@@ -67,7 +74,7 @@ export default function CaseBoard() {
         </div>
       ))}
       <p className="border-t border-line-dark px-4.5 py-3 text-[0.78125rem] text-on-dark-2">
-        Every case anonymised on purpose, by policy.{" "}
+        Anonymised by default, named only by agreement.{" "}
         <Link href="/work" className="text-on-dark underline underline-offset-2">
           Read every case
         </Link>
