@@ -35,6 +35,11 @@ const PATH: { slug: string; stage: string; note: string }[] = [
     note: "The nine failures we check for in the first hour of looking at any inherited codebase, with the fix for each.",
   },
   {
+    slug: "is-your-vibe-coded-app-safe-to-launch",
+    stage: "Check before launch",
+    note: "The six security checks to run before real users arrive, in the order we run them on any codebase we inherit.",
+  },
+  {
     slug: "how-to-automate-three-business-processes-with-ai",
     stage: "Build something real",
     note: "The three most requested automations, written out step by step with the failure points marked.",

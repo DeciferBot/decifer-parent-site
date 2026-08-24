@@ -1,0 +1,68 @@
+---
+title: "How much does an AI agent cost to build and run?"
+description: "Two bills, not one: a build cost and a monthly running cost, and most quotes only show the first. What drives each, where costs run away, and the questions to ask any vendor."
+publishedAt: "2026-08-24"
+updatedAt: "2026-08-24"
+author: "Amit Chopra"
+topic: "Buying AI"
+tags: ["ai agent cost", "ai agents", "pricing", "build vs buy", "small business"]
+readingMinutes: 7
+relatedServiceKeys: ["ai-agents", "ai-advisory"]
+relatedPostSlugs: ["is-ai-automation-worth-it-for-a-small-business", "ai-agent-vs-automation-which-does-your-business-need"]
+---
+
+An AI agent has two bills: a one-time build cost and a monthly running cost. Most quotes show you the first and stay quiet about the second, and the second is the one that decides whether the project makes sense over a year. This article explains what drives each, where costs quietly run away, and what to ask any vendor, including us.
+
+We will not print a single made-up number, because a price without your specifics is marketing. What we can do is show you every line item, so no bill surprises you.
+
+## What drives the build cost
+
+Four things, in rough order of weight:
+
+**How wrong the agent is allowed to be.** This is the biggest driver and the least discussed. A drafting tool a person reviews can be built quickly. An agent that talks to your customers needs rules it cannot break and a test suite that proves it. One of our production agents ships with a regression suite that tries eight different ways to trick it into quoting a price the business cannot fulfil, and the build fails if any succeed. Writing those tests is real work, and skipping them is how agents end up in the news.
+
+**Integrations.** Each system the agent touches, your CRM, your inbox, your calendar, your accounting tool, adds connection work and a failure mode to handle. Two integrations is a small project. Seven is not.
+
+**The messiness of the input.** Extracting facts from a tidy web form is easy. Extracting them from rambling voice notes and forwarded email chains is where the effort goes.
+
+**Who has to be able to change it later.** If your own team should be able to adjust rules and templates, that interface has to be built too. It is worth it, and it is a line item.
+
+## What the monthly running cost is made of
+
+This is the bill that quotes hide. It has four parts:
+
+**Model usage.** What the agent pays per call to the model provider. For most business agents this is genuinely small, and it is usually the only running cost a vendor mentions, precisely because it is small.
+
+**Hosting and infrastructure.** The servers, the database, the scheduler. Modest, predictable, permanent.
+
+**Monitoring.** Something has to watch the agent. We learned this the expensive way: one of our agents once failed thirteen of its last sixteen runs on an empty API balance and nobody noticed for three weeks, because a failed run and a quiet run looked the same. Now a scheduled job checks the health of every other job. That watching costs something to build and a little to run, and an agent without it is not cheaper, it is just unwatched.
+
+**Maintenance and change.** Models get updated, APIs change, your business rules change. Budget for a few hours a month, or you are budgeting for a slow decay.
+
+## The costs nobody mentions
+
+**Evaluation.** When you change the agent, how do you know it did not get worse? A proper evaluation suite is built once and run on every change. Ours grade our own products against live data. Without one, every change is a guess.
+
+**Incidents.** Something will break: a provider outage, a price change, a weird input. The cost is small if the system logs what it does and a named person owns it, and large if neither is true.
+
+**The runaway loop.** The classic agent failure: it retries, or calls itself, or loops on a bad input, and burns through credit at speed. The fix is a spending cap and a per-run cost log, wired in from day one. Ask any vendor where the cap lives. If there is no cap, your monthly cost has no ceiling.
+
+## Build, buy, or both?
+
+The plain rule: **buy** the generic layer where an off-the-shelf product already does the job, and **build** the part that encodes how your business actually works, your rules, your tone, your prices, your boundaries. Most good outcomes blend both. Building everything from scratch for a standard problem wastes money; buying a generic tool for a specific problem wastes it slower.
+
+And before either: check whether you need an agent at all. [Many agent projects should have been simple automations](/blog/ai-agent-vs-automation-which-does-your-business-need), at a fraction of both bills.
+
+## What to ask any vendor, including us
+
+1. What is the monthly running cost, all four parts, in writing?
+2. Where is the spending cap, and what happens when it is hit?
+3. Who owns the accounts? (Every account should be in your name. This is our standing rule and it should be your standing demand.)
+4. What does the test suite check, and can we see it run?
+5. What happened in your last incident, and what changed because of it?
+
+A vendor who answers all five plainly is selling you a system. A vendor who cannot is selling you a demo with a subscription attached.
+
+## The honest summary
+
+The build cost is what you negotiate. The running cost is what you live with. Insist on seeing both before you sign anything. Our two-week assessment prices both for your specific case, at a fixed fee, credited against any build, and if the numbers say do not build, that is what the assessment will say.

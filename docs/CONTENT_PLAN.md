@@ -1,5 +1,7 @@
 # Content plan: next five posts
 
+Status: all five written and added to the site on 2026-08-24, same PR.
+
 Written 2026-08-24. Topics come from questions people actually ask on Google
 and Reddit, not from what we want to say. Each post answers one question in
 plain English, shows real numbers where we have them, and points at one

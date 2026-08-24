@@ -1,0 +1,54 @@
+---
+title: "Why AI gets your numbers wrong, and how to stop it"
+description: "Language models do not calculate numbers, they predict them, which is why confident wrong figures keep appearing in AI reports. The fix is structural, not better prompting. Here it is."
+publishedAt: "2026-08-24"
+updatedAt: "2026-08-24"
+author: "Amit Chopra"
+topic: "Playbooks"
+tags: ["ai hallucination", "ai reporting", "data accuracy", "ai in business"]
+readingMinutes: 6
+relatedServiceKeys: ["data-and-reporting"]
+relatedPostSlugs: ["where-we-deleted-the-ai", "how-to-automate-three-business-processes-with-ai"]
+---
+
+A language model does not calculate numbers. It predicts them, the same way it predicts every other word, by producing what looks likely in context. A likely-looking revenue figure and a correct revenue figure are different things, and the model cannot tell you which one it just wrote. That is the whole explanation, and it is why the fix is structural, not a better prompt.
+
+If you have caught an AI tool confidently reporting a figure that was simply wrong, you have seen this. You are not holding it wrong. You are watching the mechanism work as designed.
+
+## Why language models invent numbers
+
+A model produces text one piece at a time, choosing what plausibly comes next. Ask it to summarise your quarter and it will write a fluent paragraph in which the growth percentage is chosen because a number like it belongs in a sentence like that. Sometimes the number is right, because the right number was in what you gave it. Sometimes it is subtly adjusted, rounded, or filled in from nowhere. The sentence reads identically in both cases.
+
+That last part is the dangerous part. Wrong numbers from a model arrive with the same confident fluency as right ones. There is no stumble to warn you.
+
+## Why better prompting does not fix it
+
+Telling a model "only use the numbers provided" and "double-check your figures" reduces the error rate. It does not make it zero, and business reporting needs zero, because one invented figure in front of a customer, a board, or a regulator costs more than the whole system saved. The consequences are not hypothetical: in a widely reported case in 2025, a major consultancy partially refunded a government contract after its delivered report was found to contain AI-invented citations.
+
+A prompt is a request. What you need is a guarantee, and guarantees do not come from asking nicely. They come from architecture.
+
+## The fix: a boundary, enforced by a test
+
+The rule we build every reporting system by: **code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test.**
+
+Concretely, in our own reporting product:
+
+1. Plain code pulls the data and computes every figure: totals, comparisons, percentages. This set of computed numbers is the only source of truth.
+2. The model is handed that set and asked to write the narration: what moved, what matters, what to look at.
+3. Every sentence the model writes is then checked by code. If a sentence contains a figure that is not in the computed set, the sentence is thrown away and a plain template takes its place.
+
+The model can still be useful, because narration is genuinely what it is good at. It just can never be the source of a number. In our learning product the same rule appears in a different form: algebra is checked by a symbolic maths engine, and the model never decides what is correct.
+
+## How to check a system you are buying
+
+Two questions expose everything:
+
+**"Where in the system is the line between what the model writes and what code computes?"** A real answer points at a specific mechanism, like the whitelist check above. A vague answer ("the model is very accurate") means there is no line.
+
+**"What happens when the model writes a number anyway?"** The right answer is that a check catches it and a template replaces it, automatically, every time. If the answer is that a human reviews the output, ask what happens on the day the human is busy.
+
+We have removed models from working systems five times when the step needed to be right rather than clever. [The full list is here](/blog/where-we-deleted-the-ai), and the reporting case in [our step-by-step automation guide](/blog/how-to-automate-three-business-processes-with-ai) shows the boundary in a complete build.
+
+## The short version
+
+AI will get your numbers wrong occasionally, forever, because predicting text is what it is. Stop trying to prompt the risk away and move the numbers out of the model's hands entirely. If a vendor cannot show you where that boundary sits in their product, the boundary does not exist. Ours is a test that fails the build, and we will happily show it to you.

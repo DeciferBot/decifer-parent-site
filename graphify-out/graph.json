@@ -1866,8 +1866,8 @@
       "source_file": "src/lib/leads.ts",
       "source_location": "L133",
       "weight": 1.0,
-      "_src": "leads_recentsubmissioncount",
-      "_tgt": "enquiryform_set",
+      "_src": "enquiryform_set",
+      "_tgt": "leads_recentsubmissioncount",
       "source": "enquiryform_set",
       "target": "leads_recentsubmissioncount"
     },
@@ -1878,8 +1878,8 @@
       "source_file": "src/lib/leads.ts",
       "source_location": "L160",
       "weight": 1.0,
-      "_src": "leads_memoryratelimited",
-      "_tgt": "enquiryform_set",
+      "_src": "enquiryform_set",
+      "_tgt": "leads_memoryratelimited",
       "source": "enquiryform_set",
       "target": "leads_memoryratelimited"
     },
