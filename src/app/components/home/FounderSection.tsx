@@ -1,52 +1,84 @@
-import SectionLabel from "../SectionLabel";
+import fs from "node:fs";
+import path from "node:path";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function FounderSection() {
+/**
+ * Founder block. If public/founder/amit-chopra.jpg exists it is shown;
+ * otherwise the block renders without a placeholder face. Never ship a
+ * stock photo or an initials avatar here.
+ */
+
+const PHOTO = "/founder/amit-chopra.jpg";
+
+function hasPhoto() {
+  try {
+    return fs.existsSync(path.join(process.cwd(), "public", PHOTO));
+  } catch {
+    return false;
+  }
+}
+
+export default function FounderSection({ compact = false }: { compact?: boolean }) {
+  const photo = hasPhoto();
   return (
-    <section className="bg-canvas py-20 sm:py-28">
-      <div className="mx-auto max-w-3xl px-5 sm:px-8">
-        <div className="mb-8 text-center">
-          <SectionLabel>Founder Note</SectionLabel>
-          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-            Why DECIFER exists.
-          </h2>
-        </div>
-
-        <div className="scroll-reveal relative rounded-2xl border border-line-strong border-l-cta/55 bg-surface p-10 sm:p-12 [border-left-width:3px]">
-          <div
-            className="absolute -top-7 left-9 select-none font-display text-[5.5rem] font-normal leading-none text-cta/30 italic"
-            aria-hidden="true"
-          >
-            &ldquo;
+    <section id="founder" className="pb-7 sm:pb-10">
+      <div className="container-x">
+        <div className="panel">
+          <div className="panel-head">
+            <h2 className="label">The founder</h2>
+            <a
+              href="https://www.linkedin.com/company/deciferdxb/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link text-sm"
+            >
+              Decifer on LinkedIn
+            </a>
           </div>
-
-          <div className="relative z-10 space-y-5 font-display text-xl leading-relaxed text-ink sm:text-[1.35rem]">
-            <p>
-              I started DECIFER to answer a question I kept meeting in
-              different places: there is more information than ever, and less
-              understanding. The first answers were products. A market read for
-              ordinary people. A learning companion for children. A plain
-              account of what is working for a marketing team.
-            </p>
-            <p>
-              Building and running those taught me what it actually takes to
-              keep AI working in production, rather than demonstrating it. Then
-              other businesses began asking for the same thing.
-            </p>
-            <p>
-              So the products became the lab, and client work gets the version
-              that has already been tested on our own money. I am in Dubai, I
-              answer enquiries myself, and I will tell you when AI is the wrong
-              answer.
-            </p>
-          </div>
-
-          <div className="mt-8 flex items-center gap-4">
-            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-cta/35 bg-cta/10 text-sm font-bold tracking-wide text-cta">
-              AC
+          <div className="grid gap-8 p-6 sm:p-8 md:grid-cols-12">
+            <div className="md:col-span-3">
+              {photo ? (
+                <div className="frame max-w-[240px]">
+                  <Image
+                    src={PHOTO}
+                    alt="Amit Chopra, founder of Decifer, in Dubai."
+                    width={640}
+                    height={800}
+                    sizes="(min-width: 768px) 20vw, 60vw"
+                  />
+                </div>
+              ) : null}
+              <p className={`${photo ? "mt-4" : ""} text-[1.0625rem] font-semibold text-ink`}>
+                Amit Chopra
+              </p>
+              <p className="text-[0.9375rem] text-body">Founder, Decifer. Dubai, UAE.</p>
             </div>
-            <div>
-              <div className="text-sm font-semibold text-ink">Amit Chopra</div>
-              <div className="text-xs text-muted">Founder, DECIFER. Dubai, UAE</div>
+            <div className="md:col-span-8 md:col-start-5">
+              <h3 className="t-h2 text-ink">
+                You will deal with the person who builds the work.
+              </h3>
+              <div className="mt-5 max-w-[62ch] space-y-4 text-[1.0625rem] leading-relaxed text-body">
+                <p>
+                  I started Decifer because businesses are drowning in
+                  information and short of understanding. The first answers
+                  were our own products. Running them in production taught me
+                  what it takes to keep AI working after the demo, and other
+                  businesses began asking for the same thing.
+                </p>
+                {!compact ? (
+                  <p>
+                    I am in Dubai, I read every enquiry myself, and I will tell
+                    you when AI is the wrong answer. Sometimes the fix is a
+                    spreadsheet formula and one fewer approval step.
+                  </p>
+                ) : null}
+              </div>
+              <p className="mt-6">
+                <Link href="/about" className="link text-[0.9375rem]">
+                  More about how we work
+                </Link>
+              </p>
             </div>
           </div>
         </div>

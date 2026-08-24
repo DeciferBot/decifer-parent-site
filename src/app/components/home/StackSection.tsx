@@ -1,32 +1,27 @@
 import Link from "next/link";
-import SectionLabel from "../SectionLabel";
-import { stack } from "../../data/stack";
+import LogoRow from "../LogoRow";
 
 export default function StackSection() {
-  const items = stack.slice().sort((a, b) => a.order - b.order);
   return (
-    <section id="stack" className="py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="mb-8 text-center">
-          <SectionLabel>Tools we build with</SectionLabel>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-body">
-            These are the tools we build with, not partnerships. Every account
-            is set up in your name, so what we build is yours to keep.
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-2.5">
-          {items.map((t) => (
-            <Link key={t.key} href="/stack" className="chip" title={t.role}>
-              <span className="chip-dot" aria-hidden="true" />
-              {t.name}
+    <section id="stack" className="pb-7 sm:pb-10">
+      <div className="container-x">
+        <div className="panel">
+          <div className="panel-head">
+            <h2 className="label">Built on tools you will own</h2>
+            <Link href="/stack" className="link text-sm">
+              Why each one
             </Link>
-          ))}
+          </div>
+          <div className="panel-pad">
+            <LogoRow />
+            <p className="mt-8 max-w-3xl text-sm text-muted">
+              Every account is opened in your name. At handover the repository,
+              the accounts and a runbook transfer to you. Listing a tool means
+              we have shipped production systems on it, not that its maker
+              endorses us.
+            </p>
+          </div>
         </div>
-        <p className="mt-6 text-center text-sm text-muted">
-          <Link href="/stack" className="text-cta hover:underline">
-            Why each one, and what you own
-          </Link>
-        </p>
       </div>
     </section>
   );

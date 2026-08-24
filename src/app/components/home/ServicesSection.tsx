@@ -1,35 +1,32 @@
 import Link from "next/link";
-import SectionLabel from "../SectionLabel";
-import ServiceCard from "../ServiceCard";
+import ServiceRow from "../ServiceCard";
 import { servicesOrdered } from "../../data/services";
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="mb-14 text-center">
-          <SectionLabel>Services</SectionLabel>
-          <h2 className="mx-auto max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">
-            Four ways we work. Each ends with something running.
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-body">
-            Most engagements start with a two-week audit, fixed fee, credited
-            against any build. It tells you what is worth automating, what is
-            not, and what to do first.
-          </p>
+    <section id="services" className="pb-7 sm:pb-10">
+      <div className="container-x">
+        <div className="panel">
+          <div className="panel-head">
+            <h2 className="label">What we build</h2>
+            <Link href="/services" className="link text-sm">
+              How engagements run
+            </Link>
+          </div>
+          <ul className="divide-y divide-line">
+            {servicesOrdered.map((s) => (
+              <ServiceRow key={s.key} service={s} />
+            ))}
+          </ul>
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line px-6 py-4">
+            <p className="text-sm text-body">
+              Not sure which one fits? That is what the audit decides.
+            </p>
+            <Link href="/contact" data-event="services_panel_cta" className="btn btn-primary px-4 py-2.5 text-sm">
+              Book a 30-minute call
+            </Link>
+          </div>
         </div>
-
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {servicesOrdered.map((s, i) => (
-            <ServiceCard key={s.key} service={s} scrollClass={`scroll-reveal-${(i % 2) + 1}`} />
-          ))}
-        </div>
-
-        <p className="mt-8 text-center text-sm text-muted">
-          <Link href="/services" className="text-cta hover:underline">
-            How engagements run, and what you receive
-          </Link>
-        </p>
       </div>
     </section>
   );

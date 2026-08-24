@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/app/components/PageHero";
-import CaseShapeCard from "@/app/components/CaseShapeCard";
+import CaseRow from "@/app/components/CaseShapeCard";
 import CtaBand from "@/app/components/CtaBand";
 import { publishedCaseShapes } from "@/app/data/caseShapes";
 import { jsonLd, SITE } from "@/lib/jsonld";
@@ -9,7 +9,7 @@ import { jsonLd, SITE } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "Work: AI systems in production, described by shape",
   description:
-    "Anonymised client work from DECIFER in the UAE and Singapore. Each case states what was built, what changed, how it was measured, and what we deliberately did not automate.",
+    "Anonymised client work from Decifer in the UAE, UK, Spain and Singapore. Each case states what was built, what changed, how it was measured, and what we deliberately did not automate.",
   alternates: { canonical: "/work" },
 };
 
@@ -18,7 +18,7 @@ export default function WorkPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "@id": `${SITE}/work#page`,
-    name: "DECIFER work",
+    name: "Decifer work",
     url: `${SITE}/work`,
     isPartOf: { "@id": `${SITE}/#website` },
     mainEntity: {
@@ -35,43 +35,28 @@ export default function WorkPage() {
   return (
     <>
       <PageHero
-        label="Work"
-        title={
-          <>
-            Described by shape,
-            <br />
-            <span className="font-display font-normal italic text-cta">
-              never by name.
-            </span>
-          </>
-        }
-        lede="Our clients are not named on this site, at their request and as a matter of policy. Each case below states the sector, the problem, what we built, what changed, how it was measured, and what we chose not to automate."
+        kicker="Work"
+        title="Described by shape, never by name."
+        lede="Clients are not named on this site, at their request and as a matter of policy. Each case states the sector, the problem, what we built, what changed, how it is measured, and what we chose not to automate."
       >
-        <Link
-          href="/legal/client-confidentiality"
-          className="text-sm font-medium text-cta underline-offset-4 hover:underline"
-        >
+        <Link href="/legal/client-confidentiality" className="link text-[0.9375rem]">
           Why we do not name clients
         </Link>
       </PageHero>
 
-      <section className="pb-20 sm:pb-28">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {publishedCaseShapes.map((c, i) => (
-              <CaseShapeCard
-                key={c.key}
-                shape={c}
-                scrollClass={`scroll-reveal-${(i % 2) + 1}`}
-              />
-            ))}
+      <section className="pb-16 sm:pb-24">
+        <div className="container-x">
+          <div className="panel">
+            <ul className="divide-y divide-line">
+              {publishedCaseShapes.map((c) => (
+                <CaseRow key={c.key} shape={c} />
+              ))}
+            </ul>
           </div>
-          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-muted">
-            No case carries a percentage. We publish a figure only with the
-            before measurement, the after measurement taken the same way, the
-            period, the things that could have caused it instead, and the
-            client&apos;s written permission. Until all five exist, the words
-            have to carry it.
+          <p className="mt-10 max-w-2xl text-[0.9375rem] leading-relaxed text-muted">
+            A figure appears here only with the before measurement, the after
+            measurement taken the same way, and the client&apos;s written
+            permission. That is why you can believe the ones you see.
           </p>
         </div>
       </section>

@@ -2,18 +2,60 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/app/components/PageHero";
 import CtaBand from "@/app/components/CtaBand";
-import SectionLabel from "@/app/components/SectionLabel";
+import SectionHead from "@/app/components/SectionHead";
 import ProofStrip from "@/app/components/ProofStrip";
-import { products } from "@/app/data/products";
-import { proofByKey } from "@/app/data/proof";
+import FounderSection from "@/app/components/home/FounderSection";
+import { publicProof, proofByKey } from "@/app/data/proof";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "About DECIFER: an AI company in Dubai that ships",
+  title: "About Decifer: an AI company in Dubai that ships",
   description:
-    "DECIFER is an AI company based in Dubai, founded by Amit Chopra. It builds agents, automation and complete products for businesses, and runs three public products with the same method.",
+    "Decifer is an AI company based in Dubai, founded by Amit Chopra. It builds agents, automation and complete products for businesses, and runs three public products with the same method.",
   alternates: { canonical: "/about" },
 };
+
+const method = [
+  {
+    step: "Collect",
+    body: "Start with inputs that can be checked. In a product, that means trusted sources and structured data. In your business, it means seeing how the work actually runs, not how the process document says it runs.",
+  },
+  {
+    step: "Connect",
+    body: "Apply the rules of the domain and the systems you already pay for. AI goes only where it earns its place, and the numbers are always computed in code.",
+  },
+  {
+    step: "Explain",
+    body: "Plain language, sources visible, uncertainty stated. For a client that also means a log you can read, a runbook, and a system you can switch off.",
+  },
+];
+
+const principles = [
+  {
+    title: "A person decides",
+    body: "The system explains context and drafts the next step. We keep a human wherever a mistake is expensive.",
+  },
+  {
+    title: "A claim without a source does not ship",
+    body: "Outputs are connected to checked inputs, references or defined logic.",
+  },
+  {
+    title: "Uncertainty is visible",
+    body: "AI should not sound certain when the information is incomplete or changing. Neither should we.",
+  },
+  {
+    title: "Safety depends on the domain",
+    body: "A clinic, a classroom and a trading desk need different safeguards. Some domains get no AI at all where a person could meet it.",
+  },
+  {
+    title: "You own what we build",
+    body: "Your accounts, your data, your repository. At handover there is nothing of yours that only we can reach.",
+  },
+  {
+    title: "Clients are never named",
+    body: "Work is described by shape. Numbers appear only with the method and written permission.",
+  },
+];
 
 export default function AboutPage() {
   const schema = {
@@ -23,7 +65,7 @@ export default function AboutPage() {
         "@type": "AboutPage",
         "@id": `${SITE}/about#page`,
         url: `${SITE}/about`,
-        name: "About DECIFER",
+        name: "About Decifer",
         isPartOf: { "@id": `${SITE}/#website` },
         about: { "@id": `${SITE}/#organization` },
       },
@@ -42,28 +84,19 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        label="About"
-        title={
-          <>
-            Based in Dubai.
-            <br />
-            <span className="font-display font-normal italic text-cta">
-              Built to be checked.
-            </span>
-          </>
-        }
-        lede="DECIFER is an AI company based in Dubai, United Arab Emirates. It builds AI agents, automation and complete products for businesses here and abroad, and it runs three public products using exactly the same method."
+        kicker="About"
+        title="Based in Dubai. Built to be checked."
+        lede="Decifer is an AI company in Dubai, United Arab Emirates. It builds AI agents, reporting systems and complete products for businesses here and abroad, and it runs three public products with exactly the same method."
       />
 
-      {/* The doctrine */}
-      <section className="pb-20 sm:pb-28">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          <SectionLabel>The rule we build by</SectionLabel>
-          <blockquote className="mb-8 font-display text-2xl leading-snug text-ink sm:text-3xl">
-            Code computes the numbers. The model only narrates or extracts. The
-            boundary is enforced by a test.
-          </blockquote>
-          <div className="space-y-5 text-[15px] leading-relaxed text-body">
+      {/* The rule */}
+      <section className="pb-16 sm:pb-24">
+        <div className="container-x grid gap-8 md:grid-cols-12">
+          <h2 className="t-h2 text-ink md:col-span-6">
+            Code computes the numbers. The model writes the sentence. A test
+            enforces the line.
+          </h2>
+          <div className="space-y-5 text-[1.0625rem] leading-relaxed text-body md:col-span-5 md:col-start-8">
             <p>
               That is the whole method in one sentence. Every figure a customer
               sees is produced by ordinary code that can be read and tested. A
@@ -76,139 +109,107 @@ export default function AboutPage() {
               in a model&apos;s text that the code did not compute. A maths
               engine that owns the answer so the model never has to. A guardrail
               that blocks a quoted price above the real inventory ceiling. An
-              extraction schema with no field for a passport number, so there is
-              nowhere to write one down.
+              extraction schema with no field for a passport number.
             </p>
             <p>
-              And sometimes the right move is to take the AI out. We have removed
-              it from working systems{" "}
-              <span className="font-semibold text-ink">
-                {proofByKey.deletedAi.value} times
-              </span>{" "}
-              because a plain check was cheaper, faster, and could not make
-              anything up. We write about every one.
+              Sometimes the right move is to take the AI out. We have removed it
+              from working systems {proofByKey.deletedAi.value} times because a
+              plain check was cheaper, faster, and could not make anything up.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Founder */}
-      <section className="bg-canvas py-20 sm:py-28">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          <SectionLabel>Founder</SectionLabel>
-          <h2 className="mb-6 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-            Amit Chopra
-          </h2>
-          <div className="space-y-5 text-[15px] leading-relaxed text-body">
-            <p>
-              I started DECIFER to answer a question I kept meeting in different
-              places: there is more information than ever, and less
-              understanding. The first answers were products. Decifer Markets
-              reads the market for ordinary people. Decifer Learning guides
-              children through the curriculum. Decifer Marketing tells a business
-              what is working and why.
-            </p>
-            <p>
-              Building those taught me what it actually takes to run AI in
-              production, as opposed to demonstrating it. Then other businesses
-              started asking for the same thing. The services side of DECIFER
-              exists because the products were the lab, and client work gets the
-              version that has already been tested on our own money.
-            </p>
-            <p>
-              I am in Dubai, I answer enquiries myself, and I will tell you when
-              AI is the wrong answer. Sometimes the fix is a spreadsheet formula
-              and one less approval step.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Proof */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="mb-10">
-            <SectionLabel>In numbers</SectionLabel>
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              What five months looks like.
-            </h2>
-            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-body">
-              Every figure below was read from the code and can be checked.
-              The investing system runs on a broker paper account. It is not a
-              real-money track record, and we never describe it as one.
-            </p>
-          </div>
-          <ProofStrip
-            keys={[
-              "liveProducts",
-              "monthsLive",
-              "repositories",
-              "commits",
-              "routes",
-              "tables",
-              "scheduledJobs",
-              "integrations",
-            ]}
+      {/* Method: a real three-step sequence, so numbering is earned */}
+      <section className="border-t border-line">
+        <div className="container-x section">
+          <SectionHead
+            title="One method, for our products and your business."
+            lede="Three steps that run every product we make and every engagement we take."
           />
+          <ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+            {method.map((m, i) => (
+              <li key={m.step} className="border-t border-line pt-5">
+                <p className="text-sm font-semibold text-muted">Step {i + 1}</p>
+                <h3 className="mt-2 text-xl font-semibold text-ink">{m.step}</h3>
+                <p className="t-body mt-3">{m.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      {/* Products */}
-      <section className="bg-canvas py-20 sm:py-28">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="mb-10">
-            <SectionLabel>Our own products</SectionLabel>
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              Open them before you hire us.
-            </h2>
-          </div>
-          <div className="grid gap-5 md:grid-cols-3">
-            {products.map((p) => (
-              <div
-                key={p.key}
-                className="card-lift rounded-2xl border border-line-strong bg-surface p-7"
-              >
-                <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-                  {p.category}
-                </p>
-                <h3 className="mb-3 text-xl font-bold text-ink">{p.name}</h3>
-                <p className="mb-5 text-sm leading-relaxed text-body">{p.tagline}</p>
-                {p.href ? (
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-event={p.event}
-                    className="text-sm font-semibold text-cta hover:underline"
-                  >
-                    Visit {p.name}
-                  </a>
-                ) : null}
-              </div>
+      {/* Principles */}
+      <section className="border-t border-line">
+        <div className="container-x section">
+          <SectionHead
+            title="Six rules that apply to everything."
+            lede="They apply to our products and to every client engagement. They are also why some work is turned down."
+          />
+          <ul className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+            {principles.map((p) => (
+              <li key={p.title} className="border-t border-line pt-5">
+                <h3 className="text-lg font-semibold text-ink">{p.title}</h3>
+                <p className="t-body mt-2">{p.body}</p>
+              </li>
             ))}
+          </ul>
+        </div>
+      </section>
+
+      <FounderSection compact />
+
+      {/* Numbers */}
+      <section id="numbers" className="border-t border-line">
+        <div className="container-x section">
+          <SectionHead
+            title="How we count."
+            lede="Every figure on this site comes from this list, and each one names where it was read from and when. If a number is not here, it must not appear on the site."
+          />
+          <div className="mt-12">
+            <ProofStrip
+              keys={["liveProducts", "monthsLive", "routes", "tables", "scheduledJobs", "integrations", "testFunctions", "deletedAi"]}
+              showSourceLink={false}
+            />
           </div>
-          <p className="mt-8 text-sm text-muted">
-            <Link href="/products" className="text-cta hover:underline">
-              Read more about the product family
-            </Link>
-          </p>
+          <div className="mt-14 overflow-x-auto">
+            <table className="w-full text-left text-[0.9375rem]">
+              <thead>
+                <tr className="border-b border-line-strong text-sm text-ink">
+                  <th className="py-3 pr-6 font-semibold">Figure</th>
+                  <th className="py-3 pr-6 font-semibold">What it means</th>
+                  <th className="py-3 pr-6 font-semibold">Where it was read from</th>
+                  <th className="py-3 font-semibold">Verified</th>
+                </tr>
+              </thead>
+              <tbody>
+                {publicProof.map((p) => (
+                  <tr key={p.key} className="border-b border-line align-top">
+                    <td className="py-3 pr-6 font-semibold text-ink whitespace-nowrap">{p.value}</td>
+                    <td className="py-3 pr-6 text-body">
+                      <span className="text-ink">{p.label}.</span> {p.detail}
+                    </td>
+                    <td className="py-3 pr-6 text-muted">{p.source}</td>
+                    <td className="py-3 text-muted whitespace-nowrap">{p.verifiedAt}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
       {/* Company */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          <SectionLabel>Company</SectionLabel>
-          <h2 className="mb-6 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-            A named person in Dubai, and a real reply.
-          </h2>
-          <div className="space-y-5 text-[15px] leading-relaxed text-body">
+      <section className="border-t border-line">
+        <div className="container-x section grid gap-8 md:grid-cols-12">
+          <h2 className="t-h2 text-ink md:col-span-5">A named person in Dubai, and a real reply.</h2>
+          <div className="space-y-5 text-[1.0625rem] leading-relaxed text-body md:col-span-6 md:col-start-7">
             <p>
-              DECIFER is based in Dubai, United Arab Emirates, and its UAE company registration is in progress. It
-              serves clients in the UAE, the wider Gulf, Singapore and the
-              United Kingdom. Client work is never named on this site, and the
-              reasons are written down in our{" "}
-              <Link href="/legal/client-confidentiality" className="text-cta hover:underline">
+              Decifer is based in Dubai, United Arab Emirates, and its UAE company
+              registration is in progress. It serves clients in the UAE, the wider
+              Gulf, Singapore and the United Kingdom. Client work is never named on
+              this site; the reasons are in our{" "}
+              <Link href="/legal/client-confidentiality" className="link">
                 client confidentiality statement
               </Link>
               .
@@ -216,11 +217,11 @@ export default function AboutPage() {
             <p>
               Enquiries are read and answered by the founder within one working
               day. Write to{" "}
-              <a href="mailto:hello@decifer.io" className="text-cta hover:underline">
+              <a href="mailto:hello@decifer.io" className="link">
                 hello@decifer.io
               </a>{" "}
               or{" "}
-              <Link href="/contact" className="text-cta hover:underline">
+              <Link href="/contact" className="link">
                 book a call
               </Link>
               .

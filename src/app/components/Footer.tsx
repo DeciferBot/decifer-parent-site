@@ -4,63 +4,87 @@ import { products } from "../data/products";
 import { servicesOrdered } from "../data/services";
 
 const legalLinks = [
-  { label: "Privacy Policy", href: "/legal/privacy" },
-  { label: "Terms of Use", href: "/legal/terms" },
-  { label: "Financial Disclaimer", href: "/legal/financial-disclaimer" },
-  { label: "Education Disclaimer", href: "/legal/education-disclaimer" },
-  { label: "AI Policy", href: "/legal/ai-policy" },
-  { label: "Child Safety", href: "/legal/child-safety" },
-  { label: "Refund Policy", href: "/legal/refunds" },
-  { label: "Client Confidentiality", href: "/legal/client-confidentiality" },
+  { label: "Privacy", href: "/legal/privacy" },
+  { label: "Terms", href: "/legal/terms" },
+  { label: "Client confidentiality", href: "/legal/client-confidentiality" },
+  { label: "AI accuracy policy", href: "/legal/ai-policy" },
+  { label: "Financial disclaimer", href: "/legal/financial-disclaimer" },
+  { label: "Education disclaimer", href: "/legal/education-disclaimer" },
+  { label: "Child safety", href: "/legal/child-safety" },
+  { label: "Refunds", href: "/legal/refunds" },
 ];
 
-const siteLinks = [
+const companyLinks = [
   { label: "Work", href: "/work" },
-  { label: "Blog", href: "/blog" },
-  { label: "Tools we build with", href: "/stack" },
   { label: "About", href: "/about" },
+  { label: "Tools and expertise", href: "/stack" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
-  { label: "FAQ", href: "/#faq" },
 ];
+
+const colClass = "text-[0.9375rem] text-on-dark-2 transition-colors hover:text-on-dark";
+const headClass = "mb-4 text-sm font-semibold text-on-dark";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line-strong bg-canvas">
-      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <DeciferLogo size="sm" className="mb-4" />
-            <p className="max-w-xs text-sm leading-relaxed text-body">
-              DECIFER is an AI company in Dubai. We build agents, automation
-              and complete products for businesses, and we run Decifer
-              Markets, Decifer Learning and Decifer Marketing with the same
-              method.
+    <footer className="bg-dark text-on-dark">
+      <div className="container-x py-16 sm:py-20">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-12">
+          <div className="col-span-2 md:col-span-4">
+            <DeciferLogo size="sm" tone="light" />
+            <p className="mt-5 max-w-xs text-[0.9375rem] leading-relaxed text-on-dark-2">
+              An AI company in Dubai. We build agents, reporting systems and
+              complete products for businesses, and we run three public
+              products with the same method.
+            </p>
+            <p className="mt-5 text-[0.9375rem]">
+              <a href="mailto:hello@decifer.io" className="link-quiet text-on-dark">
+                hello@decifer.io
+              </a>
             </p>
           </div>
 
-          {/* Services */}
-          <div>
-            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
-              Services
-            </div>
+          <div className="md:col-span-2">
+            <p className={headClass}>Services</p>
             <ul className="space-y-2.5">
               {servicesOrdered.map((s) => (
                 <li key={s.key}>
-                  <Link
-                    href={`/services/${s.key}`}
-                    className="text-sm text-body transition-colors hover:text-ink"
-                  >
+                  <Link href={`/services/${s.key}`} className={colClass}>
                     {s.navLabel}
                   </Link>
                 </li>
               ))}
-              {siteLinks.map((l) => (
-                <li key={l.label}>
-                  <Link
-                    href={l.href}
-                    className="text-sm text-body transition-colors hover:text-ink"
-                  >
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <p className={headClass}>Products</p>
+            <ul className="space-y-2.5">
+              {products.map((p) => (
+                <li key={p.key}>
+                  {p.href ? (
+                    <a href={p.href} target="_blank" rel="noopener noreferrer" className={colClass}>
+                      {p.name}
+                    </a>
+                  ) : (
+                    <span className="text-[0.9375rem] text-on-dark-2">{p.name}</span>
+                  )}
+                </li>
+              ))}
+              <li>
+                <Link href="/products" className={colClass}>
+                  Early access
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <p className={headClass}>Company</p>
+            <ul className="space-y-2.5">
+              {companyLinks.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className={colClass}>
                     {l.label}
                   </Link>
                 </li>
@@ -68,54 +92,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Products */}
-          <div>
-            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
-              Products
-            </div>
-            <ul className="space-y-2.5">
-              <li>
-                <Link
-                  href="/products"
-                  className="text-sm text-body transition-colors hover:text-ink"
-                >
-                  All products
-                </Link>
-              </li>
-              {products.map((p) =>
-                p.href ? (
-                  <li key={p.key}>
-                    <a
-                      href={p.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-body transition-colors hover:text-ink"
-                    >
-                      {p.name}
-                    </a>
-                  </li>
-                ) : (
-                  <li key={p.key} className="text-sm text-muted">
-                    {p.name}{" "}
-                    <span className="text-faint">(soon)</span>
-                  </li>
-                )
-              )}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
-              Legal
-            </div>
+          <div className="md:col-span-2">
+            <p className={headClass}>Legal</p>
             <ul className="space-y-2.5">
               {legalLinks.map((l) => (
-                <li key={l.label}>
-                  <Link
-                    href={l.href}
-                    className="text-sm text-body transition-colors hover:text-ink"
-                  >
+                <li key={l.href}>
+                  <Link href={l.href} className={colClass}>
                     {l.label}
                   </Link>
                 </li>
@@ -124,17 +106,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 space-y-3 border-t border-line-strong pt-8">
-          <div className="grid gap-2 text-xs leading-relaxed text-muted sm:grid-cols-3">
-            {products.map((p) => (
-              <p key={p.key}>
-                {p.name} {p.boundaryShort}
-              </p>
-            ))}
+        <div className="mt-16 border-t border-line-dark pt-8">
+          <div className="flex flex-col gap-4 text-sm text-on-dark-2 md:flex-row md:items-start md:justify-between">
+            <p className="max-w-2xl leading-relaxed">
+              Decifer Markets is research context, not financial advice, and runs
+              on a broker paper account. Decifer Learning supports learning and
+              does not replace teachers. Decifer Marketing is insight, not a
+              substitute for professional advice.
+            </p>
+            <p className="shrink-0">Decifer, Dubai, UAE. &copy; 2026</p>
           </div>
-          <p className="text-xs text-muted">
-            &copy; 2026 DECIFER. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>

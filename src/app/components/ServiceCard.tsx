@@ -1,42 +1,32 @@
 import Link from "next/link";
 import type { Service } from "../data/services";
 
-export default function ServiceCard({
-  service: s,
-  scrollClass = "",
-}: {
-  service: Service;
-  scrollClass?: string;
-}) {
+/**
+ * One service as a row inside a panel. The headline carries the outcome;
+ * the left column names the service and its shape; the right column states
+ * the commercial terms.
+ */
+export default function ServiceRow({ service: s }: { service: Service }) {
   return (
-    <Link
-      href={`/services/${s.key}`}
-      data-event={s.event}
-      className={`card-lift group flex flex-col rounded-2xl border border-line-strong bg-surface p-8 ${scrollClass}`}
-    >
-      <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-        {s.navLabel}
-      </p>
-      <h3 className="mb-3 text-balance text-2xl font-bold leading-snug text-ink">
-        {s.cardHeadline}
-      </h3>
-      <p className="mb-6 text-[15px] leading-relaxed text-body">{s.summary}</p>
-      <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-cta">
-        {s.name}
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          className="transition-transform duration-200 group-hover:translate-x-0.5"
-          aria-hidden="true"
-        >
-          <path d="M3 8h10M9 4l4 4-4 4" />
-        </svg>
-      </span>
-    </Link>
+    <li>
+      <Link
+        href={`/services/${s.key}`}
+        data-event={s.event}
+        className="row-link group grid gap-3 px-6 py-7 md:grid-cols-12 md:gap-8"
+      >
+        <div className="md:col-span-3">
+          <p className="text-sm font-semibold text-ink">{s.name}</p>
+          <p className="mt-1 text-sm text-muted">{s.engagementShort}</p>
+        </div>
+        <div className="md:col-span-6">
+          <h3 className="t-h3 text-ink">{s.cardHeadline}</h3>
+          <p className="t-body measure mt-2">{s.summary}</p>
+        </div>
+        <div className="md:col-span-3 md:text-right">
+          <p className="text-sm font-semibold text-ink">{s.commercial}</p>
+          <p className="mt-1 text-sm text-muted">{s.commercialSub}</p>
+        </div>
+      </Link>
+    </li>
   );
 }

@@ -2,50 +2,60 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import DeciferLogo from "./DeciferLogo";
 
 const navLinks = [
   { label: "Services", href: "/services" },
   { label: "Work", href: "/work" },
   { label: "Products", href: "/products" },
-  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock page scroll while the sheet is open. Links close it on click.
+  useEffect(() => {
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.documentElement.style.overflow = "";
+    };
+  }, [open]);
+
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
+
   return (
-    <nav
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-line-strong bg-canvas/92 backdrop-blur-xl"
-          : "bg-transparent"
+    <header
+      className={`fixed inset-x-0 top-0 z-40 bg-canvas transition-[border-color] duration-200 ${
+        scrolled || open ? "border-b border-line" : "border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Link
-          href="/"
-          aria-label="DECIFER home"
-          className="rounded-md transition-opacity hover:opacity-90"
-        >
+      <nav className="container-x flex h-16 items-center justify-between" aria-label="Main">
+        <Link href="/" aria-label="Decifer home" className="rounded-sm">
           <DeciferLogo size="sm" />
         </Link>
 
-        {/* Desktop */}
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((l) => (
             <Link
-              key={l.label}
+              key={l.href}
               href={l.href}
-              className="text-sm font-medium text-body transition-colors duration-150 hover:text-ink"
+              aria-current={isActive(l.href) ? "page" : undefined}
+              className={`text-[0.9375rem] font-medium transition-colors duration-150 hover:text-ink ${
+                isActive(l.href) ? "text-ink" : "text-body"
+              }`}
             >
               {l.label}
             </Link>
@@ -53,74 +63,80 @@ export default function Nav() {
           <Link
             href="/contact"
             data-event="nav_book_call"
-            className="btn btn-primary px-4 py-2"
+            className="btn btn-primary px-4 py-2.5 text-sm"
           >
             Book a call
           </Link>
         </div>
 
-        {/* Hamburger */}
         <button
-          className="rounded-md p-2 text-body transition-colors hover:text-ink md:hidden"
+          type="button"
+          className="-mr-2 rounded-sm p-2 text-ink md:hidden"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle navigation"
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
+          aria-controls="mobile-menu"
         >
-          {open ? (
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 22 22"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.75"
-              strokeLinecap="round"
-            >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 22 22"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
+            {open ? (
               <path d="M17 5L5 17M5 5l12 12" />
-            </svg>
-          ) : (
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 22 22"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.75"
-              strokeLinecap="round"
-            >
+            ) : (
               <path d="M3 6h16M3 11h16M3 16h16" />
-            </svg>
-          )}
+            )}
+          </svg>
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="border-b border-line-strong bg-surface/95 px-5 pb-5 backdrop-blur-xl md:hidden">
-          <div className="space-y-1 pt-2">
+      {/* Mobile sheet: full height under the bar */}
+      <div
+        id="mobile-menu"
+        hidden={!open}
+        className="fixed inset-x-0 top-16 bottom-0 bg-canvas md:hidden"
+      >
+        <div className="container-x flex h-full flex-col pt-4">
+          <ul className="ruled">
             {navLinks.map((l) => (
-              <Link
-                key={l.label}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-3 text-sm font-medium text-body transition-colors hover:bg-surface-alt hover:text-ink"
-              >
-                {l.label}
-              </Link>
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between py-4 text-xl font-semibold text-ink"
+                >
+                  {l.label}
+                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" />
+                  </svg>
+                </Link>
+              </li>
             ))}
-            <div className="pt-2">
-              <Link
-                href="/contact"
-                onClick={() => setOpen(false)}
-                data-event="nav_book_call"
-                className="btn btn-primary w-full py-3"
-              >
-                Book a call
-              </Link>
-            </div>
+          </ul>
+          <div className="mt-6">
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              data-event="nav_book_call"
+              className="btn btn-primary w-full"
+            >
+              Book a 30-minute call
+            </Link>
+            <p className="mt-4 text-sm text-muted">
+              Or email{" "}
+              <a href="mailto:hello@decifer.io" className="link">
+                hello@decifer.io
+              </a>
+            </p>
           </div>
         </div>
-      )}
-    </nav>
+      </div>
+    </header>
   );
 }

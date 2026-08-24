@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
 import HeroSection from "./components/home/HeroSection";
-import ProofBar from "./components/home/ProofBar";
-import ProblemSection from "./components/home/ProblemSection";
-import ServicesSection from "./components/home/ServicesSection";
-import DoctrineSection from "./components/home/DoctrineSection";
-import MethodSection from "./components/home/MethodSection";
-import CaseShapesSection from "./components/home/CaseShapesSection";
-import StackSection from "./components/home/StackSection";
 import ProductsSection from "./components/home/ProductsSection";
-import PrinciplesSection from "./components/home/PrinciplesSection";
+import ServicesSection from "./components/home/ServicesSection";
+import WorkSection from "./components/home/WorkSection";
+import RuleSection from "./components/home/RuleSection";
+import CompareSection from "./components/home/CompareSection";
+import StackSection from "./components/home/StackSection";
 import FounderSection from "./components/home/FounderSection";
 import FaqSection from "./components/home/FaqSection";
-import CtaSection from "./components/home/CtaSection";
+import CtaBand from "./components/CtaBand";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -21,18 +18,15 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <ProofBar />
-      <ProblemSection />
-      <ServicesSection />
-      <DoctrineSection />
-      <MethodSection />
-      <CaseShapesSection />
-      <StackSection />
       <ProductsSection />
-      <PrinciplesSection />
+      <ServicesSection />
+      <WorkSection />
+      <RuleSection />
+      <CompareSection />
+      <StackSection />
       <FounderSection />
       <FaqSection />
-      <CtaSection />
+      <CtaBand eventPrefix="home" />
     </>
   );
 }

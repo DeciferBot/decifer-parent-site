@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, DM_Sans } from "next/font/google";
+import { Schibsted_Grotesk, Source_Serif_4 } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -12,17 +12,15 @@ import { servicesOrdered } from "./data/services";
 import { stack } from "./data/stack";
 import { jsonLd } from "@/lib/jsonld";
 
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  style: ["normal", "italic"],
+const grotesk = Schibsted_Grotesk({
   subsets: ["latin"],
-  variable: "--font-instrument",
+  variable: "--font-grotesk",
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const serif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -38,7 +36,7 @@ const organizationJsonLd = {
       // placeholder here is a trust signal that can be disproven.
       "@type": ["Organization", "ProfessionalService"],
       "@id": `${SITE}/#organization`,
-      name: "DECIFER",
+      name: "Decifer",
       url: SITE,
       email: "hello@decifer.io",
       logo: {
@@ -47,7 +45,7 @@ const organizationJsonLd = {
       },
       image: `${SITE}/opengraph-image`,
       description:
-        "DECIFER is an AI solutions company based in Dubai. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses, and it builds and runs its own products using the same method.",
+        "Decifer is an AI solutions company based in Dubai. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses, and it builds and runs its own products using the same method.",
       areaServed: [
         { "@type": "Country", name: "United Arab Emirates" },
         { "@type": "AdministrativeArea", name: "Gulf Cooperation Council" },
@@ -98,7 +96,7 @@ const organizationJsonLd = {
       "@type": "WebSite",
       "@id": `${SITE}/#website`,
       url: SITE,
-      name: "DECIFER",
+      name: "Decifer",
       publisher: { "@id": `${SITE}/#organization` },
     },
   ],
@@ -106,14 +104,14 @@ const organizationJsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: "DECIFER: AI agents, automation and products, built in Dubai",
-    template: "%s | DECIFER",
+    default: "Decifer: AI agents, automation and products, built in Dubai",
+    template: "%s | Decifer",
   },
   description:
-    "DECIFER is an AI company in Dubai that builds AI agents, workflow automation, reporting systems and complete products for businesses. It runs three public products with the same method. AI that does a job, not AI that demos well.",
+    "Decifer is an AI company in Dubai that builds AI agents, workflow automation, reporting systems and complete products for businesses of 10 to 200 people. It runs three public products with the same method. Every build runs on your accounts, with a log you can read.",
   metadataBase: new URL("https://www.decifer.io"),
   keywords: [
-    "DECIFER",
+    "Decifer",
     "AI company Dubai",
     "AI agent development Dubai",
     "AI consultant Dubai",
@@ -130,19 +128,19 @@ export const metadata: Metadata = {
     apple: "/brand/decifer-app-icon.svg",
   },
   openGraph: {
-    title: "DECIFER: AI that does a job, not AI that demos well",
+    title: "Decifer: AI that does a job inside your business",
     description:
-      "An AI company in Dubai building agents, automation and complete products for businesses. Three public products, one method.",
+      "An AI company in Dubai building agents, reporting systems and complete products for businesses. Three public products, one method, every account in your name.",
     url: "https://www.decifer.io",
-    siteName: "DECIFER",
+    siteName: "Decifer",
     type: "website",
     locale: "en_AE",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DECIFER: AI that does a job, not AI that demos well",
+    title: "Decifer: AI that does a job inside your business",
     description:
-      "An AI company in Dubai building agents, automation and complete products for businesses. Three public products, one method.",
+      "An AI company in Dubai building agents, reporting systems and complete products for businesses. Three public products, one method, every account in your name.",
   },
   robots: {
     index: true,
@@ -164,7 +162,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${instrumentSerif.variable} ${dmSans.variable} h-full antialiased`}>
+    <html lang="en" className={`${grotesk.variable} ${serif.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-canvas text-ink">
         <Nav />
         <main className="flex-1">{children}</main>

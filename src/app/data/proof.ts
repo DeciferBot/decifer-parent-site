@@ -42,6 +42,8 @@ export interface ProofPoint {
   source: string;
   /** ISO date the figure was last verified. */
   verifiedAt: string;
+  /** True to keep the figure internal. Not rendered anywhere on the site. */
+  internal?: boolean;
 }
 
 export const proof: ProofPoint[] = [
@@ -68,6 +70,7 @@ export const proof: ProofPoint[] = [
     detail: "Roughly 7,500 commits across 16 repositories between March and August 2026, built solo with Claude Code and Codex.",
     source: "git rev-list --count across DeciferBot org repos",
     verifiedAt: "2026-08-22",
+    internal: true,
   },
   {
     key: "repositories",
@@ -76,6 +79,7 @@ export const proof: ProofPoint[] = [
     detail: "Twelve of sixteen repositories are deployed and in use. The other four are superseded or abandoned and are not counted.",
     source: "DeciferBot org audit, 2026-08-22",
     verifiedAt: "2026-08-22",
+    internal: true,
   },
   {
     key: "routes",
@@ -172,5 +176,8 @@ export const proofByKey = Object.fromEntries(
 ) as Record<ProofKey, ProofPoint>;
 
 export function getProof(keys: ProofKey[]): ProofPoint[] {
-  return keys.map((k) => proofByKey[k]).filter(Boolean);
+  return keys.map((k) => proofByKey[k]).filter((p) => p && !p.internal);
 }
+
+/** Figures allowed on the public site. */
+export const publicProof: ProofPoint[] = proof.filter((p) => !p.internal);

@@ -37,11 +37,11 @@ export default function DeciferProductLogo({
   return (
     <span
       className={`inline-flex items-center gap-2 ${className}`}
-      aria-label={`DECIFER ${product}`}
+      aria-label={`Decifer ${product}`}
     >
       <DeciferMark size={MARK_SIZE[size]} />
       <span className="leading-none">
-        <span className={`text-ink ${DECIFER_CLASS[size]}`}>DECIFER</span>
+        <span className={`text-ink ${DECIFER_CLASS[size]}`}>Decifer</span>
         {' '}
         <span className={`text-muted ${PRODUCT_CLASS[size]}`}>{product}</span>
       </span>

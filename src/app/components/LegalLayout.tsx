@@ -1,5 +1,4 @@
 import Link from "next/link";
-import DeciferLogo from "./DeciferLogo";
 
 const allLegal = [
   { title: "Privacy Policy", href: "/legal/privacy" },
@@ -31,107 +30,54 @@ export default function LegalLayout({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "DECIFER", item: SITE },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: title,
-        item: `${SITE}${currentHref}`,
-      },
+      { "@type": "ListItem", position: 1, name: "Decifer", item: SITE },
+      { "@type": "ListItem", position: 2, name: title, item: `${SITE}${currentHref}` },
     ],
   };
 
   return (
-    <div className="min-h-screen bg-canvas pb-24 pt-32">
-      <div className="mx-auto max-w-2xl px-5 sm:px-8">
-        {/* Back */}
-        <Link
-          href="/"
-          className="mb-10 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          >
-            <path d="M10 4L6 8l4 4" />
-          </svg>
-          Back to DECIFER
-        </Link>
+    <div className="pt-28 pb-24 sm:pt-36">
+      <div className="container-x grid gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-8">
+          <p className="mb-4 text-sm font-medium text-muted">Legal</p>
+          <h1 className="t-h1 text-ink">{title}</h1>
+          <p className="mt-3 text-sm text-muted">Last updated: {lastUpdated}</p>
 
-        {/* Brand */}
-        <div className="mb-6">
-          <DeciferLogo size="sm" />
-        </div>
-
-        {/* Heading */}
-        <h1 className="mb-2 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-          {title}
-        </h1>
-        <p className="mb-8 text-sm text-faint">Last updated: {lastUpdated}</p>
-
-        {/* Draft notice */}
-        <div className="mb-10 rounded-xl border border-brand/20 bg-brand/5 p-5">
-          <div className="mb-1 flex items-center gap-2">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="#3d7eff"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            >
-              <circle cx="8" cy="8" r="6" />
-              <path d="M8 5v3.5M8 11v.5" />
-            </svg>
-            <span className="text-xs font-semibold text-brand">
-              Early Access Draft
-            </span>
+          <div className="mt-8 border-t border-line pt-5 text-sm leading-relaxed text-body">
+            <p>
+              <span className="font-semibold text-ink">Early access draft. </span>
+              This policy is written in plain English for Decifer&apos;s early
+              access period. It is meant to be clear, not a substitute for
+              legal advice. Final versions will be reviewed by counsel before
+              commercial launch. Questions to{" "}
+              <a href="mailto:hello@decifer.io" className="link">
+                hello@decifer.io
+              </a>
+              .
+            </p>
           </div>
-          <p className="text-sm leading-relaxed text-muted">
-            This is a draft policy for DECIFER&apos;s early access period. It
-            is written in plain English and is intended to be transparent, not
-            as a substitute for formal legal advice. Final versions will be
-            reviewed by legal counsel before commercial launch. Questions?
-            Contact{" "}
-            <a
-              href="mailto:hello@decifer.io"
-              className="text-brand hover:underline"
-            >
-              hello@decifer.io
-            </a>
-            .
-          </p>
+
+          <div className="legal-prose mt-10 max-w-3xl">{children}</div>
         </div>
 
-        {/* Policy content */}
-        <div className="legal-prose">{children}</div>
-
-        {/* Other policies */}
-        <div className="mt-14 border-t border-line pt-10">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-faint">
-            Other policies
-          </p>
-          <ul className="space-y-2">
-            {allLegal
-              .filter((p) => p.href !== currentHref)
-              .map((p) => (
+        <aside className="lg:col-span-3 lg:col-start-10">
+          <div className="border-t border-line pt-5 lg:sticky lg:top-24">
+            <p className="text-sm font-semibold text-ink">All policies</p>
+            <ul className="mt-3 space-y-2">
+              {allLegal.map((p) => (
                 <li key={p.href}>
-                  <Link
-                    href={p.href}
-                    className="text-sm text-muted transition-colors hover:text-ink"
-                  >
-                    {p.title}
-                  </Link>
+                  {p.href === currentHref ? (
+                    <span className="text-sm font-medium text-ink">{p.title}</span>
+                  ) : (
+                    <Link href={p.href} className="text-sm text-body hover:text-ink">
+                      {p.title}
+                    </Link>
+                  )}
                 </li>
               ))}
-          </ul>
-        </div>
+            </ul>
+          </div>
+        </aside>
       </div>
       <script
         type="application/ld+json"

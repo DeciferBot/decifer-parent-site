@@ -1,6 +1,6 @@
-# DECIFER — Parent Marketing Site
+# Decifer parent marketing site
 
-Marketing website for [decifer.io](https://www.decifer.io) — the parent brand for DECIFER, an AI intelligence company.
+Marketing website for [decifer.io](https://www.decifer.io), the parent brand for Decifer, an AI solutions company in Dubai. Design system: `DESIGN.md`. Product brief: `PRODUCT.md`.
 
 Built with Next.js 16, TypeScript, and Tailwind CSS v4. Deployed on Vercel.
 
@@ -51,7 +51,7 @@ Set these in Vercel Dashboard > Project > Settings > Environment Variables for p
 ```
 src/app/
   components/
-    DeciferMark.tsx      # Shared ‹ DECIFER › wordmark
+    DeciferMark.tsx      # The bracket mark
     Nav.tsx              # Fixed header with mobile hamburger
     Footer.tsx           # 4-column footer with legal links
     LegalLayout.tsx      # Shared layout for all legal pages
@@ -68,7 +68,7 @@ src/app/
     child-safety/
     refunds/
   globals.css            # Tailwind v4 design tokens and base styles
-  layout.tsx             # Root layout with Instrument Serif + DM Sans fonts, metadata and Organization schema
+  layout.tsx             # Root layout with the Schibsted Grotesk font, metadata and Organization schema
   page.tsx               # Homepage
 docs/
   BRAND_GUIDELINES.md    # Naming, colour, tone, disclaimer language

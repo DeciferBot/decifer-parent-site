@@ -1,47 +1,33 @@
-import SectionLabel from "./SectionLabel";
-
 /**
- * Header for standalone pages (/services, /work, /about ...). Sits under
- * the fixed nav, so it carries the top padding.
+ * Header for inner pages. Sits under the fixed nav, so it carries the top
+ * padding. Left aligned, heading in the left columns, lede to the right on
+ * wide screens, like SectionHead but with an h1 scale.
  */
 export default function PageHero({
-  label,
+  kicker,
   title,
   lede,
   children,
-  align = "center",
 }: {
-  label: string;
+  /** One short line above the title, for example a sector or a category. */
+  kicker?: React.ReactNode;
   title: React.ReactNode;
   lede?: React.ReactNode;
   children?: React.ReactNode;
-  align?: "center" | "left";
 }) {
-  const centred = align === "center";
   return (
-    <section className="relative overflow-hidden pt-32 pb-14 sm:pt-40 sm:pb-20">
-      <div className="absolute inset-0 dot-grid opacity-60" aria-hidden="true" />
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-canvas"
-        aria-hidden="true"
-      />
-      <div
-        className={`relative z-10 mx-auto max-w-4xl px-5 sm:px-8 ${centred ? "text-center" : ""}`}
-      >
-        <div className="anim-fade-up">
-          <SectionLabel>{label}</SectionLabel>
+    <section className="pt-28 pb-12 sm:pt-36 sm:pb-16">
+      <div className="container-x">
+        {kicker ? <p className="label mb-4">{kicker}</p> : null}
+        <div className="grid gap-6 md:grid-cols-12 md:gap-10">
+          <h1 className="t-h1 text-ink md:col-span-7">{title}</h1>
+          {lede || children ? (
+            <div className="md:col-span-5 md:pt-2">
+              {lede ? <p className="t-lede measure">{lede}</p> : null}
+              {children ? <div className="mt-6">{children}</div> : null}
+            </div>
+          ) : null}
         </div>
-        <h1 className="anim-fade-up-1 mb-5 text-balance text-4xl font-bold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-6xl">
-          {title}
-        </h1>
-        {lede ? (
-          <p
-            className={`anim-fade-up-2 text-lg leading-relaxed text-body sm:text-xl ${centred ? "mx-auto max-w-2xl" : "max-w-2xl"}`}
-          >
-            {lede}
-          </p>
-        ) : null}
-        {children ? <div className="anim-fade-up-3 mt-8">{children}</div> : null}
       </div>
     </section>
   );

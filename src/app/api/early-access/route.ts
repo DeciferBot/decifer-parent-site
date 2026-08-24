@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
     problem: message || null,
     referrer: req.headers.get("referer"),
     consent: true,
-    consent_text: "Requested early access via the DECIFER website form.",
+    consent_text: "Requested early access via the Decifer website form.",
     ip_hash: hashIp(ip),
     user_agent: req.headers.get("user-agent"),
   });

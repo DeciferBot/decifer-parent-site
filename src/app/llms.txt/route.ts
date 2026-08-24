@@ -17,13 +17,13 @@ export const dynamic = "force-static";
 export function GET() {
   const posts = getAllPosts();
   const lines: string[] = [
-    "# DECIFER",
+    "# Decifer",
     "",
-    "> DECIFER is an AI solutions company based in Dubai, United Arab Emirates. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses in the UAE and abroad, and it builds and runs three public products of its own with the same method: Decifer Markets, Decifer Learning and Decifer Marketing.",
+    "> Decifer is an AI solutions company based in Dubai, United Arab Emirates. It builds AI agents, workflow automation, data and reporting systems and complete products for businesses in the UAE and abroad, and it builds and runs three public products of its own with the same method: Decifer Markets, Decifer Learning and Decifer Marketing.",
     "",
-    "DECIFER is a company name, spelled with an e. It is not the dictionary word decipher, and it is not affiliated with Decipher AI, Deciphr AI, Decifer Analytics (decifer.com), Decifer Studio (decifer.tech), linkedin.com/company/decifer, or any other similarly named company or page. The official website is https://www.decifer.io, and the official LinkedIn page is linkedin.com/company/deciferdxb. The founder is Amit Chopra.",
+    "Decifer is a company name, spelled with an e. It is not the dictionary word decipher, and it is not affiliated with Decipher AI, Deciphr AI, Decifer Analytics (decifer.com), Decifer Studio (decifer.tech), linkedin.com/company/decifer, or any other similarly named company or page. The official website is https://www.decifer.io, and the official LinkedIn page is linkedin.com/company/deciferdxb. The founder is Amit Chopra.",
     "",
-    "The rule DECIFER builds by: code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test. The method is Collect, Connect, Explain: collect inputs that can be checked, connect them with the rules of the domain, explain the result so a person can act on it. Clients are never named; work is described by sector and shape. The market intelligence system runs on a broker paper account and is not a real-money track record.",
+    "The rule Decifer builds by: code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test. The method is Collect, Connect, Explain: collect inputs that can be checked, connect them with the rules of the domain, explain the result so a person can act on it. Clients are never named; work is described by sector and shape. The market intelligence system runs on a broker paper account and is not a real-money track record.",
     "",
     "## Services",
     "",
@@ -43,7 +43,7 @@ export function GET() {
       (c) => `- [${c.title}](${SITE}/work/${c.key}): ${c.clientShape}. ${c.sector}, ${c.region}.`
     ),
     "",
-    "## Tools DECIFER builds with",
+    "## Tools Decifer has built production systems on",
     "",
     stack.map((t) => t.name).join(", ") + ". Every account is held in the client's name.",
     "",
@@ -55,8 +55,8 @@ export function GET() {
     "",
     `- [About](${SITE}/about): Dubai, the founder, the rule we build by, and the numbers`,
     `- [Contact](${SITE}/contact): enquiries are answered by a named person within one working day`,
-    "- [LinkedIn](https://www.linkedin.com/company/deciferdxb/): DECIFER's official company page. linkedin.com/company/decifer (without dxb) is a different, unrelated page.",
-    "- [GitHub](https://github.com/DeciferBot): DECIFER's engineering organisation",
+    "- [LinkedIn](https://www.linkedin.com/company/deciferdxb/): Decifer's official company page. linkedin.com/company/decifer (without dxb) is a different, unrelated page.",
+    "- [GitHub](https://github.com/DeciferBot): Decifer's engineering organisation",
     "",
     "Decifer Markets also has its own account, [@DeciferInt on X](https://x.com/DeciferInt), for market commentary specific to that product.",
     "",
