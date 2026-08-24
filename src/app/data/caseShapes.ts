@@ -1,13 +1,17 @@
 /**
- * Anonymised client work.
+ * Anonymised client work, except where a client has given written
+ * permission to be named (see legal/client-confidentiality: "if you later
+ * want to be named, that is your call to make, in writing, at any time").
  *
- * RULE: no client is ever named here, and no detail may be specific enough
- * to identify one. Describe the shape of the business and the shape of the
- * work. If an entry would let a reader guess the client, cut the entry
+ * RULE: no client is named here without that written permission, and no
+ * anonymised entry may carry a detail specific enough to identify one.
+ * Describe the shape of the business and the shape of the work. If an
+ * anonymised entry would let a reader guess the client, cut the entry
  * rather than soften it. Every outcome must be something the client
  * actually observed. Do not invent percentages. Numbers ship only with the
  * before measurement, the after measurement taken the same way, the period,
- * the confounders, and written permission.
+ * the confounders, and written permission. Prices, revenue, margins and
+ * contract values are never published, named client or not.
  *
  * "boundaries" is the doctrine made visible: what we deliberately did not
  * automate, and why. "withheld" is the trust move competitors will not
@@ -200,34 +204,35 @@ export const caseShapes: CaseShape[] = [
   {
     key: "creator-business-engine",
     title: "A creator business that runs while the creator creates",
-    clientShape: "A lifestyle creator working with brands in the UAE",
+    clientShape:
+      "Aastha Chopra (@aastha_sochic), a Dubai-based lifestyle creator working with fashion, beauty, wellness and travel brands, named with her written permission",
     sector: "Creator and personal brand",
     region: "United Arab Emirates",
     situation:
-      "Everything ran through one person's memory: which brand approved what, what was due, which posts performed, which prospects were worth chasing. Growth made it worse.",
+      "Everything ran through one person's memory: which brand approved what, what was due, which posts performed, which prospects were worth chasing, and whether the website's own content was still accurate. Growth made it worse.",
     work: [
-      "Built an audience data warehouse that syncs every few hours and archives media before the platform's links expire",
-      "Built a content pipeline that grounds each article in real posts and real search demand, then publishes and pings search engines",
-      "Built a prospecting agent that scores brands on whether they are running ads right now, drafts outreach from live figures, and routes every draft to a human inbox",
-      "Built a budget-capped ad autopilot and a health check that stays silent unless a human is needed",
+      "Built an audience data warehouse that syncs every few hours and archives Instagram media before the platform's links expire",
+      "Built a prospecting agent that drafts brand outreach from a fact sheet pulled live from Instagram, so it can only cite numbers that are true right now",
+      "Built a budget-capped ad autopilot that boosts her best-performing organic posts, with the daily spend hard-capped in the code and re-checked on every run",
+      "Audited and rebuilt the site's blog end to end, then replaced unsupervised auto-publishing with three automatic checks a piece must clear before it goes live",
     ],
     outcome: [
-      "Publishing happens on a schedule without the creator at a keyboard",
-      "Brand reports are assembled from data rather than memory",
-      "Spend has a hard ceiling that is re-applied on every run",
+      "Publishing and outreach happen on a schedule, without her at a keyboard",
+      "Ad spend has a hard ceiling that cannot creep, re-applied automatically every run",
+      "The blog publishes itself again, but only after clearing style rules, an editor pass and a live fact-check; anything that fails is held back, not shipped",
     ],
     measurement:
-      "Posts published per month and prospects contacted per month before and after, read from the run tables. Cost per new follower computed from ad spend and audience snapshots.",
+      "Posts published and prospects contacted per month, read from the system's own run logs. Article accuracy is checked by the same automatic fact-checker that gates publication, re-run weekly against everything already live.",
     boundaries: [
-      "Any figure in an outreach email must appear verbatim in a fact sheet built from live data. The model cannot cite a number it was not given.",
-      "Brands that only reach through an agency are never cold-emailed.",
-      "A bounce or complaint permanently removes a brand from automatic sending.",
+      "Any figure in an outreach email must come from a live fact sheet pulled from Instagram. The model cannot cite a number it was not given.",
+      "Ad spend is hard-capped in the code itself, with a separate kill switch and a dry-run mode used before it ever went live.",
+      "The blog fails closed: if a check errors, times out, or the piece does not clear the bar, it is held back automatically rather than published and fixed later.",
     ],
-    withheld: "The creator, the brands, the rates and the audience figures.",
+    withheld: "Her brand deal terms, her rates, and her exact audience figures.",
     serviceKeys: ["ai-agents", "data-and-reporting"],
     stackKeys: ["supabase", "vercel", "claude", "resend"],
-    published: false,
-    updatedAt: "2026-08-22",
+    published: true,
+    updatedAt: "2026-08-24",
     order: 5,
   },
   {

@@ -29,8 +29,8 @@ export const FAQ_ITEMS: FaqItem[] = [
     a: "You do. Every account is opened in your name, the repository transfers to you at handover, and the data lives in standard Postgres you can export. Listing a tool on this site means we use it, not that we resell it.",
   },
   {
-    q: "Why are no clients named on the site?",
-    a: "Some asked us not to, and for the rest we chose not to. Work is described by sector and shape instead, with what we built, what changed, how it is measured and what we deliberately did not automate. Any number is published only with the method and written permission.",
+    q: "Why are most clients not named on the site?",
+    a: "Some asked us not to, and for the rest we chose not to by default. Work is described by sector and shape instead, with what we built, what changed, how it is measured and what we deliberately did not automate. A client can always choose to be named, in writing, and it happens when they do. Any number is published only with the method and written permission.",
   },
   {
     q: "What do you mean by \"code computes, the model narrates\"?",

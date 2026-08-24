@@ -9,7 +9,7 @@ import { jsonLd, SITE } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "Work: AI systems in production, described by shape",
   description:
-    "Anonymised client work from Decifer in the UAE, UK, Spain and Singapore. Each case states what was built, what changed, how it was measured, and what we deliberately did not automate.",
+    "Client work from Decifer in the UAE, UK, Spain and Singapore, anonymised unless a client has agreed in writing to be named. Each case states what was built, what changed, how it was measured, and what we deliberately did not automate.",
   alternates: { canonical: "/work" },
 };
 
@@ -36,11 +36,11 @@ export default function WorkPage() {
     <>
       <PageHero
         kicker="Work"
-        title="Described by shape, never by name."
-        lede="Clients are not named on this site, at their request and as a matter of policy. Each case states the sector, the problem, what we built, what changed, how it is measured, and what we chose not to automate."
+        title="Described by shape. Named only by agreement."
+        lede="Most clients are not named on this site, by their own request and as a matter of policy. Where a client has agreed in writing to be named, we say so. Every case states the sector, the problem, what we built, what changed, how it is measured, and what we chose not to automate."
       >
         <Link href="/legal/client-confidentiality" className="link text-[0.9375rem]">
-          Why we do not name clients
+          How we handle client confidentiality
         </Link>
       </PageHero>
 
