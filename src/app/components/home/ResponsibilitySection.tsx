@@ -44,7 +44,8 @@ export default function ResponsibilitySection() {
           <div className="panel-head">
             <h2 className="label">One team from business case to production</h2>
             <span className="text-sm text-muted">
-              Usually split across four vendors. Carried here as one path.
+              Usually split between consultants, developers and IT. Carried
+              here as one path.
             </span>
           </div>
           <ol className="divide-y divide-line">

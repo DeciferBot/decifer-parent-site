@@ -55,6 +55,7 @@ export default function EnquiryForm() {
     company: "",
     basedIn: "",
     problem: "",
+    costToday: "",
     systems: "",
     outcome: "",
     service: "",
@@ -110,15 +111,6 @@ export default function EnquiryForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
-          // The optional qualifiers travel inside the free-text field so the
-          // API and the leads table need no schema change.
-          problem: [
-            form.problem.trim(),
-            form.systems.trim() && `Systems involved: ${form.systems.trim()}`,
-            form.outcome.trim() && `A successful outcome: ${form.outcome.trim()}`,
-          ]
-            .filter(Boolean)
-            .join("\n\n"),
           elapsedMs: mountedAt.current ? Date.now() - mountedAt.current : undefined,
           sourcePath: pathname,
         }),
@@ -215,6 +207,16 @@ export default function EnquiryForm() {
             {err("problem")}
             <span className="ml-auto text-xs text-faint">{form.problem.trim().length} / {MIN_PROBLEM_CHARS} min</span>
           </div>
+        </div>
+
+        <div>
+          <label htmlFor="enq-cost" className="mb-1.5 block text-sm font-medium text-ink">
+            What does it cost you today <span className="font-normal text-muted">(optional)</span>
+          </label>
+          <input id="enq-cost" type="text" placeholder="Hours a week, delays, errors, work turned away" value={form.costToday} onChange={set("costToday")} className="form-input" />
+          <p className="mt-1.5 text-xs text-muted">
+            A rough number is fine. It becomes the baseline we measure against later.
+          </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">

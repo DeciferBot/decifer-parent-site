@@ -6,6 +6,8 @@
  * answers in plain English. No em dashes (brand rule).
  */
 
+import { proofByKey } from "./proof";
+
 export interface FaqItem {
   q: string;
   a: string;
@@ -30,7 +32,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Do you build AI agents?",
-    a: "Yes, when the workflow genuinely benefits from one. Other workflows are better served by conventional automation, retrieval or plain code, and we say so. We have removed AI from our own working systems five times because a simpler check was better.",
+    a: `Yes, when the workflow genuinely benefits from one. Other workflows are better served by conventional automation, retrieval or plain code, and we say so. We have removed AI from our own working systems ${proofByKey.deletedAi.value} times because a simpler check was better.`,
   },
   {
     q: "How do you deal with AI errors?",

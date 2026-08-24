@@ -34,6 +34,11 @@ export interface LeadRow {
   service_key?: string | null;
   product_interest?: string | null;
   problem?: string | null;
+  /** Baseline qualifiers. Added 2026-08-24; see supabase/leads.sql if the
+      optional Supabase store is in use, as these need columns there. */
+  cost_today?: string | null;
+  systems?: string | null;
+  outcome?: string | null;
   timeline?: string | null;
   budget_band?: string | null;
   heard_via?: string | null;

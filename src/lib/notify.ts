@@ -81,6 +81,9 @@ export interface EnquiryNotification {
   basedIn?: string | null;
   serviceLabel: string;
   problem: string;
+  costToday?: string | null;
+  systems?: string | null;
+  outcome?: string | null;
   timeline?: string | null;
   budgetBand?: string | null;
   heardVia?: string | null;
@@ -111,6 +114,10 @@ export async function notifyInternalEnquiry(e: EnquiryNotification): Promise<voi
       ``,
       `What they want to change:`,
       e.problem,
+      ``,
+      `What it costs today:  ${e.costToday || "Not given"}`,
+      `Systems involved:     ${e.systems || "Not given"}`,
+      `A good outcome:       ${e.outcome || "Not given"}`,
     ].join("\n"),
     logTag: "[DECIFER Enquiry]",
   });
@@ -135,9 +142,13 @@ export async function confirmEnquiryToSubmitter(e: EnquiryNotification): Promise
       ``,
       `Here is what came through:`,
       ``,
-      `  What you want to change:  ${e.problem}`,
-      `  Closest service:          ${e.serviceLabel}`,
-      `  Timeline:                 ${e.timeline ? TIMELINE_LABELS[e.timeline] ?? e.timeline : "Not given"}`,
+      `  Closest service:  ${e.serviceLabel}`,
+      `  Timeline:         ${e.timeline ? TIMELINE_LABELS[e.timeline] ?? e.timeline : "Not given"}`,
+      ``,
+      // Free text goes on its own lines, never inside the aligned block
+      // above: a multi-line answer would break the column alignment.
+      `What you want to change:`,
+      e.problem,
       ``,
       `Amit will read this personally and reply within one working day.`,
       bookingUrl ? `If it is faster to talk, you can pick a time here: ${bookingUrl}` : ``,
@@ -151,36 +162,5 @@ export async function confirmEnquiryToSubmitter(e: EnquiryNotification): Promise
       .filter((line, i, arr) => !(line === "" && arr[i - 1] === ""))
       .join("\n"),
     logTag: "[DECIFER Enquiry]",
-  });
-}
-
-/** Acknowledgement for early-access signups. Previously they received nothing. */
-export async function confirmEarlyAccessToSubmitter(opts: {
-  name: string;
-  email: string;
-  interestLabel: string;
-}): Promise<void> {
-  const first = opts.name.trim().split(/\s+/)[0] || "there";
-  const minuteBucket = Math.floor(Date.now() / 60000);
-  await sendEmail({
-    to: [opts.email],
-    replyTo: REPLY_TO,
-    idempotencyKey: `early-access:${opts.email.toLowerCase()}:${minuteBucket}`,
-    subject: `You are on the list, ${first}`,
-    text: [
-      `Thanks for joining Decifer early access.`,
-      ``,
-      `You asked about: ${opts.interestLabel}`,
-      ``,
-      `Access opens gradually as each product becomes ready. We will email you when yours is.`,
-      `No payment is required for early access, and we do not send marketing email.`,
-      ``,
-      `If you have a question in the meantime, reply to this email.`,
-      ``,
-      `Decifer`,
-      `Dubai, United Arab Emirates`,
-      `https://www.decifer.io`,
-    ].join("\n"),
-    logTag: "[DECIFER Early Access]",
   });
 }

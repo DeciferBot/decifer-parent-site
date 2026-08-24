@@ -184,11 +184,11 @@ export const services: Service[] = [
   },
   {
     key: "ai-advisory",
-    name: "AI consulting and audit",
+    name: "AI consulting and assessment",
     navLabel: "AI opportunity assessment",
     cardHeadline: "Find the opportunities worth funding, and the ones that are not.",
     summary:
-      "A fixed-scope assessment that maps where time actually goes, costs the current process as a baseline, and tells you plainly what to automate first and what to leave alone.",
+      "A fixed-scope AI audit and opportunity assessment that maps where time actually goes, costs the current process as a baseline, and tells you plainly what to automate first and what to leave alone.",
     problem:
       "You keep being told to adopt AI. Every vendor has a pilot. Nobody has told you which three things in your business would actually change, what it would cost to run, or what could go wrong. So nothing starts, or the wrong thing does.",
     description:

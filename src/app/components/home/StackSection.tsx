@@ -34,7 +34,9 @@ export default function StackSection() {
             </p>
             <p className="mt-6 text-sm text-muted">Built on tools you will own at handover:</p>
             <div className="mt-3">
-              <LogoRow />
+              {/* linkTo={null}: StackSection renders on /how-we-work, so the
+                  default target would make every logo link to this same page. */}
+              <LogoRow linkTo={null} />
             </div>
             <p className="mt-8 max-w-3xl text-sm text-muted">
               Every account is opened in your name. At handover the repository,

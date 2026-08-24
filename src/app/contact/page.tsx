@@ -4,9 +4,9 @@ import EnquiryForm from "@/app/components/EnquiryForm";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Book a 30-minute call",
+  title: "Discuss a business process",
   description:
-    "Tell Decifer what you want to change. A named person in Dubai reads every enquiry and replies within one working day.",
+    "Tell Decifer which process you want to improve. A named person in Dubai reads every enquiry and replies within one working day.",
   alternates: { canonical: "/contact" },
 };
 
@@ -14,8 +14,8 @@ const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL;
 
 const next = [
   "A reply from a named person within one working day.",
-  "Thirty minutes on what you want to change. No slides.",
-  "If it makes sense, a two-week audit at a fixed fee, credited against any build.",
+  "Thirty minutes on the process you want to improve. No slides.",
+  "If it makes sense, a two-week assessment at a fixed fee, credited against any build.",
   "If it does not, we say so and suggest what would.",
 ];
 
@@ -40,8 +40,8 @@ export default function ContactPage() {
     <>
       <PageHero
         kicker="Contact"
-        title="Tell us what you want to change."
-        lede="Thirty minutes, no slides. We will say whether we can help, what it would take, and what we would not automate yet."
+        title="Start with the process you want to improve."
+        lede="You do not need an AI specification. Tell us where work is slow, expensive, repetitive or hard to scale. Thirty minutes, no slides, and we will say what it would take, what it should return, and what we would not automate yet."
       />
 
       <section className="pb-20 sm:pb-28">

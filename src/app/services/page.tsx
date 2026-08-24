@@ -7,24 +7,24 @@ import { servicesOrdered } from "@/app/data/services";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "AI services in Dubai: agents, automation, reporting and product builds",
+  title: "What we do: AI implementation, automation and agents in Dubai",
   description:
-    "Decifer builds AI agents, data and reporting automation and complete products for businesses in Dubai and the UAE. Fixed-scope audits, production builds, and plain advice about where AI should not be used.",
+    "Decifer takes business processes from AI pilot to daily operation: a fixed-fee opportunity assessment, workflow automation and AI agents, data and decision intelligence, and custom AI products. Dubai and the UAE.",
   alternates: { canonical: "/services" },
 };
 
 const steps = [
   {
-    title: "A two-week audit, fixed fee",
-    body: "We talk to the people doing the work, map where the hours go, and hand you a one-page recommendation with an explicit do-not-automate-yet list. The fee is credited in full against any build that follows.",
+    title: "A two-week assessment, fixed fee",
+    body: "We talk to the people doing the work, map where the hours go, and cost the process as it runs today so any build can be measured against it. You get a one-page recommendation with an explicit do-not-automate-yet list. The fee is credited in full against any build that follows.",
   },
   {
     title: "A build, two to twelve weeks",
-    body: "Scoped in writing before it starts. Every build hands over the repository, the accounts and a runbook. Every agent carries a monthly line for running and improving it, because agents drift.",
+    body: "Scoped in writing before it starts, with the workflow redesigned rather than automated as-is. Every build hands over the repository, the accounts and a runbook. Every agent carries a monthly line for running and improving it, because agents drift.",
   },
   {
-    title: "A number after one conversation",
-    body: "We do not publish prices, because the honest answer depends on scope. We will give you a figure after the first call, and the audit fee is fixed before it starts.",
+    title: "A measured result",
+    body: "After deployment we read the same measures we took at the start, the same way, so the business can see what changed. We do not publish prices, because the honest answer depends on scope. You get a figure after the first call, and the assessment fee is fixed before it starts.",
   },
 ];
 
@@ -51,9 +51,9 @@ export default function ServicesPage() {
   return (
     <>
       <PageHero
-        kicker="Services"
-        title="Four things we build for businesses in Dubai and beyond."
-        lede="Each one ends with something running in production, on your accounts, with a written boundary and a log your team can read."
+        kicker="What we do"
+        title="Four ways we take a process from pilot to daily operation."
+        lede="Most AI projects stall because the business case was never made, the workflow was never redesigned, nothing was integrated, or nobody took a baseline. Each of the four below ends with something running in production, on your accounts, with a written boundary and a log your team can read."
       />
 
       <section className="pb-16 sm:pb-24">

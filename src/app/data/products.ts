@@ -107,13 +107,10 @@ export const products: Product[] = [
   },
 ];
 
-/** Early-access interest options: every product, plus a general option. */
-export const earlyAccessInterests: { value: string; label: string }[] = [
-  ...products.map((p) => ({ value: p.interestValue, label: p.name })),
-  { value: "General", label: "General interest in Decifer" },
-];
-
-/** Valid interest values accepted by the early-access API. */
-export const validInterestValues: string[] = earlyAccessInterests.map(
-  (i) => i.value
-);
+/**
+ * The early-access signup was retired on 2026-08-24 with the repositioning:
+ * this site sells implementation work, and the products are evidence rather
+ * than something to sign up for. The form, its API route and the interest
+ * option lists were removed with it. `interestValue` stays on each product
+ * because the historic lead rows still carry those values.
+ */

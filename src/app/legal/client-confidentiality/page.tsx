@@ -4,7 +4,7 @@ import LegalLayout from "@/app/components/LegalLayout";
 export const metadata: Metadata = {
   title: "Client Confidentiality",
   description:
-    "Why DECIFER does not name its clients, what we publish instead, and what we never publish at all.",
+    "Why DECIFER anonymises client work by default, when a client may be named, what we publish instead, and what we never publish at all.",
   alternates: { canonical: "/legal/client-confidentiality" },
 };
 
@@ -16,13 +16,20 @@ export default function Page() {
       lastUpdated="August 2026"
     >
       <div className="legal-prose">
-        <h2>Why no client is named</h2>
+        <h2>Why client work is anonymised by default</h2>
         <p>
-          Our clients are not named anywhere on this site. Some asked us not
-          to. For the rest, we chose not to, because a business that would
-          publish your name to win the next job would publish the next
-          client&apos;s name to win the one after that. We would rather be
-          believed for what we describe than trusted for who we can point at.
+          Client work is anonymised on this site unless the client has asked,
+          in writing, to be named. Some asked us not to name them. For the
+          rest, we chose not to, because a business that would publish your
+          name to win the next job would publish the next client&apos;s name to
+          win the one after that. We would rather be believed for what we
+          describe than trusted for who we can point at.
+        </p>
+        <p>
+          The exception runs the other way. A client who wants their name on
+          their own project is entitled to it, and one has asked. Where you see
+          a named case on this site, that name is there at the client&apos;s
+          written request and nowhere else.
         </p>
 
         <h2>What we publish instead</h2>
@@ -52,7 +59,10 @@ export default function Page() {
 
         <h2>What we never publish</h2>
         <ul>
-          <li>Client names, brands, domains or logos.</li>
+          <li>
+            Client names, brands, domains or logos, unless that client has
+            given written permission to be named.
+          </li>
           <li>Customer, patient, guest or end-user data of any kind.</li>
           <li>Prices, revenue, margins, supplier terms or contract values.</li>
           <li>

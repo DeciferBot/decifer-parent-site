@@ -19,6 +19,7 @@
  */
 
 import type { ServiceKey } from "./services";
+import { proofByKey } from "./proof";
 
 export type CapabilityKey =
   | "records-from-chaos"
@@ -68,7 +69,7 @@ export const capabilities: Capability[] = [
     provenSummary: "Nine operating companies now read from one dashboard, refreshed nightly instead of assembled by hand each quarter.",
     transfersTo: ["FP&A and board reporting", "Multi-brand or multi-subsidiary groups", "PE portfolio company roll-ups"],
     buyerAngle:
-      "Nobody has to fact-check the board deck: the validator that blocks an invented figure already runs in production. The same rule marks a child's maths homework in one of our own products — the solver decides right or wrong, and the model never gets a vote.",
+      "Nobody has to fact-check the board deck: the validator that blocks an invented figure already runs in production. The same rule marks a child's maths homework in one of our own products, where the solver decides right or wrong and the model never gets a vote.",
     serviceKeys: ["data-and-reporting"],
     order: 2,
   },
@@ -81,7 +82,7 @@ export const capabilities: Capability[] = [
     provenSummary: "A concierge scored 40 out of 40 on a graded eval, partly by refusing what it could not verify. A second build hard-caps ad spend in code and gates every brand-outreach number to what the data actually says right now.",
     transfersTo: ["Contact centres and support queues", "Sales development and qualification", "Claims intake", "Internal helpdesks"],
     buyerAngle:
-      "Real autonomy, with proof it still works when someone tries to trip it up — the two things most AI vendors only offer one of.",
+      "Real autonomy, with proof it still works when someone tries to trip it up. Most AI vendors offer one of those two things, not both.",
     serviceKeys: ["ai-agents"],
     order: 3,
   },
@@ -94,7 +95,7 @@ export const capabilities: Capability[] = [
     provenSummary: "Zero client-facing AI in a clinical intake system; screening scored by arithmetic against published cutoffs.",
     transfersTo: ["Healthcare and clinical operations", "HR and people decisions", "Legal advice", "Regulated financial advice"],
     buyerAngle:
-      "The same team that ships AI can tell you, in writing, what should not ship — and has done exactly that five times on its own systems.",
+      `The same team that ships AI can tell you, in writing, what should not ship, and has done exactly that ${proofByKey.deletedAi.value} times on its own systems.`,
     serviceKeys: ["ai-advisory"],
     order: 4,
   },

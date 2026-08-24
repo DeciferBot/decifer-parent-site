@@ -35,6 +35,9 @@ interface EnquiryPayload {
   company?: string;
   basedIn?: string;
   problem?: string;
+  costToday?: string;
+  systems?: string;
+  outcome?: string;
   service?: string;
   timeline?: string;
   budget?: string;
@@ -69,6 +72,9 @@ export async function POST(req: NextRequest) {
   const company = body.company?.trim() || null;
   const basedIn = body.basedIn?.trim() ?? "";
   const problem = body.problem?.trim() ?? "";
+  const costToday = body.costToday?.trim() || null;
+  const systems = body.systems?.trim() || null;
+  const outcome = body.outcome?.trim() || null;
   const service = body.service?.trim() ?? "";
   const timeline = body.timeline?.trim() ?? "";
   const budget = body.budget?.trim() || null;
@@ -116,7 +122,7 @@ export async function POST(req: NextRequest) {
 
   const submission = {
     name, email, company, basedIn, service, timeline, budget, heardVia, sourcePath, timestamp,
-    problem,
+    problem, costToday, systems, outcome,
   };
 
   // Always log: this is the fallback when Supabase is unconfigured or down.
@@ -130,6 +136,9 @@ export async function POST(req: NextRequest) {
     based_in: basedIn,
     service_key: service,
     problem,
+    cost_today: costToday,
+    systems,
+    outcome,
     timeline,
     budget_band: budget,
     heard_via: heardVia,
@@ -144,6 +153,7 @@ export async function POST(req: NextRequest) {
   const notification = {
     name, email, company, basedIn, serviceLabel, problem, timeline,
     budgetBand: budget, heardVia, sourcePath, timestamp,
+    costToday, systems, outcome,
   };
   // Neither email can fail the request; sendEmail never throws.
   await Promise.all([
