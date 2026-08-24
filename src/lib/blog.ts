@@ -16,6 +16,10 @@ import type { ServiceKey } from "@/app/data/services";
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 const MAX_HEADLINE = 110; // Google drops the rich result above this
 
+/** One description for the blog everywhere it is named: page metadata and the RSS channel. */
+export const BLOG_DESCRIPTION =
+  "Plain-English writing on AI agents, automation and building products, from a Dubai company that runs its own. Costs shown, myths broken, mistakes admitted.";
+
 export interface PostMeta {
   slug: string;
   title: string;
@@ -53,14 +57,21 @@ function readMeta(file: string): PostMeta {
   return meta;
 }
 
+// Content cannot change mid-build, and getAllPosts is called from the
+// sitemap, feed, llms.txt and every blog route, so cache the parsed set per
+// process. Development skips the cache so edits show without a restart.
+let postsCache: PostMeta[] | undefined;
+
 export function getAllPosts(): PostMeta[] {
+  if (postsCache && process.env.NODE_ENV !== "development") return postsCache;
   if (!fs.existsSync(BLOG_DIR)) return [];
-  return fs
+  postsCache = fs
     .readdirSync(BLOG_DIR)
     .filter((f) => f.endsWith(".mdx"))
     .map(readMeta)
     .filter((p) => process.env.NODE_ENV === "development" || !p.draft)
     .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt));
+  return postsCache;
 }
 
 export function getPost(slug: string): PostMeta | undefined {
