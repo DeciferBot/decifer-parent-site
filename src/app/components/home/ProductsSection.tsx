@@ -1,29 +1,26 @@
 import Link from "next/link";
-import SectionHead from "../SectionHead";
 import ProductFrame from "../ProductFrame";
-import Arrow from "../Arrow";
 import { products } from "../../data/products";
 
 export default function ProductsSection() {
   return (
-    <section id="products" className="bg-dark text-on-dark">
-      <div className="container-x section">
-        <SectionHead
-          tone="light"
-          title="Three products we run ourselves."
-          lede="Open them before you hire us. The products are where the method gets tested in production, and client work gets the version that has already been through it."
-        />
-        <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
-          {products.map((p) => (
-            <ProductFrame key={p.key} product={p} tone="light" />
-          ))}
+    <section id="products" className="pb-7 sm:pb-10">
+      <div className="container-x">
+        <div className="panel">
+          <div className="panel-head">
+            <h2 className="label">Open before you hire us</h2>
+            <Link href="/products" className="link text-sm">
+              The product family
+            </Link>
+          </div>
+          <div className="grid gap-px bg-line md:grid-cols-3">
+            {products.map((p) => (
+              <div key={p.key} className="bg-panel p-6">
+                <ProductFrame product={p} tone="ink" />
+              </div>
+            ))}
+          </div>
         </div>
-        <p className="mt-12">
-          <Link href="/products" className="arrow-link text-on-dark">
-            The product family, boundaries and early access
-            <Arrow />
-          </Link>
-        </p>
       </div>
     </section>
   );

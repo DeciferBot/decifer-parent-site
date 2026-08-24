@@ -18,7 +18,7 @@ export default function PageHero({
   return (
     <section className="pt-28 pb-12 sm:pt-36 sm:pb-16">
       <div className="container-x">
-        {kicker ? <p className="mb-4 text-sm font-medium text-muted">{kicker}</p> : null}
+        {kicker ? <p className="label mb-4">{kicker}</p> : null}
         <div className="grid gap-6 md:grid-cols-12 md:gap-10">
           <h1 className="t-h1 text-ink md:col-span-7">{title}</h1>
           {lede || children ? (

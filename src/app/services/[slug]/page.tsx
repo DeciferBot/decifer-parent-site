@@ -9,6 +9,7 @@ import StackList from "@/app/components/StackChips";
 import ProofStrip from "@/app/components/ProofStrip";
 import CaseRow from "@/app/components/CaseShapeCard";
 import ProductFrame from "@/app/components/ProductFrame";
+import ScopeSheet from "@/app/components/home/ScopeSheet";
 import Arrow from "@/app/components/Arrow";
 import { services, servicesByKey, servicesOrdered, type ServiceKey } from "@/app/data/services";
 import { caseShapesForService } from "@/app/data/caseShapes";
@@ -97,6 +98,25 @@ export default async function ServicePage({ params }: Params) {
         </div>
       </section>
 
+      {s.key === "ai-agents" ? (
+        <section className="pb-16 sm:pb-24">
+          <div className="container-x grid gap-8 md:grid-cols-12">
+            <div className="md:col-span-5">
+              <h2 className="t-h3 text-ink">Every agent ships with a scope sheet</h2>
+              <p className="t-body mt-3">
+                Before an agent runs, its limits are written down: what it may
+                do, what it must hand to a person, and how every action is
+                logged. This example shows the shape. Yours is written with
+                you, for your business.
+              </p>
+            </div>
+            <div className="md:col-span-7">
+              <ScopeSheet />
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {/* Deliverables */}
       <section className="border-t border-line">
         <div className="container-x section">
@@ -177,11 +197,13 @@ export default async function ServicePage({ params }: Params) {
           {shapes.length ? (
             <div className="mt-14">
               <h3 className="t-h3 text-ink">Work of this shape</h3>
-              <ul className="ruled mt-6">
-                {shapes.map((c) => (
-                  <CaseRow key={c.key} shape={c} />
-                ))}
-              </ul>
+              <div className="panel mt-6">
+                <ul className="divide-y divide-line">
+                  {shapes.map((c) => (
+                    <CaseRow key={c.key} shape={c} />
+                  ))}
+                </ul>
+              </div>
             </div>
           ) : null}
         </div>

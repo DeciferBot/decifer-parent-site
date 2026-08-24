@@ -8,12 +8,13 @@
 */
 
 @theme {
-  /* Surfaces */
-  --color-canvas: #ffffff;
-  --color-surface: oklch(97% 0.004 250);
+  /* Surfaces. canvas is the grey ground; panel is the white card on it. */
+  --color-canvas: oklch(96% 0.004 250);
+  --color-panel: #ffffff;
+  --color-surface: oklch(97.5% 0.004 250);
   --color-surface-alt: oklch(94% 0.006 250);
-  --color-dark: oklch(15% 0.012 250);
-  --color-dark-2: oklch(20% 0.012 250);
+  --color-dark: oklch(17% 0.014 255);
+  --color-dark-2: oklch(21% 0.014 255);
 
   /* Ink scale. ink for headings, body for paragraphs, muted for metadata. */
   --color-ink: oklch(18% 0.012 250);
@@ -24,7 +25,7 @@
   --color-on-dark-2: oklch(76% 0.008 250);
 
   /* Lines */
-  --color-line: oklch(89% 0.006 250);
+  --color-line: oklch(88% 0.006 250);
   --color-line-strong: oklch(78% 0.008 250);
   --color-line-dark: oklch(30% 0.012 250);
 
@@ -57,7 +58,7 @@
 
   /* Type */
   --font-sans: var(--font-grotesk), "Helvetica Neue", Arial, sans-serif;
-  --font-display: var(--font-grotesk), "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-serif), Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   /* Motion */
@@ -134,31 +135,35 @@ p {
   /* ── Type scale ────────────────────────────────────── */
 
   .t-display {
-    font-size: clamp(2.5rem, 1.3rem + 3.9vw, 4.25rem);
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    line-height: 1.02;
-  }
-
-  .t-h1 {
-    font-size: clamp(2.25rem, 1.4rem + 3vw, 3.5rem);
-    font-weight: 700;
-    letter-spacing: -0.022em;
-    line-height: 1.05;
-  }
-
-  .t-h2 {
-    font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+    font-size: clamp(2.375rem, 1.3rem + 3.7vw, 3.875rem);
+    font-weight: 500;
+    letter-spacing: -0.012em;
     line-height: 1.08;
   }
 
-  .t-h3 {
-    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
-    font-weight: 600;
+  .t-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.125rem, 1.4rem + 2.6vw, 3.25rem);
+    font-weight: 500;
     letter-spacing: -0.01em;
-    line-height: 1.2;
+    line-height: 1.1;
+  }
+
+  .t-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.625rem, 1.2rem + 1.7vw, 2.5rem);
+    font-weight: 500;
+    letter-spacing: -0.008em;
+    line-height: 1.14;
+  }
+
+  .t-h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.625rem);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    line-height: 1.22;
   }
 
   .t-lede {
@@ -187,6 +192,77 @@ p {
 
   .measure {
     max-width: 68ch;
+  }
+
+  /* ── Panels: white cards on the grey ground ───────── */
+
+  .panel {
+    background: var(--color-panel);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+  }
+
+  .panel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  /* Instrument label: the one uppercase device in the system.
+     Used only as a panel or board header, never above a heading. */
+  .label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .panel-pad {
+    padding: 1.5rem;
+  }
+
+  /* ── The systems board ─────────────────────────────── */
+
+  .board {
+    background: var(--color-dark);
+    color: var(--color-on-dark);
+    border: 1px solid var(--color-line-dark);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    font-variant-numeric: tabular-nums;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  }
+  .board-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.8125rem 1.125rem;
+    border-top: 1px solid var(--color-line-dark);
+  }
+  .board-st {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4375rem;
+    font-size: 0.78125rem;
+    color: var(--color-on-dark-2);
+    white-space: nowrap;
+  }
+  .board-st::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: oklch(65% 0.15 155);
+    box-shadow: 0 0 0 3px oklch(65% 0.15 155 / 0.18);
+  }
+  .board-st.warn::before {
+    background: var(--color-orange);
+    box-shadow: 0 0 0 3px rgba(240, 90, 40, 0.18);
   }
 
   /* ── Buttons ───────────────────────────────────────── */
@@ -230,6 +306,18 @@ p {
     }
   }
 
+  .btn-ink {
+    background-color: var(--color-ink);
+    border-color: var(--color-ink);
+    color: #fff;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-ink:hover {
+      background-color: #000;
+      border-color: #000;
+    }
+  }
+
   .btn-secondary {
     background-color: transparent;
     border-color: var(--color-ink);
@@ -238,7 +326,7 @@ p {
   @media (hover: hover) and (pointer: fine) {
     .btn-secondary:hover {
       background-color: var(--color-ink);
-      color: var(--color-canvas);
+      color: #fff;
     }
   }
 
@@ -257,7 +345,7 @@ p {
   .btn-on-orange {
     background-color: var(--color-ink);
     border-color: var(--color-ink);
-    color: var(--color-canvas);
+    color: #fff;
   }
   @media (hover: hover) and (pointer: fine) {
     .btn-on-orange:hover {
@@ -330,6 +418,11 @@ p {
     .row-link:hover {
       background-color: var(--color-surface);
     }
+  }
+
+  .frame,
+  .form-input {
+    background: var(--color-panel);
   }
 
   /* ── Frames for screenshots ────────────────────────── */

@@ -58,11 +58,13 @@ export default function ServicesPage() {
 
       <section className="pb-16 sm:pb-24">
         <div className="container-x">
-          <ul className="ruled">
-            {servicesOrdered.map((s) => (
-              <ServiceRow key={s.key} service={s} />
-            ))}
-          </ul>
+          <div className="panel">
+            <ul className="divide-y divide-line">
+              {servicesOrdered.map((s) => (
+                <ServiceRow key={s.key} service={s} />
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 

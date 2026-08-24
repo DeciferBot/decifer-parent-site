@@ -46,11 +46,13 @@ export default function WorkPage() {
 
       <section className="pb-16 sm:pb-24">
         <div className="container-x">
-          <ul className="ruled">
-            {publishedCaseShapes.map((c) => (
-              <CaseRow key={c.key} shape={c} />
-            ))}
-          </ul>
+          <div className="panel">
+            <ul className="divide-y divide-line">
+              {publishedCaseShapes.map((c) => (
+                <CaseRow key={c.key} shape={c} />
+              ))}
+            </ul>
+          </div>
           <p className="mt-10 max-w-2xl text-[0.9375rem] leading-relaxed text-muted">
             No case carries a percentage. We publish a figure only with the
             before measurement, the after measurement taken the same way, the

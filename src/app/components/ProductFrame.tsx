@@ -53,7 +53,7 @@ export default function ProductFrame({
       </a>
       <div className="mt-5 flex items-start justify-between gap-4">
         <div>
-          <h3 className={`text-lg font-semibold ${light ? "text-on-dark" : "text-ink"}`}>{p.name}</h3>
+          <h3 className={`t-h3 ${light ? "text-on-dark" : "text-ink"}`}>{p.name}</h3>
           <p className={`mt-1 text-[0.9375rem] ${light ? "text-on-dark-2" : "text-body"}`}>{p.category}</p>
         </div>
         <span className={`status mt-1 ${light ? "text-on-dark-2" : "text-body"}`} style={dot}>

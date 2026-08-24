@@ -42,11 +42,13 @@ export default function BlogIndex() {
       <section className="pb-20 sm:pb-28">
         <div className="container-x">
           {posts.length ? (
-            <ul className="ruled">
-              {posts.map((p) => (
-                <PostRow key={p.slug} post={p} />
-              ))}
-            </ul>
+            <div className="panel">
+              <ul className="divide-y divide-line">
+                {posts.map((p) => (
+                  <PostRow key={p.slug} post={p} />
+                ))}
+              </ul>
+            </div>
           ) : (
             <p className="text-muted">First articles are on their way.</p>
           )}

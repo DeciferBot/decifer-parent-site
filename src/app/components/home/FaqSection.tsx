@@ -7,31 +7,25 @@ import { jsonLd } from "@/lib/jsonld";
  */
 export default function FaqSection() {
   return (
-    <section id="faq" className="border-t border-line">
-      <div className="container-x section">
-        <div className="grid gap-10 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <h2 className="t-h2 text-ink">Questions we get asked.</h2>
-            <p className="t-lede mt-4">
-              If yours is not here, email{" "}
-              <a href="mailto:hello@decifer.io" className="link">
-                hello@decifer.io
-              </a>
-              .
-            </p>
+    <section id="faq" className="pb-7 sm:pb-10">
+      <div className="container-x">
+        <div className="panel">
+          <div className="panel-head">
+            <h2 className="label">Questions buyers ask us</h2>
+            <a href="mailto:hello@decifer.io" className="link text-sm">
+              Ask a different one
+            </a>
           </div>
-          <div className="md:col-span-8 md:col-start-5">
-            <div className="ruled">
-              {FAQ_ITEMS.map((item) => (
-                <details key={item.q} className="faq">
-                  <summary>
-                    <span>{item.q}</span>
-                    <span className="faq-icon" aria-hidden="true" />
-                  </summary>
-                  <p className="faq-body">{item.a}</p>
-                </details>
-              ))}
-            </div>
+          <div className="px-6">
+            {FAQ_ITEMS.map((item, i) => (
+              <details key={item.q} className={`faq ${i > 0 ? "border-t border-line" : ""}`}>
+                <summary>
+                  <span>{item.q}</span>
+                  <span className="faq-icon" aria-hidden="true" />
+                </summary>
+                <p className="faq-body">{item.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </div>

@@ -89,7 +89,7 @@ export default async function PostPage({ params }: Params) {
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true"><path d="M10 4L6 8l4 4" /></svg>
             All articles
           </Link>
-          <p className="mb-4 text-sm font-medium text-muted">{post.topic}</p>
+          <p className="label mb-4">{post.topic}</p>
           <h1 className="t-h1 max-w-4xl text-ink">{post.title}</h1>
           <p className="t-lede mt-6 max-w-2xl">{post.description}</p>
           <p className="mt-6 text-sm text-muted">

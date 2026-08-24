@@ -9,7 +9,7 @@ export default function PostRow({ post: p }: { post: PostMeta }) {
     <li>
       <Link
         href={`/blog/${p.slug}`}
-        className="row-link group -mx-4 grid gap-3 px-4 py-7 md:grid-cols-12 md:gap-8"
+        className="row-link group grid gap-3 px-6 py-7 md:grid-cols-12 md:gap-8"
       >
         <div className="md:col-span-3">
           <p className="text-sm font-semibold text-ink">{p.topic}</p>

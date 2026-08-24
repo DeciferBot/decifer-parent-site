@@ -1,6 +1,10 @@
 # Design
 
-Visual system for decifer.io. Written 2026-08-23 with the marketing overhaul. Tokens live in `src/app/globals.css`.
+Visual system for decifer.io. Written 2026-08-23, revised 2026-08-24 to the "control room" direction after founder feedback (no bold single-colour headlines). Tokens live in `src/app/globals.css`.
+
+## The direction in one line
+
+A control room on paper: a grey ground, white panels with instrument labels, serif headlines at medium weight, one dark systems board, orange reserved for the rule panel and the CTA panel.
 
 ## Scene
 
@@ -12,8 +16,9 @@ Committed. One saturated colour (Decifer orange) carries whole sections, not jus
 
 | Role | Token | Value | Use |
 | --- | --- | --- | --- |
-| Page | `--color-bg` | `#ffffff` | Default surface |
-| Panel | `--color-bg-2` | `oklch(97% 0.004 250)` | Quiet panels, alternate bands |
+| Ground | `--color-canvas` | `oklch(96% 0.004 250)` | The page itself |
+| Panel | `--color-panel` | `#ffffff` | White cards on the ground; most content lives here |
+| Board | `--color-dark` | `oklch(17% 0.014 255)` | The systems board and the footer |
 | Ink | `--color-ink` | `oklch(18% 0.012 250)` | Headings, primary text |
 | Body | `--color-ink-2` | `oklch(32% 0.012 250)` | Paragraphs |
 | Muted | `--color-ink-3` | `oklch(46% 0.014 250)` | Captions, metadata (5:1 on white) |
@@ -31,7 +36,7 @@ Rules:
 
 ## Typography
 
-One family: Schibsted Grotesk (variable, Google Fonts). Chosen because it was drawn for a newspaper group: built for reporting, checks and dense body text, which is what this company sells. Weight contrast does the hierarchy work.
+Two families. Source Serif 4 at weight 500 for every heading: quiet authority, nothing shouts. Schibsted Grotesk for body, labels, buttons and data (it was drawn for a newspaper group, built for reporting and dense text). The one uppercase device is the `label` class, used only as a panel or board header.
 
 | Level | Size | Weight | Tracking | Leading |
 | --- | --- | --- | --- | --- |

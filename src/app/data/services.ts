@@ -52,6 +52,10 @@ export interface Service {
   typicalEngagement: string;
   /** The same, in five words or fewer, for list rows. */
   engagementShort: string;
+  /** Right-column fact for list rows: the commercial shape. */
+  commercial: string;
+  /** One supporting line under it. */
+  commercialSub: string;
   /** Analytics event, same convention as products.ts. */
   event: string;
   /** ISO date the copy last changed. Drives sitemap lastModified. */
@@ -94,6 +98,8 @@ export const services: Service[] = [
     typicalEngagement:
       "Two to eight weeks from scope to a working agent in production, then a monthly retainer to run and improve it. Agents drift, and a build with no maintenance line is a build you will be blamed for.",
     engagementShort: "Two to eight weeks, then a retainer",
+    commercial: "Scoped in writing",
+    commercialSub: "Human review where a mistake is expensive",
     event: "service_ai_agents_clicked",
     updatedAt: "2026-08-22",
     order: 1,
@@ -131,6 +137,8 @@ export const services: Service[] = [
     typicalEngagement:
       "A measurement setup takes one to two weeks at a fixed fee and is the usual first step. Full data and reporting builds run three to eight weeks.",
     engagementShort: "One to eight weeks, fixed fee",
+    commercial: "Fixed fee",
+    commercialSub: "Raw data exported to you",
     event: "service_data_reporting_clicked",
     updatedAt: "2026-08-22",
     order: 2,
@@ -168,6 +176,8 @@ export const services: Service[] = [
     typicalEngagement:
       "Six to twelve weeks depending on scope, fixed fee with staged payments. The repository is transferred at handover, always.",
     engagementShort: "Six to twelve weeks, fixed fee",
+    commercial: "Fixed fee",
+    commercialSub: "The repository transfers at handover",
     event: "service_product_build_clicked",
     updatedAt: "2026-08-22",
     order: 3,
@@ -205,6 +215,8 @@ export const services: Service[] = [
     typicalEngagement:
       "Two weeks, fixed fee, credited in full against any build that follows. This is where most engagements start.",
     engagementShort: "Two weeks, fixed fee",
+    commercial: "Fixed fee",
+    commercialSub: "Credited in full against any build",
     event: "service_ai_advisory_clicked",
     updatedAt: "2026-08-22",
     order: 4,
