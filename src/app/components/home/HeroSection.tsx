@@ -1,5 +1,5 @@
 import Link from "next/link";
-import SystemsBoard from "./SystemsBoard";
+import CaseBoard from "./CaseBoard";
 
 export default function HeroSection() {
   return (
@@ -31,7 +31,7 @@ export default function HeroSection() {
         </div>
 
         <div className="unclip lg:col-span-5">
-          <SystemsBoard />
+          <CaseBoard />
         </div>
       </div>
     </section>
