@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Arrow from "./Arrow";
 import type { CaseShape } from "../data/caseShapes";
 import { servicesByKey } from "../data/services";
 
@@ -31,6 +32,10 @@ export default function CaseRow({ shape: c }: { shape: CaseShape }) {
               {servicesByKey[k].name}
             </p>
           ))}
+          <p className="mt-3 flex items-center gap-1.5 text-sm font-medium text-orange-text md:justify-end">
+            Read the case
+            <Arrow className="row-arrow" size={15} />
+          </p>
         </div>
       </Link>
     </li>

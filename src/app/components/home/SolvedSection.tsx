@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Arrow from "../Arrow";
 import { capabilitiesOrdered } from "../../data/capabilities";
 import { caseShapesByKey } from "../../data/caseShapes";
 
@@ -50,6 +51,10 @@ export default function SolvedSection() {
                             {t}
                           </span>
                         ))}
+                      </p>
+                      <p className="mt-3 flex items-center gap-1.5 text-sm font-medium text-orange-text">
+                        Read the case
+                        <Arrow className="row-arrow" size={15} />
                       </p>
                     </div>
                   </Link>
