@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Arrow from "./Arrow";
 
 /**
  * The single conversion, repeated at the foot of every page. An orange
@@ -30,6 +31,7 @@ export default function CtaBand({
                 className="btn btn-on-orange"
               >
                 Discuss a business process
+                <Arrow className="row-arrow" size={16} />
               </Link>
               <a
                 href="mailto:hello@decifer.io"

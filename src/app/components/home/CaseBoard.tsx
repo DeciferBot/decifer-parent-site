@@ -60,8 +60,8 @@ export default function CaseBoard() {
         <span className="label text-on-dark-2">Taken to production</span>
         <span className="text-[0.8125rem] text-on-dark-2">5 industries, one method</span>
       </div>
-      {rows.map((r) => (
-        <div key={r.sector} className="board-row">
+      {rows.map((r, i) => (
+        <div key={r.sector} className="board-row" style={{ "--i": i } as React.CSSProperties}>
           <div>
             <p className="text-[0.9375rem] font-medium leading-snug">{r.sector}</p>
             <p className="mt-0.5 text-[0.78125rem] leading-snug text-on-dark-2">{r.job}</p>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Arrow from "./Arrow";
 import type { Service } from "../data/services";
 
 /**
@@ -25,6 +26,10 @@ export default function ServiceRow({ service: s }: { service: Service }) {
         <div className="md:col-span-3 md:text-right">
           <p className="text-sm font-semibold text-ink">{s.commercial}</p>
           <p className="mt-1 text-sm text-muted">{s.commercialSub}</p>
+          <p className="mt-3 flex items-center gap-1.5 text-sm font-medium text-orange-text md:justify-end">
+            Read the service
+            <Arrow className="row-arrow" size={15} />
+          </p>
         </div>
       </Link>
     </li>

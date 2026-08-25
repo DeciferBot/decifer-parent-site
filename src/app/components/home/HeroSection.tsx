@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Arrow from "../Arrow";
 import CaseBoard from "./CaseBoard";
 
 export default function HeroSection() {
@@ -20,6 +21,7 @@ export default function HeroSection() {
           <div className="rise-2 mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="/contact" data-event="cta_book_call" className="btn btn-ink">
               Discuss a business process
+              <Arrow className="row-arrow" size={16} />
             </Link>
             <Link href="/work" data-event="cta_see_work" className="btn btn-secondary">
               See the work

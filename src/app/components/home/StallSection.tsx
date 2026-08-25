@@ -1,3 +1,5 @@
+import Reveal from "../Reveal";
+
 /**
  * Why AI projects stall: the six failure points every Decifer engagement is
  * structured against. Source thinking: docs/REPOSITIONING_2026-08-24.md.
@@ -39,16 +41,20 @@ export default function StallSection() {
             <h2 className="label">Where the value leaks out</h2>
             <span className="text-sm text-muted">Six ways AI projects stall</span>
           </div>
-          <div className="grid gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
-            {points.map((p) => (
-              <div key={p.title} className="bg-canvas px-6 py-7">
+          <Reveal className="grid gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
+            {points.map((p, i) => (
+              <div
+                key={p.title}
+                className="bg-canvas px-6 py-7"
+                style={{ "--i": i } as React.CSSProperties}
+              >
                 <h3 className="text-[1.0625rem] font-semibold leading-snug text-ink">
                   {p.title}
                 </h3>
                 <p className="t-body mt-2.5">{p.body}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
           <p className="border-t border-line px-6 py-4 text-sm text-body">
             Every Decifer engagement is structured against this list, starting
             with the baseline.

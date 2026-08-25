@@ -1,3 +1,5 @@
+import Reveal from "../Reveal";
+
 /**
  * Market-evidence band: the implementation gap in four verified figures.
  * Every figure here is external and cited. Do not add a statistic without a
@@ -40,17 +42,21 @@ export default function EvidenceSection() {
             <h2 className="label">The AI implementation gap</h2>
             <span className="text-sm text-muted">Published research, cited</span>
           </div>
-          <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.figure} className="bg-canvas px-6 py-7">
-                <p className="text-[1.75rem] font-semibold leading-none tracking-tight text-ink">
+          <Reveal className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((s, i) => (
+              <div
+                key={s.figure}
+                className="bg-canvas px-6 py-7"
+                style={{ "--i": i } as React.CSSProperties}
+              >
+                <p className="text-[1.75rem] font-semibold leading-none tracking-tight text-ink tabular-nums">
                   {s.figure}
                 </p>
                 <p className="t-body mt-3">{s.claim}</p>
                 <p className="mt-3 text-xs text-muted">{s.source}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
           <p className="border-t border-line px-6 py-4 text-sm text-body">
             The problem is not the technology. It is what happens inside the
             business. The next section is what actually goes wrong.

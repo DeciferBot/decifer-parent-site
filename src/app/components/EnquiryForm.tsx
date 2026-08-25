@@ -291,7 +291,14 @@ export default function EnquiryForm() {
           disabled={status === "submitting"}
           className="btn btn-primary w-full sm:w-auto"
         >
-          {status === "submitting" ? "Sending..." : "Send the enquiry"}
+          {status === "submitting" ? (
+            <>
+              <span className="spinner" aria-hidden="true" />
+              Sending
+            </>
+          ) : (
+            "Send the enquiry"
+          )}
         </button>
 
         {status === "error" && (

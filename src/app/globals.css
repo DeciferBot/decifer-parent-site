@@ -61,9 +61,14 @@
   --font-display: var(--font-serif), Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  /* Motion */
+  /* Motion.
+     fluid   entrances and hovers, the default
+     snappy  on-screen movement that starts and stops
+     expo    confident reveals; decisive, no float
+     Durations: 120ms press, 150-200ms hover, 200-300ms state, 480-700ms load. */
   --ease-fluid: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-snappy: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Layout */
   --container: 75rem;
@@ -272,10 +277,35 @@ p {
     border-radius: 999px;
     background: oklch(65% 0.15 155);
     box-shadow: 0 0 0 3px oklch(65% 0.15 155 / 0.18);
+    /* The board is an instrument, so its indicator is alive. Slow and small
+       on purpose: a status light breathing, not a notification demanding. */
+    animation: board-live 3.2s var(--ease-snappy) infinite;
   }
   .board-st.warn::before {
     background: var(--color-orange);
     box-shadow: 0 0 0 3px rgba(240, 90, 40, 0.18);
+  }
+
+  @keyframes board-live {
+    0%, 100% { box-shadow: 0 0 0 3px oklch(65% 0.15 155 / 0.18); }
+    50%      { box-shadow: 0 0 0 5px oklch(65% 0.15 155 / 0.07); }
+  }
+
+  /* Board rows arrive in sequence on first load, the way a panel of readings
+     comes up.
+
+     Transform only, never opacity. CSS animations pause on a hidden tab, and
+     a paused `both`-filled animation holds its `from` frame indefinitely: an
+     opacity-based version renders a blank board in any background tab, link
+     preview or headless screenshot. Held at frame zero this is a 6px offset
+     and every row is still readable. */
+  .board-row {
+    animation: board-row-in 420ms var(--ease-expo) both;
+    animation-delay: calc(240ms + var(--i, 0) * 70ms);
+  }
+  @keyframes board-row-in {
+    from { transform: translateY(6px); }
+    to   { transform: none; }
   }
 
   /* ── Buttons ───────────────────────────────────────── */
@@ -297,13 +327,28 @@ p {
     cursor: pointer;
     border: 1px solid transparent;
     transition:
-      transform 160ms var(--ease-fluid),
+      transform 120ms var(--ease-fluid),
+      box-shadow 200ms var(--ease-fluid),
       background-color 200ms var(--ease-fluid),
       border-color 200ms var(--ease-fluid),
       color 200ms var(--ease-fluid);
   }
+  /* Press beats hover: the press is the moment the user is watching, so it is
+     the faster of the two and it always wins the transform. */
   .btn:active {
     transform: scale(0.97);
+    transition-duration: 100ms;
+  }
+  .btn .row-arrow {
+    transition: transform 200ms var(--ease-fluid);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .btn:hover .row-arrow {
+      transform: translateX(3px);
+    }
+    .btn:hover:not(:active) {
+      transform: translateY(-1px);
+    }
   }
   .btn:disabled {
     cursor: not-allowed;
@@ -427,13 +472,26 @@ p {
   }
 
   /* Row that is a link: the whole row highlights */
+  /* Ruled rows are the primary way this site is read: services, cases and the
+     capability matrix are all this pattern. The row acknowledges the pointer
+     in three ways at once, all cheap: ground, direction, and emphasis. */
   .row-link {
-    transition: background-color 200ms var(--ease-fluid);
+    transition: background-color 150ms var(--ease-fluid);
+  }
+  .row-link .row-arrow {
+    transition: transform 200ms var(--ease-fluid);
   }
   @media (hover: hover) and (pointer: fine) {
     .row-link:hover {
       background-color: var(--color-surface);
     }
+    .row-link:hover .row-arrow {
+      transform: translateX(4px);
+    }
+  }
+  /* Keyboard users get the same affordance as pointer users. */
+  .row-link:focus-visible .row-arrow {
+    transform: translateX(4px);
   }
 
   .frame,
@@ -734,6 +792,63 @@ p {
   .legal-prose strong { color: var(--color-ink); font-weight: 600; }
   .legal-prose a { color: var(--color-orange-text); text-decoration: underline; text-underline-offset: 3px; }
 
+  /* ── Cell reveal ───────────────────────────────────── */
+
+  /* Used on the two argument bands only (the cited statistics and the six
+     failure points), because those are genuine lists where sibling stagger
+     reads as sequence rather than decoration. Deliberately NOT applied to
+     every section: fade-up-on-scroll everywhere is the template this brand
+     lists as an anti-reference.
+
+     Content is visible with no attribute at all, so a headless render, a
+     crawler, or a JS failure still ships the full band. The animation only
+     runs once the observer sets data-reveal="in". */
+  [data-reveal] > * {
+    opacity: 1;
+  }
+  [data-reveal="ready"] > * {
+    opacity: 0;
+  }
+  [data-reveal="in"] > * {
+    animation: cell-in 460ms var(--ease-expo) both;
+    animation-delay: calc(var(--i, 0) * 55ms);
+  }
+  @keyframes cell-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── Pending state ─────────────────────────────────── */
+
+  /* Fast rotation on purpose: a quicker spinner makes the wait read as
+     shorter, even when the request takes exactly as long. */
+  .spinner {
+    width: 0.875rem;
+    height: 0.875rem;
+    border-radius: 999px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    opacity: 0.9;
+    animation: spin 620ms linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ── Disclosure ────────────────────────────────────── */
+
+  /* Native <details> removes its content from the box tree when closed, so a
+     height or grid-template-rows transition has nothing to animate from. The
+     answer instead settles in as it appears, which is the part a reader
+     actually watches. The plus-to-minus icon carries the state change. */
+  .faq[open] .faq-body {
+    animation: faq-body-in 220ms var(--ease-fluid) both;
+  }
+  @keyframes faq-body-in {
+    from { opacity: 0; transform: translateY(-3px); }
+    to   { opacity: 1; transform: none; }
+  }
+
   /* ── Reduced motion ────────────────────────────────── */
 
   @media (prefers-reduced-motion: reduce) {
@@ -747,7 +862,26 @@ p {
       animation: none;
       clip-path: none;
     }
+    /* Everything below stays legible and fully visible; only movement goes.
+       Opacity is restored explicitly so a reveal can never strand content. */
+    .board-row,
+    [data-reveal="in"] > *,
+    [data-reveal="ready"] > * {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .board-st::before {
+      animation: none;
+    }
+    .faq[open] .faq-body {
+      animation: none;
+    }
     .btn:active { transform: none; }
+    .btn:hover:not(:active) { transform: none; }
+    .row-link:hover .row-arrow,
+    .row-link:focus-visible .row-arrow,
+    .btn:hover .row-arrow { transform: none; }
     .arrow-link:hover svg { transform: none; }
     *, *::before, *::after {
       transition-duration: 0.01ms !important;
