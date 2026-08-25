@@ -109,6 +109,8 @@ export default function LearnPage() {
     <>
       <PageHero
         kicker="Learn"
+        icon="education"
+        hue="violet"
         title="Build production-ready software with AI."
         lede="AI tools make the first day cheap. This guide is about every day after that. Written by a Dubai company that builds and runs AI systems for a living, and published free in full."
       />

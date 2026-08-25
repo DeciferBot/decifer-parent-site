@@ -34,6 +34,8 @@ export default function BlogIndex() {
     <>
       <PageHero
         kicker="Insights"
+        icon="log"
+        hue="plum"
         title="Written by the people who run it."
         lede="Plain English on AI agents, automation and building products. Costs shown, methods in full. Each piece is written to be sent to a client who asked the question."
       />

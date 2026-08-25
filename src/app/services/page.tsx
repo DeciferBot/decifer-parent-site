@@ -52,6 +52,8 @@ export default function ServicesPage() {
     <>
       <PageHero
         kicker="What we do"
+        icon="agent"
+        hue="orange"
         title="Four ways we take a process from pilot to daily operation."
         lede="Most AI projects stall because the business case was never made, the workflow was never redesigned, nothing was integrated, or nobody took a baseline. Each of the four below ends with something running in production, on your accounts, with a written boundary and a log your team can read."
       />

@@ -40,6 +40,8 @@ export default function ContactPage() {
     <>
       <PageHero
         kicker="Contact"
+        icon="handover"
+        hue="orange"
         title="Start with the process you want to improve."
         lede="You do not need an AI specification. Tell us where work is slow, expensive, repetitive or hard to scale. Thirty minutes, no slides, and we will say what it would take, what it should return, and what we would not automate yet."
       />

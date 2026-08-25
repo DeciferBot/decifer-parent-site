@@ -5,7 +5,7 @@ import PageHero from "@/app/components/PageHero";
 import CtaBand from "@/app/components/CtaBand";
 import StackList from "@/app/components/StackChips";
 import Arrow from "@/app/components/Arrow";
-import { publishedCaseShapes, caseShapesByKey } from "@/app/data/caseShapes";
+import { publishedCaseShapes, caseShapesByKey, sectorMark } from "@/app/data/caseShapes";
 import { servicesByKey } from "@/app/data/services";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
@@ -87,7 +87,13 @@ export default async function CaseShapePage({ params }: Params) {
 
   return (
     <>
-      <PageHero kicker={`${c.sector}, ${c.region}`} title={c.title} lede={`${c.clientShape}.`}>
+      <PageHero
+        kicker={`${c.sector}, ${c.region}`}
+        title={c.title}
+        lede={`${c.clientShape}.`}
+        icon={sectorMark[c.sector].icon}
+        hue={sectorMark[c.sector].hue}
+      >
         <StackList keys={c.stackKeys} />
       </PageHero>
 

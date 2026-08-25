@@ -39,7 +39,13 @@ export default function ToolPageShell({ tool, children }: { tool: Tool; children
 
   return (
     <>
-      <PageHero kicker="Tools" title={tool.name} lede={tool.summary} />
+      <PageHero
+        kicker="Tools"
+        title={tool.name}
+        lede={tool.summary}
+        icon={tool.icon}
+        hue={tool.hue}
+      />
 
       <section className="pb-16 sm:pb-20">
         <div className="container-x">

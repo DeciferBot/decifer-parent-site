@@ -60,6 +60,8 @@ export default function StackPage() {
     <>
       <PageHero
         kicker="The stack"
+        icon="handover"
+        hue="violet"
         title="What we build on, why each one, and which model runs which job."
         lede="A short list, held to one test: we have shipped production systems on it for a real business. Every account is opened in your name, so none of this is something you rent from us."
       />

@@ -76,7 +76,13 @@ export default async function ServicePage({ params }: Params) {
 
   return (
     <>
-      <PageHero kicker={s.name} title={s.cardHeadline} lede={s.summary}>
+      <PageHero
+        kicker={s.name}
+        title={s.cardHeadline}
+        lede={s.summary}
+        icon={s.icon}
+        hue={s.hue}
+      >
         <StackList keys={s.stackKeys} />
       </PageHero>
 

@@ -86,6 +86,8 @@ export default function AboutPage() {
     <>
       <PageHero
         kicker="About"
+        icon="measure"
+        hue="blue"
         title="Based in Dubai. Built to be checked."
         lede="Decifer is an AI implementation company in Dubai, United Arab Emirates. It takes business processes from AI pilot to dependable daily operation for businesses here and abroad, and it runs three public products with exactly the same method."
       />
