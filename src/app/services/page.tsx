@@ -3,8 +3,12 @@ import PageHero from "@/app/components/PageHero";
 import ServiceRow from "@/app/components/ServiceCard";
 import CtaBand from "@/app/components/CtaBand";
 import SectionHead from "@/app/components/SectionHead";
+import Link from "next/link";
+import Arrow from "@/app/components/Arrow";
+import Icon from "@/app/components/Icon";
+import { accent } from "@/app/data/accents";
 import { servicesOrdered } from "@/app/data/services";
-import { workflowsOrdered } from "@/app/data/workflows";
+import { workflowsByFamily, workflowsOrdered } from "@/app/data/workflows";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
@@ -71,18 +75,50 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* The full catalogue lives on /workflows; this is the compact index
+          of it, grouped the way the catalogue groups it, so the reader finds
+          their problem by family without scrolling twenty full rows. */}
       <section className="pb-16 sm:pb-24">
         <div className="container-x">
           <SectionHead
-            title="Workflows we have already built."
+            title="Twenty workflows we have already built."
             lede="Named jobs, each one running in production for a client or inside one of our own products. If your problem is one of these, start on its page: it names what the workflow does, where it already runs and what you receive."
           />
-          <div className="panel mt-11">
-            <ul className="divide-y divide-line">
-              {workflowsOrdered.map((w) => (
-                <ServiceRow key={w.key} service={w} />
-              ))}
-            </ul>
+          <div className="mt-11 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {workflowsByFamily.map((g) => (
+              <div key={g.family} className="rounded-sm border border-line bg-panel px-6 py-6">
+                <p className="label">{g.family}</p>
+                <ul className="mt-4 space-y-2.5">
+                  {g.items.map((w) => (
+                    <li key={w.key} style={accent(w.hue)}>
+                      <Link
+                        href={`/services/${w.key}`}
+                        data-event={w.event}
+                        className="group flex items-start gap-2.5 text-[0.9375rem] leading-snug text-body transition-colors hover:text-ink"
+                      >
+                        <span className="mt-0.5 text-[var(--accent)]">
+                          <Icon name={w.icon} size={15} />
+                        </span>
+                        {w.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Link
+              href="/workflows"
+              data-event="services_workflow_catalogue"
+              className="btn btn-secondary px-4 py-2.5 text-sm"
+            >
+              Browse the full catalogue
+              <Arrow className="row-arrow" size={15} />
+            </Link>
+            <p className="text-sm text-muted">
+              Every one is running in production today.
+            </p>
           </div>
         </div>
       </section>

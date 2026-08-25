@@ -16,7 +16,9 @@ const legalLinks = [
 ];
 
 const companyLinks = [
+  { label: "Workflows", href: "/workflows" },
   { label: "How we work", href: "/how-we-work" },
+  { label: "How AI works", href: "/how-ai-works" },
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
   { label: "Learn", href: "/learn" },

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import HeroSection from "./components/home/HeroSection";
 import EvidenceSection from "./components/home/EvidenceSection";
 import StallSection from "./components/home/StallSection";
+import DiagramSection from "./components/home/DiagramSection";
 import ResponsibilitySection from "./components/home/ResponsibilitySection";
 import ServicesSection from "./components/home/ServicesSection";
 import HowWeBuildSection from "./components/home/HowWeBuildSection";
@@ -25,12 +26,17 @@ export default function Home() {
         neighbouring sections share a ground, and the proof (BuiltSection,
         the only photography on the site) arrives early enough that a reader
         moving fast still meets it. See DESIGN.md, "Surface rhythm".
-          canvas → tint → panel → dark → panel → orange → tint → panel →
-          warm → panel → orange
+          canvas → tint → panel → tint → dark → panel → orange → tint →
+          panel → warm → panel → orange
+
+        DiagramSection sits straight after StallSection on purpose: the
+        reader has just read six reasons pilots stall, and the drawing shows
+        each of them as a part somebody left out.
       */}
       <HeroSection />
       <EvidenceSection />
       <StallSection />
+      <DiagramSection />
       <BuiltSection />
       <ServicesSection />
       <HowWeBuildSection />

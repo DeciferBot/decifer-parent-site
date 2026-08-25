@@ -24,6 +24,7 @@ import {
   workflows,
   workflowsByKey,
   workflowsOrdered,
+  workflowsRelatedTo,
   type WorkflowKey,
 } from "@/app/data/workflows";
 import { caseShapesByKey, caseShapesForService } from "@/app/data/caseShapes";
@@ -74,7 +75,11 @@ export default async function ServicePage({ params }: Params) {
     ? products.find((p) => p.key === s.proofProduct) ?? null
     : null;
   const others = servicesOrdered.filter((o) => o.key !== s.key);
-  const otherWorkflows = workflowsOrdered.filter((w) => w.key !== s.key);
+  // Twenty workflows exist, so the foot of the page shows the same family
+  // rather than the whole catalogue; /workflows carries the full index.
+  const otherWorkflows = workflow
+    ? workflowsRelatedTo(s.key)
+    : workflowsOrdered.slice(0, 6);
 
   const schema = {
     "@context": "https://schema.org",
@@ -341,7 +346,9 @@ export default async function ServicePage({ params }: Params) {
             ))}
           </ul>
           <p className="mt-8 text-sm font-semibold text-ink">
-            {workflow ? "Other workflows we have built" : "Workflows we have built"}
+            {workflow
+              ? `More in ${workflow.family.toLowerCase()}`
+              : "Workflows we have built"}
           </p>
           <ul className="mt-3 flex flex-wrap gap-x-8 gap-y-2">
             {otherWorkflows.map((w) => (
@@ -352,6 +359,12 @@ export default async function ServicePage({ params }: Params) {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/workflows" className="arrow-link text-[0.9375rem] font-medium">
+                All twenty workflows
+                <Arrow size={14} />
+              </Link>
+            </li>
           </ul>
         </div>
       </section>

@@ -4,6 +4,7 @@ import { servicesOrdered } from "./data/services";
 import { workflowsOrdered } from "./data/workflows";
 import { publishedCaseShapes } from "./data/caseShapes";
 import { tools } from "./data/tools";
+import { diagramsOrdered, lastDiagramChange } from "./data/diagrams";
 
 const BASE = "https://www.decifer.io";
 
@@ -61,9 +62,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
 
+    {
+      url: `${BASE}/workflows`,
+      lastModified: newest(
+        workflowsOrdered.map((w) => w.updatedAt),
+        STATIC_LAST_MODIFIED
+      ),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+
     { url: `${BASE}/contact`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.9 },
 
     { url: `${BASE}/how-we-work`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.85 },
+
+    {
+      // The diagrams are the site's strongest shareable assets, so they get a
+      // page of their own and both images are declared against it.
+      url: `${BASE}/how-ai-works`,
+      lastModified: new Date(lastDiagramChange),
+      changeFrequency: "monthly",
+      priority: 0.85,
+      images: diagramsOrdered.map((d) => `${BASE}${d.src}`),
+    },
 
     { url: `${BASE}/stack`, lastModified: STACK_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.65 },
 
