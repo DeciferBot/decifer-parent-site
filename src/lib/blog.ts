@@ -18,7 +18,7 @@ const MAX_HEADLINE = 110; // Google drops the rich result above this
 
 /** One description for the blog everywhere it is named: page metadata and the RSS channel. */
 export const BLOG_DESCRIPTION =
-  "Plain-English writing on AI agents, automation and building products, from a Dubai company that runs its own. Costs shown, myths broken, mistakes admitted.";
+  "Plain-English writing on AI agents, automation and building products, from a Dubai company that runs its own. Costs shown, myths broken, methods shown in full.";
 
 export interface PostMeta {
   slug: string;

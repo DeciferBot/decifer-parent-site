@@ -35,7 +35,7 @@ export default function BlogIndex() {
       <PageHero
         kicker="Insights"
         title="Written by the people who run it."
-        lede="Plain English on AI agents, automation and building products. Costs shown, mistakes admitted. Each piece is written to be sent to a client who asked the question."
+        lede="Plain English on AI agents, automation and building products. Costs shown, methods in full. Each piece is written to be sent to a client who asked the question."
       />
 
       <section className="pb-20 sm:pb-28">

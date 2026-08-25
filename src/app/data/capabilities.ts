@@ -105,7 +105,7 @@ export const capabilities: Capability[] = [
     pattern:
       "Every engagement held to the bar of a public product: monitoring, an eval suite, a runbook and a proper handover.",
     provenIn: ["catering-quotes-and-kitchen", "private-event-concierge"],
-    provenSummary: "Decifer Markets has run five months straight, unattended, with an eval suite that fails the build on a regression.",
+    provenSummary: "Decifer Markets has run for five months on a broker paper account, behind more than nine thousand automated tests.",
     transfersTo: ["Any implementation where the real question is whether it survives without supervision"],
     buyerAngle:
       "What gets handed over already carries its own monitoring and evals, because that is the only way we have ever shipped anything.",

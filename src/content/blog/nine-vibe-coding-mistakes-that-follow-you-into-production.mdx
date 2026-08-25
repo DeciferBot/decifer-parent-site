@@ -37,7 +37,7 @@ But we also get the phone calls that come three months later, when a vibe-coded 
 
 **What happens:** you ask for a small change and the tool rewrites the entire file, quietly dropping the fix you made last week. Nothing errors. The old bug simply comes back, and nobody connects it to the edit that caused it.
 
-We are not guessing about this one. In one of our own systems, a scheduler was wiped three separate times by tools that meant to edit it. The comment we wrote afterwards says: a note is not a mechanism, and the failure repeated. So now a watchdog restores the scheduler from a known-good copy whenever it goes missing.
+This failure is common enough that our own systems carry a watchdog that restores the scheduler from a known-good copy the moment it goes missing, because a tool that means to edit a file will sometimes replace it. A note telling the next person to be careful is not a mechanism. The watchdog is.
 
 **The fix:** small changes, reviewed as differences against the previous version, in version control, committed often. If you cannot read the change the tool made, do not accept it. Version control is not bureaucracy; it is the undo button for exactly this failure.
 
@@ -45,7 +45,7 @@ We are not guessing about this one. In one of our own systems, a scheduler was w
 
 **What happens:** the demo worked, once, on the happy path, with the founder driving. Every change after that might break something and nobody would know until a customer does. So changes get scarier and slower, which is the opposite of what the AI tool was supposed to buy you.
 
-**The fix:** write tests for the things that must never happen, before the things that would be nice. One of our client-facing agents ships with a regression suite that tries eight different ways to trick it into quoting a price the business cannot fulfil, and the build fails if any of them succeed. When someone shows you a product built in a weekend, ask to see the tests. A shrug means you are looking at a demo.
+**The fix:** write tests for the things that must never happen, before the things that would be nice. One of our client-facing agents ships with a guardrail suite that tries seven different ways to trick it into quoting a price the business cannot fulfil, plus a live check on every reply that catches an ungrounded answer and hands the conversation to a person. When someone shows you a product built in a weekend, ask to see the tests. A shrug means you are looking at a demo.
 
 ## 6. The model does the arithmetic
 
@@ -57,7 +57,7 @@ We are not guessing about this one. In one of our own systems, a scheduler was w
 
 **What happens:** the app cannot answer the question "what did it do yesterday". So the first sign of trouble is an angry customer, and the investigation is archaeology.
 
-One of our agents once failed thirteen of its last sixteen runs on an empty API balance, and nobody noticed for three weeks, because a failed run and a quiet run looked the same. That system now has a scheduled job whose only purpose is to check the health of every other scheduled job.
+The classic quiet failure: an API account runs dry, every run starts failing, and nothing looks different from a quiet day. Our systems page on the exact errors that mean the money ran out, and a watchdog confirms the critical jobs are still installed, because silence reading as health is how outages hide.
 
 **The fix:** every run writes a line: when it started, what it did, whether it succeeded. Silence gets an alert, because the failures that hurt are the quiet ones. And something has to watch the watcher.
 

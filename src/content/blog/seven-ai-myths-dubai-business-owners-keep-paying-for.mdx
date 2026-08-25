@@ -21,15 +21,15 @@ We build AI systems, we run three of our own, and we have sat in enough first me
 
 **What is true:** a demo takes a day. We have done it many times. Production takes logins, backups, rate limits, a way to see what the system did, a plan for when the model is wrong, and a person who answers when it breaks at two in the morning.
 
-We learned this the hard way. One of our systems has a scheduled job that checks the health of every other scheduled job, because at one point an agent had failed thirteen of its last sixteen runs on an empty API balance and nobody noticed for three weeks. Another has a watchdog that restores its own scheduler from a known-good copy, because the scheduler was wiped three separate times by tools that meant to edit it. The note in the code says: a note is not a mechanism, and the failure repeated. This is the mechanism.
+Production takes mechanisms nobody thinks to write on day one: a page the moment a provider account runs dry, because provider failures are silent and a failed run looks exactly like a quiet one; a watchdog that restores the scheduler from a known-good copy, because a tool that means to edit a file will sometimes replace it. A note telling the next person to be careful is not a mechanism. Code that notices and repairs is.
 
-Nobody writes that watchdog on day one. You write it after the third time. AI did not make that part easier. It made the first day easier, which is a different thing.
+Nobody writes that watchdog on day one. You write it once you have run long enough to need it. AI did not make that part easier. It made the first day easier, which is a different thing.
 
 ## Myth 2: You can vibe-code your way to a real product
 
 **The belief:** if the screens look right and the demo works, the product is basically done.
 
-**What is true:** vibe coding gets you a screen. It does not get you the nine thousand automated tests in our largest system, the forty-two-question evaluation suite that grades our concierge against the live database, or the eight-case regression test that fails the build if a property agent can be tricked into quoting a price the brokerage cannot fulfil.
+**What is true:** vibe coding gets you a screen. It does not get you the nine thousand automated tests in our largest system, the forty-two-question evaluation suite that grades our concierge against the live database, or the guardrail suite that tries seven ways to trick a property agent into quoting a price the brokerage cannot fulfil, backed by a live check that catches an ungrounded reply and hands the conversation to a person.
 
 Those are not decoration. They are the difference between a thing that worked once and a thing that works on Tuesday. When someone shows you a product built in a weekend, ask to see the tests. If the answer is a shrug, you are looking at a demo.
 
@@ -53,15 +53,15 @@ We call this the rule we build by: code computes the numbers, the model only nar
 
 **The belief:** the point of this is headcount.
 
-**What is true:** the systems that actually work in production keep a human at every point where a mistake is expensive. Our travel concierge drafts an itinerary; a consultant approves it before a traveller sees it. Our outreach agent writes a pitch; it lands in a person's inbox, not a brand's. Our property agent hands a lead to a closer with a dossier; it does not close.
+**What is true:** the systems that actually work in production keep a human at every point where a mistake is expensive. Our event concierge's overnight scan produces a chase list for the hosts; it changes nothing itself. Our outreach agent writes a pitch; it lands in a person's inbox, not a brand's. Our property agent hands a lead to a closer with a dossier; it does not close.
 
-What changes is where people spend their time. The consultant starts from a draft instead of a blank page. The owner reads a report that assembled itself instead of spending Friday building it. If the main goal of a project is to remove people rather than remove delay, we will say so in the first meeting, and we will usually decline the project.
+What changes is where people spend their time. The host starts the day from a chase list instead of a blind spot. The owner reads a report that assembled itself instead of spending Friday building it. If the main goal of a project is to remove people rather than remove delay, we will say so in the first meeting, and we will usually decline the project.
 
 ## Myth 6: A pilot proves it works
 
 **The belief:** we ran it for a month, it looked fine, ship it.
 
-**What is true:** a pilot proves it demos. Production is proven by months of uptime, by incidents survived, and by a log you can read afterwards. Our market intelligence system has run continuously for five months on a broker paper account. In that time it has had an options pricing incident, a scheduler wipe, a six-day silent outage at a model provider, and a credit failure mid-session. Every one of those is written up, dated, and turned into a mechanism that prevents it happening again.
+**What is true:** a pilot proves it demos. Production is proven by months of operation, by incidents survived, and by a log you can read afterwards. Our market intelligence system has run for five months on a broker paper account. Time like that is where a system meets real failure: provider outages, pricing anomalies, infrastructure surprises. Each one ends as a dated entry in the record and a mechanism that prevents a repeat.
 
 A pilot has not had those months. It has not met the failure that teaches you what the system actually needs. When a vendor says the pilot went well, ask what broke. If nothing broke, it was not run long enough.
 

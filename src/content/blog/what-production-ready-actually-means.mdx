@@ -19,13 +19,13 @@ So here is a definition. Production-ready is not a feeling and not a vibe. It is
 
 Every system has a good day, the one in the demo. Production is about the other days. The API you depend on goes down for six hours. The model provider has an outage. A payment fails halfway through.
 
-Ready means each of those has an answer written down before it happens: a retry, a fallback, a template that takes over, a person who gets notified. Our market intelligence system has run continuously for five months, and in that time it has survived an options pricing incident, a six-day silent outage at a model provider, and a credit failure mid-session. It survived because failure was part of the design, not a surprise to it.
+Ready means each of those has an answer written down before it happens: a retry, a fallback, a template that takes over, a person who gets notified. Our market intelligence system has run for five months on a broker paper account, through provider outages and infrastructure surprises, because failure is part of the design, not a surprise to it.
 
 The test: name the three most likely failures. If the answer to "what happens then" is a shrug, it is not ready.
 
 ## 2. Can you see what it did?
 
-A system you cannot see into is a system you find out about from customers. Every run should leave a line: when it started, what it did, whether it succeeded. Silence should trigger an alert, because the failures that hurt are the quiet ones. One of ours once failed thirteen of its last sixteen runs and nobody noticed for three weeks. Now a scheduled job checks the health of every other scheduled job.
+A system you cannot see into is a system you find out about from customers. Every run should leave a line: when it started, what it did, whether it succeeded. Silence should trigger an alert, because the failures that hurt are the quiet ones: an account runs dry and a failed run looks exactly like a quiet day. Our systems page on the specific errors that mean the money ran out, and a watchdog confirms the critical jobs are still installed.
 
 The test: ask "what did the system do yesterday?" If the answer takes longer than a minute to produce, it is not ready.
 

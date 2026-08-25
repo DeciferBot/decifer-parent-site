@@ -30,7 +30,7 @@ const rows = [
   {
     q: "Evidence the boundary holds under load",
     them: "A demo, on request",
-    us: "Five months of continuous unattended production operation, and an eval suite that fails the build on regression",
+    us: "Five months of production operation on a broker paper account, behind more than nine thousand automated tests",
   },
   {
     q: "The first step",

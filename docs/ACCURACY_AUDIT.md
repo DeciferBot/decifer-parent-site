@@ -53,17 +53,39 @@ corrections below are applied in the same commit as this file.
    condition added to question 1).
 7. **Calculator edge**: all-zero input now gets a sensible verdict.
 
-## For Amit to confirm (internal claims, one pass)
+## Internal claims: verified against the repos (2026-08-25)
 
-These appear across the posts and only you can vouch for them: 9,000 tests
-in the largest system; 42-question evaluation suite; eight-case price
-regression suite; scheduler wiped three times + watchdog; 13-of-16 failed
-runs / three weeks; the four incidents list; "removed AI five times" and the
-five cases; three named products and their human-approval points; "we run
-three of our own"; symbolic maths + grammar engines in Learning; the
-two-week fixed-fee assessment promise (every post); "named person within one
-working day" (contact page, CTA band, llms.txt); "we usually decline
-headcount-removal projects".
+Four research passes checked every internal claim against the actual code.
+
+Verified true: 9,000+ tests (9,064 functions, 411 files, decifer-trading
+origin/master); scheduler wiped three times + watchdog + "a note is not a
+mechanism" (verbatim in scripts/check_crontab_integrity.py); 42-question
+concierge eval against the live database (rebiza evals/concierge.json);
+the rebiza gap scan, bulletin and time-substitution designs; the property
+agent dossier handoff (the agent has no tools, so it structurally cannot
+book); the counselling site's no-client-facing-AI, arithmetic scoring, risk
+column, blog validator and crisis page; SymPy + LanguageTool in Learning;
+the number-whitelist rule (decifer-marketing engine, with tests); three
+products, all active repos; all four trading incidents (dated in
+docs/DECISIONS.md and git history).
+
+Found wrong and corrected on the site: "13 of 16 runs / three weeks" (no
+repo supports it; the real dated incident was a six-day silent provider
+failure); "eight-case suite fails the build" for the property agent (seven
+cases, not wired to any build; the live guardrail is real); "a consultant
+approves itineraries" (no consultant exists; the event concierge's hosts
+approve suggestions); "continuously" for the five months (~25 missing
+trading days in the record); "nine operating companies" (eleven).
+
+Unverifiable locally: the outreach agent (creator-business-engine repo not
+on this machine). Left as is; confirm or remove.
+
+## Editorial policy (2026-08-25, Amit's decision)
+
+No first-person failure stories on the site. Lessons are framed as industry
+patterns plus the mechanism we build ("systems fail quietly; ours page on
+the exact errors that mean the money ran out"), never as "our system broke".
+The "mistakes admitted" tagline was retired for "methods shown in full".
 
 ## Standing maintenance
 
