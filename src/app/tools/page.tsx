@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/app/components/PageHero";
+import Icon from "@/app/components/Icon";
+import { accent } from "@/app/data/accents";
 import Arrow from "@/app/components/Arrow";
 import CtaBand from "@/app/components/CtaBand";
 import { tools } from "@/app/data/tools";
@@ -50,6 +52,8 @@ export default function ToolsPage() {
     <>
       <PageHero
         kicker="Tools"
+        icon="rule"
+        hue="green"
         title="Decide before you spend."
         lede="Free tools for the questions every business asks about AI. No signup, no model behind them, nothing stored: plain arithmetic and rules, running in your browser."
       />
@@ -64,10 +68,16 @@ export default function ToolsPage() {
                     href={`/tools/${t.key}`}
                     data-event={`tools_open_${t.key.replace(/-/g, "_")}`}
                     className="row-link group grid gap-3 px-6 py-7 md:grid-cols-12 md:gap-8"
+                    style={accent(t.hue)}
                   >
-                    <div className="md:col-span-4">
-                      <h2 className="t-h3 text-ink">{t.name}</h2>
-                      <p className="mt-1 text-sm text-muted">{t.question}</p>
+                    <div className="flex items-start gap-4 md:col-span-4">
+                      <span className="icon-tile">
+                        <Icon name={t.icon} />
+                      </span>
+                      <span>
+                        <h2 className="t-h3 text-ink">{t.name}</h2>
+                        <p className="mt-1 text-sm text-muted">{t.question}</p>
+                      </span>
                     </div>
                     <div className="md:col-span-7">
                       <p className="t-body measure">{t.summary}</p>

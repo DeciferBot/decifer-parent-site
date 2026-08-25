@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
+import Icon from "../Icon";
 
 /**
  * Founder block. If public/founder/amit-chopra.jpg exists it is shown;
@@ -22,7 +23,7 @@ function hasPhoto() {
 export default function FounderSection({ compact = false }: { compact?: boolean }) {
   const photo = hasPhoto();
   return (
-    <section id="founder" className="pb-7 sm:pb-10">
+    <section id="founder" className="band band-warm">
       <div className="container-x">
         <div className="panel">
           <div className="panel-head">
@@ -53,6 +54,29 @@ export default function FounderSection({ compact = false }: { compact?: boolean 
                 Amit Chopra
               </p>
               <p className="text-[0.9375rem] text-body">Founder, Decifer. Dubai, UAE.</p>
+
+              {/* No stock photo and no initials avatar when the portrait is
+                  missing (DESIGN.md). These three lines are what a reader
+                  actually wants to know about dealing with one person, and
+                  they keep the column from ending in blank paper. */}
+              <ul className="mt-6 space-y-3 border-t border-line pt-5">
+                {[
+                  { icon: "handover" as const, text: "Reads every enquiry himself" },
+                  { icon: "measure" as const, text: "Replies within one working day" },
+                  { icon: "boundary" as const, text: "Will say when AI is the wrong answer" },
+                ].map((f) => (
+                  <li
+                    key={f.text}
+                    className="flex items-start gap-2.5 text-[0.875rem] leading-snug text-body"
+                    style={{ "--accent": "var(--color-a-orange)" } as React.CSSProperties}
+                  >
+                    <span className="mt-px text-[var(--accent)]">
+                      <Icon name={f.icon} size={16} />
+                    </span>
+                    {f.text}
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className="md:col-span-8 md:col-start-5">
               <h3 className="t-h2 text-ink">

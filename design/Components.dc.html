@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Figtree', 'Helvetica Neue', Arial, sans-serif; }
+    a { color: oklch(52% 0.19 36); } a:hover { color: oklch(46% 0.19 36); }
+    .serif { font-family: 'Source Serif 4', Georgia, serif; }
+    .eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(46% 0.014 250); }
+    .note { font-size: 13px; line-height: 1.5; color: oklch(46% 0.014 250); }
+    .card { background: #fff; border: 1px solid oklch(88% 0.006 250); border-radius: 6px; }
+    .spec { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11.5px; color: oklch(46% 0.014 250); }
+  </style>
+</helmet>
+
+<div style="width: 1240px; background: oklch(96% 0.004 250); color: oklch(18% 0.012 250); padding: 56px 56px 64px;">
+
+  <div style="border-bottom: 1px solid oklch(78% 0.008 250); padding-bottom: 20px;">
+    <p class="eyebrow" style="margin: 0 0 10px;">Decifer · reusable component layer</p>
+    <h1 class="serif" style="margin: 0; font-size: 42px; font-weight: 500; letter-spacing: -0.012em; line-height: 1.06;">Six parts, assembled everywhere.</h1>
+    <p class="note" style="margin: 12px 0 0; max-width: 76ch;">Each one takes its hue from a single <span class="spec">--accent</span> set by the data behind the row, so a service, an industry and a case keep the same colour on every page a reader meets them.</p>
+  </div>
+
+  <!-- Icon tile -->
+  <div style="margin-top: 40px;">
+    <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px;">
+      <span class="serif" style="font-size: 22px; font-weight: 500;">Icon tile</span>
+      <span class="spec">.icon-tile · 40px · 9% tint · 20% border</span>
+    </div>
+    <div class="card" style="padding: 24px 26px; display: flex; gap: 34px; flex-wrap: wrap; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; color: oklch(58% 0.13 70); background: color-mix(in oklab, oklch(58% 0.13 70) 9%, white); border: 1px solid color-mix(in oklab, oklch(58% 0.13 70) 20%, white);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18"/><path d="M4.5 17a7.5 7.5 0 0 1 15 0"/><path d="M12 6.5v-1"/><path d="M3 20h18"/></svg>
+        </span>
+        <div><p style="margin: 0; font-size: 14px; font-weight: 500;">Catering</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">amber</p></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; color: oklch(55% 0.16 250); background: color-mix(in oklab, oklch(55% 0.16 250) 9%, white); border: 1px solid color-mix(in oklab, oklch(55% 0.16 250) 20%, white);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M4 15.5l4.5-5 3.5 3 7.5-8"/><path d="M15 5.5h4.5V10"/></svg>
+        </span>
+        <div><p style="margin: 0; font-size: 14px; font-weight: 500;">Financial markets</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">blue</p></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; color: oklch(55% 0.17 300); background: color-mix(in oklab, oklch(55% 0.17 300) 9%, white); border: 1px solid color-mix(in oklab, oklch(55% 0.17 300) 20%, white);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L2.5 8.5 12 13l9.5-4.5z"/><path d="M6.5 10.75V16c0 1.4 2.5 2.75 5.5 2.75s5.5-1.35 5.5-2.75v-5.25"/><path d="M21.5 8.5v5"/></svg>
+        </span>
+        <div><p style="margin: 0; font-size: 14px; font-weight: 500;">Education</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">violet</p></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; color: oklch(52% 0.13 155); background: color-mix(in oklab, oklch(52% 0.13 155) 9%, white); border: 1px solid color-mix(in oklab, oklch(52% 0.13 155) 20%, white);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.2-3 7.6-7.5 9-4.5-1.4-7.5-4.8-7.5-9V6z"/><path d="M7.5 12h2l1.5-3 2 6 1.5-3h2"/></svg>
+        </span>
+        <div><p style="margin: 0; font-size: 14px; font-weight: 500;">Healthcare</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">green</p></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 4px; color: oklch(76% 0.12 300); background: color-mix(in oklab, oklch(76% 0.12 300) 18%, transparent); border: 1px solid color-mix(in oklab, oklch(76% 0.12 300) 30%, transparent);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L2.5 8.5 12 13l9.5-4.5z"/><path d="M6.5 10.75V16c0 1.4 2.5 2.75 5.5 2.75s5.5-1.35 5.5-2.75v-5.25"/></svg>
+        </span>
+        <div><p style="margin: 0; font-size: 14px; font-weight: 500;">On dark, 30px</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">.icon-tile-dark</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Figure tile -->
+  <div style="margin-top: 36px;">
+    <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px;">
+      <span class="serif" style="font-size: 22px; font-weight: 500;">Figure tile</span>
+      <span class="spec">.figure · accent cap · source line is mandatory</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px;">
+      <div class="card" style="padding: 20px 22px; box-shadow: inset 0 2px 0 0 oklch(55% 0.16 250);">
+        <p style="margin: 0; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;">9,064</p>
+        <p style="margin: 6px 0 0; font-size: 14px; line-height: 1.45; color: oklch(32% 0.012 250);">automated tests in the largest system</p>
+        <p class="note" style="margin: 10px 0 0; font-size: 11px;">Source: decifer-trading tests/. Verified 2026-08-22.</p>
+      </div>
+      <div class="card" style="padding: 20px 22px; box-shadow: inset 0 2px 0 0 oklch(54% 0.15 350);">
+        <p style="margin: 0; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;">40/40</p>
+        <p style="margin: 6px 0 0; font-size: 14px; line-height: 1.45; color: oklch(32% 0.012 250);">on a concierge eval graded live</p>
+        <p class="note" style="margin: 10px 0 0; font-size: 11px;">Source: rebiza evals/concierge.json.</p>
+      </div>
+      <div class="card" style="padding: 20px 22px; box-shadow: inset 0 2px 0 0 oklch(58% 0.13 70);">
+        <p style="margin: 0; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;">719</p>
+        <p style="margin: 6px 0 0; font-size: 14px; line-height: 1.45; color: oklch(32% 0.012 250);">order documents turned into one record</p>
+        <p class="note" style="margin: 10px 0 0; font-size: 11px;">Source: cater-command-center DATA_REPORT.md.</p>
+      </div>
+      <div class="card" style="padding: 20px 22px; box-shadow: inset 0 2px 0 0 oklch(52% 0.13 155);">
+        <p style="margin: 0; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;">5</p>
+        <p style="margin: 6px 0 0; font-size: 14px; line-height: 1.45; color: oklch(32% 0.012 250);">times we removed AI from a working system</p>
+        <p class="note" style="margin: 10px 0 0; font-size: 11px;">Source: documented in code comments.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Board row -->
+  <div style="margin-top: 36px;">
+    <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px;">
+      <span class="serif" style="font-size: 22px; font-weight: 500;">Board row</span>
+      <span class="spec">.board-row · icon · before → after · stat</span>
+    </div>
+    <div style="background: oklch(17% 0.014 255); border: 1px solid oklch(30% 0.012 250); border-radius: 6px; overflow: hidden; color: oklch(96% 0.004 250);">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px;">
+        <span class="eyebrow" style="color: oklch(76% 0.008 250);">Taken to production</span>
+        <span style="font-size: 13px; color: oklch(76% 0.008 250);">7 industries, one method</span>
+      </div>
+      <div style="display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; padding: 13px 18px; border-top: 1px solid oklch(30% 0.012 250); align-items: start;">
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 4px; color: oklch(74% 0.13 250); background: color-mix(in oklab, oklch(74% 0.13 250) 18%, transparent); border: 1px solid color-mix(in oklab, oklch(74% 0.13 250) 30%, transparent);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M4 15.5l4.5-5 3.5 3 7.5-8"/><path d="M15 5.5h4.5V10"/></svg>
+        </span>
+        <div>
+          <p style="margin: 0; font-size: 15px; font-weight: 500; line-height: 1.35;">Financial markets intelligence</p>
+          <p style="margin: 4px 0 0; font-size: 12.5px; line-height: 1.35; color: oklch(76% 0.008 250);">Confident answers, invented numbers</p>
+          <p style="margin: 4px 0 0; font-size: 12.5px; line-height: 1.35;"><span style="color: oklch(74% 0.13 250); margin-right: 6px;">&#8594;</span>In production since March 2026<span style="color: oklch(76% 0.008 250);">, paper account, never a live order</span></p>
+        </div>
+        <span style="font-size: 12.5px; color: oklch(76% 0.008 250); text-align: right; padding-top: 2px;">9,064 automated tests</span>
+      </div>
+      <div style="display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; padding: 13px 18px; border-top: 1px solid oklch(30% 0.012 250); align-items: start;">
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 4px; color: oklch(76% 0.12 300); background: color-mix(in oklab, oklch(76% 0.12 300) 18%, transparent); border: 1px solid color-mix(in oklab, oklch(76% 0.12 300) 30%, transparent);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L2.5 8.5 12 13l9.5-4.5z"/><path d="M6.5 10.75V16c0 1.4 2.5 2.75 5.5 2.75s5.5-1.35 5.5-2.75v-5.25"/></svg>
+        </span>
+        <div>
+          <p style="margin: 0; font-size: 15px; font-weight: 500; line-height: 1.35;">Education</p>
+          <p style="margin: 4px 0 0; font-size: 12.5px; line-height: 1.35; color: oklch(76% 0.008 250);">A tutor that is fluent and sometimes wrong</p>
+          <p style="margin: 4px 0 0; font-size: 12.5px; line-height: 1.35;"><span style="color: oklch(76% 0.12 300); margin-right: 6px;">&#8594;</span>Curriculum practice a parent can see<span style="color: oklch(76% 0.008 250);">, no claim about grades, ever</span></p>
+        </div>
+        <span style="font-size: 12.5px; color: oklch(76% 0.008 250); text-align: right; padding-top: 2px;">Marking by solver, not by model</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ruled row + chips -->
+  <div style="margin-top: 36px; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 20px;">
+    <div>
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px;">
+        <span class="serif" style="font-size: 22px; font-weight: 500;">Ruled row</span>
+        <span class="spec">.row-link · icon tile leads the row</span>
+      </div>
+      <div class="card" style="overflow: hidden;">
+        <div style="display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; padding: 22px 24px;">
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; color: oklch(56% 0.19 36); background: color-mix(in oklab, oklch(56% 0.19 36) 9%, white); border: 1px solid color-mix(in oklab, oklch(56% 0.19 36) 20%, white);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M8.5 10.5h.01M15.5 10.5h.01"/><path d="M9 14.5h6"/><path d="M12 6V3.5"/></svg>
+          </span>
+          <div>
+            <p style="margin: 0; font-size: 13px; font-weight: 600;">AI agent development</p>
+            <h3 class="serif" style="margin: 6px 0 0; font-size: 24px; font-weight: 500; letter-spacing: -0.005em;">Remove manual work from processes that can be measured.</h3>
+            <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: oklch(32% 0.012 250);">We redesign the process, then build the system around it: agents scoped to one job, with limits you can see and a log you can check.</p>
+            <p style="margin: 12px 0 0; font-size: 14px; font-weight: 500; color: oklch(52% 0.19 36);">Read the service &#8594;</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; padding: 22px 24px; border-top: 1px solid oklch(88% 0.006 250); background: oklch(97.5% 0.004 250);">
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; color: oklch(54% 0.11 195); background: color-mix(in oklab, oklch(54% 0.11 195) 9%, white); border: 1px solid color-mix(in oklab, oklch(54% 0.11 195) 20%, white);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><rect x="5" y="11" width="3.5" height="6" rx="0.75"/><rect x="10.25" y="7" width="3.5" height="10" rx="0.75"/><rect x="15.5" y="13.5" width="3.5" height="3.5" rx="0.75"/><path d="M3 4h9"/></svg>
+          </span>
+          <div>
+            <p style="margin: 0; font-size: 13px; font-weight: 600;">Data and reporting</p>
+            <h3 class="serif" style="margin: 6px 0 0; font-size: 24px; font-weight: 500; letter-spacing: -0.005em;">A number everyone in the business already trusts.</h3>
+            <p class="note" style="margin: 8px 0 0;">Hover state shown: the tile lifts 1px and deepens to 16% tint.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px;">
+        <span class="serif" style="font-size: 22px; font-weight: 500;">Chips and marks</span>
+        <span class="spec">.chip · .status · .step-num</span>
+      </div>
+      <div class="card" style="padding: 22px 24px;">
+        <p class="eyebrow" style="margin: 0 0 10px;">Also fits</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span style="border: 1px solid oklch(78% 0.008 250); border-radius: 999px; padding: 3px 11px; font-size: 12.5px; color: oklch(46% 0.014 250);">FP&amp;A and board reporting</span>
+          <span style="border: 1px solid oklch(78% 0.008 250); border-radius: 999px; padding: 3px 11px; font-size: 12.5px; color: oklch(46% 0.014 250);">Claims intake</span>
+          <span style="border: 1px solid oklch(78% 0.008 250); border-radius: 999px; padding: 3px 11px; font-size: 12.5px; color: oklch(46% 0.014 250);">Legal matter files</span>
+        </div>
+
+        <p class="eyebrow" style="margin: 22px 0 10px;">Status</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: center;">
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500;"><span style="width: 8px; height: 8px; border-radius: 999px; background: oklch(52% 0.15 155);"></span>Live</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500;"><span style="width: 8px; height: 8px; border-radius: 999px; background: oklch(58% 0.13 70);"></span>Beta</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500;"><span style="width: 8px; height: 8px; border-radius: 999px; background: oklch(46% 0.014 250);"></span>Held back</span>
+        </div>
+
+        <p class="eyebrow" style="margin: 22px 0 10px;">Step marker <span style="color: oklch(52% 0.19 36);">new</span></p>
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 999px; border: 1px solid oklch(78% 0.008 250); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums;">01</span>
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 999px; background: oklch(18% 0.012 250); color: #fff; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums;">02</span>
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 999px; border: 1px solid oklch(78% 0.008 250); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums;">03</span>
+          <p class="note" style="margin: 0;">Filled marks the step in view, so the method reads as a path rather than a list.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

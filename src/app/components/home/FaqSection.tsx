@@ -7,7 +7,7 @@ import { jsonLd } from "@/lib/jsonld";
  */
 export default function FaqSection() {
   return (
-    <section id="faq" className="pb-7 sm:pb-10">
+    <section id="faq" className="band band-tight">
       <div className="container-x">
         <div className="panel">
           <div className="panel-head">

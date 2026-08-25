@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Arrow from "../Arrow";
+import Icon from "../Icon";
 import { capabilitiesOrdered } from "../../data/capabilities";
 import { caseShapesByKey } from "../../data/caseShapes";
+import { accent } from "../../data/accents";
 
 /**
  * The homepage's central claim, led by capability and value, not industry.
@@ -32,10 +34,16 @@ export default function SolvedSection() {
                   <Link
                     href={proven ? `/work/${proven.key}` : "/how-we-work"}
                     className="row-link group grid gap-3 px-6 py-7 md:grid-cols-12 md:gap-8"
+                    style={accent(c.hue)}
                   >
                     <div className="md:col-span-6">
-                      <h3 className="t-h3 text-ink">{c.name}</h3>
-                      <p className="t-body mt-2">{c.pattern}</p>
+                      <div className="flex items-start gap-4">
+                        <span className="icon-tile">
+                          <Icon name={c.icon} />
+                        </span>
+                        <h3 className="t-h3 text-ink">{c.name}</h3>
+                      </div>
+                      <p className="t-body mt-3">{c.pattern}</p>
                     </div>
                     <div className="md:col-span-6">
                       <p className="text-[0.9375rem] font-medium leading-snug text-ink">

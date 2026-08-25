@@ -25,7 +25,7 @@ const rows = [
   {
     q: "A written list of what not to automate",
     them: "Not offered",
-    us: "In every audit and every agent scope sheet",
+    us: "In every assessment and every agent scope sheet",
   },
   {
     q: "Evidence the boundary holds under load",

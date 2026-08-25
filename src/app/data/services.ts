@@ -15,6 +15,8 @@
 
 import type { StackKey } from "./stack";
 import type { ProofKey } from "./proof";
+import type { IconName } from "../components/Icon";
+import type { AccentHue } from "./accents";
 
 export type ServiceKey =
   | "ai-agents"
@@ -25,6 +27,10 @@ export type ServiceKey =
 export interface Service {
   /** Stable key. Also the URL slug: /services/{key}. Never change once live. */
   key: ServiceKey;
+  /** Icon from Icon.tsx. The same mark wherever this service appears. */
+  icon: IconName;
+  /** Accent hue suffix; see --color-a-* in globals.css. Held constant too. */
+  hue: AccentHue;
   /** H1 and page title. Carries the search term. */
   name: string;
   /** Short label for nav, chips and the enquiry select. */
@@ -77,6 +83,8 @@ export const services: Service[] = [
     seoTitle: "AI agent development company in Dubai",
     seoDescription:
       "We build AI agents that run inside your business: scoped to one job, wired to your systems, with a written boundary and a log your team can read. Engagements start with a two-week assessment.",
+    icon: "agent",
+    hue: "orange",
     name: "AI agent development",
     navLabel: "Workflow automation and agents",
     cardHeadline: "Remove manual work from processes that can be measured.",
@@ -135,6 +143,8 @@ export const services: Service[] = [
     seoTitle: "Data and reporting automation in Dubai",
     seoDescription:
       "Reports that build themselves from your own systems, with every figure computed in code. One agreed definition per number, delivered on a schedule your team can rely on.",
+    icon: "data",
+    hue: "teal",
     name: "Data and reporting automation",
     navLabel: "Data and decision intelligence",
     cardHeadline: "Make business information usable.",
@@ -187,6 +197,8 @@ export const services: Service[] = [
     seoTitle: "AI product development in Dubai: live in weeks",
     seoDescription:
       "A complete product built in weeks: website, database, logins, payments, email and analytics. Your accounts, your domain, and the repository transfers to you at handover.",
+    icon: "product",
+    hue: "blue",
     name: "AI product development",
     navLabel: "Custom AI products",
     cardHeadline: "From nothing to live in weeks, and you keep the repository.",
@@ -239,11 +251,13 @@ export const services: Service[] = [
     seoTitle: "AI opportunity assessment in Dubai: two weeks, fixed fee",
     seoDescription:
       "A two-week AI readiness and opportunity assessment: we map where the hours go, cost the process as it runs today, and name what to automate first. Fixed fee, credited in full against any build.",
+    icon: "advisory",
+    hue: "violet",
     name: "AI consulting and assessment",
     navLabel: "AI opportunity assessment",
     cardHeadline: "Find the opportunities worth funding, and the ones that are not.",
     summary:
-      "A fixed-scope AI audit and opportunity assessment that maps where time actually goes, costs the current process as a baseline, and tells you plainly what to automate first and what to leave alone.",
+      "A fixed-scope opportunity assessment that maps where time actually goes, costs the current process as a baseline, and tells you plainly what to automate first and what to leave alone.",
     problem:
       "You keep being told to adopt AI. Every vendor has a pilot. Nobody has told you which three things in your business would actually change, what it would cost to run, or what could go wrong. So nothing starts, or the wrong thing does.",
     description:

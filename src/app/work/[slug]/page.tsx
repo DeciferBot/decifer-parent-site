@@ -5,7 +5,10 @@ import PageHero from "@/app/components/PageHero";
 import CtaBand from "@/app/components/CtaBand";
 import StackList from "@/app/components/StackChips";
 import Arrow from "@/app/components/Arrow";
-import { publishedCaseShapes, caseShapesByKey } from "@/app/data/caseShapes";
+import Icon, { type IconName } from "@/app/components/Icon";
+import type { AccentHue } from "@/app/data/accents";
+import { accent } from "@/app/data/accents";
+import { publishedCaseShapes, caseShapesByKey, sectorMark } from "@/app/data/caseShapes";
 import { servicesByKey } from "@/app/data/services";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
@@ -28,23 +31,38 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
+/**
+ * One block of a case: what was built, what changed, what was deliberately
+ * left alone. Each carries its own mark, so the four blocks are told apart
+ * by shape before they are told apart by reading the heading.
+ */
 function Block({
   title,
   items,
-  marker = "ink",
+  icon,
+  hue,
 }: {
   title: string;
   items: string[];
-  marker?: "ink" | "orange";
+  icon: IconName;
+  hue: AccentHue;
 }) {
   return (
-    <div className="border-t border-line pt-5">
-      <h2 className="t-h3 text-ink">{title}</h2>
-      <ul className="mt-5 space-y-3">
+    <div
+      className="accent-cap rounded-sm border border-line bg-panel px-6 py-6"
+      style={accent(hue)}
+    >
+      <div className="flex items-center gap-3">
+        <span className="icon-tile">
+          <Icon name={icon} />
+        </span>
+        <h2 className="t-h3 text-ink">{title}</h2>
+      </div>
+      <ul className="mt-5 space-y-3.5">
         {items.map((item) => (
-          <li key={item} className="flex gap-3 text-[1.0625rem] leading-relaxed text-body">
+          <li key={item} className="flex gap-3 text-[1rem] leading-relaxed text-body">
             <span
-              className={`mt-[0.7rem] h-1.5 w-1.5 shrink-0 rounded-full ${marker === "orange" ? "bg-orange" : "bg-ink"}`}
+              className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]"
               aria-hidden="true"
             />
             {item}
@@ -59,6 +77,7 @@ export default async function CaseShapePage({ params }: Params) {
   const { slug } = await params;
   const c = caseShapesByKey[slug];
   if (!c || !c.published) notFound();
+  const mark = sectorMark[c.sector];
 
   const schema = {
     "@context": "https://schema.org",
@@ -87,34 +106,58 @@ export default async function CaseShapePage({ params }: Params) {
 
   return (
     <>
-      <PageHero kicker={`${c.sector}, ${c.region}`} title={c.title} lede={`${c.clientShape}.`}>
+      <PageHero
+        kicker={`${c.sector}, ${c.region}`}
+        title={c.title}
+        lede={`${c.clientShape}.`}
+        icon={mark.icon}
+        hue={mark.hue}
+      >
         <StackList keys={c.stackKeys} />
       </PageHero>
 
-      <section className="pb-16 sm:pb-20">
+      <section className="band band-tight band-tint">
         <div className="container-x grid gap-6 md:grid-cols-12">
-          <h2 className="t-h3 text-ink md:col-span-3">Before</h2>
+          <h2 className="label md:col-span-3 md:pt-2">Before</h2>
           <p className="t-lede md:col-span-8 md:col-start-4">{c.situation}</p>
         </div>
       </section>
 
-      <section className="pb-16 sm:pb-24">
-        <div className="container-x grid gap-12 md:grid-cols-2 md:gap-x-10">
-          <Block title="What we built" items={c.work} />
-          <Block title="What changed" items={c.outcome} />
-          <Block title="Where a person stays in charge" items={c.boundaries} marker="orange" />
-          <div className="border-t border-line pt-5">
-            <h2 className="t-h3 text-ink">How it is measured</h2>
-            <p className="t-body mt-5">{c.measurement}</p>
-            <h2 className="t-h3 mt-10 text-ink">What stays confidential</h2>
-            <p className="t-body mt-5">{c.withheld}</p>
+      <section className="band">
+        <div className="container-x grid gap-4 md:grid-cols-2">
+          <Block title="What we built" items={c.work} icon="agent" hue={mark.hue} />
+          <Block title="What changed" items={c.outcome} icon="measure" hue="green" />
+          <Block
+            title="Where a person stays in charge"
+            items={c.boundaries}
+            icon="boundary"
+            hue="orange"
+          />
+          <div
+            className="accent-cap rounded-sm border border-line bg-panel px-6 py-6"
+            style={accent("blue")}
+          >
+            <div className="flex items-center gap-3">
+              <span className="icon-tile">
+                <Icon name="rule" />
+              </span>
+              <h2 className="t-h3 text-ink">How it is measured</h2>
+            </div>
+            <p className="t-body mt-5 text-[1rem]">{c.measurement}</p>
+            <div className="mt-8 flex items-center gap-3 border-t border-line pt-6">
+              <span className="icon-tile">
+                <Icon name="record" />
+              </span>
+              <h2 className="t-h3 text-ink">What stays confidential</h2>
+            </div>
+            <p className="t-body mt-5 text-[1rem]">{c.withheld}</p>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-line">
-        <div className="container-x section-tight">
-          <div className="panel px-6 py-6">
+      <section className="band band-tight">
+        <div className="container-x">
+          <div className="rounded-sm border border-line bg-panel px-6 py-6">
             <p className="label">Same shape as your process?</p>
             <p className="t-body mt-3 max-w-2xl">
               Tell us what the equivalent task costs you today and we will tell you what this

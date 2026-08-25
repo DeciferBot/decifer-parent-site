@@ -1,0 +1,11 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1240, "h": 1720, "title": "Foundations" },
+    { "file": "Components.dc.html", "x": 1360, "y": 0, "w": 1240, "h": 1700, "title": "Component layer" },
+    { "file": "Rhythm.dc.html", "x": 2720, "y": 0, "w": 1240, "h": 1180, "title": "Page rhythm" }
+  ],
+  "annotations": [
+    { "id": "brief", "x": 0, "y": -150, "w": 520, "text": "Reusable layers proposed for decifer.io: an accent ladder, three new type tokens, an icon set, a figure tile, and five section grounds.\nExisting tokens are unchanged; everything marked new is additive." }
+  ],
+  "launch": { "view": "canvas" }
+}

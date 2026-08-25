@@ -1,5 +1,12 @@
+/**
+ * Figtree is the brand sans (set 2026-08-25, replacing Schibsted Grotesk).
+ * The social cards were left on the retired face for two weeks because the
+ * font swap happened in layout.tsx and nothing links the two files: keep
+ * this in step with `figtree` in src/app/layout.tsx.
+ */
+const FONT_FAMILY = "Figtree";
 const FONT_CSS =
-  "https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700&display=swap";
+  "https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap";
 
 type OgFont = { name: string; data: ArrayBuffer; weight: 400 | 700; style: "normal" };
 
@@ -14,7 +21,7 @@ async function fetchFonts(): Promise<OgFont[]> {
         const url = block?.match(/src: url\(([^)]+)\)/)?.[1];
         if (!url) return undefined;
         const data = await fetch(url).then((r) => r.arrayBuffer());
-        return { name: "Schibsted Grotesk", data, weight, style: "normal" };
+        return { name: FONT_FAMILY, data, weight, style: "normal" };
       })
     );
     return fonts.filter((f): f is OgFont => Boolean(f));
@@ -26,7 +33,7 @@ async function fetchFonts(): Promise<OgFont[]> {
 let cached: Promise<OgFont[]> | undefined;
 
 /**
- * Fetch the two Schibsted Grotesk weights for ImageResponse at build time,
+ * Fetch the two Figtree weights for ImageResponse at build time,
  * once per process: every prerendered card shares one download, so a build
  * with many posts still makes three requests, and every card in a deploy
  * uses the same fonts. Falls back to the default font if Google is

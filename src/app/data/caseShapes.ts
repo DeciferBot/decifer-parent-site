@@ -17,6 +17,12 @@
  * and why that is the right shape for this system. "withheld" is the trust move competitors will not
  * print.
  *
+ * Decifer's own production systems are listed here too, marked with
+ * `ownProduct`. They are named, because there is nobody to ask for
+ * permission, and they are held to exactly the same evidence rule: every
+ * figure traceable to proof.ts, no invented numbers, and the boundaries
+ * stated as plainly as on a client engagement.
+ *
  * Read by: the homepage case shapes section, /work, /work/[slug], service
  * pages (via Service.key match) and the sitemap.
  *
@@ -25,14 +31,30 @@
 
 import type { ServiceKey } from "./services";
 import type { StackKey } from "./stack";
+import type { IconName } from "../components/Icon";
+import type { AccentHue } from "./accents";
 
 export type Sector =
   | "Hospitality and catering"
   | "Group marketing"
-  | "Private events and travel"
+  | "Events management"
   | "Healthcare and counselling"
   | "Creator and personal brand"
+  | "Financial markets intelligence"
+  | "Education"
   | "Property";
+
+/** Every sector carries one mark and one hue, everywhere it appears. */
+export const sectorMark: Record<Sector, { icon: IconName; hue: AccentHue }> = {
+  "Hospitality and catering": { icon: "catering", hue: "amber" },
+  "Group marketing": { icon: "group", hue: "teal" },
+  "Events management": { icon: "events", hue: "plum" },
+  "Healthcare and counselling": { icon: "health", hue: "green" },
+  "Creator and personal brand": { icon: "creator", hue: "orange" },
+  "Financial markets intelligence": { icon: "markets", hue: "blue" },
+  Education: { icon: "education", hue: "violet" },
+  Property: { icon: "property", hue: "amber" },
+};
 
 export interface CaseShape {
   /** Stable key. Also the URL slug: /work/{key}. Describes the work, never the client. */
@@ -58,6 +80,8 @@ export interface CaseShape {
   withheld: string;
   serviceKeys: ServiceKey[];
   stackKeys: StackKey[];
+  /** True for Decifer's own products: named, not anonymised, nobody to ask. */
+  ownProduct?: boolean;
   /** Show on the site now, or hold for a later batch. */
   published: boolean;
   /** ISO date the copy last changed. Drives sitemap lastModified. */
@@ -138,7 +162,7 @@ export const caseShapes: CaseShape[] = [
     title: "A week-long private event that answered its own questions",
     clientShape:
       "A private host running a multi-day celebration abroad for around twenty guests",
-    sector: "Private events and travel",
+    sector: "Events management",
     region: "United Kingdom and Spain",
     situation:
       "One host was answering the same questions by message at all hours: what is on, what does it cost, what do I wear, how do I get home, who is coming, what do I owe. The plan lived in a group chat and changed daily.",
@@ -236,6 +260,79 @@ export const caseShapes: CaseShape[] = [
     order: 5,
   },
   {
+    key: "market-intelligence-platform",
+    title: "Market noise turned into a plain-English daily read",
+    clientShape:
+      "Decifer Markets, Decifer's own market intelligence product, public since March 2026 and named because it is ours",
+    sector: "Financial markets intelligence",
+    region: "United Arab Emirates",
+    situation:
+      "Anyone following markets reads all day and still cannot say plainly what moved, why it moved, or what to watch next. The general-purpose assistants will answer that question confidently and sometimes invent the number in the answer. We built the system we wanted to exist, and it became the hardest test of the method we have: real market data, real cost, unattended runs, and nobody else to hand the pager to.",
+    work: [
+      "Built a collection layer that pulls market data, filings and news on a schedule, and computes every figure in code before a model sees it",
+      "Held the model to narration and extraction: it writes the sentence around a number it was given, and is never the source of the number",
+      "Wrote 9,064 test functions across 411 files, plus eval suites that grade the output against the live database rather than a fixture",
+      "Put a watchdog in front of the scheduler that restores it from a known-good copy the moment a job goes missing, and pages a human when it cannot",
+      "Ran the strategy engine against a broker paper account behind a written live-trading gate that has never been opened",
+    ],
+    outcome: [
+      "The system has run in production since March 2026, and every dated incident in its record produced a permanent fix rather than a note",
+      "A reader gets what moved, why it matters and what to watch, in plain English and without the jargon",
+      "No figure in the briefing exists that the code did not compute",
+    ],
+    measurement:
+      "The test and eval suites run against the live database on every change. Operation and incidents are read from the system's own run log, which is why we say five months of production operation and not five months of uninterrupted output: the record shows the gaps.",
+    boundaries: [
+      "The system trades a broker paper account. It has never submitted a live order, and a written gate has to be opened before it ever could. We say that everywhere it is mentioned.",
+      "It is intelligence and research context, not financial advice, and the product says so next to the intelligence rather than only in a footer.",
+      "The model does not produce numbers. Prices, moves and levels are computed in code and handed to it.",
+    ],
+    withheld:
+      "Nothing is anonymised here, because the product is ours and you can open it. What we do not publish is a real-money track record, because there is not one.",
+    serviceKeys: ["ai-product-development", "data-and-reporting"],
+    stackKeys: ["nextjs", "supabase", "vercel", "claude", "digitalocean"],
+    ownProduct: true,
+    published: true,
+    updatedAt: "2026-08-25",
+    order: 6,
+  },
+  {
+    key: "curriculum-learning-companion",
+    title: "A learning companion where the marking is arithmetic, not opinion",
+    clientShape:
+      "Decifer Learning, Decifer's own guided companion for the UK National Curriculum, in beta and named because it is ours",
+    sector: "Education",
+    region: "United Kingdom curriculum",
+    situation:
+      "A child practising at home needs material that matches what school actually teaches, and a parent cannot see where that child is struggling until a report arrives at the end of term. A chatbot is the obvious build and the wrong one: it is fluent, occasionally wrong, and the user is a child who has no way to tell the difference.",
+    work: [
+      "Built Learn, Practise and Quiz for each curriculum topic, so a child moves through a topic in a structure rather than chatting with a model",
+      "Made the marking deterministic: a symbolic maths solver decides whether an answer is right, and a grammar engine checks written work. The model never gets a vote on correctness",
+      "Built a parent view of progress and weak areas, so involvement does not depend on a child volunteering what went badly",
+      "Wrote the child-safety and education boundaries into the product and published them: supervised, age-appropriate use with parental oversight as part of the design",
+    ],
+    outcome: [
+      "A child gets curriculum-linked explanations, practice and feedback in plain language, with encouragement that does not punish a wrong answer",
+      "A parent can see progress and weak areas without waiting for a school report",
+      "Marking cannot drift with a model's confidence, because no model is marking",
+    ],
+    measurement:
+      "Marking is checked against the solver, not a model, so correctness is testable rather than judged, and the checks run on every change. We make no claim about grades or academic outcomes and do not publish a figure for them.",
+    boundaries: [
+      "No claim about grades or academic outcomes. The product supports learning and does not replace teachers, schools or parents.",
+      "No model decides whether an answer is right. That is arithmetic, and it is the same rule that stops an invented figure reaching a board memo in our client work.",
+      "Designed for children in supervised, age-appropriate contexts, with parental oversight built into the product rather than added to the terms.",
+    ],
+    withheld:
+      "Nothing is anonymised here, because the product is ours and you can open it. We do not publish user numbers, and we will not publish an outcome claim we cannot measure.",
+    serviceKeys: ["ai-product-development", "ai-advisory"],
+    stackKeys: ["nextjs", "supabase", "vercel", "claude"],
+    ownProduct: true,
+    published: true,
+    updatedAt: "2026-08-25",
+    order: 7,
+  },
+  {
     key: "property-sales-agent",
     title: "A sales agent that cannot quote a price that does not exist",
     clientShape: "A residential property brokerage",
@@ -265,7 +362,7 @@ export const caseShapes: CaseShape[] = [
     stackKeys: ["nextjs", "supabase", "claude", "resend", "vercel"],
     published: false,
     updatedAt: "2026-08-22",
-    order: 6,
+    order: 8,
   },
 ];
 
