@@ -303,13 +303,6 @@ p {
     }
   }
 
-  /* The arrow that turns each row into one sentence of change. Coloured by
-     the row's own industry hue, which is the only place the board carries
-     colour beyond the icon tile. */
-  .board-arrow {
-    color: var(--accent, var(--color-on-dark-2));
-    margin-right: 0.375rem;
-  }
   .board-st {
     display: inline-flex;
     align-items: center;
