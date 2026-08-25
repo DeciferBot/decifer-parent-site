@@ -2,16 +2,31 @@ import Link from "next/link";
 import Icon, { type IconName } from "../Icon";
 
 /**
- * The hero board: cases solved, by industry, not system uptime. Every row
- * is a published case shape (caseShapes.ts), in the same order, including
- * the two Decifer products that carry their own industry: financial
- * markets intelligence and education.
+ * The hero board: the industry, the problem, and what solved it. Nothing
+ * else.
  *
- * Each row reads as one sentence of change: the situation before, then the
- * arrow, then what is true now. The stat on the right is the complexity
- * that had to be handled to get there, so the board never reads as a claim
- * without a cost. The industry icon and its hue are the same ones used
- * wherever that industry appears on the site.
+ * It used to carry a before/after line and a proof stat per row, and a
+ * reader with no context learned very little from either. The stat column
+ * answered "how was this built" (eval scores, test counts, solvers) rather
+ * than "what changed for the business", and the two Decifer products led
+ * with what they cannot claim. Both belong on the case page, where there is
+ * room to earn them. Here a stranger gets one sentence they recognise as
+ * their own problem, and the thing that fixed it.
+ *
+ * Each row is written as the capability, not the anecdote: the problem is
+ * phrased so a reader in another industry recognises their own, because the
+ * mechanism is what transfers. "Live data arriving faster than anyone can
+ * read it" is a markets problem, a logistics problem and a claims problem,
+ * and the same pipeline answers all three.
+ *
+ * Counts stay off this board. A figure needs its method and its permission
+ * (see proof.ts), which is a case-page job; here a wrong one would be the
+ * first thing a stranger reads.
+ *
+ * Every row is a published case shape (caseShapes.ts), in the same order.
+ * The mechanism label is that case's leading serviceKey in plain words, so
+ * the counselling row correctly reads as automation: its whole point is
+ * that no client ever meets a model.
  */
 
 type Row = {
@@ -19,10 +34,11 @@ type Row = {
   icon: IconName;
   /** Accent token suffix; see --color-a-* in globals.css. */
   hue: string;
-  before: string;
-  after: string;
-  afterSub: string;
-  stat: string;
+  /** The problem, then what happens instead. One short sentence each. */
+  problem: string;
+  solved: string;
+  /** What did the work, in the words a buyer would use. */
+  mechanism: string;
 };
 
 const rows: Row[] = [
@@ -30,64 +46,57 @@ const rows: Row[] = [
     sector: "Hospitality and catering",
     icon: "catering",
     hue: "amber",
-    before: "30 years of orders, priced from memory",
-    after: "Self-served quotes",
-    afterSub: "was a phone call and a day",
-    stat: "719 documents, one record",
+    problem: "Thirty years of pricing knowledge locked in one person's head.",
+    solved: "Turned into a quoting engine the customer runs themselves.",
+    mechanism: "Workflow automation",
   },
   {
     sector: "Group marketing",
     icon: "group",
     hue: "teal",
-    before: "Nine companies, no shared view",
-    after: "One board-level view",
-    afterSub: "refreshed every night",
-    stat: "5 platforms, one fact store",
+    problem: "Every company keeping its own numbers, none of them comparable.",
+    solved: "One set everyone reads, refreshed nightly, computed in code.",
+    mechanism: "Automated reporting",
   },
   {
     sector: "Events management",
     icon: "events",
     hue: "plum",
-    before: "A host answering the same questions at 2am",
-    after: "Zero invented answers",
-    afterSub: "seven of forty were refusals",
-    stat: "40 / 40 on a graded eval",
+    problem: "The same questions asked over and over, at all hours.",
+    solved: "An agent answers from live data, and refuses what it cannot verify.",
+    mechanism: "AI agent",
   },
   {
     sector: "Healthcare and counselling",
     icon: "health",
     hue: "green",
-    before: "Clinical time lost to intake admin",
-    after: "A report within minutes",
-    afterSub: "no AI a client can touch",
-    stat: "3 validated instruments",
+    problem: "Skilled hours lost to intake paperwork.",
+    solved: "The admin runs itself, with no AI anywhere a client can meet it.",
+    mechanism: "Workflow automation",
   },
   {
     sector: "Creator and personal brand",
     icon: "creator",
     hue: "orange",
-    before: "One person's memory ran the whole business",
-    after: "Publishing runs on a schedule",
-    afterSub: "the blog fails closed if a check does not pass",
-    stat: "Ad spend hard-capped in code",
+    problem: "The whole operation ran on one person's memory.",
+    solved: "Agents run it to a schedule, inside limits they cannot exceed.",
+    mechanism: "AI agents",
   },
   {
     sector: "Financial markets intelligence",
     icon: "markets",
     hue: "blue",
-    before: "Confident answers, invented numbers",
-    after: "In production since March 2026",
-    afterSub: "paper account, never a live order",
-    stat: "9,064 automated tests",
+    problem: "Live data arriving faster than anyone can read it.",
+    solved: "Ingested, cross-checked and written up as a decision brief, around the clock, unattended.",
+    mechanism: "Autonomous pipeline",
   },
   {
     sector: "Education",
     icon: "education",
     hue: "violet",
-    before: "A tutor that is fluent and sometimes wrong",
-    after: "Curriculum practice a parent can see",
-    afterSub: "no claim about grades, ever",
-    stat: "Marking by solver, not by model",
+    problem: "Guidance that sounds right and is sometimes wrong.",
+    solved: "The model explains; the arithmetic decides what is correct.",
+    mechanism: "AI product",
   },
 ];
 
@@ -117,18 +126,12 @@ export default function CaseBoard() {
           </span>
           <div className="min-w-0">
             <p className="text-[0.9375rem] font-medium leading-snug">{r.sector}</p>
-            <p className="mt-1 text-[0.78125rem] leading-snug text-on-dark-2">
-              {r.before}
-            </p>
-            <p className="mt-1 text-[0.78125rem] leading-snug">
-              <span className="board-arrow" aria-hidden="true">
-                →
-              </span>
-              <span className="text-on-dark">{r.after}</span>
-              <span className="text-on-dark-2">, {r.afterSub}</span>
+            <p className="mt-1 text-[0.8125rem] leading-snug text-on-dark-2">
+              {r.problem}{" "}
+              <span className="text-on-dark">{r.solved}</span>
             </p>
           </div>
-          <span className="board-st">{r.stat}</span>
+          <span className="board-st">{r.mechanism}</span>
         </div>
       ))}
       <p className="border-t border-line-dark px-4.5 py-3 text-[0.78125rem] text-on-dark-2">
