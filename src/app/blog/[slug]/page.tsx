@@ -3,8 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CtaBand from "@/app/components/CtaBand";
 import PostRow from "@/app/components/blog/PostCard";
+import ToolCallout from "@/app/components/blog/ToolCallout";
 import { getAllPosts, getPost, formatDate } from "@/lib/blog";
 import { servicesByKey } from "@/app/data/services";
+import { tools } from "@/app/data/tools";
 import { jsonLd, SITE, RSS_ALTERNATE_TYPES } from "@/lib/jsonld";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -51,6 +53,8 @@ export default async function PostPage({ params }: Params) {
     .map((s) => getPost(s))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
   const services = (post.relatedServiceKeys ?? []).map((k) => servicesByKey[k]).filter(Boolean);
+  /** The interactive version of this article, when one exists. */
+  const tool = tools.find((t) => t.articleSlug === slug);
 
   const schema = {
     "@context": "https://schema.org",
@@ -112,6 +116,14 @@ export default async function PostPage({ params }: Params) {
             <Body />
           </div>
         </div>
+
+        {tool ? (
+          <aside className="container-x mt-14">
+            <div className="max-w-3xl">
+              <ToolCallout tool={tool} />
+            </div>
+          </aside>
+        ) : null}
 
         {services.length ? (
           <aside className="container-x mt-16">

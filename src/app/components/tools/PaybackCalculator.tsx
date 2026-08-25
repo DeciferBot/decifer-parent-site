@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ComponentProps } from "react";
 import ToolNextStep from "./ToolNextStep";
 
 /**
@@ -85,11 +85,21 @@ export default function PaybackCalculator() {
   // Build cost that pays back inside a given number of months at this saving.
   const buildForPayback = (months: number) => yearlySaving * (months / 12);
 
+  /**
+   * The numbers they just typed, carried into the enquiry form so the next
+   * screen asks them to confirm rather than to retype. Everything rides in
+   * the URL: still nothing stored, and they can see and edit every word.
+   */
+  const enquiryHref = (problem: string, service: string) =>
+    `/contact?problem=${encodeURIComponent(problem)}&cost=${encodeURIComponent(
+      `About AED ${fmt(yearlyLabour)} a year in staff time, ${values.hours} hours a week`
+    )}&service=${service}`;
+
   let verdict = "";
   /** Heading over the levers: what would change the answer, or what room there is. */
   let leversLabel = "What would change the answer";
   let levers: string[] = [];
-  let next: { line: string; cta: string; href: string; event: string } | null = null;
+  let next: ComponentProps<typeof ToolNextStep> | null = null;
 
   if (ready) {
     if (yearlyLabour === 0) {
@@ -114,10 +124,18 @@ export default function PaybackCalculator() {
           : "",
       ].filter(Boolean);
       next = {
-        line: "Two things move that running cost: how much of the job actually needs a model, and how much of it is plain rules. Most quotes we see are priced as though all of it needs a model. Send us the numbers and we will tell you which parts do.",
-        cta: "Discuss this process",
-        href: "/contact",
+        line: "Two things move that running cost: how much of the job actually needs a model, and how much of it is plain rules. Most quotes we see are priced as though all of it needs a model. Send us the numbers and we will tell you which parts do, whether or not you build it with us.",
+        cta: "Send these numbers to us",
+        href: enquiryHref(
+          `We are looking at automating a task that takes ${values.hours} hours a week. On your payback calculator it does not work: about AED ${fmt(yearlyLabour)} a year of staff time against a build of AED ${fmt(parsed.build)} and AED ${fmt(parsed.running)} a month to run. We want to know whether that running cost is realistic.`,
+          "not-sure"
+        ),
         event: "tools_payback_contact_negative",
+        secondary: {
+          label: "Or see the two-week assessment",
+          href: "/services/ai-advisory",
+          event: "tools_payback_advisory_negative",
+        },
       };
     } else if (paybackMonths <= 12) {
       verdict = "Worth pricing properly. On these numbers the build pays for itself inside a year.";
@@ -129,9 +147,12 @@ export default function PaybackCalculator() {
           ]
         : [];
       next = {
-        line: "The number to test next is the running cost, because it is the one a quote is most likely to be quiet about. Bring these figures to a call and you will leave with a real one, plus what we would not automate in this process.",
-        cta: "Book a 30-minute call",
-        href: "/contact",
+        line: "The number to test next is the running cost, because it is the one a quote is most likely to be quiet about. Send these figures over and you get a real one back, plus what we would not automate in this process.",
+        cta: "Get this priced properly",
+        href: enquiryHref(
+          `A task taking ${values.hours} hours a week, worth about AED ${fmt(yearlyLabour)} a year in staff time. On your calculator a build at AED ${fmt(parsed.build)} with AED ${fmt(parsed.running)} a month to run pays back in about ${fmt(paybackMonths)} months. We would like it priced and scoped properly.`,
+          "not-sure"
+        ),
         event: "tools_payback_contact_strong",
       };
     } else if (paybackMonths <= 24) {
@@ -144,8 +165,11 @@ export default function PaybackCalculator() {
       ].filter(Boolean);
       next = {
         line: "Borderline usually means the build is doing too much. There is often a smaller first version that carries most of the saving and costs a fraction to build. That is a half-hour conversation, not a project.",
-        cta: "Discuss a smaller first build",
-        href: "/contact",
+        cta: "Ask about a smaller first build",
+        href: enquiryHref(
+          `A task taking ${values.hours} hours a week, worth about AED ${fmt(yearlyLabour)} a year in staff time. On your calculator a build at AED ${fmt(parsed.build)} with AED ${fmt(parsed.running)} a month to run pays back in about ${fmt(paybackMonths)} months, which is borderline. We want to know whether a smaller first version would carry most of the saving.`,
+          "not-sure"
+        ),
         event: "tools_payback_contact_borderline",
       };
     } else {
@@ -157,10 +181,18 @@ export default function PaybackCalculator() {
           : "",
       ].filter(Boolean);
       next = {
-        line: "Leave this task, not the question. In a business this size there are usually two or three tasks where the same arithmetic comes out well inside a year. Finding and costing them is what the two-week assessment does.",
-        cta: "See the two-week assessment",
-        href: "/services/ai-advisory",
-        event: "tools_payback_advisory_long",
+        line: "Leave this task, not the question. In a business this size there are usually two or three tasks where the same arithmetic comes out well inside a year. Finding and costing them is what the two-week assessment does, and it is credited in full against any build that follows.",
+        cta: "Ask about the assessment",
+        href: enquiryHref(
+          `We ran a task of ${values.hours} hours a week through your calculator, worth about AED ${fmt(yearlyLabour)} a year in staff time, and the payback on a AED ${fmt(parsed.build)} build comes out beyond two years. We would rather find the tasks in the business where the numbers work.`,
+          "ai-advisory"
+        ),
+        event: "tools_payback_contact_long",
+        secondary: {
+          label: "Or read what the assessment covers",
+          href: "/services/ai-advisory",
+          event: "tools_payback_advisory_long",
+        },
       };
     }
   }

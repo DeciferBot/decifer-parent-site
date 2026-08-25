@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ComponentProps } from "react";
 import Link from "next/link";
 import ToolNextStep from "./ToolNextStep";
 
@@ -35,37 +35,56 @@ export default function AgentOrAutomation() {
 
   let heading = "";
   let body = "";
-  let next: { line: string; cta: string; href: string; event: string } | null = null;
+  let next: ComponentProps<typeof ToolNextStep> | null = null;
   if (done) {
     if (messy) {
       heading = "An agent, for one job: taming the messy input.";
       body =
         "Use a model to extract order from the mess: pull the facts out of the rambling email or the voice note into clean fields. The decisions that follow can still be plain rules, and should be. Do not let the model decide; let it read.";
       next = {
-        line: "The whole job is drawing the boundary in the right place: what the model reads, what the rules decide, and what a person still signs off. That boundary is written down before anything is built.",
-        cta: "See how we build agents",
-        href: "/services/ai-agents",
-        event: "tools_agent_services_agent",
+        line: "The whole job is drawing that boundary in the right place: what the model reads, what the rules decide, and what a person still signs off. We write it down before anything is built, and you can have our read on your version of it in a half-hour call.",
+        cta: "Describe the messy input",
+        href: `/contact?problem=${encodeURIComponent(
+          "We have a task where the input is messy in ways we cannot list in advance, so a fixed workflow does not cope. Your three-question tool says a model should read the input while plain rules make the decisions. We want to know what that would take."
+        )}&service=ai-agents`,
+        event: "tools_agent_contact_agent",
+        secondary: {
+          label: "Or see how we build agents",
+          href: "/services/ai-agents",
+          event: "tools_agent_services_agent",
+        },
       };
     } else if (steps) {
       heading = "Automation. Do not buy an agent for this.";
       body =
         "The steps fit on a page, so a fixed workflow does the job: triggers, templates, rules. It will be cheaper to build, cheaper to run, and readable when something goes wrong. An agent here is paying improvisation prices for repetition work.";
       next = {
-        line: "This is the cheaper half of what we do, and it is usually where a first project should start. Worth checking the arithmetic before you commission it either way.",
+        line: "This is the cheaper half of what we do, and it is usually where a first project should start. Before you commission it, put the hours and the quote through the arithmetic: it takes a minute and it tells you whether the price you have been given makes sense.",
         cta: "Run the payback numbers",
         href: "/tools/automation-payback-calculator",
         event: "tools_agent_payback_automation",
+        secondary: {
+          label: "Or see how we build workflow automation",
+          href: "/services/ai-agents",
+          event: "tools_agent_services_automation",
+        },
       };
     } else {
       heading = "Neither, yet. The process needs writing down first.";
       body =
         "If the steps cannot be written on a page and the input is not the problem, the process itself is undefined. Automating an undefined process produces an automated mess. Sit with the person who does the task and write the page first; the answer usually becomes obvious halfway down.";
       next = {
-        line: "Writing that page is work, and it is the work most projects skip. If nobody internally has the time, it is exactly what the two-week assessment produces: the process mapped, costed, and a shortlist of what to automate first.",
-        cta: "See the two-week assessment",
-        href: "/services/ai-advisory",
-        event: "tools_agent_advisory_undefined",
+        line: "Writing that page is work, and it is the work most projects skip. If nobody internally has the time, it is exactly what the two-week assessment produces: the process mapped, costed, a shortlist of what to automate first and an explicit list of what to leave alone. Fixed fee, credited in full against any build that follows.",
+        cta: "Ask about the assessment",
+        href: `/contact?problem=${encodeURIComponent(
+          "Your three-question tool says our process is not defined enough to automate yet: the steps do not fit on a page and the input is not the problem. We want help mapping and costing it before anyone builds anything."
+        )}&service=ai-advisory`,
+        event: "tools_agent_contact_undefined",
+        secondary: {
+          label: "Or read what the assessment covers",
+          href: "/services/ai-advisory",
+          event: "tools_agent_advisory_undefined",
+        },
       };
     }
     if (costly) {

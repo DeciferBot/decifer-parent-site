@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ComponentProps } from "react";
 import Link from "next/link";
 import ToolNextStep from "./ToolNextStep";
 
@@ -78,7 +78,10 @@ export default function LaunchSafetyCheck() {
         ? `${score} of 6. Close. Fix the items below before real users arrive; each is typically a day or less.`
         : `${score} of 6. Do not launch yet. The gaps below are the ones attackers and accidents find first.`;
 
-  const next = !done
+  /** The failing checks, carried into the enquiry form as the brief. */
+  const failingBrief = failing.map((c) => c.q.replace(/\?$/, "").toLowerCase()).join("; ");
+
+  const next: ComponentProps<typeof ToolNextStep> | null = !done
     ? null
     : score === CHECKS.length
       ? {
@@ -86,11 +89,22 @@ export default function LaunchSafetyCheck() {
           cta: "See how we build and hand over",
           href: "/services/ai-product-development",
           event: "tools_safety_services_pass",
+          secondary: {
+            label: "Or tell us what you are launching",
+            href: `/contact?problem=${encodeURIComponent(
+              "Our app passes all six of your launch safety checks and we are about to put it in front of real users. We want to talk about what comes after launch."
+            )}&service=ai-product-development`,
+            event: "tools_safety_contact_pass",
+          },
         }
       : {
-          line: `${failing.length} ${failing.length === 1 ? "gap" : "gaps"} to close, each typically a day or less if you know the codebase. If nobody on your side has that day, this is the first thing we do on any codebase we inherit, and we tell you what we find whether or not you hire us for the rest.`,
+          line: `${failing.length} ${failing.length === 1 ? "gap" : "gaps"} to close, each typically a day or less if you know the codebase. If nobody on your side has that day, this is the first thing we do on any codebase we inherit, and you get the findings whether or not you hire us for the rest.`,
           cta: "Send us the app",
-          href: "/contact",
+          href: `/contact?problem=${encodeURIComponent(
+            `Our app scores ${score} of 6 on your launch safety check. The gaps: ${failingBrief}. We want them closed before real users arrive.`
+          )}&cost=${encodeURIComponent(
+            "Not launched yet, so the cost is the launch date slipping"
+          )}&service=ai-product-development`,
           event: "tools_safety_contact_failing",
         };
 
