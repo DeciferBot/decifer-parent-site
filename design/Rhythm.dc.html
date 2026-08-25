@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Figtree', 'Helvetica Neue', Arial, sans-serif; }
+    a { color: oklch(52% 0.19 36); } a:hover { color: oklch(46% 0.19 36); }
+    .serif { font-family: 'Source Serif 4', Georgia, serif; }
+    .eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(46% 0.014 250); }
+    .note { font-size: 13px; line-height: 1.5; color: oklch(46% 0.014 250); }
+    .band { border-radius: 4px; padding: 10px 14px; font-size: 13px; font-weight: 500; }
+  </style>
+</helmet>
+
+<div style="width: 1240px; background: oklch(96% 0.004 250); color: oklch(18% 0.012 250); padding: 56px 56px 64px;">
+
+  <div style="border-bottom: 1px solid oklch(78% 0.008 250); padding-bottom: 20px;">
+    <p class="eyebrow" style="margin: 0 0 10px;">Decifer · page rhythm</p>
+    <h1 class="serif" style="margin: 0; font-size: 42px; font-weight: 500; letter-spacing: -0.012em; line-height: 1.06;">Same content. Somewhere to look.</h1>
+    <p class="note" style="margin: 12px 0 0; max-width: 76ch;">The home page is 9,400px tall and eleven of its thirteen sections are the same white panel with two columns of text in it. Nothing is wrong with any one section; the problem is that they arrive in one unbroken texture, so a reader with forty seconds finds no foothold.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; margin-top: 36px;">
+
+    <!-- Now -->
+    <div>
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px;">
+        <span class="serif" style="font-size: 24px; font-weight: 500;">Now</span>
+        <span class="note">one texture, two interruptions</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div class="band" style="background: oklch(96% 0.004 250); border: 1px solid oklch(88% 0.006 250); display: flex; justify-content: space-between;"><span>Hero + board</span><span class="note" style="font-size: 12px;">dark board, good</span></div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">Evidence &mdash; panel, text</div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">The stall &mdash; panel, text</div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">Responsibility &mdash; panel, text</div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">Services &mdash; panel, ruled rows</div>
+        <div class="band" style="background: #f05a28; color: oklch(18% 0.012 250);">Boundaries &mdash; orange band</div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">People and process &mdash; panel, text</div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">Solved &mdash; panel, ruled rows</div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">Built by Decifer &mdash; panel, text <span class="note" style="font-size: 12px;">(3 screenshots unused)</span></div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">Founder &mdash; panel, text</div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">FAQ &mdash; panel, text</div>
+        <div class="band" style="background: #f05a28; color: oklch(18% 0.012 250);">CTA &mdash; orange band</div>
+      </div>
+      <p class="note" style="margin: 18px 0 0;">Nine consecutive white panels. A reader scrolling fast cannot tell section six from section nine, so they stop reading before the proof.</p>
+    </div>
+
+    <!-- Proposed -->
+    <div>
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px;">
+        <span class="serif" style="font-size: 24px; font-weight: 500;">Proposed</span>
+        <span class="note">five grounds, no two neighbours alike</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div class="band" style="background: oklch(96% 0.004 250); border: 1px solid oklch(88% 0.006 250); display: flex; justify-content: space-between;"><span>Hero + board</span><span class="note" style="font-size: 12px;">colour-coded rows</span></div>
+        <div class="band" style="background: oklch(94% 0.006 250); border: 1px solid oklch(88% 0.006 250); display: flex; justify-content: space-between;"><span>Evidence &mdash; tint, figure tiles</span><span class="note" style="font-size: 12px;">band-tint</span></div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">The stall &mdash; panel, text</div>
+        <div class="band" style="background: oklch(17% 0.014 255); color: oklch(96% 0.004 250); display: flex; justify-content: space-between;"><span>Built by Decifer &mdash; three real screenshots</span><span style="font-size: 12px; color: oklch(76% 0.008 250);">band-dark</span></div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">Services &mdash; ruled rows, icon tiles</div>
+        <div class="band" style="background: #f05a28; color: oklch(18% 0.012 250);">Boundaries &mdash; orange band, numbered</div>
+        <div class="band" style="background: oklch(94% 0.006 250); border: 1px solid oklch(88% 0.006 250);">Method &mdash; tint, six steps on a path</div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">Solved &mdash; ruled rows, icon tiles</div>
+        <div class="band" style="background: oklch(96% 0.02 40); border: 1px solid oklch(88% 0.006 250); display: flex; justify-content: space-between;"><span>Founder &mdash; warm, portrait</span><span class="note" style="font-size: 12px;">band-warm</span></div>
+        <div class="band" style="background: #fff; border: 1px solid oklch(88% 0.006 250);">FAQ &mdash; panel, text</div>
+        <div class="band" style="background: #f05a28; color: oklch(18% 0.012 250);">CTA &mdash; orange band</div>
+      </div>
+      <p class="note" style="margin: 18px 0 0;">Same sections, same words, reordered so the proof arrives while a reader is still moving, and re-grounded so the eye has a place to land every screen and a half.</p>
+    </div>
+  </div>
+
+  <!-- The four moves -->
+  <div style="margin-top: 44px; border-top: 1px solid oklch(78% 0.008 250); padding-top: 28px;">
+    <p class="eyebrow" style="margin: 0 0 18px;">What actually does the work</p>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+      <div style="background: #fff; border: 1px solid oklch(88% 0.006 250); border-radius: 6px; padding: 20px 22px; box-shadow: inset 0 2px 0 0 oklch(55% 0.16 250);">
+        <p style="margin: 0; font-size: 15px; font-weight: 600;">Use the screenshots</p>
+        <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: oklch(32% 0.012 250);">Three 1440&times;900 captures of the live products already sit in <span style="font-family: ui-monospace, monospace; font-size: 12px;">public/products/</span> and appear nowhere on the home page. They are the only real imagery the site owns.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid oklch(88% 0.006 250); border-radius: 6px; padding: 20px 22px; box-shadow: inset 0 2px 0 0 oklch(58% 0.13 70);">
+        <p style="margin: 0; font-size: 15px; font-weight: 600;">Give every row a mark</p>
+        <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: oklch(32% 0.012 250);">One icon set, one hue per industry and per service. A reader recognises the row before reading it, and the same colour follows that thing to every other page.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid oklch(88% 0.006 250); border-radius: 6px; padding: 20px 22px; box-shadow: inset 0 2px 0 0 oklch(52% 0.13 155);">
+        <p style="margin: 0; font-size: 15px; font-weight: 600;">Make the numbers big</p>
+        <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: oklch(32% 0.012 250);">Fifteen verified figures are currently set at body size inside paragraphs. A figure tile with its source underneath is proof that also happens to break the page up.</p>
+      </div>
+      <div style="background: #fff; border: 1px solid oklch(88% 0.006 250); border-radius: 6px; padding: 20px 22px; box-shadow: inset 0 2px 0 0 oklch(54% 0.15 350);">
+        <p style="margin: 0; font-size: 15px; font-weight: 600;">Change the ground</p>
+        <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: oklch(32% 0.012 250);">Five bands instead of one, alternating. Costs nothing in copy, and it is the single change that turns a report back into a page.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

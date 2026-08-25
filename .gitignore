@@ -43,3 +43,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Seeded design-canvas payloads: 2MB build artefacts, re-seeded from the
+# .dc.html working files beside them.
+design/*.html
+!design/*.dc.html

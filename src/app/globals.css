@@ -44,10 +44,35 @@
   --color-warning: oklch(70% 0.15 75);
   --color-error: oklch(55% 0.2 25);
 
-  /* Product accents, only for small status dots. */
+  /* Product accents, used on the product cards and their status dots. */
   --color-trading: #5a92ff;
   --color-learn: #a48eee;
   --color-market: #2dd4bf;
+
+  /* Accent hues.
+     Colour on this site is navigation, not decoration: one hue per
+     industry and per service, held constant everywhere that thing appears,
+     so a returning reader recognises the row before reading it. Orange is
+     still the only colour that carries a whole section.
+
+     Light values are tuned to sit at 4:1 or better on white, so an icon
+     drawn in one reads as a graphic and not as a smudge. The -on-dark pair
+     is the same hue lifted for the board and the product band. */
+  --color-a-orange: oklch(56% 0.19 36);
+  --color-a-blue: oklch(55% 0.16 250);
+  --color-a-teal: oklch(54% 0.11 195);
+  --color-a-violet: oklch(55% 0.17 300);
+  --color-a-green: oklch(52% 0.13 155);
+  --color-a-amber: oklch(58% 0.13 70);
+  --color-a-plum: oklch(54% 0.15 350);
+
+  --color-a-orange-on-dark: oklch(72% 0.16 40);
+  --color-a-blue-on-dark: oklch(74% 0.13 250);
+  --color-a-teal-on-dark: oklch(76% 0.11 190);
+  --color-a-violet-on-dark: oklch(76% 0.12 300);
+  --color-a-green-on-dark: oklch(74% 0.14 155);
+  --color-a-amber-on-dark: oklch(78% 0.12 75);
+  --color-a-plum-on-dark: oklch(74% 0.12 350);
 
   /* Radius. Small on purpose. */
   --radius-sm: 0.25rem;
@@ -247,20 +272,38 @@ p {
   }
   .board-row {
     display: grid;
-    /* Stacked by default so narrow screens never overflow. The three-column
-       layout starts once there is room for it. */
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.375rem;
+    /* Icon, then the story, then the stat. The stat drops under the story
+       on narrow screens rather than squeezing both into unreadable
+       columns. */
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.25rem 0.75rem;
     align-items: start;
     padding: 0.8125rem 1.125rem;
     border-top: 1px solid var(--color-line-dark);
   }
-  @media (min-width: 30rem) {
+  .board-row > .board-st {
+    grid-column: 2;
+  }
+  @media (min-width: 26rem) {
     .board-row {
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, auto);
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, auto);
       gap: 0.75rem;
-      align-items: center;
+      align-items: start;
     }
+    .board-row > .board-st {
+      grid-column: 3;
+      justify-self: end;
+      text-align: right;
+      padding-top: 0.125rem;
+    }
+  }
+
+  /* The arrow that turns each row into one sentence of change. Coloured by
+     the row's own industry hue, which is the only place the board carries
+     colour beyond the icon tile. */
+  .board-arrow {
+    color: var(--accent, var(--color-on-dark-2));
+    margin-right: 0.375rem;
   }
   .board-st {
     display: inline-flex;
@@ -268,7 +311,6 @@ p {
     gap: 0.4375rem;
     font-size: 0.78125rem;
     color: var(--color-on-dark-2);
-    white-space: nowrap;
   }
   .board-st::before {
     content: "";
@@ -516,6 +558,49 @@ p {
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  /* ── Icon tiles ────────────────────────────────────── */
+
+  /* An icon never floats on the page: it sits in a tinted tile that takes
+     its hue from `--accent`, set inline by whatever data drives the row.
+     The tile is what makes a column of icons read as an instrument panel
+     rather than as clip art. */
+  .icon-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-md);
+    color: var(--accent, var(--color-orange-text));
+    background: color-mix(in oklab, var(--accent, var(--color-orange-text)) 9%, white);
+    border: 1px solid color-mix(in oklab, var(--accent, var(--color-orange-text)) 20%, white);
+    transition: transform 200ms var(--ease-fluid),
+      background-color 200ms var(--ease-fluid);
+  }
+  .icon-tile-sm {
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: var(--radius-sm);
+  }
+  .icon-tile-dark {
+    color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 18%, transparent);
+    border-color: color-mix(in oklab, var(--accent) 30%, transparent);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .row-link:hover .icon-tile {
+      background: color-mix(in oklab, var(--accent, var(--color-orange-text)) 16%, white);
+      transform: translateY(-1px);
+    }
+  }
+
+  /* A 2px accent cap on a card, so a grid of cards is still colour-coded
+     when the icons are too small to carry it. */
+  .accent-cap {
+    box-shadow: inset 0 2px 0 0 var(--accent, var(--color-orange));
   }
 
   /* ── Status dot ────────────────────────────────────── */
