@@ -12,11 +12,11 @@ export default function HeroSection() {
             Turn AI investment into operating results.
           </h1>
           <p className="t-lede rise-1 mt-6 max-w-[34rem]">
-            Companies are investing in AI, but too few projects make it into
-            daily use. Decifer takes responsibility for the whole path: the
+            Decifer takes an AI project the whole way into daily use: the
             business case, the workflow redesign, the build, the integration,
-            the rollout, and the measurement afterwards. Every system runs on
-            your accounts, with a log your team can read.
+            the rollout, and the measurement afterwards. One team, one
+            accountable path. Every system runs on your accounts, with a log
+            your team can read.
           </p>
           <div className="rise-2 mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="/contact" data-event="cta_book_call" className="btn btn-ink">

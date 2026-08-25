@@ -78,7 +78,7 @@ export const services: Service[] = [
     problem:
       "Enquiries arrive by email, WhatsApp, web form and phone, and every one is answered by hand. Quotes mean opening the same files and retyping the same paragraphs. The bottleneck is not selling. It is the hours between the enquiry and the reply, and slow replies lose the work to whoever answered first.",
     description:
-      "We build agents that are scoped to a single job, connected to the systems that job needs, and wrapped in checks. Every agent ships with a written boundary: what it may do, what it must hand back to a person, and how you audit it afterwards. Nothing reaches a customer unread unless you decide it should. If we cannot write the boundary down, we do not build the agent.",
+      "We build agents that are scoped to a single job, connected to the systems that job needs, and wrapped in checks. Every agent ships with a written boundary: what it may do, what it must hand back to a person, and how you audit it afterwards. Nothing reaches a customer unread unless you decide it should. Writing that boundary down is the first thing we do, and it is what makes an agent safe to put in front of your customers.",
     deliverables: [
       "A written scope for the agent, including what it must not do",
       "The agent itself, connected to your tools and your data, running on your accounts",

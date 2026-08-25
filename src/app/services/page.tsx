@@ -53,7 +53,7 @@ export default function ServicesPage() {
       <PageHero
         kicker="What we do"
         title="Four ways we take a process from pilot to daily operation."
-        lede="Most AI projects stall because the business case was never made, the workflow was never redesigned, nothing was integrated, or nobody took a baseline. Each of the four below ends with something running in production, on your accounts, with a written boundary and a log your team can read."
+        lede="Four routes from a standing problem, or a pilot that stopped short, to a system in daily operation. Each one ends in production on your accounts, with a written boundary, a measured result and a log your team can read."
       />
 
       <section className="pb-16 sm:pb-24">

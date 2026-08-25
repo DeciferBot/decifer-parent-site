@@ -66,7 +66,7 @@ export function GET() {
     "",
     "## Company",
     "",
-    `- [How we work](${SITE}/how-we-work): the delivery sequence from assessment to measured result, the capability matrix, and what we will not automate`,
+    `- [How we work](${SITE}/how-we-work): the delivery sequence from assessment to measured result, the capability matrix, and where a person stays in charge`,
     `- [The stack](${SITE}/stack): every tool Decifer builds on with the reason for each, and the rule that routes a job to code, to an open-weight model, or to Claude`,
     `- [About](${SITE}/about): Dubai, the founder, the rule we build by, and the numbers`,
     `- [Contact](${SITE}/contact): enquiries are answered by a named person within one working day`,

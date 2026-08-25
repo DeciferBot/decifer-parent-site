@@ -24,7 +24,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "We already ran a pilot and it stalled. Can you take it over?",
-    a: "Often, yes. The assessment works on an existing pilot as well as a new idea. We baseline the process, find where the pilot stalled, and tell you plainly whether it is worth rescuing.",
+    a: "Often, yes, and it is some of our favourite work. The assessment works on an existing pilot as well as a new idea: we baseline the process, find the point it stopped at, and give you the shortest route from there to something running in daily use.",
   },
   {
     q: "Can you work with our existing systems?",
@@ -32,7 +32,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Do you build AI agents?",
-    a: `Yes, when the workflow genuinely benefits from one. Other workflows are better served by conventional automation, retrieval or plain code, and we say so. We have removed AI from our own working systems ${proofByKey.deletedAi.value} times because a simpler check was better.`,
+    a: `Yes, where the workflow benefits from one. Where plain automation, retrieval or code does the same job, we build that instead, and it is cheaper to run and easier for your team to own. We have made that swap ${proofByKey.deletedAi.value} times in our own systems, which is how we know the difference.`,
   },
   {
     q: "How do you deal with AI errors?",
@@ -47,8 +47,8 @@ export const FAQ_ITEMS: FaqItem[] = [
     a: "You do. Every account is opened in your name, the repository transfers to you at handover with a runbook, and the data lives in standard Postgres you can export. Ongoing support is a commercial choice, never a technical trap.",
   },
   {
-    q: "Why are most clients not named on the site?",
-    a: "Some asked us not to, and for the rest we chose not to by default. Work is described by sector and shape instead, with what we built, what changed, how it is measured and what we deliberately did not automate. A client can always choose to be named, in writing. Any number is published only with the method and written permission.",
+    q: "Can you show us named client work?",
+    a: "Where a client has agreed in writing to be named, yes. By default we describe work by sector and shape instead, with what we built, what changed, how it is measured and where a person stays in charge. That discretion is the default your own project would get, and any figure is published only with the method and written permission.",
   },
 ];
 

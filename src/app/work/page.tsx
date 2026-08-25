@@ -36,8 +36,8 @@ export default function WorkPage() {
     <>
       <PageHero
         kicker="Work"
-        title="Described by shape. Named only by agreement."
-        lede="Most clients are not named on this site, by their own request and as a matter of policy. Where a client has agreed in writing to be named, we say so. Every case states the sector, the problem, what we built, what changed, how it is measured, and what we chose not to automate."
+        title="Systems in daily operation, described in full."
+        lede="Every case states the sector, the problem, what we built, what changed, how it is measured, and where a person stays in charge. Clients are described by shape unless they have agreed in writing to be named, which is the same discretion your own work would get."
       >
         <Link href="/legal/client-confidentiality" className="link text-[0.9375rem]">
           How we handle client confidentiality

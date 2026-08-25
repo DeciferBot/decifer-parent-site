@@ -139,9 +139,9 @@ export default function HowWeWorkPage() {
               the client asked in writing to be named. The
               right column is our own judgement about where the same pattern
               would apply next. Every engagement behind this matrix runs at the
-              scale of a single business; whether it holds at enterprise scale
-              is genuinely untested, and the assessment exists to test the
-              pattern on your scale before either of us commits further.
+              scale of a single business, and the assessment is how we prove
+              the pattern on your scale before either of us commits further:
+              two weeks, fixed fee, credited in full against the build.
             </p>
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function HowWeWorkPage() {
       <CtaBand
         eventPrefix="how_we_work"
         title="Tell us the process. We'll bring the method."
-        body="A two-week assessment at a fixed fee costs the process, ranks the opportunities, and lists plainly what we would not automate yet. Credited in full against any build that follows."
+        body="A two-week assessment at a fixed fee costs the process, ranks the opportunities and names the one to start with. Credited in full against any build that follows."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
     </>

@@ -7,7 +7,7 @@ const steps = [
   {
     n: "01",
     title: "Find the value",
-    body: "We examine the work as it runs today: where time disappears, where people re-key information between systems, and which processes get more expensive as volume grows. We cost the opportunity before choosing any technology. Output: a business case, a current-state baseline, prioritised use cases, and what not to automate yet.",
+    body: "We examine the work as it runs today: where time disappears, where people re-key information between systems, and which processes get more expensive as volume grows. We cost the opportunity before choosing any technology. Output: a business case, a current-state baseline, prioritised use cases, and the order to build them in.",
   },
   {
     n: "02",
