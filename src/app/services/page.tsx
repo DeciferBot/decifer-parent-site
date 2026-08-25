@@ -4,6 +4,7 @@ import ServiceRow from "@/app/components/ServiceCard";
 import CtaBand from "@/app/components/CtaBand";
 import SectionHead from "@/app/components/SectionHead";
 import { servicesOrdered } from "@/app/data/services";
+import { workflowsOrdered } from "@/app/data/workflows";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
@@ -37,7 +38,7 @@ export default function ServicesPage() {
     url: `${SITE}/services`,
     isPartOf: { "@id": `${SITE}/#website` },
     about: { "@id": `${SITE}/#organization` },
-    hasPart: servicesOrdered.map((s) => ({
+    hasPart: [...servicesOrdered, ...workflowsOrdered].map((s) => ({
       "@type": "Service",
       "@id": `${SITE}/services/${s.key}#service`,
       name: s.name,
@@ -64,6 +65,22 @@ export default function ServicesPage() {
             <ul className="divide-y divide-line">
               {servicesOrdered.map((s) => (
                 <ServiceRow key={s.key} service={s} />
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-16 sm:pb-24">
+        <div className="container-x">
+          <SectionHead
+            title="Workflows we have already built."
+            lede="Named jobs, each one running in production for a client or inside one of our own products. If your problem is one of these, start on its page: it names what the workflow does, where it already runs and what you receive."
+          />
+          <div className="panel mt-11">
+            <ul className="divide-y divide-line">
+              {workflowsOrdered.map((w) => (
+                <ServiceRow key={w.key} service={w} />
               ))}
             </ul>
           </div>

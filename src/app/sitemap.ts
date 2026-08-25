@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts, lastPostChange } from "@/lib/blog";
 import { servicesOrdered } from "./data/services";
+import { workflowsOrdered } from "./data/workflows";
 import { publishedCaseShapes } from "./data/caseShapes";
 import { tools } from "./data/tools";
 
@@ -46,11 +47,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     {
       url: `${BASE}/services`,
-      lastModified: newest(servicesOrdered.map((s) => s.updatedAt), STATIC_LAST_MODIFIED),
+      lastModified: newest(
+        [...servicesOrdered, ...workflowsOrdered].map((s) => s.updatedAt),
+        STATIC_LAST_MODIFIED
+      ),
       changeFrequency: "monthly",
       priority: 0.9,
     },
-    ...servicesOrdered.map((s) => ({
+    ...[...servicesOrdered, ...workflowsOrdered].map((s) => ({
       url: `${BASE}/services/${s.key}`,
       lastModified: new Date(s.updatedAt),
       changeFrequency: "monthly" as const,

@@ -1,5 +1,6 @@
 import { products } from "@/app/data/products";
 import { servicesOrdered } from "@/app/data/services";
+import { workflowsOrdered } from "@/app/data/workflows";
 import { tools } from "@/app/data/tools";
 import { publishedCaseShapes } from "@/app/data/caseShapes";
 import { stack } from "@/app/data/stack";
@@ -31,6 +32,12 @@ export function GET() {
     ...servicesOrdered.map((s) => `- [${s.name}](${SITE}/services/${s.key}): ${s.summary}`),
     "",
     `Most engagements start with a two-week assessment at a fixed fee, credited against any build. [Contact](${SITE}/contact).`,
+    "",
+    "## Workflows already built and running",
+    "",
+    ...workflowsOrdered.map(
+      (w) => `- [${w.name}](${SITE}/services/${w.key}): ${w.summary} Also searched as: ${w.alsoCalled.join(", ")}. Already running: ${w.provenIn}`
+    ),
     "",
     "## Products",
     "",

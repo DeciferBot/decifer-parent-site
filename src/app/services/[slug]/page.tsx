@@ -13,8 +13,20 @@ import Icon from "@/app/components/Icon";
 import { accent } from "@/app/data/accents";
 import ScopeSheet from "@/app/components/home/ScopeSheet";
 import Arrow from "@/app/components/Arrow";
-import { services, servicesByKey, servicesOrdered, type ServiceKey } from "@/app/data/services";
-import { caseShapesForService } from "@/app/data/caseShapes";
+import {
+  services,
+  servicesByKey,
+  servicesOrdered,
+  type ServiceKey,
+  type ServiceLike,
+} from "@/app/data/services";
+import {
+  workflows,
+  workflowsByKey,
+  workflowsOrdered,
+  type WorkflowKey,
+} from "@/app/data/workflows";
+import { caseShapesByKey, caseShapesForService } from "@/app/data/caseShapes";
 import { products } from "@/app/data/products";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
@@ -22,13 +34,23 @@ type Params = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
 
+/**
+ * This route serves two kinds of page from one template: the four services in
+ * services.ts, and the named workflows in workflows.ts, which carry the terms
+ * buyers actually search for. Both satisfy ServiceLike, so everything below
+ * the lookup is shared.
+ */
+function pageFor(slug: string): ServiceLike | undefined {
+  return workflowsByKey[slug as WorkflowKey] ?? servicesByKey[slug as ServiceKey];
+}
+
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.key }));
+  return [...services, ...workflows].map((s) => ({ slug: s.key }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
-  const s = servicesByKey[slug as ServiceKey];
+  const s = pageFor(slug);
   if (!s) return {};
   return {
     title: s.seoTitle ?? `${s.name} in Dubai`,
@@ -39,14 +61,20 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function ServicePage({ params }: Params) {
   const { slug } = await params;
-  const s = servicesByKey[slug as ServiceKey];
+  const workflow = workflowsByKey[slug as WorkflowKey];
+  const s = pageFor(slug);
   if (!s) notFound();
 
-  const shapes = caseShapesForService(s.key);
+  const shapes = workflow
+    ? workflow.caseKeys
+        .map((k) => caseShapesByKey[k])
+        .filter((c) => c && c.published)
+    : caseShapesForService(s.key as ServiceKey);
   const proofProduct = s.proofProduct
     ? products.find((p) => p.key === s.proofProduct) ?? null
     : null;
   const others = servicesOrdered.filter((o) => o.key !== s.key);
+  const otherWorkflows = workflowsOrdered.filter((w) => w.key !== s.key);
 
   const schema = {
     "@context": "https://schema.org",
@@ -55,7 +83,8 @@ export default async function ServicePage({ params }: Params) {
         "@type": "Service",
         "@id": `${SITE}/services/${s.key}#service`,
         name: s.name,
-        serviceType: s.name,
+        serviceType: workflow ? workflow.searchTerm : s.name,
+        ...(workflow ? { alternateName: workflow.alsoCalled } : {}),
         description: s.summary,
         url: `${SITE}/services/${s.key}`,
         provider: { "@id": `${SITE}/#organization` },
@@ -105,6 +134,33 @@ export default async function ServicePage({ params }: Params) {
           </div>
         </div>
       </section>
+
+      {workflow ? (
+        <section className="pb-16 sm:pb-24">
+          <div className="container-x">
+            <div
+              className="accent-cap rounded-sm border border-line bg-panel px-6 py-6"
+              style={accent(workflow.hue)}
+            >
+              <p className="label">Where this already runs</p>
+              <p className="t-body mt-3 max-w-3xl">{workflow.provenIn}</p>
+              <p className="t-body mt-4 max-w-3xl">
+                Most builds of this shape start with the two-week assessment:
+                we map the process as it runs today, cost it, and write the
+                scope. The fee is credited in full against the build.
+              </p>
+              <Link
+                href="/services/ai-advisory"
+                data-event={`${workflow.event.replace("_clicked", "")}_assessment`}
+                className="btn btn-secondary mt-5 px-4 py-2.5 text-sm"
+              >
+                Start with the two-week assessment
+                <Arrow className="row-arrow" size={15} />
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {s.key === "ai-agents" ? (
         <section className="pb-16 sm:pb-24">
@@ -268,15 +324,30 @@ export default async function ServicePage({ params }: Params) {
         </div>
       </section>
 
-      {/* Other services */}
+      {/* Other services, and the named workflows */}
       <section className="border-t border-line">
         <div className="container-x section-tight">
-          <p className="text-sm font-semibold text-ink">Other services</p>
+          <p className="text-sm font-semibold text-ink">
+            {workflow ? "Services" : "Other services"}
+          </p>
           <ul className="mt-3 flex flex-wrap gap-x-8 gap-y-2">
             {others.map((o) => (
               <li key={o.key}>
                 <Link href={`/services/${o.key}`} className="arrow-link text-[0.9375rem]">
                   {o.name}
+                  <Arrow size={14} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 text-sm font-semibold text-ink">
+            {workflow ? "Other workflows we have built" : "Workflows we have built"}
+          </p>
+          <ul className="mt-3 flex flex-wrap gap-x-8 gap-y-2">
+            {otherWorkflows.map((w) => (
+              <li key={w.key}>
+                <Link href={`/services/${w.key}`} className="arrow-link text-[0.9375rem]">
+                  {w.name}
                   <Arrow size={14} />
                 </Link>
               </li>
