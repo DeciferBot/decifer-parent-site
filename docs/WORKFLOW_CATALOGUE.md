@@ -98,6 +98,12 @@ order is obvious.
 
 ## How to use this on the site
 
+As of 2026-08-25 every built row below has a live page at
+`/services/<slug>` (drafted from its row, in `src/app/data/workflows.ts`),
+and the whole inventory is browsable at `/workflows`, grouped by the five
+family headings used here. A new row gets its page the same way; a page must
+never exist without its row.
+
 1. **Service pages.** Each workflow family above is a page a buyer can search
    for and land on. The `Search term` column is the page's job on the traffic
    side; the `What it does` column is its job on the conversion side.

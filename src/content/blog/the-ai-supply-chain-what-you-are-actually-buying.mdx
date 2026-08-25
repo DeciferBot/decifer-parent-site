@@ -67,6 +67,8 @@ The question to ask: show me the list of things this can do without a person, an
 
 <img src="/diagrams/architecture.svg" width="1600" height="1426" alt="Systems architecture diagram. Channels such as web, mobile, email and voice feed an application layer of interface, public API, access and billing. A request needing judgement passes into the AI layer, where it moves through four numbered steps: assemble the context, ask the model, check the answer, take the action. Those steps draw on memory, a model gateway holding GPT, Claude and Gemini with routing and fallback, and a set of tools. A control rail of guardrails, human approval, evaluation and an audit trail runs across all four steps. The AI layer reads and writes the systems the business already runs on, such as bookings, quotes and client records, and the data infrastructure beneath them. The answer returns to the application layer." />
 
+Both diagrams on this page have a home of their own, at full size and with a walk-through of each part: [how AI works, in two diagrams](/how-ai-works). Send that one to whoever has to approve the spend.
+
 ## Distribution, quality control and the paper trail
 
 **Distribution** is how the output reaches somebody: the app, Slack, the inbox, the phone. Cheap to add, and the reason a good system quietly spreads through a business.

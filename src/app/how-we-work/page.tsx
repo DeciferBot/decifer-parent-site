@@ -112,6 +112,15 @@ export default function HowWeWorkPage() {
           <div className="mt-6">
             <MechanismDiagram />
           </div>
+          <p className="t-body mt-6 text-[0.9375rem]">
+            That is the rule inside one step. For the whole system around it,
+            two diagrams show where an AI layer sits in the technology you
+            already run, and how one request moves through it:{" "}
+            <Link href="/how-ai-works" className="link">
+              how AI works, in two diagrams
+            </Link>
+            .
+          </p>
         </div>
       </section>
 
