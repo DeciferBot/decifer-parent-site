@@ -73,7 +73,7 @@ export default function Nav() {
 
         <button
           type="button"
-          className="-mr-2 rounded-sm p-2 text-ink md:hidden"
+          className="-mr-2 grid h-11 w-11 place-items-center rounded-sm text-ink md:hidden"
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
