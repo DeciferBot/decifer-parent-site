@@ -21,6 +21,7 @@ export type StackKey =
   | "github"
   | "resend"
   | "telegram"
+  | "twilio"
   | "digitalocean"
   | "docker"
   | "stripe"
@@ -181,6 +182,16 @@ export const stack: StackItem[] = [
     order: 13,
   },
   {
+    key: "twilio",
+    name: "Twilio",
+    category: "Communication",
+    role: "The carrier layer under messaging that needs a real phone number, rather than an app account: WhatsApp Business and SMS.",
+    why: "The API is the easy half. The hard half is the account: business verification, a registered sender, and a platform that can withdraw the channel with no notice and no appeal. That happened to a WhatsApp concierge we had running, and the useful part was the recovery: the concierge logic sat behind the channel rather than inside it, so a replacement went live within days instead of being rebuilt from nothing. We wire messaging that way now as a matter of course.",
+    url: "https://www.twilio.com",
+    clientOwned: true,
+    order: 14,
+  },
+  {
     key: "stripe",
     name: "Stripe",
     category: "Commerce and analytics",
@@ -188,7 +199,7 @@ export const stack: StackItem[] = [
     why: "It is the payments provider your accountant and your bank already understand. We wire it so the money and the records land in your account, not ours.",
     url: "https://stripe.com",
     clientOwned: true,
-    order: 14,
+    order: 15,
   },
   {
     key: "ga4",
@@ -198,7 +209,7 @@ export const stack: StackItem[] = [
     why: "Free, standard, and good enough for almost every business when configured properly. Most setups we inherit measure nothing useful. Ours are built backwards from the five questions you need answered.",
     url: "https://marketingplatform.google.com/about/analytics/",
     clientOwned: true,
-    order: 15,
+    order: 16,
   },
 ];
 
