@@ -1,0 +1,54 @@
+---
+title: "Security, Speed, Scalability: the three S test for software"
+description: "Before software goes in front of real users it has to pass three S's. What each one means in plain English, the question that tests it, and what the test misses."
+publishedAt: "2026-08-25"
+updatedAt: "2026-08-25"
+author: "Amit Chopra"
+topic: "Playbooks"
+tags: ["production ready", "security", "scalability", "software quality", "vibe coding"]
+readingMinutes: 6
+relatedServiceKeys: ["ai-product-development", "ai-advisory"]
+relatedPostSlugs: ["what-production-ready-actually-means", "is-your-vibe-coded-app-safe-to-launch"]
+---
+
+Before software goes in front of real users, it has to pass three S's: Security, Speed and Scalability. It is the shortest useful test we know, small enough to hold in a meeting, and sharp enough to expose a demo pretending to be a product. This article says what each S means in plain English, gives you the one question that tests it, and is honest about what the test misses.
+
+You do not need to be technical to use it. Each question has an answer that sounds specific and an answer that sounds vague, and the difference is the whole assessment.
+
+## Security: can a stranger get in?
+
+Security is not a feature you add at the end. It is three habits, all checkable today.
+
+Secrets stay on the server: every API key and password lives in server configuration, never in the code, never in anything a browser downloads, never in a public repository. Endpoints deny by default: every route checks who is asking before it answers, and the test is to log out, take the raw URLs, and try them as a stranger. And data survives an accident: backups run automatically, and one has actually been restored, on a date someone can name.
+
+AI-built software makes this S urgent rather than optional. Research on AI-generated code keeps finding that a large share of it carries at least one serious, well-known vulnerability, because models reproduce the public code they learned from, and much of the public code is insecure. We wrote the full pre-launch pass in [is your vibe-coded app safe to launch](/blog/is-your-vibe-coded-app-safe-to-launch), and it takes about a day to run.
+
+**The question that tests it:** "when did you last attack your own app on purpose, and what did you find?" A date and a finding is a pass. "Our developer is very careful" is a fail.
+
+## Speed: fast for the user, and fast to change
+
+Speed has two faces, and the second one is the one buyers forget.
+
+Fast for the user is the obvious one. A slow screen is an abandoned screen, and extra seconds of waiting cost conversions, patience and trust. This is measurable for free: public tools will grade any page you give them, today, no vendor required.
+
+Fast to change is the one that decides the next year. When a bug appears or a rule changes, how long until the fix is live? In a healthy system the answer is hours, because tests make change safe and deployment is routine. In an unhealthy one the answer is weeks, because every change is a gamble nobody wants to take, and the system quietly freezes in whatever shape it shipped. A product that is quick on screen but terrifying to touch fails this S within a quarter.
+
+**The question that tests it:** "how long does a small fix take to reach users, and what makes that safe?" Listen for tests and routine. "We are careful" is not a mechanism.
+
+## Scalability: does the busiest day look like the quietest?
+
+Scalability means the system behaves the same on its busiest day as on its quietest: the month-end rush, the marketing spike, ten times the users. Nothing in the design assumes today's load is the permanent load.
+
+Two honest cautions. First, most small-business systems fail scale for boring reasons: a database query that was fine with a hundred records and is not fine with a hundred thousand, a report that loads everything into memory, a third-party limit nobody read. These are cheap to avoid at build time and expensive to discover live. Second, the opposite mistake is real: building for a million users you do not have. Paying for that before you need it is waste dressed as prudence. The right question is not "does this scale infinitely" but "what is the ceiling, and do we know it".
+
+**The question that tests it:** "what is the largest load this has handled, and what breaks first beyond it?" A specific answer, with a number and a named bottleneck, is a pass. "It scales" is a slogan.
+
+## What the three S's miss
+
+The three S's test the machine. They do not test the people around it, and two of the six questions in [what production-ready actually means](/blog/what-production-ready-actually-means) live there: can you see what the system did yesterday, and does someone own it at two in the morning, with every account in your name. A system can pass all three S's and still be an orphan, and an orphan fails on the first bad night.
+
+So use the three S's in the meeting, and the six questions before you sign.
+
+## Using it on a vendor, including us
+
+Ask the three questions above, in order, and write the answers down. Specific answers with dates, numbers and mechanisms mean you are talking to people who run software. Adjectives mean you are talking to people who sell it. We are happy to be tested the same way: our two-week assessment runs all of this against your system in writing, at a fixed fee, credited against any build, and the parts of the answer that are uncomfortable are the parts you are paying for.

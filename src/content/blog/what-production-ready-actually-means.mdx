@@ -2,13 +2,13 @@
 title: "What production-ready actually means"
 description: "Everyone says production-ready. Almost nobody defines it. Here is the definition we build to, as six questions you can ask about any system, including one an AI wrote for you in a weekend."
 publishedAt: "2026-08-24"
-updatedAt: "2026-08-24"
+updatedAt: "2026-08-25"
 author: "Amit Chopra"
 topic: "Playbooks"
 tags: ["production ready", "vibe coding", "ai coding tools", "software quality"]
 readingMinutes: 6
 relatedServiceKeys: ["ai-product-development", "ai-advisory"]
-relatedPostSlugs: ["nine-vibe-coding-mistakes-that-follow-you-into-production", "how-to-automate-three-business-processes-with-ai"]
+relatedPostSlugs: ["security-speed-scalability-the-three-s-test", "nine-vibe-coding-mistakes-that-follow-you-into-production"]
 ---
 
 AI coding tools have made the first day of building software cheap. A working screen by dinner is now normal. That is genuinely new, and it has created a new confusion: the gap between "it works" and "it is ready" has never been wider, and the words used to describe that gap have never been vaguer.
@@ -25,7 +25,7 @@ The test: name the three most likely failures. If the answer to "what happens th
 
 ## 2. Can you see what it did?
 
-A system you cannot see into is a system you find out about from customers. Every run should leave a line: when it started, what it did, whether it succeeded. Silence should trigger an alert, because the failures that hurt are the quiet ones. One of ours once failed thirteen of sixteen runs and nobody noticed for three weeks. Now a scheduled job checks the health of every other scheduled job.
+A system you cannot see into is a system you find out about from customers. Every run should leave a line: when it started, what it did, whether it succeeded. Silence should trigger an alert, because the failures that hurt are the quiet ones. One of ours once failed thirteen of its last sixteen runs and nobody noticed for three weeks. Now a scheduled job checks the health of every other scheduled job.
 
 The test: ask "what did the system do yesterday?" If the answer takes longer than a minute to produce, it is not ready.
 
@@ -59,6 +59,6 @@ Behind the six there is one more, specific to systems with AI in them: where is 
 
 ## Using the list
 
-Six questions, one page, no jargon. If you are building with AI tools, run the list before you invite real users, in the order written: survival, visibility, changeability, data, security, ownership. Most weekend builds fail four of the six, which is fine, because now you have a work list instead of a bad surprise.
+Six questions, one page, no jargon. If you are building with AI tools, run the list before you invite real users, in the order written: survival, visibility, changeability, data, security, ownership. If you need a version that fits in one line of a meeting, use [the three S test: Security, Speed, Scalability](/blog/security-speed-scalability-the-three-s-test). Most weekend builds fail four of the six, which is fine, because now you have a work list instead of a bad surprise.
 
 If you would rather have the list run for you, our two-week assessment does exactly that, in writing, at a fixed fee, credited against any build. Either way, the standard is the same, and now you have it.

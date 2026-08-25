@@ -2,7 +2,7 @@
 title: "Nine vibe coding mistakes that follow you into production"
 description: "Vibe coding is real and useful, and it is producing a generation of apps that fail the same nine ways. Each mistake below, why it happens, and the fix, from a company that gets called after the demo."
 publishedAt: "2026-08-24"
-updatedAt: "2026-08-24"
+updatedAt: "2026-08-25"
 author: "Amit Chopra"
 topic: "Field notes"
 tags: ["vibe coding", "ai coding tools", "production", "security", "small business"]
@@ -17,7 +17,7 @@ But we also get the phone calls that come three months later, when a vibe-coded 
 
 ## 1. The API key is in the app
 
-**What happens:** the coding tool needs a key to call a payment provider or a model, and the fastest place to put it is right in the code. The key ships to the browser, or gets pushed to a public repository. Bots scan public repositories for keys constantly, and a leaked key can be found and abused within minutes.
+**What happens:** the coding tool needs a key to call a payment provider or a model, and the fastest place to put it is right in the code. The key ships to the browser, or gets pushed to a public repository. Bots scan public repositories for keys constantly; security researchers who plant test keys there watch them get abused within minutes.
 
 **The fix:** keys live on the server, in environment variables, never in code and never in anything the browser downloads. If a key has ever been in a public repository, it is burned. Rotate it today, not after you finish the feature. Then turn on secret scanning in your repository settings so the next leak is caught by a machine instead of a stranger.
 

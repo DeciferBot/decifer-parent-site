@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllPosts, lastPostChange } from "@/lib/blog";
 import { servicesOrdered } from "./data/services";
 import { publishedCaseShapes } from "./data/caseShapes";
+import { tools } from "./data/tools";
 
 const BASE = "https://www.decifer.io";
 
@@ -73,6 +74,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
 
     { url: `${BASE}/learn`, lastModified: blogTouched, changeFrequency: "monthly", priority: 0.85 },
+
+    {
+      url: `${BASE}/tools`,
+      lastModified: newest(tools.map((t) => t.updatedAt), STATIC_LAST_MODIFIED),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    ...tools.map((t) => ({
+      url: `${BASE}/tools/${t.key}`,
+      lastModified: new Date(t.updatedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
 
     { url: `${BASE}/blog`, lastModified: blogTouched, changeFrequency: "weekly", priority: 0.8 },
     ...posts.map((p) => ({
