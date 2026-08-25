@@ -95,7 +95,10 @@ export default function CaseBoard() {
   return (
     <aside className="board" aria-label="Processes Decifer has taken to production">
       <div className="flex items-center justify-between px-4.5 py-3.5">
-        <span className="label text-on-dark-2">Taken to production</span>
+        <span className="label flex items-center gap-2.5 text-on-dark-2">
+          <span className="board-live-dot" aria-hidden="true" />
+          Taken to production
+        </span>
         <span className="text-[0.8125rem] text-on-dark-2">7 industries, one method</span>
       </div>
       {rows.map((r, i) => (

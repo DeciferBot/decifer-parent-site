@@ -15,6 +15,8 @@
 
 import type { StackKey } from "./stack";
 import type { ProofKey } from "./proof";
+import type { IconName } from "../components/Icon";
+import type { AccentHue } from "./accents";
 
 export type ServiceKey =
   | "ai-agents"
@@ -25,6 +27,10 @@ export type ServiceKey =
 export interface Service {
   /** Stable key. Also the URL slug: /services/{key}. Never change once live. */
   key: ServiceKey;
+  /** Icon from Icon.tsx. The same mark wherever this service appears. */
+  icon: IconName;
+  /** Accent hue suffix; see --color-a-* in globals.css. Held constant too. */
+  hue: AccentHue;
   /** H1 and page title. Carries the search term. */
   name: string;
   /** Short label for nav, chips and the enquiry select. */
@@ -66,6 +72,8 @@ export interface Service {
 export const services: Service[] = [
   {
     key: "ai-agents",
+    icon: "agent",
+    hue: "orange",
     name: "AI agent development",
     navLabel: "Workflow automation and agents",
     cardHeadline: "Remove manual work from processes that can be measured.",
@@ -106,6 +114,8 @@ export const services: Service[] = [
   },
   {
     key: "data-and-reporting",
+    icon: "data",
+    hue: "teal",
     name: "Data and reporting automation",
     navLabel: "Data and decision intelligence",
     cardHeadline: "Make business information usable.",
@@ -145,6 +155,8 @@ export const services: Service[] = [
   },
   {
     key: "ai-product-development",
+    icon: "product",
+    hue: "blue",
     name: "AI product development",
     navLabel: "Custom AI products",
     cardHeadline: "From nothing to live in weeks, and you keep the repository.",
@@ -184,6 +196,8 @@ export const services: Service[] = [
   },
   {
     key: "ai-advisory",
+    icon: "advisory",
+    hue: "violet",
     name: "AI consulting and assessment",
     navLabel: "AI opportunity assessment",
     cardHeadline: "Find the opportunities worth funding, and the ones that are not.",

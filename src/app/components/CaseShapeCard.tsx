@@ -1,7 +1,10 @@
 import Link from "next/link";
 import Arrow from "./Arrow";
+import Icon from "./Icon";
 import type { CaseShape } from "../data/caseShapes";
+import { sectorMark } from "../data/caseShapes";
 import { servicesByKey } from "../data/services";
+import { accent } from "../data/accents";
 
 /**
  * One case as a row inside a panel. Client work is anonymised; Decifer's own
@@ -10,13 +13,18 @@ import { servicesByKey } from "../data/services";
  * results, not titles.
  */
 export default function CaseRow({ shape: c }: { shape: CaseShape }) {
+  const mark = sectorMark[c.sector];
   return (
     <li>
       <Link
         href={`/work/${c.key}`}
         className="row-link group grid gap-3 px-6 py-7 md:grid-cols-12 md:gap-8"
+        style={accent(mark.hue)}
       >
         <div className="md:col-span-3">
+          <span className="icon-tile mb-3">
+            <Icon name={mark.icon} />
+          </span>
           <p className="text-sm font-semibold text-ink">{c.sector}</p>
           <p className="mt-1 text-sm text-muted">{c.region}</p>
           {c.ownProduct ? (

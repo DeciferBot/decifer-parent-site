@@ -19,6 +19,8 @@
  */
 
 import type { ServiceKey } from "./services";
+import type { IconName } from "../components/Icon";
+import type { AccentHue } from "./accents";
 import { proofByKey } from "./proof";
 
 export type CapabilityKey =
@@ -30,6 +32,10 @@ export type CapabilityKey =
 
 export interface Capability {
   key: CapabilityKey;
+  /** Icon from Icon.tsx, held constant wherever this capability appears. */
+  icon: IconName;
+  /** Accent hue suffix; see accents.ts. */
+  hue: AccentHue;
   /** The business value, stated first, industry-agnostic. Leads the card. */
   name: string;
   /** One sentence: the mechanism, stated generally. */
@@ -49,6 +55,8 @@ export interface Capability {
 export const capabilities: Capability[] = [
   {
     key: "records-from-chaos",
+    icon: "record",
+    hue: "amber",
     name: "One system instead of scattered paperwork and memory",
     pattern:
       "Documents, spreadsheets and years of institutional memory, turned into one record that is searchable, correct, and does not live in one person's head.",
@@ -62,6 +70,8 @@ export const capabilities: Capability[] = [
   },
   {
     key: "fact-computed-reporting",
+    icon: "data",
+    hue: "teal",
     name: "A number everyone in the business already trusts",
     pattern:
       "One fact store, refreshed on a schedule, with every report built from those facts in code. A model may write the sentence around a figure; the figure itself always comes from the code.",
@@ -75,6 +85,8 @@ export const capabilities: Capability[] = [
   },
   {
     key: "boundary-scoped-agents",
+    icon: "agent",
+    hue: "orange",
     name: "An agent that completes the task, or hands it to a person",
     pattern:
       "An agent scoped to one job, wired into the systems it needs, with a written definition of what it may do, what it hands to a person, and a log of every action it takes.",
@@ -88,6 +100,8 @@ export const capabilities: Capability[] = [
   },
   {
     key: "deliberate-non-automation",
+    icon: "boundary",
+    hue: "green",
     name: "Knowing exactly where AI should not be used",
     pattern:
       "We decide where AI is genuinely too risky, and remove it from that part of the system completely: no field to type a number into, no AI in that step at all, a person alerted before anything happens.",
@@ -101,6 +115,8 @@ export const capabilities: Capability[] = [
   },
   {
     key: "product-grade-discipline",
+    icon: "product",
+    hue: "blue",
     name: "Built to run with nobody watching it",
     pattern:
       "Every engagement held to the bar of a public product: monitoring, an eval suite, a runbook and a proper handover.",

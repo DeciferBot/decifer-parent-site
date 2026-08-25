@@ -31,6 +31,8 @@
 
 import type { ServiceKey } from "./services";
 import type { StackKey } from "./stack";
+import type { IconName } from "../components/Icon";
+import type { AccentHue } from "./accents";
 
 export type Sector =
   | "Hospitality and catering"
@@ -41,6 +43,18 @@ export type Sector =
   | "Financial markets intelligence"
   | "Education"
   | "Property";
+
+/** Every sector carries one mark and one hue, everywhere it appears. */
+export const sectorMark: Record<Sector, { icon: IconName; hue: AccentHue }> = {
+  "Hospitality and catering": { icon: "catering", hue: "amber" },
+  "Group marketing": { icon: "group", hue: "teal" },
+  "Events management": { icon: "events", hue: "plum" },
+  "Healthcare and counselling": { icon: "health", hue: "green" },
+  "Creator and personal brand": { icon: "creator", hue: "orange" },
+  "Financial markets intelligence": { icon: "markets", hue: "blue" },
+  Education: { icon: "education", hue: "violet" },
+  Property: { icon: "property", hue: "amber" },
+};
 
 export interface CaseShape {
   /** Stable key. Also the URL slug: /work/{key}. Describes the work, never the client. */

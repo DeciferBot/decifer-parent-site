@@ -22,7 +22,7 @@ function hasPhoto() {
 export default function FounderSection({ compact = false }: { compact?: boolean }) {
   const photo = hasPhoto();
   return (
-    <section id="founder" className="pb-7 sm:pb-10">
+    <section id="founder" className="band band-warm">
       <div className="container-x">
         <div className="panel">
           <div className="panel-head">
