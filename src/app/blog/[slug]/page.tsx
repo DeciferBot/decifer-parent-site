@@ -56,6 +56,23 @@ export default async function PostPage({ params }: Params) {
   /** The interactive version of this article, when one exists. */
   const tool = tools.find((t) => t.articleSlug === slug);
 
+  /** Figures in the body, published as their own ImageObject nodes so Google
+   *  Images can index a diagram with its caption rather than guessing from
+   *  surrounding prose. */
+  const figures = post.images ?? [];
+  const figureNodes = figures.map((img, i) => ({
+    "@type": "ImageObject",
+    "@id": `${SITE}${img.src}#image`,
+    contentUrl: `${SITE}${img.src}`,
+    url: `${SITE}${img.src}`,
+    width: img.width,
+    height: img.height,
+    caption: img.caption ?? img.alt,
+    representativeOfPage: i === 0 || undefined,
+    creditText: "Decifer",
+    creator: { "@id": `${SITE}/#organization` },
+  }));
+
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -69,11 +86,15 @@ export default async function PostPage({ params }: Params) {
         dateModified: post.updatedAt ?? post.publishedAt,
         author: { "@type": "Person", "@id": `${SITE}/about#amit-chopra`, name: post.author, url: `${SITE}/about` },
         publisher: { "@id": `${SITE}/#organization` },
-        image: [post.image ? `${SITE}${post.image}` : `${SITE}/blog/${slug}/opengraph-image`],
+        image: [
+          post.image ? `${SITE}${post.image}` : `${SITE}/blog/${slug}/opengraph-image`,
+          ...figures.map((f) => ({ "@id": `${SITE}${f.src}#image` })),
+        ],
         isPartOf: { "@id": `${SITE}/blog#blog` },
         keywords: post.tags.join(", "),
         inLanguage: "en",
       },
+      ...figureNodes,
       {
         "@type": "BreadcrumbList",
         itemListElement: [

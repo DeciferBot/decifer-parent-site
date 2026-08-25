@@ -97,6 +97,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(p.updatedAt ?? p.publishedAt),
       changeFrequency: "monthly" as const,
       priority: 0.7,
+      // Diagrams are worth indexing in their own right, and an image sitemap
+      // is the only way Google reliably finds one that a page renders inline.
+      ...(p.images?.length ? { images: p.images.map((i) => `${BASE}${i.src}`) } : {}),
     })),
 
     { url: `${BASE}/about`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.7 },

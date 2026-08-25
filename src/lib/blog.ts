@@ -20,6 +20,15 @@ const MAX_HEADLINE = 110; // Google drops the rich result above this
 export const BLOG_DESCRIPTION =
   "Plain-English writing on AI agents, automation and building products, from a Dubai company that runs its own. Costs shown, myths broken, methods shown in full.";
 
+export interface PostImage {
+  src: string;
+  alt: string;
+  /** Human-readable line for Google Images. Falls back to alt. */
+  caption?: string;
+  width: number;
+  height: number;
+}
+
 export interface PostMeta {
   slug: string;
   title: string;
@@ -33,6 +42,11 @@ export interface PostMeta {
   draft?: boolean;
   image?: string;
   imageAlt?: string;
+  /** Diagrams in the post body, surfaced to Google Images through
+   *  ImageObject schema on the article and entries in the image sitemap.
+   *  Dimensions are required: they set the aspect ratio Google indexes and
+   *  they are what keeps the rendered figure from shifting the layout. */
+  images?: PostImage[];
   relatedServiceKeys?: ServiceKey[];
   relatedPostSlugs?: string[];
   canonical?: string;
@@ -53,6 +67,11 @@ function readMeta(file: string): PostMeta {
     throw new Error(`Blog post ${file} contains an em dash (brand rule)`);
   }
   meta.tags = meta.tags ?? [];
+  for (const img of meta.images ?? []) {
+    if (!img.src || !img.alt || !img.width || !img.height) {
+      throw new Error(`Blog post ${file} has an image missing src, alt, width or height`);
+    }
+  }
   meta.readingMinutes = meta.readingMinutes ?? Math.max(1, Math.round(raw.split(/\s+/).length / 220));
   return meta;
 }
