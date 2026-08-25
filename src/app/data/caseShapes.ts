@@ -252,7 +252,7 @@ export const caseShapes: CaseShape[] = [
     outcome: [
       "Every enquiry gets a grounded first reply and a structured record",
       "Closers receive a dossier instead of a cold inbox",
-      "The guardrail is tested by an eight-case suite that fails the build if it regresses",
+      "The guardrail is tested by a seven-case trick suite and enforced live on every reply",
     ],
     measurement:
       "First-reply time and lead-to-viewing rate, read from the conversation and booking tables before and after.",

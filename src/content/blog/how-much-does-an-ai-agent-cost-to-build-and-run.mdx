@@ -19,7 +19,7 @@ We will not print a single made-up number, because a price without your specific
 
 Four things, in rough order of weight:
 
-**How wrong the agent is allowed to be.** This is the biggest driver and the least discussed. A drafting tool a person reviews can be built quickly. An agent that talks to your customers needs rules it cannot break and a test suite that proves it. One of our production agents ships with a regression suite that tries eight different ways to trick it into quoting a price the business cannot fulfil, and the build fails if any succeed. Writing those tests is real work, and skipping them is how agents end up in the news.
+**How wrong the agent is allowed to be.** This is the biggest driver and the least discussed. A drafting tool a person reviews can be built quickly. An agent that talks to your customers needs rules it cannot break and a test suite that proves it. One of our production agents ships with a guardrail suite that tries seven different ways to trick it into quoting a price the business cannot fulfil, plus a live check on every reply that hands an ungrounded answer to a person. Writing those guardrails is real work, and skipping them is how agents end up in the news.
 
 **Integrations.** Each system the agent touches, your CRM, your inbox, your calendar, your accounting tool, adds connection work and a failure mode to handle. Two integrations is a small project. Seven is not.
 
@@ -35,7 +35,7 @@ This is the bill that quotes hide. It has four parts:
 
 **Hosting and infrastructure.** The servers, the database, the scheduler. Modest, predictable, permanent.
 
-**Monitoring.** Something has to watch the agent. We learned this the expensive way: one of our agents once failed thirteen of its last sixteen runs on an empty API balance and nobody noticed for three weeks, because a failed run and a quiet run looked the same. Now a scheduled job checks the health of every other job. That watching costs something to build and a little to run, and an agent without it is not cheaper, it is just unwatched.
+**Monitoring.** Something has to watch the agent. The expensive failure is the quiet one: an API account runs dry, every run fails, and nothing looks different from a quiet day. Our systems page on the exact errors that mean an account is empty, and a watchdog confirms the critical jobs are still installed. That watching costs something to build and a little to run, and an agent without it is not cheaper, it is just unwatched.
 
 **Maintenance and change.** Models get updated, APIs change, your business rules change. Budget for a few hours a month, or you are budgeting for a slow decay.
 

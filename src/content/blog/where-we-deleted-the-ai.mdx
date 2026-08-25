@@ -2,7 +2,7 @@
 title: "Where we deleted the AI: five times determinism was the right answer"
 description: "We build AI systems for a living. Five times in our own production systems, the right fix was to take the model out. Here is each one, what it was doing wrong, and what replaced it."
 publishedAt: "2026-08-24"
-updatedAt: "2026-08-24"
+updatedAt: "2026-08-25"
 author: "Amit Chopra"
 topic: "Myths"
 tags: ["ai agents", "production", "determinism", "myths"]
@@ -19,9 +19,9 @@ So here are five places in our own production systems where we removed a model a
 
 We run a private platform for group events. One of its jobs is a nightly scan that looks for gaps in the plan: a night with no venue, a guest with no arrival time, a booking with no deposit recorded.
 
-The first version asked a model to look at the plan and suggest what was missing. It was clever. It was also, one morning, suggesting airport transfers for London Heathrow to a party flying into Ibiza. Nothing in the data said London. The model had pattern-matched "airport transfer" to the most common airport it knew and filled the gap with confidence.
+The first version asked a model to look at the plan and suggest what was missing. It was clever, and clever was the problem: a scheduled check for missing facts needs to be right and cheap, not creative. A model in that seat can only add ways to be wrong, and a wrong suggestion at five in the morning wastes the one thing the scan exists to protect, the organiser's attention.
 
-The fix was to delete the model call entirely. The scan is now a list of rules: for each night, is there a venue; for each guest, is there a flight; for each booking, is there a deposit. It runs in milliseconds, it costs nothing, and it has never once invented a city.
+The fix was to delete the model call entirely. The scan is now a list of rules: for each night, is there a venue; for each guest, is there a flight; for each booking, is there a deposit. It runs in milliseconds, it costs nothing, and it cannot invent anything.
 
 The lesson, which we now write into every scope: **a scheduled check for missing facts needs to be right and cheap, not clever.** If the question has a yes-or-no answer that the database already holds, there is no job for a model.
 
@@ -49,25 +49,25 @@ We built the intake system for a private psychology practice. Screening question
 
 There is no AI anywhere a client can meet it. No chatbot. No model reading a questionnaire and summarising the person. No triage by a model.
 
-The screening instruments are scored by arithmetic against the published clinical cutoffs, because that is what the instruments are for. Every result carries a non-diagnosis notice, because software that sounds like a clinician is a liability. The highest-risk question is stored in its own database column so it can never be averaged away inside a score.
+The screening instruments are scored by arithmetic against the published clinical cutoffs, because that is what the instruments are for. Every clinical screening result carries a non-diagnosis notice, because software that sounds like a clinician is a liability. The highest-risk question is stored in its own database column so it can never be averaged away inside a score.
 
 The only AI in the whole project writes blog posts, in a separate pipeline, and even that runs through a validator that rejects any statistic without a source link and forces a crisis link onto any article that touches crisis terms.
 
 We put this case on our website because it is the clearest example of the rule we build by. **Some domains get no AI at all where a person could meet it**, and knowing which domains those are is most of the skill.
 
-## 5. The group dashboard with exactly one model call
+## 5. The group dashboard where the model extracts and a person ratifies
 
-We built a marketing dashboard for a group with nine operating companies. It pulls from Google Analytics, Google Ads, Meta, LinkedIn and X, snapshots the numbers every day, and produces a weekly memo for the board.
+We built a marketing dashboard for a group with eleven operating companies. It pulls from Google Analytics, Google Ads, Meta, LinkedIn and X, snapshots the numbers every day, and produces a weekly memo for the board.
 
-In the whole codebase there is one call to a model. It reads contract documents and proposes the dates and values it finds. Its output is always marked as proposed, a human ratifies it with one click, and underneath it sits a plain rules parser that produces the same fields without the model at all. The model's answer is laid over the parser's answer, so the reliable fields can never be made worse.
+The document-reading step makes exactly one call to a model. It reads contract documents and proposes the dates and values it finds. Its output is always marked as proposed, a human ratifies it with one click, and underneath it sits a plain rules parser that produces the same fields without the model at all. The model's answer is laid over the parser's answer, so the reliable fields can never be made worse.
 
-Everything else is code. The numbers, the comparisons, the rankings, the pacing against budget. The memo's sentences are written by a model, but every figure in those sentences has to already exist in the data the code computed. If the model writes a number that is not in that set, the sentence is thrown away and a template is used instead.
+Everything else is code. The numbers, the comparisons, the rankings, the pacing against budget. And in the engine this work grew into, every figure in a sentence the model writes has to already exist in the data the code computed. If the model writes a number that is not in that set, the sentence is thrown away and a template is used instead.
 
 We call this the rule: **code computes the numbers, the model only narrates or extracts, and the boundary is enforced by a test.** The group dashboard is where we learned to write it down.
 
 ## What the five have in common
 
-None of these decisions came from distrust of the technology. We use models every day and we build agents that run unattended for months. The decisions came from asking one question each time:
+None of these decisions came from distrust of the technology. We use models every day and we build agents that run in production for months. The decisions came from asking one question each time:
 
 > Does this step need judgement, or does it need to be right?
 

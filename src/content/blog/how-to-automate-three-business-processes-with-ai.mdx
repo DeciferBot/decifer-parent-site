@@ -56,7 +56,7 @@ We publish the full method on purpose. The steps are not the hard part; knowing 
 3. Below the threshold, the enquirer gets a polite, useful reply built from a template, and the record is filed in the CRM.
 4. Above the threshold, a human closer gets the dossier, and the enquirer is told a named person will be in touch. The agent never books the deal.
 5. The agent is bound by hard rules on what it may never say: no prices, no dates, no availability promises. Not "discouraged". Bound, in code.
-6. Before any change ships, a test suite tries to talk the agent into breaking those rules. One of our production agents carries an eight-case suite that tries to trick it into quoting a price the business cannot fulfil, and the build fails if any case succeeds.
+6. Before any change ships, a test suite tries to talk the agent into breaking those rules. One of our production agents carries a suite of seven trick cases aimed at exactly that, plus a live check that catches an ungrounded reply and hands the conversation to a person.
 
 **Where it goes wrong:** the agent promising something the business cannot deliver. One invented discount can cost more than the system saves in a year, which is why step 6 matters most and is the step most often skipped. The other failure is quieter: automating the close itself. The moment a mistake is expensive, you want a person. The dossier is the automation. The closing is the job.
 
