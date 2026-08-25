@@ -209,7 +209,7 @@ export default function AboutPage() {
         <div className="container-x section">
           <SectionHead
             title="Six rules that apply to everything."
-            lede="They apply to our products and to every client engagement. They are also why some work is turned down."
+            lede="They apply to our products and to every client engagement. They are why the work holds up at real volume."
           />
           <ul className="mt-11 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {principles.map((p, i) => (

@@ -1,11 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ComponentProps } from "react";
 import Link from "next/link";
+import ToolNextStep from "./ToolNextStep";
 
 /**
  * The three-question decision rule from the article, as a tool. The verdict
  * is a lookup, not a model: same answers, same verdict, every time.
+ *
+ * Each verdict is stated as the thing to build first, never as a reason to
+ * stop, and carries the next step that goes with it. Steering someone to
+ * the cheaper build is only useful if the page also says where that build
+ * comes from.
  */
 
 const QUESTIONS = [
@@ -30,19 +36,57 @@ export default function AgentOrAutomation() {
 
   let heading = "";
   let body = "";
+  let next: ComponentProps<typeof ToolNextStep> | null = null;
   if (done) {
     if (messy) {
-      heading = "An agent, for one job: taming the messy input.";
+      heading = "An agent, for one job: reading the messy input.";
       body =
-        "Use a model to extract order from the mess: pull the facts out of the rambling email or the voice note into clean fields. The decisions that follow can still be plain rules, and should be. Do not let the model decide; let it read.";
+        "Use a model to pull the facts out of the rambling email or the voice note and into clean fields. The decisions that follow stay as plain rules. The model reads the input; the rules decide what happens next.";
+      next = {
+        line: "The boundary is the job: what the model reads, what the rules decide, what a person signs off. We write it down before anything is built. Half an hour on a call gets you our version for your task.",
+        cta: "Describe the messy input",
+        href: `/contact?problem=${encodeURIComponent(
+          "We have a task where the input is messy in ways we cannot list in advance, so a fixed workflow does not cope. Your three-question tool says a model should read the input while plain rules make the decisions. We want to know what that would take."
+        )}&service=ai-agents`,
+        event: "tools_agent_contact_agent",
+        secondary: {
+          label: "Or see how we build agents",
+          href: "/services/ai-agents",
+          event: "tools_agent_services_agent",
+        },
+      };
     } else if (steps) {
-      heading = "Automation. Do not buy an agent for this.";
+      heading = "Start with automation. It is the cheaper build and it does this job.";
       body =
-        "The steps fit on a page, so a fixed workflow does the job: triggers, templates, rules. It will be cheaper to build, cheaper to run, and readable when something goes wrong. An agent here is paying improvisation prices for repetition work.";
+        "The steps fit on a page, so a fixed workflow does it: triggers, templates, rules. Cheaper to build, cheaper to run, and readable when something goes wrong. Keep the agent budget for a part of the business where the input is genuinely messy.";
+      next = {
+        line: "Before you commission it, put the hours and the quote through the arithmetic. It takes a minute and tells you whether the price makes sense.",
+        cta: "Run the payback numbers",
+        href: "/tools/automation-payback-calculator",
+        event: "tools_agent_payback_automation",
+        secondary: {
+          label: "Or see how we build workflow automation",
+          href: "/services/ai-agents",
+          event: "tools_agent_services_automation",
+        },
+      };
     } else {
-      heading = "Neither, yet. The process needs writing down first.";
+      heading = "Start by writing the process down. That is the first piece of work.";
       body =
-        "If the steps cannot be written on a page and the input is not the problem, the process itself is undefined. Automating an undefined process produces an automated mess. Sit with the person who does the task and write the page first; the answer usually becomes obvious halfway down.";
+        "If the steps cannot be written on a page and the input is not the problem, the process is still undefined. Write the page first, with the person who does the task. It becomes the specification for whatever gets built next.";
+      next = {
+        line: "Writing that page is work, and most projects skip it. If nobody on your side has the time, the two-week assessment does it: the process mapped, costed, and a shortlist of what to automate first. Fixed fee, credited in full against any build.",
+        cta: "Ask about the assessment",
+        href: `/contact?problem=${encodeURIComponent(
+          "Your three-question tool says our process is not defined enough to automate yet: the steps do not fit on a page and the input is not the problem. We want help mapping and costing it before anyone builds anything."
+        )}&service=ai-advisory`,
+        event: "tools_agent_contact_undefined",
+        secondary: {
+          label: "Or read what the assessment covers",
+          href: "/services/ai-advisory",
+          event: "tools_agent_advisory_undefined",
+        },
+      };
     }
     if (costly) {
       body +=
@@ -100,6 +144,7 @@ export default function AgentOrAutomation() {
                 AI agent vs automation, which does your business need?
               </Link>
             </p>
+            {next ? <ToolNextStep {...next} /> : null}
           </div>
         ) : (
           <p className="text-[15px] leading-relaxed text-muted">

@@ -8,7 +8,7 @@ import Arrow from "./Arrow";
  */
 export default function CtaBand({
   title = "Make the next AI project one the business can measure.",
-  body = "Thirty minutes with the founder, no slides. You leave knowing whether the process is worth automating, what it would take, what it should return, and what we would not automate yet.",
+  body = "Thirty minutes with the founder, no slides. You will know what the right solution looks like, what it would take to build, what it should return, and which part to start with.",
   eventPrefix = "cta",
 }: {
   title?: string;

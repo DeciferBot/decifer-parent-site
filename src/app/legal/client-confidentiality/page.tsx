@@ -36,7 +36,7 @@ export default function Page() {
         <p>
           Each piece of work is described by shape: the sector, the country,
           the problem, what we built, what changed, how it is measured, and
-          what we deliberately did not automate. We keep sector descriptions
+          where a person stays in charge. We keep sector descriptions
           general enough that the client cannot be guessed. If an honest
           description would identify someone, we cut the description rather
           than soften it.

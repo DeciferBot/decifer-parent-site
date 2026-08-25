@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ComponentProps } from "react";
 import Link from "next/link";
+import ToolNextStep from "./ToolNextStep";
 
 /**
  * The six pre-launch checks from the article, as an interactive scorecard.
  * "Not sure" counts as a fail on purpose: on security, not knowing is the
  * same as no. Runs entirely in the browser; nothing is stored or sent.
+ *
+ * Every score ends with the work to do and a next step, never with a
+ * verdict telling the reader to stop. A fix list nobody has the time to
+ * work through is the same as no fix list, so the page also says who does
+ * it if the reader will not.
  */
 
 const POST = "/blog/is-your-vibe-coded-app-safe-to-launch";
@@ -70,8 +76,38 @@ export default function LaunchSafetyCheck() {
     : score === CHECKS.length
       ? "All six pass. Launch, then keep going: passing the checks makes the app safe enough to improve in public, not finished."
       : score >= 4
-        ? `${score} of 6. Close. Fix the items below before real users arrive; each is typically a day or less.`
-        : `${score} of 6. Do not launch yet. The gaps below are the ones attackers and accidents find first.`;
+        ? `${score} of 6. Close. Clear the items below and you are ready for real users; each is typically a day or less.`
+        : `${score} of 6. The gaps below are the ones attackers and accidents find first. Close them before real users arrive.`;
+
+  /** The failing checks, carried into the enquiry form as the brief. */
+  const failingBrief = failing.map((c) => c.q.replace(/\?$/, "").toLowerCase()).join("; ");
+
+  const next: ComponentProps<typeof ToolNextStep> | null = !done
+    ? null
+    : score === CHECKS.length
+      ? {
+          line: "The next checks only appear under real use: traffic, real data, edge cases. That is the work after launch, and we take it on.",
+          cta: "See how we build and hand over",
+          href: "/services/ai-product-development",
+          event: "tools_safety_services_pass",
+          secondary: {
+            label: "Or tell us what you are launching",
+            href: `/contact?problem=${encodeURIComponent(
+              "Our app passes all six of your launch safety checks and we are about to put it in front of real users. We want to talk about what comes after launch."
+            )}&service=ai-product-development`,
+            event: "tools_safety_contact_pass",
+          },
+        }
+      : {
+          line: `${failing.length} ${failing.length === 1 ? "gap" : "gaps"} to close, each typically a day or less if you know the codebase. If nobody on your side has that day, we run these checks on any codebase we inherit and you get the findings back.`,
+          cta: "Send us the app",
+          href: `/contact?problem=${encodeURIComponent(
+            `Our app scores ${score} of 6 on your launch safety check. The gaps: ${failingBrief}. We want them closed before real users arrive.`
+          )}&cost=${encodeURIComponent(
+            "Not launched yet, so the cost is the launch date slipping"
+          )}&service=ai-product-development`,
+          event: "tools_safety_contact_failing",
+        };
 
   return (
     <div className="panel">
@@ -131,6 +167,7 @@ export default function LaunchSafetyCheck() {
               &quot;Not sure&quot; counts as a fail on purpose: on security, not knowing is the same
               as no. Answers stay in your browser; nothing is stored or sent.
             </p>
+            {next ? <ToolNextStep {...next} /> : null}
           </div>
         ) : (
           <p className="text-[15px] leading-relaxed text-muted">

@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const s = servicesByKey[slug as ServiceKey];
   if (!s) return {};
   return {
-    title: `${s.name} in Dubai`,
-    description: s.summary,
+    title: s.seoTitle ?? `${s.name} in Dubai`,
+    description: s.seoDescription ?? s.summary,
     alternates: { canonical: `/services/${s.key}` },
   };
 }
@@ -179,23 +179,50 @@ export default async function ServicePage({ params }: Params) {
               <span className="icon-tile">
                 <Icon name="handover" />
               </span>
-              <h2 className="t-h3 text-ink">Not a fit when</h2>
+              <h2 className="t-h3 text-ink">The right starting point when</h2>
             </div>
-            <ul className="mt-5 space-y-3.5">
-              {s.notAFit.map((n) => (
-                <li key={n} className="flex gap-3 text-[1rem] leading-relaxed text-body">
+            <ul className="mt-5 space-y-4">
+              {s.elsewhere.map((e) => (
+                <li key={e.situation} className="flex gap-3">
                   <span
                     className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]"
                     aria-hidden="true"
                   />
-                  {n}
+                  <p className="text-[1rem] leading-relaxed text-body">
+                    <span className="font-semibold text-ink">{e.situation}.</span>{" "}
+                    <Link href={e.href} className="link">
+                      {e.solution}
+                    </Link>
+                  </p>
                 </li>
               ))}
             </ul>
             <p className="mt-6 border-t border-line pt-4 text-sm text-muted">
-              If that describes you, the assessment is still useful. It will
-              say so plainly.
+              Not sure which of these is you? Describe the process and we will
+              point you at the right one, on this page or another.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Price it before you commission it */}
+      <section className="band band-tight">
+        <div className="container-x">
+          <div className="rounded-sm border border-line bg-panel px-6 py-6">
+            <p className="label">Price it before you commission it</p>
+            <p className="t-body mt-3 max-w-2xl">
+              Put the hours the task takes today, the salary of the person doing it and any quote
+              you hold through the payback calculator. It shows the yearly saving, the payback
+              period and the arithmetic behind both. Free, and nothing is stored.
+            </p>
+            <Link
+              href="/tools/automation-payback-calculator"
+              data-event={`service_${s.key.replace(/-/g, "_")}_payback`}
+              className="btn btn-secondary mt-5 px-4 py-2.5 text-sm"
+            >
+              Run the payback numbers
+              <Arrow className="row-arrow" size={15} />
+            </Link>
           </div>
         </div>
       </section>

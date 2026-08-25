@@ -25,7 +25,7 @@ const stats: {
     hue: "amber",
     figure: "30%",
     claim:
-      "of GenAI projects at least would be abandoned after proof of concept by the end of 2025, Gartner predicted, blaming poor data, weak controls, rising costs or unclear business value.",
+      "of GenAI projects would be abandoned after proof of concept by the end of 2025, Gartner predicted, blaming poor data, weak controls, rising costs or unclear business value.",
     source: "Gartner, July 2024",
   },
   {
@@ -65,8 +65,8 @@ export default function EvidenceSection() {
           ))}
         </Reveal>
         <p className="mt-5 max-w-3xl text-[0.9375rem] leading-relaxed text-body">
-          The problem is not the technology. It is what happens inside the
-          business. The next section is what actually goes wrong.
+          The gap is in implementation, not technology. Everything below is
+          how we close it.
         </p>
       </div>
     </section>

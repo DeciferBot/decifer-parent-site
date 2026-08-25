@@ -13,8 +13,8 @@
  * the confounders, and written permission. Prices, revenue, margins and
  * contract values are never published, named client or not.
  *
- * "boundaries" is the doctrine made visible: what we deliberately did not
- * automate, and why. "withheld" is the trust move competitors will not
+ * "boundaries" is the design made visible: where a person stays in charge,
+ * and why that is the right shape for this system. "withheld" is the trust move competitors will not
  * print.
  *
  * Decifer's own production systems are listed here too, marked with
@@ -74,9 +74,9 @@ export interface CaseShape {
   outcome: string[];
   /** How the outcome was or will be checked. Forces honesty. */
   measurement: string;
-  /** What we deliberately did not automate, and why. */
+  /** Where a person stays in charge, and why that is the right shape. */
   boundaries: string[];
-  /** What we cannot tell you, stated plainly. */
+  /** What stays confidential, stated plainly. */
   withheld: string;
   serviceKeys: ServiceKey[];
   stackKeys: StackKey[];

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import PageHero from "@/app/components/PageHero";
 import Icon from "@/app/components/Icon";
-import EnquiryForm from "@/app/components/EnquiryForm";
+import EnquiryForm, { type EnquiryPrefill } from "@/app/components/EnquiryForm";
+import { validServiceValues } from "@/app/data/services";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
@@ -13,14 +14,41 @@ export const metadata: Metadata = {
 
 const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL;
 
+/** Longest prefill accepted from a link, so the field stays editable. */
+const MAX_PREFILL = 600;
+
+/**
+ * The tools link here carrying what the reader already told them: the task,
+ * the hours, what it costs today. We read it off the URL and hand it to the
+ * form so they confirm and send rather than retype. Nothing is stored on the
+ * way, and everything prefilled is visible and editable.
+ */
+function readPrefill(
+  params: Record<string, string | string[] | undefined>
+): EnquiryPrefill | undefined {
+  const clean = (v: string | string[] | undefined) =>
+    (Array.isArray(v) ? v[0] : v ?? "").replace(/\s+/g, " ").trim().slice(0, MAX_PREFILL);
+  const problem = clean(params.problem);
+  const costToday = clean(params.cost);
+  const serviceRaw = clean(params.service);
+  const service = validServiceValues.includes(serviceRaw) ? serviceRaw : "";
+  if (!problem && !costToday && !service) return undefined;
+  return { problem, costToday, service };
+}
+
 const next = [
   "A reply from a named person within one working day.",
   "Thirty minutes on the process you want to improve. No slides.",
   "If it makes sense, a two-week assessment at a fixed fee, credited against any build.",
-  "If it does not, we say so and suggest what would.",
+  "If a build is not the next step, we say what is.",
 ];
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const prefill = readPrefill(await searchParams);
   const schema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
@@ -44,13 +72,13 @@ export default function ContactPage() {
         icon="handover"
         hue="orange"
         title="Start with the process you want to improve."
-        lede="You do not need an AI specification. Tell us where work is slow, expensive, repetitive or hard to scale. Thirty minutes, no slides, and we will say what it would take, what it should return, and what we would not automate yet."
+        lede="You do not need a specification. Tell us where work is slow, expensive, repetitive or hard to scale. In thirty minutes you will know what the right solution looks like, what it would take to build, what it should return, and where to start."
       />
 
       <section className="pb-20 sm:pb-28">
         <div className="container-x grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <EnquiryForm />
+            <EnquiryForm prefill={prefill} />
           </div>
 
           <aside className="space-y-6 lg:col-span-4 lg:col-start-9">

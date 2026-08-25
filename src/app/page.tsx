@@ -10,6 +10,7 @@ import SolvedSection from "./components/home/SolvedSection";
 import BuiltSection from "./components/home/BuiltSection";
 import FounderSection from "./components/home/FounderSection";
 import FaqSection from "./components/home/FaqSection";
+import ToolsSection from "./components/home/ToolsSection";
 import CtaBand from "./components/CtaBand";
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function Home() {
       <SolvedSection />
       <PeopleProcessSection />
       <FounderSection />
+      <ToolsSection />
       <FaqSection />
       <CtaBand eventPrefix="home" />
     </>

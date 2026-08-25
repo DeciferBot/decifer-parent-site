@@ -35,6 +35,10 @@ export interface Service {
   name: string;
   /** Short label for nav, chips and the enquiry select. */
   navLabel: string;
+  /** Metadata title, phrased the way buyers search. Falls back to the name. */
+  seoTitle?: string;
+  /** Metadata description. Falls back to the summary. */
+  seoDescription?: string;
   /** The outcome, for cards. What the buyer actually wants. */
   cardHeadline: string;
   /** One sentence. Cards and the meta description base. */
@@ -47,8 +51,12 @@ export interface Service {
   deliverables: string[];
   /** Qualifying signals so the reader can self-select in. */
   goodFit: string[];
-  /** Disqualifying signals so the sales conversation stays honest. */
-  notAFit: string[];
+  /**
+   * Situations this service is not the first step for, each pointed at the
+   * step that is. Never a closed door: the reader always leaves with the
+   * right starting point for their problem, on a page that can serve it.
+   */
+  elsewhere: { situation: string; solution: string; href: string }[];
   stackKeys: StackKey[];
   /** Which verified figures this page may cite. */
   proofRefs: ProofKey[];
@@ -72,6 +80,9 @@ export interface Service {
 export const services: Service[] = [
   {
     key: "ai-agents",
+    seoTitle: "AI agent development company in Dubai",
+    seoDescription:
+      "We build AI agents that run inside your business: scoped to one job, wired to your systems, with a written boundary and a log your team can read. Engagements start with a two-week assessment.",
     icon: "agent",
     hue: "orange",
     name: "AI agent development",
@@ -82,7 +93,7 @@ export const services: Service[] = [
     problem:
       "Enquiries arrive by email, WhatsApp, web form and phone, and every one is answered by hand. Quotes mean opening the same files and retyping the same paragraphs. The bottleneck is not selling. It is the hours between the enquiry and the reply, and slow replies lose the work to whoever answered first.",
     description:
-      "We build agents that are scoped to a single job, connected to the systems that job needs, and wrapped in checks. Every agent ships with a written boundary: what it may do, what it must hand back to a person, and how you audit it afterwards. Nothing reaches a customer unread unless you decide it should. If we cannot write the boundary down, we do not build the agent.",
+      "We build agents that are scoped to a single job, connected to the systems that job needs, and wrapped in checks. Every agent ships with a written boundary: what it may do, what it must hand back to a person, and how you audit it afterwards. Nothing reaches a customer unread unless you decide it should. Writing that boundary down is the first thing we do, and it is what makes the agent safe to put in front of customers.",
     deliverables: [
       "A written scope for the agent, including what it must not do",
       "The agent itself, connected to your tools and your data, running on your accounts",
@@ -95,10 +106,25 @@ export const services: Service[] = [
       "The task has a clear definition of done",
       "Someone inside the business can own the agent after launch",
     ],
-    notAFit: [
-      "The process has never been written down",
-      "Every case needs a licensed professional to sign it off",
-      "The main goal is to cut headcount rather than cut delay",
+    elsewhere: [
+      {
+        situation: "The process has never been written down",
+        solution:
+          "Start with the two-week assessment. It maps and costs the process, and the fee is credited in full against the build that follows.",
+        href: "/services/ai-advisory",
+      },
+      {
+        situation: "Every case needs a licensed professional to sign it off",
+        solution:
+          "The agent prepares and the professional approves. The system gathers, drafts and checks; a named person releases the work. We build this shape often.",
+        href: "/how-we-work",
+      },
+      {
+        situation: "You are measuring this in headcount",
+        solution:
+          "The assessment costs the process as it runs today. That baseline is what any saving is measured against.",
+        href: "/services/ai-advisory",
+      },
     ],
     stackKeys: ["claude", "supabase", "resend", "vercel", "cloudflare"],
     proofRefs: ["dishesPriced", "conciergeEvals", "scheduledJobs"],
@@ -114,6 +140,9 @@ export const services: Service[] = [
   },
   {
     key: "data-and-reporting",
+    seoTitle: "Data and reporting automation in Dubai",
+    seoDescription:
+      "Reports that build themselves from your own systems, with every figure computed in code. One agreed definition per number, delivered on a schedule your team can rely on.",
     icon: "data",
     hue: "teal",
     name: "Data and reporting automation",
@@ -137,9 +166,19 @@ export const services: Service[] = [
       "The same fact lives in three places and they disagree",
       "You are about to spend money on AI or marketing and cannot measure the before",
     ],
-    notAFit: [
-      "The real problem is that two teams disagree about what the numbers should say",
-      "There is no data yet, only plans",
+    elsewhere: [
+      {
+        situation: "Two teams disagree about what the numbers should say",
+        solution:
+          "Start with the assessment. Agreeing one definition per figure is week one of the work, and a report is worth building once that is settled.",
+        href: "/services/ai-advisory",
+      },
+      {
+        situation: "There is no data yet, only plans",
+        solution:
+          "The system that produces the data comes first. We build that, then add the reporting layer once real numbers are flowing.",
+        href: "/services/ai-product-development",
+      },
     ],
     stackKeys: ["supabase", "bigquery", "ga4", "claude", "vercel"],
     proofRefs: ["documentsLiberated", "connectors", "tables"],
@@ -155,6 +194,9 @@ export const services: Service[] = [
   },
   {
     key: "ai-product-development",
+    seoTitle: "AI product development in Dubai: live in weeks",
+    seoDescription:
+      "A complete product built in weeks: website, database, logins, payments, email and analytics. Your accounts, your domain, and the repository transfers to you at handover.",
     icon: "product",
     hue: "blue",
     name: "AI product development",
@@ -178,9 +220,19 @@ export const services: Service[] = [
       "Someone on your side can make decisions within a day",
       "You want to own what gets built",
     ],
-    notAFit: [
-      "The scope is still a list of everything competitors do",
-      "The product needs to be perfect before anyone can see it",
+    elsewhere: [
+      {
+        situation: "The scope is still a list of everything competitors do",
+        solution:
+          "Bring it anyway. The first call cuts the list down to a first version that can ship in weeks. That call is free.",
+        href: "/contact",
+      },
+      {
+        situation: "It has to be right before anyone outside sees it",
+        solution:
+          "That is what the staging environment is for. You see it come together privately, and it goes live on the day you choose.",
+        href: "/how-we-work",
+      },
     ],
     stackKeys: ["nextjs", "vercel", "supabase", "stripe", "resend", "cloudflare", "github", "claude", "codex"],
     proofRefs: ["repositories", "routes", "tables", "commits"],
@@ -196,6 +248,9 @@ export const services: Service[] = [
   },
   {
     key: "ai-advisory",
+    seoTitle: "AI opportunity assessment in Dubai: two weeks, fixed fee",
+    seoDescription:
+      "A two-week AI readiness and opportunity assessment: we map where the hours go, cost the process as it runs today, and name what to automate first. Fixed fee, credited in full against any build.",
     icon: "advisory",
     hue: "violet",
     name: "AI consulting and assessment",
@@ -220,9 +275,19 @@ export const services: Service[] = [
       "You want a decision, not a demo",
       "You are willing to let us talk to your team",
     ],
-    notAFit: [
-      "You have already chosen the tool and want it justified",
-      "The outcome has to be a headcount number",
+    elsewhere: [
+      {
+        situation: "You already know what you want built",
+        solution:
+          "Skip the assessment and go straight to the build conversation. We scope it, price it and start.",
+        href: "/contact",
+      },
+      {
+        situation: "You need the business case in a number",
+        solution:
+          "That is what it produces: the process costed as it runs today, and every automation after it measured against that baseline.",
+        href: "/tools/automation-payback-calculator",
+      },
     ],
     stackKeys: ["claude"],
     proofRefs: ["deletedAi", "liveProducts", "monthsLive"],

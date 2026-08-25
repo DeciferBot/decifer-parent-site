@@ -38,13 +38,27 @@ const BUDGETS = [
 
 const MIN_PROBLEM_CHARS = 40;
 
+/**
+ * A reader arriving from a tool has already told us the useful part: the
+ * task, the hours and what it costs today. The tool links carry it in the
+ * URL and /contact passes it in here, so they confirm and send rather than
+ * retype. That is the difference between a verdict read and an enquiry
+ * received. Nothing is stored on the way: the values are visible in the
+ * link and editable in the form.
+ */
+export interface EnquiryPrefill {
+  problem: string;
+  costToday: string;
+  service: string;
+}
+
 function track(event: string) {
   if (typeof window === "undefined") return;
   const w = window as Window & typeof globalThis & { gtag?: (...args: unknown[]) => void };
   if (typeof w.gtag === "function") w.gtag("event", event);
 }
 
-export default function EnquiryForm() {
+export default function EnquiryForm({ prefill }: { prefill?: EnquiryPrefill }) {
   const pathname = usePathname();
   const [status, setStatus] = useState<Status>("idle");
   const mountedAt = useRef<number>(0);
@@ -54,11 +68,11 @@ export default function EnquiryForm() {
     email: "",
     company: "",
     basedIn: "",
-    problem: "",
-    costToday: "",
+    problem: prefill?.problem ?? "",
+    costToday: prefill?.costToday ?? "",
     systems: "",
     outcome: "",
-    service: "",
+    service: prefill?.service ?? "",
     timeline: "",
     budget: "",
     heardVia: "",
@@ -67,9 +81,12 @@ export default function EnquiryForm() {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof typeof form, string>>>({});
 
+  const prefilled = Boolean(prefill);
+
   useEffect(() => {
     mountedAt.current = Date.now();
-  }, []);
+    if (prefilled) track("enquiry_prefilled_from_tool");
+  }, [prefilled]);
 
   const set =
     (field: keyof typeof form) =>
@@ -153,6 +170,14 @@ export default function EnquiryForm() {
         <label htmlFor="enq-website">Website</label>
         <input id="enq-website" type="text" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={set("website")} />
       </div>
+
+      {prefilled ? (
+        <p className="mb-5 rounded-sm border border-line bg-canvas px-4 py-3 text-sm leading-relaxed text-body">
+          <span className="font-semibold text-ink">Carried over from the tool.</span> We have
+          filled in what you already told it. Change anything that is not right, add your name and
+          email, and send.
+        </p>
+      ) : null}
 
       <div className="space-y-4">
         <div className="grid gap-4 sm:grid-cols-2">

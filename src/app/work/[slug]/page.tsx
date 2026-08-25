@@ -128,7 +128,7 @@ export default async function CaseShapePage({ params }: Params) {
           <Block title="What we built" items={c.work} icon="agent" hue={mark.hue} />
           <Block title="What changed" items={c.outcome} icon="measure" hue="green" />
           <Block
-            title="What we deliberately did not automate"
+            title="Where a person stays in charge"
             items={c.boundaries}
             icon="boundary"
             hue="orange"
@@ -148,9 +148,41 @@ export default async function CaseShapePage({ params }: Params) {
               <span className="icon-tile">
                 <Icon name="record" />
               </span>
-              <h2 className="t-h3 text-ink">What we cannot tell you</h2>
+              <h2 className="t-h3 text-ink">What stays confidential</h2>
             </div>
             <p className="t-body mt-5 text-[1rem]">{c.withheld}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="band band-tight">
+        <div className="container-x">
+          <div className="rounded-sm border border-line bg-panel px-6 py-6">
+            <p className="label">Same shape as your process?</p>
+            <p className="t-body mt-3 max-w-2xl">
+              Tell us what the equivalent task costs you today and we will tell you what this
+              shape would take to build for you, what it should return, and where to start.
+              Thirty minutes, no slides.
+            </p>
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <Link
+                href={`/contact?problem=${encodeURIComponent(
+                  `We read your ${c.sector.toLowerCase()} case, "${c.title}", and we have a process of a similar shape. We want to know what it would take to build the equivalent for us.`
+                )}&service=${c.serviceKeys[0]}`}
+                data-event={`work_${c.key}_discuss`}
+                className="btn btn-primary px-4 py-2.5 text-sm"
+              >
+                Discuss a process like this
+                <Arrow className="row-arrow" size={15} />
+              </Link>
+              <Link
+                href="/tools/automation-payback-calculator"
+                data-event={`work_${c.key}_payback`}
+                className="link text-sm"
+              >
+                Or price the saving first
+              </Link>
+            </div>
           </div>
         </div>
       </section>

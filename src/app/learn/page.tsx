@@ -186,8 +186,9 @@ export default function LearnPage() {
                 ))}
               </ol>
               <p className="t-body measure mt-6">
-                Most weekend builds fail four of the six. That is fine: it is a work list,
-                not a verdict. The full standard is in{" "}
+                Most weekend builds clear two of the six on a first pass, which is normal.
+                The rest is a work list, and every item on it is a day or two of work. The
+                full standard is in{" "}
                 <Link href="/blog/what-production-ready-actually-means" className="link">
                   What production-ready actually means
                 </Link>
