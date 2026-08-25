@@ -1,10 +1,10 @@
 # Design
 
-Visual system for decifer.io. Written 2026-08-23, revised 2026-08-24 to the "control room" direction after founder feedback (no bold single-colour headlines). Tokens live in `src/app/globals.css`.
+Visual system for decifer.io. Written 2026-08-23, revised 2026-08-24 to the "control room" direction after founder feedback (no bold single-colour headlines), and revised again 2026-08-25 after the same feedback in harder terms: the site had become a research paper in the skin of a website. Nine consecutive white panels, no imagery, no iconography, and the proof set at body size inside paragraphs. Tokens live in `src/app/globals.css`.
 
 ## The direction in one line
 
-A control room on paper: a grey ground, white panels with instrument labels, serif headlines at medium weight, one dark systems board, orange reserved for the rule panel and the CTA panel.
+A control room on paper: a grey ground, panels with instrument labels, serif headlines at medium weight, a dark systems board, orange for the doctrine and the call. What the 2026-08-25 revision adds is the instrument panel itself: every row carries a mark, every mark carries a hue, every figure is set as a figure, and the page changes ground often enough that a reader can find their place in it.
 
 ## Scene
 
@@ -29,10 +29,55 @@ Committed. One saturated colour (Decifer orange) carries whole sections, not jus
 | Dark | `--color-dark` | `oklch(15% 0.012 250)` | The products section and footer |
 | On dark | `--color-on-dark` | `oklch(96% 0.004 250)` | Text on the dark surface |
 
+### The accent ladder (added 2026-08-25)
+
+Seven hues at one lightness and near-one chroma, so no hue shouts louder than another, each with an `-on-dark` pair lifted for the board and the product band. They live on `:root` in `globals.css`, not in `@theme`: Tailwind v4 drops a theme variable it cannot see used in a utility class, and these are referenced dynamically from data (`var(--color-a-${hue})`), so declaring them in `@theme` silently deleted them.
+
+| Hue | Belongs to |
+| --- | --- |
+| orange | AI agent development · creator and personal brand |
+| blue | AI product development · financial markets intelligence |
+| teal | data and reporting · group marketing |
+| violet | AI advisory · education |
+| green | healthcare and counselling |
+| amber | hospitality and catering · property |
+| plum | events management |
+
 Rules:
 - On orange, text is ink (6:1), never white below 24px.
 - Primary buttons are ink text on orange. Distinctive and passes AA.
-- Product accent colours (blue, violet, teal) from `products.ts` appear only as a small status dot on product cards. They do not colour the parent site.
+- Colour is navigation, not decoration. One hue belongs to one thing, and follows it to every page that thing appears on. The pairs live in the data (`services.ts`, `capabilities.ts`, `caseShapes.ts:sectorMark`, `tools.ts`), never in a component.
+- An accent never carries meaning alone. It always sits beside the word it colours, so the page works in greyscale and for a reader who cannot separate the hues.
+- Orange stays the only colour allowed to carry a whole section.
+- Product accent colours (blue, violet, teal) from `products.ts` are the product status dots and the footer product marks. They are not part of the accent ladder and are never used for anything else.
+
+## Surface rhythm (added 2026-08-25)
+
+Five grounds, ordered so no two neighbouring sections share one. This is what turns a long column of panels back into a page.
+
+| Band | Token | Carries |
+| --- | --- | --- |
+| `band` (default) | `--color-canvas` | Ruled lists, the workhorse |
+| `band-tint` | `--color-surface-alt` | A quiet beat between two panels |
+| `band-dark` | `--color-dark` + `field-dots` | Products, proof, the screenshots |
+| `band-orange` | `--color-orange` | Doctrine and the closing call. Twice per page, never three times |
+| `band-warm` | `--color-orange-tint` | The founder. Human, not instrument |
+
+The home page order is set in `src/app/page.tsx` and commented there. `field-dots` and `field-grid` are the two textures: a dot field on the dark ground, a 48px measured grid under page heroes. Both sit at a weight you read as depth and stop noticing.
+
+## Iconography (added 2026-08-25)
+
+One set, in `src/app/components/Icon.tsx`: 24×24 box, 1.5 stroke, round caps, no fills, `currentColor` throughout. Drawn from the vocabulary the site already uses in words — a record, a rule, a boundary, a log — never decorative and never a metaphor a reader has to decode. Industry icons are literal on purpose: a reader scanning the board should recognise their own sector before reading a word.
+
+An icon never floats. It sits in an `.icon-tile`, tinted from the row's `--accent`, which is what makes a column of icons read as an instrument panel rather than clip art.
+
+## Figures
+
+Verified numbers are data, so they are set in the sans with tabular numerals (`.figure-num`), coloured with the row accent, and never appear without the source line underneath. `proof.ts` promises every figure ships with its origin; a big number without one is the thing this business exists to argue against.
+
+## Diagrams
+
+`MechanismDiagram.tsx` draws the rule the site argues for — inputs, code computes, model narrates, person decides, with the test that enforces the boundary. Composed in HTML rather than one flat SVG so it reflows to a column on a phone, keeps its text selectable, and inherits the type scale. The connectors are the only SVG. It appears on the home page (inside the orange band, on ink), on /how-we-work and on /about.
 
 ## Typography
 
@@ -62,7 +107,7 @@ Body measure caps at 68ch. `text-wrap: balance` on headings, `pretty` on prose. 
 
 ## Imagery
 
-- Real product screenshots in `public/products/*.webp`, captured 2026-08-23 at 1440x900 @2x. Framed with a 1px line and 8px radius. No fake browser chrome.
+- Real product screenshots in `public/products/*.webp`, captured 2026-08-23 at 1440x900 @2x. Framed with a 1px line and 8px radius. No fake browser chrome. **They carry the "Built by Decifer" band on the home page.** They are the only photography the business owns, and until 2026-08-25 they appeared on exactly one service page while the home page claimed "we run our own systems in production" and showed nothing.
 - The hero visual is an example agent scope sheet and action log built in HTML. It is labelled as an example. It depicts two things the AI agents service delivers: a written boundary and a readable log.
 - Stack logos via `simple-icons`, rendered in each maker's own brand colour (revised 2026-08-25, replacing the ink-at-60% monochrome treatment: at a glance a reader should recognise the tool, not decode a silhouette). Two tools have no mark in the set, OpenAI and Meta's Llama, and fall back to a monogram tile rather than a borrowed or approximated logo. On the dark board the marks inherit the text colour instead, where brand colours lose contrast. Colour here is recognition, not endorsement, and the caption under every logo surface says so.
 - Founder photo slot at `public/founder/amit-chopra.jpg`. If absent, the block renders name and role without a placeholder face.

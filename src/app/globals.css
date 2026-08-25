@@ -562,6 +562,37 @@ p {
     height: auto;
   }
 
+  /* ── Nav ───────────────────────────────────────────── */
+
+  /* The current page is marked with the brand rule under it, not with a
+     weight change: at 15px a weight change is a guess, and a reader
+     should be able to see where they are without comparing two words. */
+  .nav-link {
+    position: relative;
+    padding-block: 0.375rem;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.125rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms var(--ease-fluid);
+  }
+  .nav-link-on::after {
+    transform: scaleX(1);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
   /* ── Bands: the page changes gear ──────────────────── */
 
   /* A band is a full-width ground, edge to edge, meeting its neighbour with

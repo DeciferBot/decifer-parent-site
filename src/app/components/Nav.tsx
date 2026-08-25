@@ -55,8 +55,8 @@ export default function Nav() {
               key={l.href}
               href={l.href}
               aria-current={isActive(l.href) ? "page" : undefined}
-              className={`text-[0.9375rem] font-medium transition-colors duration-150 hover:text-ink ${
-                isActive(l.href) ? "text-ink" : "text-body"
+              className={`nav-link text-[0.9375rem] font-medium transition-colors duration-150 hover:text-ink ${
+                isActive(l.href) ? "nav-link-on text-ink" : "text-body"
               }`}
             >
               {l.label}
