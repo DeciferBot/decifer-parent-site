@@ -8,8 +8,8 @@ import { diagramsByKey, diagramsOrdered } from "../../data/diagrams";
  * The architecture, on the home page.
  *
  * It sits directly after the six failure points, which is the moment it is
- * worth most: the reader has just been told why pilots stall, and every one
- * of those failures is visible in this drawing as a part somebody skipped.
+ * worth most: the reader has just been told why pilots stall, and most of
+ * those failures are visible in this drawing as a part somebody skipped.
  * A buyer who cannot yet name what they want can still point at a box.
  *
  * The wide diagram carries the band. The tall one is a link, because a
@@ -39,15 +39,16 @@ export default function DiagramSection() {
               <p className="label">The architecture</p>
             </div>
             <h2 className="t-h2 text-ink">
-              Every one of those failures is a box somebody skipped.
+              Six failure points, one missing drawing.
             </h2>
           </div>
           <div className="md:col-span-6 md:col-start-7">
             <p className="t-lede measure">
-              This is what we build, drawn once. One request enters, moves
-              through four steps, and the answer goes back. Nothing here is
-              specific to us: it is the shape any AI system in a business has
-              to have to be trusted with real work.
+              Projects stall those six ways because nobody drew the system
+              first. This is the drawing: one request enters, moves through
+              four steps, and the answer goes back. Nothing here is specific
+              to us. It is the shape any AI system in a business has to have
+              to be trusted with real work.
             </p>
           </div>
         </div>

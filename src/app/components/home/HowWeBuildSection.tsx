@@ -73,7 +73,7 @@ export default function HowWeBuildSection() {
         </div>
 
         <div className="mt-10 rounded-md bg-dark p-5 sm:p-7">
-          <p className="label mb-5 text-on-dark-2">The same rule, as an architecture</p>
+          <p className="label mb-5 text-on-dark-2">The rule, step by step</p>
           <MechanismDiagram tone="dark" />
         </div>
 
