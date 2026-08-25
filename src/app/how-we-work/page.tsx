@@ -5,8 +5,12 @@ import CtaBand from "@/app/components/CtaBand";
 import RuleSection from "@/app/components/home/RuleSection";
 import StackSection from "@/app/components/home/StackSection";
 import CompareSection from "@/app/components/home/CompareSection";
+import Icon, { type IconName } from "@/app/components/Icon";
+import MechanismDiagram from "@/app/components/MechanismDiagram";
 import { capabilitiesOrdered } from "@/app/data/capabilities";
 import { caseShapesByKey } from "@/app/data/caseShapes";
+import type { AccentHue } from "@/app/data/accents";
+import { accent, accentAt } from "@/app/data/accents";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 /**
@@ -21,6 +25,19 @@ export const metadata: Metadata = {
     "Decifer's implementation method: a costed baseline before any build, deterministic code for anything that must be right, models only where judgement helps, a test that blocks invented figures, and client ownership at handover.",
   alternates: { canonical: "/how-we-work" },
 };
+
+/** One mark per delivery stage, in the same order as `stages`. */
+const STAGE_MARKS: { icon: IconName; hue: AccentHue }[] = [
+  { icon: "record", hue: "amber" },
+  { icon: "measure", hue: "amber" },
+  { icon: "rule", hue: "plum" },
+  { icon: "agent", hue: "orange" },
+  { icon: "boundary", hue: "orange" },
+  { icon: "handover", hue: "violet" },
+  { icon: "creator", hue: "violet" },
+  { icon: "data", hue: "teal" },
+  { icon: "log", hue: "teal" },
+];
 
 const stages = [
   { n: "01", title: "Discover", body: "Understand the process, the people, the systems and the economics." },
@@ -49,28 +66,51 @@ export default function HowWeWorkPage() {
     <>
       <PageHero
         kicker="How we work"
+        icon="rule"
+        hue="teal"
         title="A practical route from opportunity to production."
         lede="Every step of a process gets one question: does this need judgement, or does it need to be right? Code handles what must be right. Models handle what needs judgement. A test enforces the line, and a baseline taken before the build means the result can be checked afterwards."
       />
 
-      <section className="pb-7 sm:pb-10">
+      <section className="band band-tight band-tint">
         <div className="container-x">
-          <div className="panel">
-            <div className="panel-head">
-              <h2 className="label">The delivery sequence</h2>
-              <span className="text-sm text-muted">Nine stages, one accountable path</span>
-            </div>
-            <ol className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
-              {stages.map((s) => (
-                <li key={s.n} className="bg-canvas px-6 py-6">
-                  <p className="flex items-baseline gap-3">
-                    <span className="t-mono text-sm text-muted">{s.n}</span>
-                    <span className="text-[1.0625rem] font-semibold text-ink">{s.title}</span>
-                  </p>
-                  <p className="t-body mt-2">{s.body}</p>
-                </li>
-              ))}
-            </ol>
+          <div className="flex flex-wrap items-baseline justify-between gap-4">
+            <h2 className="label">The delivery sequence</h2>
+            <span className="text-sm text-muted">Nine stages, one accountable path</span>
+          </div>
+          <ol className="mt-6 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            {stages.map((s, i) => (
+              <li
+                key={s.n}
+                className="accent-cap bg-panel px-6 py-6"
+                style={accentAt(STAGE_MARKS[i].hue, i)}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="icon-tile icon-tile-sm">
+                    <Icon name={STAGE_MARKS[i].icon} size={16} />
+                  </span>
+                  <span className="t-mono text-xs text-muted">{s.n}</span>
+                </div>
+                <p className="mt-3 text-[1.0625rem] font-semibold leading-snug text-ink">
+                  {s.title}
+                </p>
+                <p className="t-body mt-2 text-[0.9375rem]">{s.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="band band-tight">
+        <div className="container-x">
+          <div className="flex flex-wrap items-baseline justify-between gap-4">
+            <h2 className="label">The rule, as an architecture</h2>
+            <span className="text-sm text-muted">
+              Four stages, and the check that holds the line
+            </span>
+          </div>
+          <div className="mt-6">
+            <MechanismDiagram />
           </div>
         </div>
       </section>
@@ -97,8 +137,15 @@ export default function HowWeWorkPage() {
                 </thead>
                 <tbody>
                   {capabilitiesOrdered.map((c) => (
-                    <tr key={c.key} className="border-t border-line align-top">
+                    <tr
+                      key={c.key}
+                      className="border-t border-line align-top"
+                      style={accent(c.hue)}
+                    >
                       <td className="w-[26%] px-6 py-5">
+                        <span className="icon-tile icon-tile-sm mb-3">
+                          <Icon name={c.icon} size={16} />
+                        </span>
                         <p className="font-semibold text-ink">{c.name}</p>
                         <p className="mt-1.5 text-sm leading-relaxed text-muted">{c.pattern}</p>
                       </td>

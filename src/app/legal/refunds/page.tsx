@@ -66,7 +66,7 @@ export default function Page() {
           Service fees are invoiced in stages against delivered work. Work
           delivered and accepted is not refundable. If an engagement ends
           early, you pay for the stages completed and nothing for the stages
-          not started. The audit fee is credited in full against any build
+          not started. The assessment fee is credited in full against any build
           that follows it, as stated on the services pages.
         </p>
 

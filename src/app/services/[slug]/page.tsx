@@ -9,6 +9,8 @@ import StackList from "@/app/components/StackChips";
 import ProofStrip from "@/app/components/ProofStrip";
 import CaseRow from "@/app/components/CaseShapeCard";
 import ProductFrame from "@/app/components/ProductFrame";
+import Icon from "@/app/components/Icon";
+import { accent } from "@/app/data/accents";
 import ScopeSheet from "@/app/components/home/ScopeSheet";
 import Arrow from "@/app/components/Arrow";
 import { services, servicesByKey, servicesOrdered, type ServiceKey } from "@/app/data/services";
@@ -76,7 +78,13 @@ export default async function ServicePage({ params }: Params) {
 
   return (
     <>
-      <PageHero kicker={s.name} title={s.cardHeadline} lede={s.summary}>
+      <PageHero
+        kicker={s.name}
+        title={s.cardHeadline}
+        lede={s.summary}
+        icon={s.icon}
+        hue={s.hue}
+      >
         <StackList keys={s.stackKeys} />
       </PageHero>
 
@@ -118,19 +126,20 @@ export default async function ServicePage({ params }: Params) {
       ) : null}
 
       {/* Deliverables */}
-      <section className="border-t border-line">
-        <div className="container-x section">
+      <section className="band band-tint">
+        <div className="container-x">
           <SectionHead
             title="What you receive."
             lede="Concrete things, not outcomes on a slide. This list is the scope of the engagement."
           />
-          <ol className="ruled mt-12">
+          <ol className="mt-11 grid gap-3 sm:grid-cols-2">
             {s.deliverables.map((d, i) => (
-              <li key={d} className="grid gap-2 py-5 md:grid-cols-12 md:gap-8">
-                <span className="text-sm font-semibold text-muted md:col-span-2">
-                  {i + 1} of {s.deliverables.length}
-                </span>
-                <p className="text-[1.0625rem] leading-relaxed text-ink md:col-span-9">{d}</p>
+              <li
+                key={d}
+                className="flex items-start gap-4 rounded-sm border border-line bg-panel px-5 py-5"
+              >
+                <span className="step-num step-num-on">{i + 1}</span>
+                <p className="text-[1rem] leading-relaxed text-ink">{d}</p>
               </li>
             ))}
           </ol>
@@ -138,39 +147,62 @@ export default async function ServicePage({ params }: Params) {
       </section>
 
       {/* Fit */}
-      <section className="border-t border-line">
-        <div className="container-x section grid gap-10 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <h2 className="t-h3 text-ink">A good fit when</h2>
-            <ul className="mt-5 space-y-3">
+      <section className="band">
+        <div className="container-x grid gap-4 md:grid-cols-2">
+          <div
+            className="accent-cap rounded-sm border border-line bg-panel px-6 py-6"
+            style={accent("green")}
+          >
+            <div className="flex items-center gap-3">
+              <span className="icon-tile">
+                <Icon name="boundary" />
+              </span>
+              <h2 className="t-h3 text-ink">A good fit when</h2>
+            </div>
+            <ul className="mt-5 space-y-3.5">
               {s.goodFit.map((g) => (
-                <li key={g} className="flex gap-3 text-[1.0625rem] leading-relaxed text-body">
-                  <span className="mt-[0.7rem] h-1.5 w-1.5 shrink-0 rounded-full bg-live" aria-hidden="true" />
+                <li key={g} className="flex gap-3 text-[1rem] leading-relaxed text-body">
+                  <span
+                    className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]"
+                    aria-hidden="true"
+                  />
                   {g}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="md:col-span-6 md:col-start-7">
-            <h2 className="t-h3 text-ink">Not a fit when</h2>
-            <ul className="mt-5 space-y-3">
+          <div
+            className="accent-cap rounded-sm border border-line bg-panel px-6 py-6"
+            style={accent("orange")}
+          >
+            <div className="flex items-center gap-3">
+              <span className="icon-tile">
+                <Icon name="handover" />
+              </span>
+              <h2 className="t-h3 text-ink">Not a fit when</h2>
+            </div>
+            <ul className="mt-5 space-y-3.5">
               {s.notAFit.map((n) => (
-                <li key={n} className="flex gap-3 text-[1.0625rem] leading-relaxed text-body">
-                  <span className="mt-[0.7rem] h-1.5 w-1.5 shrink-0 rounded-full bg-orange" aria-hidden="true" />
+                <li key={n} className="flex gap-3 text-[1rem] leading-relaxed text-body">
+                  <span
+                    className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]"
+                    aria-hidden="true"
+                  />
                   {n}
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm text-muted">
-              If that describes you, the audit is still useful. It will say so plainly.
+            <p className="mt-6 border-t border-line pt-4 text-sm text-muted">
+              If that describes you, the assessment is still useful. It will
+              say so plainly.
             </p>
           </div>
         </div>
       </section>
 
       {/* Proof */}
-      <section className="border-t border-line">
-        <div className="container-x section">
+      <section className="band band-tint">
+        <div className="container-x">
           <SectionHead
             title="Things you can check."
             lede="Figures from our own systems that this service draws on. Each one names its source."

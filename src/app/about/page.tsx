@@ -7,6 +7,25 @@ import ProofStrip from "@/app/components/ProofStrip";
 import FounderSection from "@/app/components/home/FounderSection";
 import BuiltSection from "@/app/components/home/BuiltSection";
 import { publicProof, proofByKey } from "@/app/data/proof";
+import Icon, { type IconName } from "@/app/components/Icon";
+import MechanismDiagram from "@/app/components/MechanismDiagram";
+import type { AccentHue } from "@/app/data/accents";
+
+/** Marks for the three method steps and the six rules, in their own order. */
+const METHOD_MARKS: { icon: IconName; hue: AccentHue }[] = [
+  { icon: "record", hue: "amber" },
+  { icon: "rule", hue: "teal" },
+  { icon: "log", hue: "blue" },
+];
+
+const PRINCIPLE_MARKS: { icon: IconName; hue: AccentHue }[] = [
+  { icon: "handover", hue: "orange" },
+  { icon: "boundary", hue: "blue" },
+  { icon: "rule", hue: "teal" },
+  { icon: "health", hue: "green" },
+  { icon: "record", hue: "amber" },
+  { icon: "measure", hue: "plum" },
+];
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
@@ -86,6 +105,8 @@ export default function AboutPage() {
     <>
       <PageHero
         kicker="About"
+        icon="measure"
+        hue="blue"
         title="Based in Dubai. Built to be checked."
         lede="Decifer is an AI implementation company in Dubai, United Arab Emirates. It takes business processes from AI pilot to dependable daily operation for businesses here and abroad, and it runs three public products with exactly the same method."
       />
@@ -111,9 +132,12 @@ export default function AboutPage() {
       </section>
 
       {/* The rule */}
-      <section className="pb-16 sm:pb-24">
+      <section className="band">
         <div className="container-x grid gap-8 md:grid-cols-12">
-          <h2 className="t-h2 text-ink md:col-span-6">
+          <h2
+            className="statement text-ink md:col-span-6"
+            style={{ "--accent": "var(--color-orange)" } as React.CSSProperties}
+          >
             Code computes the numbers. The model writes the sentence. A test
             enforces the line.
           </h2>
@@ -138,6 +162,9 @@ export default function AboutPage() {
               plain check was cheaper, faster, and could not make anything up.
             </p>
           </div>
+          <div className="md:col-span-12">
+            <MechanismDiagram />
+          </div>
         </div>
       </section>
 
@@ -148,12 +175,29 @@ export default function AboutPage() {
             title="One method, for our products and your business."
             lede="Three steps that run every product we make and every engagement we take."
           />
-          <ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+          <ol className="mt-11 grid gap-4 md:grid-cols-3">
             {method.map((m, i) => (
-              <li key={m.step} className="border-t border-line pt-5">
-                <p className="text-sm font-semibold text-muted">Step {i + 1}</p>
-                <h3 className="mt-2 text-xl font-semibold text-ink">{m.step}</h3>
-                <p className="t-body mt-3">{m.body}</p>
+              <li
+                key={m.step}
+                className="accent-cap rounded-sm border border-line bg-panel px-6 py-6"
+                style={
+                  {
+                    "--accent": `var(--color-a-${METHOD_MARKS[i].hue})`,
+                  } as React.CSSProperties
+                }
+              >
+                <div className="flex items-center gap-3">
+                  <span className="icon-tile">
+                    <Icon name={METHOD_MARKS[i].icon} />
+                  </span>
+                  <span>
+                    <p className="t-mono text-xs text-muted">
+                      Step {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="text-lg font-semibold text-ink">{m.step}</h3>
+                  </span>
+                </div>
+                <p className="t-body mt-4 text-[0.9375rem]">{m.body}</p>
               </li>
             ))}
           </ol>
@@ -167,11 +211,24 @@ export default function AboutPage() {
             title="Six rules that apply to everything."
             lede="They apply to our products and to every client engagement. They are also why some work is turned down."
           />
-          <ul className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-            {principles.map((p) => (
-              <li key={p.title} className="border-t border-line pt-5">
-                <h3 className="text-lg font-semibold text-ink">{p.title}</h3>
-                <p className="t-body mt-2">{p.body}</p>
+          <ul className="mt-11 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            {principles.map((p, i) => (
+              <li
+                key={p.title}
+                className="accent-cap bg-panel px-6 py-6"
+                style={
+                  {
+                    "--accent": `var(--color-a-${PRINCIPLE_MARKS[i].hue})`,
+                  } as React.CSSProperties
+                }
+              >
+                <span className="icon-tile icon-tile-sm">
+                  <Icon name={PRINCIPLE_MARKS[i].icon} size={16} />
+                </span>
+                <h3 className="mt-4 text-[1.0625rem] font-semibold leading-snug text-ink">
+                  {p.title}
+                </h3>
+                <p className="t-body mt-2 text-[0.9375rem]">{p.body}</p>
               </li>
             ))}
           </ul>

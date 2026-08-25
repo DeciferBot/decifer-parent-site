@@ -3,7 +3,13 @@
  * pages, the sitemap and llms.txt all render from this list.
  */
 
+import type { IconName } from "../components/Icon";
+import type { AccentHue } from "./accents";
+
 export interface Tool {
+  /** The tool's mark, used on the index, the page hero and the nav card. */
+  icon: IconName;
+  hue: AccentHue;
   key: string;
   name: string;
   /** The user's question, verbatim, for the index card. */
@@ -21,6 +27,8 @@ export interface Tool {
 export const tools: Tool[] = [
   {
     key: "automation-payback-calculator",
+    icon: "measure",
+    hue: "amber",
     name: "Automation payback calculator",
     question: "Is automating this task worth the money?",
     summary:
@@ -34,6 +42,8 @@ export const tools: Tool[] = [
   },
   {
     key: "launch-safety-check",
+    icon: "boundary",
+    hue: "green",
     name: "Launch safety check",
     question: "Is my app safe to put in front of real users?",
     summary:
@@ -47,6 +57,8 @@ export const tools: Tool[] = [
   },
   {
     key: "agent-or-automation",
+    icon: "agent",
+    hue: "orange",
     name: "Agent or automation?",
     question: "Do I need an AI agent, or something simpler?",
     summary:

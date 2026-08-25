@@ -1,4 +1,6 @@
 import Reveal from "../Reveal";
+import Figure from "../Figure";
+import type { AccentHue } from "../../data/accents";
 
 /**
  * Market-evidence band: the implementation gap in four verified figures.
@@ -6,26 +8,35 @@ import Reveal from "../Reveal";
  * primary source; the sources live in docs/REPOSITIONING_2026-08-24.md.
  */
 
-const stats = [
+const stats: {
+  figure: string;
+  claim: string;
+  source: string;
+  hue: AccentHue;
+}[] = [
   {
+    hue: "orange",
     figure: "95%",
     claim:
       "of enterprise GenAI pilots produce no measurable P&L return.",
     source: "MIT, The GenAI Divide: State of AI in Business, 2025",
   },
   {
+    hue: "amber",
     figure: "30%",
     claim:
       "of GenAI projects at least would be abandoned after proof of concept by the end of 2025, Gartner predicted, blaming poor data, weak controls, rising costs or unclear business value.",
     source: "Gartner, July 2024",
   },
   {
-    figure: "84% adopt, 31% scale",
+    hue: "teal",
+    figure: "84% / 31%",
     claim:
       "In the GCC, most companies now use AI in at least one function. Fewer than a third have scaled it across the business.",
     source: "McKinsey, The State of AI in GCC Countries, 2025",
   },
   {
+    hue: "blue",
     figure: "11%",
     claim:
       "of GCC organisations qualify as value realisers, able to attribute at least 5% of earnings to AI.",
@@ -35,33 +46,28 @@ const stats = [
 
 export default function EvidenceSection() {
   return (
-    <section className="pb-7 sm:pb-10">
+    <section className="band band-tight band-tint">
       <div className="container-x">
-        <div className="panel">
-          <div className="panel-head">
-            <h2 className="label">The AI implementation gap</h2>
-            <span className="text-sm text-muted">Published research, cited</span>
-          </div>
-          <Reveal className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((s, i) => (
-              <div
-                key={s.figure}
-                className="bg-canvas px-6 py-7"
-                style={{ "--i": i } as React.CSSProperties}
-              >
-                <p className="text-[1.75rem] font-semibold leading-none tracking-tight text-ink tabular-nums">
-                  {s.figure}
-                </p>
-                <p className="t-body mt-3">{s.claim}</p>
-                <p className="mt-3 text-xs text-muted">{s.source}</p>
-              </div>
-            ))}
-          </Reveal>
-          <p className="border-t border-line px-6 py-4 text-sm text-body">
-            The problem is not the technology. It is what happens inside the
-            business. The next section is what actually goes wrong.
-          </p>
+        <div className="flex flex-wrap items-baseline justify-between gap-4">
+          <h2 className="label">The AI implementation gap</h2>
+          <span className="text-sm text-muted">Published research, cited</span>
         </div>
+        <Reveal className="mt-6 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((s, i) => (
+            <Figure
+              key={s.figure}
+              value={s.figure}
+              label={s.claim}
+              source={s.source}
+              hue={s.hue}
+              index={i}
+            />
+          ))}
+        </Reveal>
+        <p className="mt-5 max-w-3xl text-[0.9375rem] leading-relaxed text-body">
+          The problem is not the technology. It is what happens inside the
+          business. The next section is what actually goes wrong.
+        </p>
       </div>
     </section>
   );

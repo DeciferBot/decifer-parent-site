@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/app/components/PageHero";
+import Icon from "@/app/components/Icon";
 import EnquiryForm from "@/app/components/EnquiryForm";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
@@ -40,6 +41,8 @@ export default function ContactPage() {
     <>
       <PageHero
         kicker="Contact"
+        icon="handover"
+        hue="orange"
         title="Start with the process you want to improve."
         lede="You do not need an AI specification. Tell us where work is slow, expensive, repetitive or hard to scale. Thirty minutes, no slides, and we will say what it would take, what it should return, and what we would not automate yet."
       />
@@ -50,9 +53,17 @@ export default function ContactPage() {
             <EnquiryForm />
           </div>
 
-          <aside className="space-y-10 lg:col-span-4 lg:col-start-9">
-            <div className="border-t border-line pt-5">
-              <h2 className="text-lg font-semibold text-ink">Prefer to pick a time</h2>
+          <aside className="space-y-6 lg:col-span-4 lg:col-start-9">
+            <div
+              className="accent-cap rounded-sm border border-line bg-panel px-5 py-5"
+              style={{ "--accent": "var(--color-a-blue)" } as React.CSSProperties}
+            >
+              <h2 className="flex items-center gap-2.5 text-lg font-semibold text-ink">
+                <span className="text-[var(--accent)]">
+                  <Icon name="events" size={18} />
+                </span>
+                Prefer to pick a time
+              </h2>
               <p className="t-body mt-2">
                 Dubai hours, with slots for Singapore and the UK. You will talk to
                 the person who would do the work.
@@ -72,8 +83,16 @@ export default function ContactPage() {
               )}
             </div>
 
-            <div className="border-t border-line pt-5">
-              <h2 className="text-lg font-semibold text-ink">Or just email</h2>
+            <div
+              className="accent-cap rounded-sm border border-line bg-panel px-5 py-5"
+              style={{ "--accent": "var(--color-a-teal)" } as React.CSSProperties}
+            >
+              <h2 className="flex items-center gap-2.5 text-lg font-semibold text-ink">
+                <span className="text-[var(--accent)]">
+                  <Icon name="handover" size={18} />
+                </span>
+                Or just email
+              </h2>
               <p className="mt-2">
                 <a
                   href="mailto:hello@decifer.io?subject=Discovery%20call"
@@ -88,13 +107,24 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="border-t border-line pt-5">
-              <h2 className="text-lg font-semibold text-ink">What happens next</h2>
-              <ol className="mt-3 space-y-3">
+            <div
+              className="accent-cap rounded-sm border border-line bg-panel px-5 py-5"
+              style={{ "--accent": "var(--color-a-orange)" } as React.CSSProperties}
+            >
+              <h2 className="flex items-center gap-2.5 text-lg font-semibold text-ink">
+                <span className="text-[var(--accent)]">
+                  <Icon name="measure" size={18} />
+                </span>
+                What happens next
+              </h2>
+              <ol className="mt-4 space-y-4">
                 {next.map((step, i) => (
-                  <li key={step} className="flex gap-3 text-[0.9375rem] leading-relaxed text-body">
-                    <span className="w-5 shrink-0 text-sm font-semibold text-muted">{i + 1}</span>
-                    {step}
+                  <li
+                    key={step}
+                    className="flex items-start gap-3 text-[0.9375rem] leading-relaxed text-body"
+                  >
+                    <span className="step-num step-num-on mt-0.5">{i + 1}</span>
+                    <span>{step}</span>
                   </li>
                 ))}
               </ol>

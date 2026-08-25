@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Figtree', 'Helvetica Neue', Arial, sans-serif; }
+    a { color: oklch(52% 0.19 36); } a:hover { color: oklch(46% 0.19 36); }
+    .serif { font-family: 'Source Serif 4', Georgia, serif; }
+    .eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: oklch(46% 0.014 250); }
+    .note { font-size: 13px; line-height: 1.5; color: oklch(46% 0.014 250); }
+    .card { background: #fff; border: 1px solid oklch(88% 0.006 250); border-radius: 6px; }
+  </style>
+</helmet>
+
+<div style="width: 1240px; background: oklch(96% 0.004 250); color: oklch(18% 0.012 250); padding: 56px 56px 64px;">
+
+  <!-- Header -->
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; border-bottom: 1px solid oklch(78% 0.008 250); padding-bottom: 20px;">
+    <div>
+      <p class="eyebrow" style="margin: 0 0 10px;">Decifer · design foundations</p>
+      <h1 class="serif" style="margin: 0; font-size: 46px; font-weight: 500; letter-spacing: -0.012em; line-height: 1.06;">The layers that bring the page alive.</h1>
+    </div>
+    <p class="note" style="margin: 0; max-width: 300px; text-align: right;">Existing tokens kept as they are. Everything marked <strong style="color: oklch(52% 0.19 36);">new</strong> is a layer to add, not a repaint.</p>
+  </div>
+
+  <!-- 1. Colour -->
+  <div style="display: flex; align-items: baseline; gap: 14px; margin: 44px 0 18px;">
+    <span class="serif" style="font-size: 26px; font-weight: 500;">01 &nbsp;Colour as navigation</span>
+    <span class="note">One hue per industry and per service, held constant everywhere that thing appears.</span>
+  </div>
+
+  <div class="card" style="padding: 26px 28px;">
+    <p class="eyebrow" style="margin: 0 0 16px;">Ground and ink — unchanged</p>
+    <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px;">
+      <div><div style="height: 56px; border-radius: 4px; background: oklch(96% 0.004 250); border: 1px solid oklch(88% 0.006 250);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">canvas</p><p class="note" style="margin: 2px 0 0; font-size: 11px;">96% 0.004 250</p></div>
+      <div><div style="height: 56px; border-radius: 4px; background: #fff; border: 1px solid oklch(88% 0.006 250);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">panel</p><p class="note" style="margin: 2px 0 0; font-size: 11px;">#ffffff</p></div>
+      <div><div style="height: 56px; border-radius: 4px; background: oklch(17% 0.014 255);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">dark</p><p class="note" style="margin: 2px 0 0; font-size: 11px;">17% 0.014 255</p></div>
+      <div><div style="height: 56px; border-radius: 4px; background: #f05a28;"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">orange</p><p class="note" style="margin: 2px 0 0; font-size: 11px;">#f05a28 locked</p></div>
+      <div><div style="height: 56px; border-radius: 4px; background: oklch(18% 0.012 250);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">ink</p><p class="note" style="margin: 2px 0 0; font-size: 11px;">headings</p></div>
+      <div><div style="height: 56px; border-radius: 4px; background: oklch(46% 0.014 250);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">muted</p><p class="note" style="margin: 2px 0 0; font-size: 11px;">metadata</p></div>
+    </div>
+
+    <p class="eyebrow" style="margin: 30px 0 6px;">Accent ladder — <span style="color: oklch(52% 0.19 36);">new</span></p>
+    <p class="note" style="margin: 0 0 16px; max-width: 62ch;">Seven hues at one lightness and near-one chroma, so no hue shouts louder than another. Each ships with an <code style="font-family: ui-monospace, monospace; font-size: 12px;">-on-dark</code> pair lifted for the board and the product band.</p>
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px;">
+      <div><div style="height: 44px; border-radius: 4px 4px 0 0; background: oklch(56% 0.19 36);"></div><div style="height: 22px; border-radius: 0 0 4px 4px; background: oklch(72% 0.16 40);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">orange</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">creator</p></div>
+      <div><div style="height: 44px; border-radius: 4px 4px 0 0; background: oklch(55% 0.16 250);"></div><div style="height: 22px; border-radius: 0 0 4px 4px; background: oklch(74% 0.13 250);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">blue</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">markets</p></div>
+      <div><div style="height: 44px; border-radius: 4px 4px 0 0; background: oklch(54% 0.11 195);"></div><div style="height: 22px; border-radius: 0 0 4px 4px; background: oklch(76% 0.11 190);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">teal</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">group marketing</p></div>
+      <div><div style="height: 44px; border-radius: 4px 4px 0 0; background: oklch(55% 0.17 300);"></div><div style="height: 22px; border-radius: 0 0 4px 4px; background: oklch(76% 0.12 300);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">violet</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">education</p></div>
+      <div><div style="height: 44px; border-radius: 4px 4px 0 0; background: oklch(52% 0.13 155);"></div><div style="height: 22px; border-radius: 0 0 4px 4px; background: oklch(74% 0.14 155);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">green</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">healthcare</p></div>
+      <div><div style="height: 44px; border-radius: 4px 4px 0 0; background: oklch(58% 0.13 70);"></div><div style="height: 22px; border-radius: 0 0 4px 4px; background: oklch(78% 0.12 75);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">amber</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">catering</p></div>
+      <div><div style="height: 44px; border-radius: 4px 4px 0 0; background: oklch(54% 0.15 350);"></div><div style="height: 22px; border-radius: 0 0 4px 4px; background: oklch(74% 0.12 350);"></div><p style="margin: 8px 0 0; font-size: 12px; font-weight: 600;">plum</p><p class="note" style="margin: 1px 0 0; font-size: 11px;">events</p></div>
+    </div>
+    <p class="note" style="margin: 16px 0 0;">Rule that keeps it honest: an accent never carries meaning on its own. It always sits beside the word it colours, so the page still works in greyscale and for a colour-blind reader.</p>
+  </div>
+
+  <!-- 2. Typography -->
+  <div style="display: flex; align-items: baseline; gap: 14px; margin: 44px 0 18px;">
+    <span class="serif" style="font-size: 26px; font-weight: 500;">02 &nbsp;Typography</span>
+    <span class="note">Source Serif 4 for structure, Figtree for everything read at speed. Three tokens added at the ends of the ramp.</span>
+  </div>
+
+  <div class="card" style="padding: 0;">
+    <div style="display: grid; grid-template-columns: 190px minmax(0, 1fr) 150px; gap: 24px; padding: 18px 28px; border-bottom: 1px solid oklch(88% 0.006 250); background: oklch(97.5% 0.004 250);">
+      <p class="eyebrow" style="margin: 0;">Token</p>
+      <p class="eyebrow" style="margin: 0;">Specimen</p>
+      <p class="eyebrow" style="margin: 0;">Job</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 190px minmax(0, 1fr) 150px; gap: 24px; padding: 22px 28px; border-bottom: 1px solid oklch(88% 0.006 250); align-items: center;">
+      <div><p style="margin: 0; font-size: 13px; font-weight: 600;">t-statement</p><p class="note" style="margin: 3px 0 0; font-size: 11px;">serif 500 · 64px · −0.02em <span style="color: oklch(52% 0.19 36);">new</span></p></div>
+      <p class="serif" style="margin: 0; font-size: 56px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.02;">Code computes<br>the numbers.</p>
+      <p class="note" style="margin: 0;">Once per page. The line a reader repeats to a colleague.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 190px minmax(0, 1fr) 150px; gap: 24px; padding: 22px 28px; border-bottom: 1px solid oklch(88% 0.006 250); align-items: center;">
+      <div><p style="margin: 0; font-size: 13px; font-weight: 600;">t-display / t-h1 / t-h2</p><p class="note" style="margin: 3px 0 0; font-size: 11px;">serif 500 · unchanged</p></div>
+      <p class="serif" style="margin: 0; font-size: 38px; font-weight: 500; letter-spacing: -0.012em; line-height: 1.08;">Turn AI investment into operating results.</p>
+      <p class="note" style="margin: 0;">Page and section headings.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 190px minmax(0, 1fr) 150px; gap: 24px; padding: 22px 28px; border-bottom: 1px solid oklch(88% 0.006 250); align-items: center;">
+      <div><p style="margin: 0; font-size: 13px; font-weight: 600;">t-figure</p><p class="note" style="margin: 3px 0 0; font-size: 11px;">sans 600 · tabular · −0.03em <span style="color: oklch(52% 0.19 36);">new</span></p></div>
+      <div style="display: flex; align-items: baseline; gap: 26px;">
+        <span style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;">9,064</span>
+        <span style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: oklch(55% 0.16 250);">40/40</span>
+        <span style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: oklch(58% 0.13 70);">719</span>
+      </div>
+      <p class="note" style="margin: 0;">Every proved figure. Sans, never serif: a number is data, not rhetoric.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 190px minmax(0, 1fr) 150px; gap: 24px; padding: 22px 28px; border-bottom: 1px solid oklch(88% 0.006 250); align-items: center;">
+      <div><p style="margin: 0; font-size: 13px; font-weight: 600;">t-lede / t-body</p><p class="note" style="margin: 3px 0 0; font-size: 11px;">sans 400 · 20/16px · unchanged</p></div>
+      <p style="margin: 0; font-size: 17px; line-height: 1.55; color: oklch(32% 0.012 250); max-width: 60ch;">Decifer takes responsibility for the whole path: the business case, the workflow redesign, the build, the integration, the rollout, and the measurement afterwards.</p>
+      <p class="note" style="margin: 0;">Reading copy. Measure capped at 68ch.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 190px minmax(0, 1fr) 150px; gap: 24px; padding: 22px 28px; align-items: center;">
+      <div><p style="margin: 0; font-size: 13px; font-weight: 600;">t-log</p><p class="note" style="margin: 3px 0 0; font-size: 11px;">mono 400 · 13px <span style="color: oklch(52% 0.19 36);">new use</span></p></div>
+      <div style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 13px; line-height: 1.7; background: oklch(17% 0.014 255); color: oklch(76% 0.008 250); border-radius: 4px; padding: 12px 16px;">
+        <div><span style="color: oklch(74% 0.14 155);">08:04:11</span> quote.built &nbsp;items=42 &nbsp;vat=applied</div>
+        <div><span style="color: oklch(78% 0.12 75);">08:04:11</span> guard.blocked &nbsp;reason=price_above_inventory</div>
+        <div><span style="color: oklch(74% 0.14 155);">08:04:12</span> handoff.human &nbsp;owner=sales</div>
+      </div>
+      <p class="note" style="margin: 0;">The one piece of texture that is also evidence: a log a team can read.</p>
+    </div>
+  </div>
+
+  <!-- 3. Surfaces -->
+  <div style="display: flex; align-items: baseline; gap: 14px; margin: 44px 0 18px;">
+    <span class="serif" style="font-size: 26px; font-weight: 500;">03 &nbsp;Surface rhythm</span>
+    <span class="note">The fix for ten identical white panels: five grounds, ordered so no two neighbours match.</span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px;">
+    <div class="card" style="overflow: hidden;">
+      <div style="height: 92px; background: #fff; border-bottom: 1px solid oklch(88% 0.006 250);"></div>
+      <div style="padding: 12px 14px;"><p style="margin: 0; font-size: 13px; font-weight: 600;">band-panel</p><p class="note" style="margin: 3px 0 0; font-size: 11px;">Ruled lists. The workhorse.</p></div>
+    </div>
+    <div class="card" style="overflow: hidden;">
+      <div style="height: 92px; background: oklch(94% 0.006 250); border-bottom: 1px solid oklch(88% 0.006 250);"></div>
+      <div style="padding: 12px 14px;"><p style="margin: 0; font-size: 13px; font-weight: 600;">band-tint <span style="color: oklch(52% 0.19 36); font-weight: 500;">new</span></p><p class="note" style="margin: 3px 0 0; font-size: 11px;">A quiet beat between two panels.</p></div>
+    </div>
+    <div class="card" style="overflow: hidden;">
+      <div style="height: 92px; background: oklch(17% 0.014 255); background-image: radial-gradient(oklch(30% 0.012 250) 1px, transparent 1px); background-size: 14px 14px; border-bottom: 1px solid oklch(88% 0.006 250);"></div>
+      <div style="padding: 12px 14px;"><p style="margin: 0; font-size: 13px; font-weight: 600;">band-dark <span style="color: oklch(52% 0.19 36); font-weight: 500;">+ field</span></p><p class="note" style="margin: 3px 0 0; font-size: 11px;">Products and proof. Carries the screenshots.</p></div>
+    </div>
+    <div class="card" style="overflow: hidden;">
+      <div style="height: 92px; background: #f05a28; border-bottom: 1px solid oklch(88% 0.006 250);"></div>
+      <div style="padding: 12px 14px;"><p style="margin: 0; font-size: 13px; font-weight: 600;">band-orange</p><p class="note" style="margin: 3px 0 0; font-size: 11px;">Doctrine and the closing call. Twice, never three times.</p></div>
+    </div>
+    <div class="card" style="overflow: hidden;">
+      <div style="height: 92px; background: oklch(96% 0.02 40); border-bottom: 1px solid oklch(88% 0.006 250);"></div>
+      <div style="padding: 12px 14px;"><p style="margin: 0; font-size: 13px; font-weight: 600;">band-warm <span style="color: oklch(52% 0.19 36); font-weight: 500;">new</span></p><p class="note" style="margin: 3px 0 0; font-size: 11px;">Founder and FAQ. Human, not instrument.</p></div>
+    </div>
+  </div>
+
+  <p class="note" style="margin: 22px 0 0; max-width: 78ch;">Every band spans the full width and meets its neighbour edge to edge. That is what produces flow: the reader feels the page change gear instead of scrolling through one long document.</p>
+
+</div>
+</x-dc>
+</body>
+</html>

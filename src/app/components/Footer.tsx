@@ -1,5 +1,6 @@
 import Link from "next/link";
 import DeciferLogo from "./DeciferLogo";
+import Icon from "./Icon";
 import { products } from "../data/products";
 import { servicesOrdered } from "../data/services";
 
@@ -29,7 +30,7 @@ const headClass = "mb-4 text-sm font-semibold text-on-dark";
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-on-dark">
+    <footer className="field-dots bg-dark text-on-dark">
       <div className="container-x py-16 sm:py-20">
         <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-12">
           <div className="col-span-2 md:col-span-4">
@@ -51,7 +52,18 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {servicesOrdered.map((s) => (
                 <li key={s.key}>
-                  <Link href={`/services/${s.key}`} className={colClass}>
+                  <Link
+                    href={`/services/${s.key}`}
+                    className={`${colClass} flex items-start gap-2.5`}
+                    style={
+                      {
+                        "--accent": `var(--color-a-${s.hue}-on-dark)`,
+                      } as React.CSSProperties
+                    }
+                  >
+                    <span className="mt-0.5 text-[var(--accent)]">
+                      <Icon name={s.icon} size={15} />
+                    </span>
                     {s.navLabel}
                   </Link>
                 </li>
@@ -65,7 +77,16 @@ export default function Footer() {
               {products.map((p) => (
                 <li key={p.key}>
                   {p.href ? (
-                    <a href={p.href} target="_blank" rel="noopener noreferrer" className={colClass}>
+                    <a
+                      href={p.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${colClass} flex items-center gap-2.5`}
+                    >
+                      <span
+                        className="h-2 w-2 flex-none rounded-full"
+                        style={{ background: p.accent.hex }}
+                      />
                       {p.name}
                     </a>
                   ) : (

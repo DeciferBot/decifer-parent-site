@@ -86,18 +86,22 @@ export default function LaunchSafetyCheck() {
               {i + 1}. {c.q}
             </legend>
             <p className="mt-1 text-sm leading-relaxed text-muted">{c.detail}</p>
-            <div className="mt-3 flex gap-2">
+            <div className="mt-4 flex flex-wrap gap-2">
               {OPTIONS.map((o) => (
                 <button
                   key={o.value}
                   type="button"
                   onClick={() => setAnswers((prev) => prev.map((a, j) => (j === i ? o.value : a)))}
                   aria-pressed={answers[i] === o.value}
-                  className={`rounded-sm border px-3.5 py-1.5 text-sm font-medium transition-colors ${
-                    answers[i] === o.value
-                      ? "border-ink bg-ink text-canvas"
-                      : "border-line text-body hover:border-ink hover:text-ink"
-                  }`}
+                  className={`choice ${answers[i] === o.value ? "choice-on" : ""}`}
+                  style={
+                    {
+                      "--accent":
+                        o.value === "yes"
+                          ? "var(--color-a-green)"
+                          : "var(--color-a-orange)",
+                    } as React.CSSProperties
+                  }
                 >
                   {o.label}
                 </button>

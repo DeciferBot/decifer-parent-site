@@ -1,22 +1,37 @@
 import Link from "next/link";
 import Arrow from "./Arrow";
+import Icon from "./Icon";
 import type { CaseShape } from "../data/caseShapes";
+import { sectorMark } from "../data/caseShapes";
 import { servicesByKey } from "../data/services";
+import { accent } from "../data/accents";
 
 /**
- * One anonymised case as a row inside a panel. The first outcome line is
- * shown so the list reads as results, not titles.
+ * One case as a row inside a panel. Client work is anonymised; Decifer's own
+ * products carry `ownProduct` and say so, so a reader is never left guessing
+ * which is which. The first outcome line is shown so the list reads as
+ * results, not titles.
  */
 export default function CaseRow({ shape: c }: { shape: CaseShape }) {
+  const mark = sectorMark[c.sector];
   return (
     <li>
       <Link
         href={`/work/${c.key}`}
         className="row-link group grid gap-3 px-6 py-7 md:grid-cols-12 md:gap-8"
+        style={accent(mark.hue)}
       >
         <div className="md:col-span-3">
+          <span className="icon-tile mb-3">
+            <Icon name={mark.icon} />
+          </span>
           <p className="text-sm font-semibold text-ink">{c.sector}</p>
           <p className="mt-1 text-sm text-muted">{c.region}</p>
+          {c.ownProduct ? (
+            <p className="mt-2 inline-block rounded-sm border border-line px-2 py-0.5 text-xs text-muted">
+              Our own product
+            </p>
+          ) : null}
         </div>
         <div className="md:col-span-6">
           <h3 className="t-h3 text-ink">{c.title}</h3>

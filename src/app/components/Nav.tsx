@@ -49,14 +49,14 @@ export default function Nav() {
           <DeciferLogo size="sm" />
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 lg:flex xl:gap-8">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               aria-current={isActive(l.href) ? "page" : undefined}
-              className={`text-[0.9375rem] font-medium transition-colors duration-150 hover:text-ink ${
-                isActive(l.href) ? "text-ink" : "text-body"
+              className={`nav-link text-[0.9375rem] font-medium transition-colors duration-150 hover:text-ink ${
+                isActive(l.href) ? "nav-link-on text-ink" : "text-body"
               }`}
             >
               {l.label}
@@ -73,7 +73,7 @@ export default function Nav() {
 
         <button
           type="button"
-          className="-mr-2 grid h-11 w-11 place-items-center rounded-sm text-ink md:hidden"
+          className="-mr-2 grid h-11 w-11 place-items-center rounded-sm text-ink lg:hidden"
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -102,7 +102,7 @@ export default function Nav() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="fixed inset-x-0 top-16 bottom-0 bg-canvas md:hidden"
+        className="fixed inset-x-0 top-16 bottom-0 bg-canvas lg:hidden"
       >
         <div className="container-x flex h-full flex-col pt-4">
           <ul className="ruled">

@@ -16,9 +16,9 @@ export default function CtaBand({
   eventPrefix?: string;
 }) {
   return (
-    <section className="pb-12 sm:pb-16">
+    <section className="band band-tight band-orange">
       <div className="container-x">
-        <div className="rounded-md bg-orange px-8 py-12 text-ink sm:px-10 sm:py-14">
+        <div>
           <div className="grid gap-8 md:grid-cols-12 md:items-end">
             <div className="md:col-span-7">
               <h2 className="t-h2">{title}</h2>

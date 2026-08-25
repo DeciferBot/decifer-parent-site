@@ -19,15 +19,23 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      {/*
+        Band order is the page's rhythm, and it is deliberate: no two
+        neighbouring sections share a ground, and the proof (BuiltSection,
+        the only photography on the site) arrives early enough that a reader
+        moving fast still meets it. See DESIGN.md, "Surface rhythm".
+          canvas → tint → panel → dark → panel → orange → tint → panel →
+          warm → panel → orange
+      */}
       <HeroSection />
       <EvidenceSection />
       <StallSection />
-      <ResponsibilitySection />
+      <BuiltSection />
       <ServicesSection />
       <HowWeBuildSection />
-      <PeopleProcessSection />
+      <ResponsibilitySection />
       <SolvedSection />
-      <BuiltSection />
+      <PeopleProcessSection />
       <FounderSection />
       <FaqSection />
       <CtaBand eventPrefix="home" />

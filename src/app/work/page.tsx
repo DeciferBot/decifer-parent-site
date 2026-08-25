@@ -3,13 +3,15 @@ import Link from "next/link";
 import PageHero from "@/app/components/PageHero";
 import CaseRow from "@/app/components/CaseShapeCard";
 import CtaBand from "@/app/components/CtaBand";
-import { publishedCaseShapes } from "@/app/data/caseShapes";
+import Icon from "@/app/components/Icon";
+import { publishedCaseShapes, sectorMark } from "@/app/data/caseShapes";
+import { accent } from "@/app/data/accents";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   title: "Work: processes taken from pilot to daily operation",
   description:
-    "Client work from Decifer in the UAE, UK, Spain and Singapore, anonymised unless a client has agreed in writing to be named. Each case states what was built, what changed, how it was measured, and what we deliberately did not automate.",
+    "Client work from Decifer in the UAE, UK, Spain and Singapore, anonymised unless a client has agreed in writing to be named, plus the two Decifer products we run ourselves. Each case states what was built, what changed, how it was measured, and what we deliberately did not automate.",
   alternates: { canonical: "/work" },
 };
 
@@ -36,15 +38,51 @@ export default function WorkPage() {
     <>
       <PageHero
         kicker="Work"
+        icon="record"
+        hue="amber"
         title="Described by shape. Named only by agreement."
-        lede="Most clients are not named on this site, by their own request and as a matter of policy. Where a client has agreed in writing to be named, we say so. Every case states the sector, the problem, what we built, what changed, how it is measured, and what we chose not to automate."
+        lede="Most clients are not named on this site, by their own request and as a matter of policy. Where a client has agreed in writing to be named, we say so. Our own products are named, because there is nobody to ask. Every case states the industry, the problem, what we built, what changed, how it is measured, and what we chose not to automate."
       >
         <Link href="/legal/client-confidentiality" className="link text-[0.9375rem]">
           How we handle client confidentiality
         </Link>
       </PageHero>
 
-      <section className="pb-16 sm:pb-24">
+      {/* The industries, as a scan strip. A reader looking for their own
+          field should find it before they start reading rows, and each mark
+          here is the same one that leads its case below. */}
+      <section className="band band-tight band-tint">
+        <div className="container-x">
+          <h2 className="label">Seven industries, one method</h2>
+          <ul className="mt-5 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {publishedCaseShapes.map((c) => {
+              const mark = sectorMark[c.sector];
+              return (
+                <li key={c.key} style={accent(mark.hue)}>
+                  <Link
+                    href={`/work/${c.key}`}
+                    className="row-link flex h-full items-center gap-3 bg-panel px-4 py-4"
+                  >
+                    <span className="icon-tile icon-tile-sm">
+                      <Icon name={mark.icon} size={16} />
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-[0.9375rem] font-medium leading-snug text-ink">
+                        {c.sector}
+                      </span>
+                      <span className="block text-[0.8125rem] text-muted">
+                        {c.region}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
+      <section className="pb-16 sm:pb-24 pt-14 sm:pt-16">
         <div className="container-x">
           <div className="panel">
             <ul className="divide-y divide-line">
