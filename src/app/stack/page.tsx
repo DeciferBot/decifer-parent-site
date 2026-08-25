@@ -106,7 +106,7 @@ export default function StackPage() {
         <div className="container-x">
           <SectionHead
             title="Every tool, and the honest reason for it"
-            lede="The reason matters more than the logo. Where a cheaper or more obvious alternative exists, the entry says what this one earns you instead."
+            lede="Each entry says why the tool is used. Where a cheaper or more obvious alternative exists, the entry says what this one does better."
             className="mb-10"
           />
           <div className="grid gap-px bg-line">
@@ -192,7 +192,7 @@ export default function StackPage() {
 
       <CtaBand
         eventPrefix="stack"
-        title="Bring us the process. We will show you which parts a model should run, and which belong in code."
+        title="Tell us the process. We will show you which parts a model should run and which belong in code."
         body="A two-week assessment at a fixed fee costs the process, ranks the opportunities, and names plainly what we would not automate yet. Credited in full against any build that follows."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />

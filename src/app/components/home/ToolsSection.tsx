@@ -45,8 +45,8 @@ export default function ToolsSection() {
           </ul>
           <div className="border-t border-line px-6 py-4">
             <p className="text-sm text-body">
-              Free, no signup, nothing stored. Each one runs in your browser, uses your numbers,
-              and ends with the right next move for what it finds.
+              Free, no signup, nothing stored. Each runs in your browser, uses your numbers, and
+              ends with a recommended next step.
             </p>
           </div>
         </div>

@@ -107,16 +107,16 @@ export default function PaybackCalculator() {
   if (ready) {
     if (yearlyLabour === 0) {
       verdict =
-        "There is nothing to save on these numbers yet. Worth checking the hours and the salary before you rule the task out: most people undercount by leaving out the checking and the chasing.";
+        "There is nothing to save on these numbers. Check the hours and the salary: most people leave out the checking and the chasing.";
       next = {
-        line: "If the hours really are that small, the money is somewhere else in the business, and it is usually in a process nobody has counted. The two-week assessment maps where the hours actually go and costs each one.",
+        line: "If the hours really are that small, the money is in another process. The two-week assessment maps where the hours go and costs each one.",
         cta: "See the two-week assessment",
         href: "/services/ai-advisory",
         event: "tools_payback_advisory_no_cost",
       };
     } else if (yearlySaving <= 0) {
       verdict =
-        `This one turns on the running cost. At AED ${fmt(parsed.running)} a month it is above the value of the hours, which is a pricing question rather than a fact about the task.`;
+        `At AED ${fmt(parsed.running)} a month, the running cost is higher than the value of the hours. Bring it down and this task works.`;
       levers = [
         `Running cost under AED ${fmt(runningToBreakEven)} a month and the task at least breaks even.`,
         Number.isFinite(hoursToBreakEven)
@@ -127,7 +127,7 @@ export default function PaybackCalculator() {
           : "",
       ].filter(Boolean);
       next = {
-        line: "Two things move that running cost: how much of the job actually needs a model, and how much of it is plain rules. Most quotes we see are priced as though all of it needs a model. Send us the numbers and we will tell you which parts do, whether or not you build it with us.",
+        line: "Two things set the running cost: how much of the job needs a model, and how much is plain rules. Most quotes price all of it as model work. Send us the numbers and we will tell you which parts need one.",
         cta: "Get the running cost checked",
         href: enquiryHref(
           `We are looking at automating a task that takes ${values.hours} hours a week. On your payback calculator it does not work: about AED ${fmt(yearlyLabour)} a year of staff time against a build of AED ${fmt(parsed.build)} and AED ${fmt(parsed.running)} a month to run. We want to know whether that running cost is realistic.`,
@@ -141,16 +141,16 @@ export default function PaybackCalculator() {
         },
       };
     } else if (paybackMonths <= 12) {
-      verdict = "The numbers work. On these figures the build pays for itself inside a year, which is the bar most owners set.";
+      verdict = "The numbers work. The build pays for itself inside a year.";
       leversLabel = "How much room the numbers have";
       levers = Number.isFinite(hoursForPayback(24))
         ? [
             `It still pays back inside two years even if the task turns out to be ${fmtHours(hoursForPayback(24))} hours a week rather than ${values.hours}.`,
-            `Room on the build: up to AED ${fmt(buildForPayback(24))} and the two-year payback holds.`,
+            `The build can go up to AED ${fmt(buildForPayback(24))} and still pay back inside two years.`,
           ]
         : [];
       next = {
-        line: "The number to test next is the running cost, because it is the one a quote is most likely to be quiet about. Send these figures over and you get a real one back, plus what we would not automate in this process.",
+        line: "Check the running cost next. It is the number most quotes leave out. Send these figures over and you will get a real one back.",
         cta: "Get this priced properly",
         href: enquiryHref(
           `A task taking ${values.hours} hours a week, worth about AED ${fmt(yearlyLabour)} a year in staff time. On your calculator a build at AED ${fmt(parsed.build)} with AED ${fmt(parsed.running)} a month to run pays back in about ${fmt(paybackMonths)} months. We would like it priced and scoped properly.`,
@@ -159,7 +159,7 @@ export default function PaybackCalculator() {
         event: "tools_payback_contact_strong",
       };
     } else if (paybackMonths <= 24) {
-      verdict = "This works, and it works faster with a smaller first build. Two numbers get the payback inside a year:";
+      verdict = "This works. A smaller first build gets the payback inside a year:";
       levers = [
         `A build at AED ${fmt(buildForPayback(12))} or under pays it back inside a year.`,
         Number.isFinite(hoursForPayback(12))
@@ -167,7 +167,7 @@ export default function PaybackCalculator() {
           : "",
       ].filter(Boolean);
       next = {
-        line: "A payback in this range usually means the build is doing more than it needs to. There is almost always a smaller first version that carries most of the saving at a fraction of the cost, and finding it is a half-hour conversation, not a project.",
+        line: "A payback in this range usually means the build is doing more than it needs to. A smaller first version normally carries most of the saving at a fraction of the cost. Finding it takes half an hour.",
         cta: "Ask about a smaller first build",
         href: enquiryHref(
           `A task taking ${values.hours} hours a week, worth about AED ${fmt(yearlyLabour)} a year in staff time. On your calculator a build at AED ${fmt(parsed.build)} with AED ${fmt(parsed.running)} a month to run pays back in about ${fmt(paybackMonths)} months. We want to know whether a smaller first version would carry most of the saving and land it sooner.`,
@@ -176,7 +176,7 @@ export default function PaybackCalculator() {
         event: "tools_payback_contact_borderline",
       };
     } else {
-      verdict = "This one needs a smaller build or a bigger task before the payback lands inside two years. Both are findable, and here is what each would have to be:";
+      verdict = "A smaller build, or a task with more hours in it, brings the payback inside two years. Here is what each would have to be:";
       levers = [
         `It works at a build cost of about AED ${fmt(buildForPayback(24))}.`,
         Number.isFinite(hoursForPayback(24))
@@ -184,7 +184,7 @@ export default function PaybackCalculator() {
           : "",
       ].filter(Boolean);
       next = {
-        line: "There are usually two or three tasks in a business this size where the same arithmetic comes out well inside a year, and they are rarely the ones people expect. Finding and costing them is what the two-week assessment does, and it is credited in full against any build that follows.",
+        line: "Most businesses this size have two or three tasks where the arithmetic comes out well inside a year. The two-week assessment finds and costs them. The fee is credited in full against any build.",
         cta: "Ask about the assessment",
         href: enquiryHref(
           `We ran a task of ${values.hours} hours a week through your calculator, worth about AED ${fmt(yearlyLabour)} a year in staff time, and the payback on a AED ${fmt(parsed.build)} build lands beyond two years. We want help finding the tasks in the business where the numbers work, and a smaller build for this one.`,

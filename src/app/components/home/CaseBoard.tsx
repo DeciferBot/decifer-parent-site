@@ -74,7 +74,7 @@ export default function CaseBoard() {
         </div>
       ))}
       <p className="border-t border-line-dark px-4.5 py-3 text-[0.78125rem] text-on-dark-2">
-        Anonymised by default, named only by agreement.{" "}
+        Clients are named where they have agreed in writing.{" "}
         <Link href="/work" className="text-on-dark underline underline-offset-2">
           Read every case
         </Link>

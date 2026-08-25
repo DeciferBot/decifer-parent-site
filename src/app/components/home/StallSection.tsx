@@ -13,7 +13,7 @@ const points = [
   {
     title: "The business case is weak",
     body: "The pilot was chosen because the technology looked capable, not because anyone costed the process it replaces. When budgets are reviewed, there is no evidence to defend the spend.",
-    fix: "We cost the process before any technology is chosen, so the spend has evidence behind it at every budget review.",
+    fix: "We cost the process before any technology is chosen, so the spend can be defended at a budget review.",
   },
   {
     title: "The old process was carried forward",
@@ -38,7 +38,7 @@ const points = [
   {
     title: "Nobody took a baseline",
     body: "Time saved, cost reduced and response time all need a starting point. Without one, ROI becomes an opinion, and the project dies at budget time.",
-    fix: "The baseline is the first deliverable, so the result is measurable in the terms the business case set.",
+    fix: "The baseline is the first deliverable, so the result can be measured against it later.",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function StallSection() {
         <div className="panel">
           <div className="panel-head">
             <h2 className="label">What separates the projects that ship</h2>
-            <span className="text-sm text-muted">Six failure points, six answers</span>
+            <span className="text-sm text-muted">Six failure points, and what we do about each</span>
           </div>
           <Reveal className="grid gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
             {points.map((p, i) => (

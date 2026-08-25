@@ -135,13 +135,13 @@ export default function HowWeWorkPage() {
               </table>
             </div>
             <p className="border-t border-line px-6 py-4 text-sm text-muted">
-              The middle column links to a real engagement, anonymised unless
-              the client asked in writing to be named. The
+              The middle column links to a real engagement, named where the
+              client agreed in writing. The
               right column is our own judgement about where the same pattern
               would apply next. Every engagement behind this matrix runs at the
-              scale of a single business, and the assessment is how we prove
-              the pattern on your scale before either of us commits further:
-              two weeks, fixed fee, credited in full against the build.
+              scale of a single business. The assessment tests the pattern at
+              your scale first: two weeks, fixed fee, credited in full against
+              the build.
             </p>
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function HowWeWorkPage() {
       <CtaBand
         eventPrefix="how_we_work"
         title="Tell us the process. We'll bring the method."
-        body="A two-week assessment at a fixed fee costs the process, ranks the opportunities and names the one to start with. Credited in full against any build that follows."
+        body="A two-week assessment at a fixed fee. It costs the process, ranks the opportunities and names the one to start with. The fee is credited in full against any build that follows."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
     </>

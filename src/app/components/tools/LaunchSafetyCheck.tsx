@@ -77,7 +77,7 @@ export default function LaunchSafetyCheck() {
       ? "All six pass. Launch, then keep going: passing the checks makes the app safe enough to improve in public, not finished."
       : score >= 4
         ? `${score} of 6. Close. Clear the items below and you are ready for real users; each is typically a day or less.`
-        : `${score} of 6, and the gaps below are the ones attackers and accidents find first. Close them and the launch is a different proposition.`;
+        : `${score} of 6. The gaps below are the ones attackers and accidents find first. Close them before real users arrive.`;
 
   /** The failing checks, carried into the enquiry form as the brief. */
   const failingBrief = failing.map((c) => c.q.replace(/\?$/, "").toLowerCase()).join("; ");
@@ -86,7 +86,7 @@ export default function LaunchSafetyCheck() {
     ? null
     : score === CHECKS.length
       ? {
-          line: "The checks that matter next are the ones that only appear under real use: what happens when the traffic, the data and the edge cases arrive. That is the work after launch, and it is the work we take on.",
+          line: "The next checks only appear under real use: traffic, real data, edge cases. That is the work after launch, and we take it on.",
           cta: "See how we build and hand over",
           href: "/services/ai-product-development",
           event: "tools_safety_services_pass",
@@ -99,7 +99,7 @@ export default function LaunchSafetyCheck() {
           },
         }
       : {
-          line: `${failing.length} ${failing.length === 1 ? "gap" : "gaps"} to close, each typically a day or less if you know the codebase. If nobody on your side has that day, this is the first thing we do on any codebase we inherit, and you get the findings whether or not you hire us for the rest.`,
+          line: `${failing.length} ${failing.length === 1 ? "gap" : "gaps"} to close, each typically a day or less if you know the codebase. If nobody on your side has that day, we run these checks on any codebase we inherit and you get the findings back.`,
           cta: "Send us the app",
           href: `/contact?problem=${encodeURIComponent(
             `Our app scores ${score} of 6 on your launch safety check. The gaps: ${failingBrief}. We want them closed before real users arrive.`

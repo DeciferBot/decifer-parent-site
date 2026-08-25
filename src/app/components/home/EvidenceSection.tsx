@@ -58,9 +58,8 @@ export default function EvidenceSection() {
             ))}
           </Reveal>
           <p className="border-t border-line px-6 py-4 text-sm text-body">
-            The gap is not the technology. It is the implementation, which is
-            a solvable problem and the one we are built for. Everything below
-            is how we close it.
+            The gap is in implementation, not technology. Everything below is
+            how we close it.
           </p>
         </div>
       </div>

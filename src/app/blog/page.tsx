@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/app/components/PageHero";
 import PostRow from "@/app/components/blog/PostCard";
 import CtaBand from "@/app/components/CtaBand";
+import ToolsSection from "@/app/components/home/ToolsSection";
 import { getAllPosts, BLOG_DESCRIPTION } from "@/lib/blog";
 import { jsonLd, SITE, RSS_ALTERNATE_TYPES } from "@/lib/jsonld";
 
@@ -53,6 +54,8 @@ export default function BlogIndex() {
           )}
         </div>
       </section>
+
+      <ToolsSection />
 
       <CtaBand eventPrefix="blog" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />

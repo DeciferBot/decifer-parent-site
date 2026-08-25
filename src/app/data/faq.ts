@@ -24,7 +24,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "We already ran a pilot and it stalled. Can you take it over?",
-    a: "Often, yes, and it is some of our favourite work. The assessment works on an existing pilot as well as a new idea: we baseline the process, find the point it stopped at, and give you the shortest route from there to something running in daily use.",
+    a: "Often, yes. The assessment works on an existing pilot as well as a new idea. We baseline the process, find the point it stopped at, and set out the shortest route from there to something running daily.",
   },
   {
     q: "Can you work with our existing systems?",
@@ -32,7 +32,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Do you build AI agents?",
-    a: `Yes, where the workflow benefits from one. Where plain automation, retrieval or code does the same job, we build that instead, and it is cheaper to run and easier for your team to own. We have made that swap ${proofByKey.deletedAi.value} times in our own systems, which is how we know the difference.`,
+    a: `Yes, where the workflow benefits from one. Where plain automation, retrieval or code does the same job, we build that instead. It costs less to run and your team can own it. We have made that swap ${proofByKey.deletedAi.value} times in our own systems.`,
   },
   {
     q: "How do you deal with AI errors?",
@@ -48,7 +48,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Can you show us named client work?",
-    a: "Where a client has agreed in writing to be named, yes. By default we describe work by sector and shape instead, with what we built, what changed, how it is measured and where a person stays in charge. That discretion is the default your own project would get, and any figure is published only with the method and written permission.",
+    a: "Where a client has agreed in writing to be named, yes. Otherwise we describe work by sector and shape, with what we built, what changed, how it is measured and where a person stays in charge. Your project would be treated the same way. Figures are published only with the method and written permission.",
   },
 ];
 

@@ -39,11 +39,11 @@ export default function AgentOrAutomation() {
   let next: ComponentProps<typeof ToolNextStep> | null = null;
   if (done) {
     if (messy) {
-      heading = "An agent, for one job: taming the messy input.";
+      heading = "An agent, for one job: reading the messy input.";
       body =
-        "Use a model to extract order from the mess: pull the facts out of the rambling email or the voice note into clean fields. The decisions that follow can still be plain rules, and should be. Do not let the model decide; let it read.";
+        "Use a model to pull the facts out of the rambling email or the voice note and into clean fields. The decisions that follow stay as plain rules. The model reads the input; the rules decide what happens next.";
       next = {
-        line: "The whole job is drawing that boundary in the right place: what the model reads, what the rules decide, and what a person still signs off. We write it down before anything is built, and you can have our read on your version of it in a half-hour call.",
+        line: "The boundary is the job: what the model reads, what the rules decide, what a person signs off. We write it down before anything is built. Half an hour on a call gets you our version for your task.",
         cta: "Describe the messy input",
         href: `/contact?problem=${encodeURIComponent(
           "We have a task where the input is messy in ways we cannot list in advance, so a fixed workflow does not cope. Your three-question tool says a model should read the input while plain rules make the decisions. We want to know what that would take."
@@ -58,9 +58,9 @@ export default function AgentOrAutomation() {
     } else if (steps) {
       heading = "Start with automation. It is the cheaper build and it does this job.";
       body =
-        "The steps fit on a page, so a fixed workflow does it: triggers, templates, rules. Cheaper to build, cheaper to run, and readable when something goes wrong. Keep the agent budget for the part of the business where the input is genuinely messy; this part does not need it.";
+        "The steps fit on a page, so a fixed workflow does it: triggers, templates, rules. Cheaper to build, cheaper to run, and readable when something goes wrong. Keep the agent budget for a part of the business where the input is genuinely messy.";
       next = {
-        line: "This is the cheaper half of what we do, and it is usually where a first project should start. Before you commission it, put the hours and the quote through the arithmetic: it takes a minute and it tells you whether the price you have been given makes sense.",
+        line: "Before you commission it, put the hours and the quote through the arithmetic. It takes a minute and tells you whether the price makes sense.",
         cta: "Run the payback numbers",
         href: "/tools/automation-payback-calculator",
         event: "tools_agent_payback_automation",
@@ -73,9 +73,9 @@ export default function AgentOrAutomation() {
     } else {
       heading = "Start by writing the process down. That is the first piece of work.";
       body =
-        "If the steps cannot be written on a page and the input is not the problem, the process is still undefined, and automating an undefined process produces an automated mess. Write the page first, with the person who actually does the task. The answer usually becomes obvious halfway down, and the page is the specification for whatever gets built next.";
+        "If the steps cannot be written on a page and the input is not the problem, the process is still undefined. Write the page first, with the person who does the task. It becomes the specification for whatever gets built next.";
       next = {
-        line: "Writing that page is work, and it is the work most projects skip. If nobody internally has the time, it is exactly what the two-week assessment produces: the process mapped, costed, a shortlist of what to automate first and an explicit list of what to leave alone. Fixed fee, credited in full against any build that follows.",
+        line: "Writing that page is work, and most projects skip it. If nobody on your side has the time, the two-week assessment does it: the process mapped, costed, and a shortlist of what to automate first. Fixed fee, credited in full against any build.",
         cta: "Ask about the assessment",
         href: `/contact?problem=${encodeURIComponent(
           "Your three-question tool says our process is not defined enough to automate yet: the steps do not fit on a page and the input is not the problem. We want help mapping and costing it before anyone builds anything."

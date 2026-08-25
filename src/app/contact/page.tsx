@@ -69,7 +69,7 @@ export default async function ContactPage({
       <PageHero
         kicker="Contact"
         title="Start with the process you want to improve."
-        lede="Bring the process, not a specification. Tell us where work is slow, expensive, repetitive or hard to scale, and in thirty minutes you will have the shape of the right solution, what it would take to build, what it should return, and where to start."
+        lede="You do not need a specification. Tell us where work is slow, expensive, repetitive or hard to scale. In thirty minutes you will know what the right solution looks like, what it would take to build, what it should return, and where to start."
       />
 
       <section className="pb-20 sm:pb-28">
