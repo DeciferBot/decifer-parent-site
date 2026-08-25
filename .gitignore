@@ -48,3 +48,6 @@ next-env.d.ts
 # .dc.html working files beside them.
 design/*.html
 !design/*.dc.html
+
+# Python bytecode from the diagram generators in design/
+__pycache__/
