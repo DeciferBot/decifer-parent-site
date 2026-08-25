@@ -562,6 +562,43 @@ p {
     height: auto;
   }
 
+  /* ── Choice buttons ────────────────────────────────── */
+
+  /* Tool answers. A 44px target because these are the one thing on the
+     site a visitor actually operates, and the selected state carries the
+     answer's own colour: a pass reads green, a fail or a do-not-know reads
+     orange, so a half-finished scorecard is legible at a glance. */
+  .choice {
+    min-height: 2.75rem;
+    padding: 0.5rem 1.125rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-line-strong);
+    background: var(--color-panel);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-body);
+    cursor: pointer;
+    transition:
+      background-color 180ms var(--ease-fluid),
+      border-color 180ms var(--ease-fluid),
+      color 180ms var(--ease-fluid),
+      transform 120ms var(--ease-fluid);
+  }
+  .choice:active {
+    transform: scale(0.97);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .choice:hover {
+      border-color: var(--accent, var(--color-ink));
+      color: var(--color-ink);
+    }
+  }
+  .choice-on {
+    border-color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 12%, white);
+    color: color-mix(in oklab, var(--accent) 78%, black);
+  }
+
   /* ── Nav ───────────────────────────────────────────── */
 
   /* The current page is marked with the brand rule under it, not with a
