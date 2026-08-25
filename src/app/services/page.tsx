@@ -70,21 +70,37 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="border-t border-line">
-        <div className="container-x section">
+      <section className="band band-tint">
+        <div className="container-x">
           <SectionHead
             title="How an engagement runs."
             lede="Three steps, each with a fixed shape. You can stop after any of them with something useful in hand."
           />
-          <ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+          <ol className="mt-11 grid gap-4 md:grid-cols-3">
             {steps.map((st, i) => (
-              <li key={st.title} className="border-t border-line pt-5">
-                <p className="text-sm font-semibold text-muted">Step {i + 1}</p>
-                <h3 className="mt-2 text-lg font-semibold text-ink">{st.title}</h3>
-                <p className="t-body mt-3">{st.body}</p>
+              <li
+                key={st.title}
+                className="accent-cap rounded-sm border border-line bg-panel px-6 py-6"
+                style={
+                  {
+                    "--accent": `var(--color-a-${["amber", "orange", "teal"][i]})`,
+                  } as React.CSSProperties
+                }
+              >
+                <div className="flex items-center gap-3">
+                  <span className="step-num step-num-on">{i + 1}</span>
+                  <h3 className="text-[1.0625rem] font-semibold leading-snug text-ink">
+                    {st.title}
+                  </h3>
+                </div>
+                <p className="t-body mt-4 text-[0.9375rem]">{st.body}</p>
               </li>
             ))}
           </ol>
+          <p className="mt-6 text-sm text-muted">
+            Each step ends with something you keep, whether or not the next one
+            happens.
+          </p>
         </div>
       </section>
 
