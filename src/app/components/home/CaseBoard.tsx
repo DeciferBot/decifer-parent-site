@@ -13,6 +13,16 @@ import Icon, { type IconName } from "../Icon";
  * room to earn them. Here a stranger gets one sentence they recognise as
  * their own problem, and the thing that fixed it.
  *
+ * Each row is written as the capability, not the anecdote: the problem is
+ * phrased so a reader in another industry recognises their own, because the
+ * mechanism is what transfers. "Live data arriving faster than anyone can
+ * read it" is a markets problem, a logistics problem and a claims problem,
+ * and the same pipeline answers all three.
+ *
+ * Counts stay off this board. A figure needs its method and its permission
+ * (see proof.ts), which is a case-page job; here a wrong one would be the
+ * first thing a stranger reads.
+ *
  * Every row is a published case shape (caseShapes.ts), in the same order.
  * The mechanism label is that case's leading serviceKey in plain words, so
  * the counselling row correctly reads as automation: its whole point is
@@ -36,40 +46,40 @@ const rows: Row[] = [
     sector: "Hospitality and catering",
     icon: "catering",
     hue: "amber",
-    problem: "Quoting a party took a phone call and a day.",
-    solved: "Customers now price it themselves, online.",
+    problem: "Thirty years of pricing knowledge locked in one person's head.",
+    solved: "Turned into a quoting engine the customer runs themselves.",
     mechanism: "Workflow automation",
   },
   {
     sector: "Group marketing",
     icon: "group",
     hue: "teal",
-    problem: "Nine companies, nine sets of numbers.",
-    solved: "Leadership reads one view, refreshed nightly.",
-    mechanism: "Reporting",
+    problem: "Every company keeping its own numbers, none of them comparable.",
+    solved: "One set everyone reads, refreshed nightly, computed in code.",
+    mechanism: "Automated reporting",
   },
   {
     sector: "Events management",
     icon: "events",
     hue: "plum",
-    problem: "One host answering guest questions at all hours.",
-    solved: "An assistant answers them from the real plan.",
+    problem: "The same questions asked over and over, at all hours.",
+    solved: "An agent answers from live data, and refuses what it cannot verify.",
     mechanism: "AI agent",
   },
   {
     sector: "Healthcare and counselling",
     icon: "health",
     hue: "green",
-    problem: "Clinical hours lost to intake paperwork.",
-    solved: "Enquirers get a structured report in minutes.",
+    problem: "Skilled hours lost to intake paperwork.",
+    solved: "The admin runs itself, with no AI anywhere a client can meet it.",
     mechanism: "Workflow automation",
   },
   {
     sector: "Creator and personal brand",
     icon: "creator",
     hue: "orange",
-    problem: "The whole business ran on one person's memory.",
-    solved: "Publishing and outreach run to a schedule.",
+    problem: "The whole operation ran on one person's memory.",
+    solved: "Agents run it to a schedule, inside limits they cannot exceed.",
     mechanism: "AI agents",
   },
   {
@@ -84,8 +94,8 @@ const rows: Row[] = [
     sector: "Education",
     icon: "education",
     hue: "violet",
-    problem: "Practice at home never matched what school taught.",
-    solved: "Curriculum lessons, and a parent view of the weak spots.",
+    problem: "Guidance that sounds right and is sometimes wrong.",
+    solved: "The model explains; the arithmetic decides what is correct.",
     mechanism: "AI product",
   },
 ];
