@@ -193,7 +193,7 @@ export default function StackPage() {
       <CtaBand
         eventPrefix="stack"
         title="Tell us the process. We will show you which parts a model should run and which belong in code."
-        body="A two-week assessment at a fixed fee costs the process, ranks the opportunities, and names plainly what we would not automate yet. Credited in full against any build that follows."
+        body="A two-week assessment at a fixed fee. It costs the process, ranks the opportunities and names the one to start with. The fee is credited in full against any build that follows."
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
     </>
