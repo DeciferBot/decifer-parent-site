@@ -136,8 +136,17 @@ for gi,(gname, items, feeds) in enumerate(groups):
              f'<polygon points="{tgt},{end_flow+2} {tgt-6.5},{end_flow+16} {tgt+6.5},{end_flow+16}" fill="{OLINE}"/>')
 end_sub = sy2 + SH
 
-# control strip
-cy3 = end_sub + 30
+# Control is drawn as a rail rather than four more boxes: guardrails check the
+# answer, permissions gate the action, evaluation and audit cover the lot. It
+# attaches to the whole path, so an arrow into any single step would be a lie.
+cy3 = end_sub + 76
+o.append(f'<text x="{IX}" y="{cy3-46}" {M} font-size="13.5" letter-spacing="1.5" fill="{ODEEP}">'
+         f'CONTROL, RUNNING ACROSS ALL FOUR STEPS</text>')
+o.append(f'<line x1="{IX}" y1="{cy3-22}" x2="{IX+IW}" y2="{cy3-22}" stroke="{ORANGE}" stroke-width="1.6"/>')
+for i in range(len(steps)):
+    tx = ssx + i*(snw+sng) + snw/2
+    o.append(f'<line x1="{tx}" y1="{cy3-22}" x2="{tx}" y2="{cy3-32}" stroke="{ORANGE}" stroke-width="1.6"/>'
+             f'<circle cx="{tx}" cy="{cy3-34}" r="3" fill="{ORANGE}"/>')
 ctl = [("shield","Guardrails"),("person","Human approval"),("eye","Evaluation"),("doc","Audit trail")]
 cnw = (IW - 3*22)/4
 for i,(ic,l) in enumerate(ctl):
@@ -151,8 +160,11 @@ o.append(head(W/2, end_ap, AI_Y, ORANGE, "", False))
 # ---------------------------------------------------------------- bottom layers
 y = end_ai + 74
 BW = (CW - 40)/2
-o.append(container(MG, y, BW, 208, "BUSINESS SYSTEMS", "systems of record"))
-bs = [("case","CRM"),("case","ERP"),("doc","Accounting"),("clock","Bookings"),("folder","Inventory"),("mail","Ticketing")]
+o.append(container(MG, y, BW, 208, "BUSINESS SYSTEMS", "what the business already runs on"))
+# Named from the sectors in caseShapes.ts rather than a generic CRM and ERP:
+# catering quotes, event bookings, counselling intake, property pricing.
+bs = [("clock","Bookings and diary"),("doc","Quotes and pricing"),("person","Client records"),
+      ("case","Invoicing and payments"),("folder","Stock and suppliers"),("doc","Notes and intake")]
 cw_ = (BW - 4*20)/3
 for i,(ic,l) in enumerate(bs):
     o.append(chip(MG+20 + (i%3)*(cw_+20), y+52 + (i//3)*62, cw_, 50, ic, l))
