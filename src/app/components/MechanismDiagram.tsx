@@ -4,8 +4,10 @@ import Icon from "./Icon";
  * The rule, drawn.
  *
  * The site states its doctrine in words on four different pages: code
- * computes the numbers, the model only narrates or extracts, a person keeps
- * the decision, and a test fails the build if that boundary is crossed.
+ * works out the numbers, AI only writes them up or reads them out of a
+ * document, a person keeps the decision, and a change does not ship if that
+ * line is crossed. Stage copy is written for the buyer, not the build: the
+ * engineering words for the same thing live in the case pages and the blog.
  * Described, it reads as a claim. Drawn, it reads as an architecture, and a
  * technical buyer can check it against their own system in five seconds.
  *
@@ -26,28 +28,28 @@ const stages: Stage[] = [
   {
     kicker: "In",
     title: "Inputs that can be checked",
-    body: "Documents, rows, live API reads. Everything the system will answer from, and nothing it will not.",
+    body: "Your documents, your records, live reads from the systems you already run. Everything the system may answer from, and nothing it may not.",
     icon: "record",
     hue: "amber",
   },
   {
-    kicker: "Computed",
-    title: "Code does the arithmetic",
-    body: "Prices, scores, metrics, validation, business rules. Deterministic, tested, and the only place a number can be born.",
+    kicker: "Calculated",
+    title: "Code works out the numbers",
+    body: "Prices, scores, totals, checks, business rules. Worked out the same way every time, and the only place a figure can come from.",
     icon: "rule",
     hue: "teal",
   },
   {
-    kicker: "Narrated",
-    title: "The model writes the sentence",
-    body: "Language, classification, synthesis, reading a document. It may explain a figure it was handed. It may never produce one.",
+    kicker: "Written up",
+    title: "AI writes the words",
+    body: "Reading documents, sorting, summarising, drafting the reply. It may explain a figure it was handed. It may never produce one.",
     icon: "agent",
     hue: "blue",
   },
   {
     kicker: "Owned",
     title: "A person keeps the decision",
-    body: "Higher-risk actions have a named owner, an approval path, and an exception route when the information is not sufficient.",
+    body: "Anything expensive has a named owner, an approval step, and a route out when the information is not there.",
     icon: "handover",
     hue: "green",
   },
@@ -153,11 +155,11 @@ export default function MechanismDiagram({
           }`}
         >
           <span className={dark ? "font-semibold text-on-dark" : "font-semibold text-ink"}>
-            The boundary is enforced by a test, not by a promise.
+            The line is held by a check, not by a promise.
           </span>{" "}
-          A build fails if a model writes a figure the code did not compute.
-          That check runs across all four stages, which is the only reason the
-          rule above survives contact with a deadline.
+          If a model writes a figure the code did not calculate, the change
+          does not ship. That check runs across all four stages, which is the
+          only reason the rule above survives contact with a deadline.
         </p>
       </div>
     </figure>

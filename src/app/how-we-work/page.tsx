@@ -22,7 +22,7 @@ import { jsonLd, SITE } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "How we work: AI implementation from assessment to measured result",
   description:
-    "Decifer's implementation method: a costed baseline before any build, deterministic code for anything that must be right, models only where judgement helps, a test that blocks invented figures, and client ownership at handover.",
+    "Decifer's implementation method: the process costed before any build, code for anything that has to be right, AI only where judgement helps, no figure published that the system did not calculate, and you own it at handover.",
   alternates: { canonical: "/how-we-work" },
 };
 
@@ -43,7 +43,7 @@ const stages = [
   { n: "01", title: "Discover", body: "Understand the process, the people, the systems and the economics." },
   { n: "02", title: "Baseline", body: "Establish how the process performs today, in numbers that can be re-read later the same way." },
   { n: "03", title: "Design", body: "Redesign the workflow and define the role of software, models and people, including exceptions and escalation." },
-  { n: "04", title: "Build", body: "Develop the system and its integrations. Anything that must be right runs as tested, deterministic code." },
+  { n: "04", title: "Build", body: "Build the system and connect it to the tools you already run. Anything that has to be right is calculated by tested code." },
   { n: "05", title: "Validate", body: "Test accuracy, exceptions, permissions, failure cases and operating cost before anyone depends on it." },
   { n: "06", title: "Deploy", body: "Move into production with monitoring, logs and clear internal ownership." },
   { n: "07", title: "Adopt", body: "Train the people whose work changes, and adjust the workflow around actual use." },
@@ -69,7 +69,7 @@ export default function HowWeWorkPage() {
         icon="rule"
         hue="teal"
         title="A practical route from opportunity to production."
-        lede="Every step of a process gets one question: does this need judgement, or does it need to be right? Code handles what must be right. Models handle what needs judgement. A test enforces the line, and a baseline taken before the build means the result can be checked afterwards."
+        lede="Every step of a process gets one question: does this need judgement, or does it need to be right? Code handles what must be right. AI handles what needs judgement. The system will not publish a figure it did not calculate, and because we cost the process before building, you can check afterwards what the work was worth."
       />
 
       <section className="band band-tight band-tint">
