@@ -1,5 +1,6 @@
 import { products } from "@/app/data/products";
 import { servicesOrdered } from "@/app/data/services";
+import { tools } from "@/app/data/tools";
 import { publishedCaseShapes } from "@/app/data/caseShapes";
 import { stack } from "@/app/data/stack";
 import { getAllPosts } from "@/lib/blog";
@@ -50,6 +51,10 @@ export function GET() {
     "## Learn",
     "",
     `- [Build production-ready software with AI](${SITE}/learn): a free field guide for people building with AI coding tools, ordered as a learning path with a six-point production checklist`,
+    "",
+    "## Free tools (no signup, deterministic, nothing stored)",
+    "",
+    ...tools.map((t) => `- [${t.name}](${SITE}/tools/${t.key}): ${t.summary}`),
     "",
     "## Articles",
     "",
