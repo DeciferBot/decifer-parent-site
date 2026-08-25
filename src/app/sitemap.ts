@@ -20,6 +20,7 @@ const STATIC_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z"); // /about /co
 const LEGAL_LAST_MODIFIED = new Date("2026-05-01T00:00:00.000Z"); // privacy, terms, ai-policy
 const SCOPED_LEGAL_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z"); // refunds, disclaimers, child-safety
 const CONFIDENTIALITY_LAST_MODIFIED = new Date("2026-08-24T00:00:00.000Z");
+const STACK_LAST_MODIFIED = new Date("2026-08-25T00:00:00.000Z"); // /stack, restored with role and why rendered
 
 const legalPaths: { path: string; lastModified: Date }[] = [
   { path: "/legal/privacy", lastModified: LEGAL_LAST_MODIFIED },
@@ -59,6 +60,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/contact`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.9 },
 
     { url: `${BASE}/how-we-work`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.85 },
+
+    { url: `${BASE}/stack`, lastModified: STACK_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.65 },
 
     {
       url: `${BASE}/work`,
