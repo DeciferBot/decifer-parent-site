@@ -9,7 +9,7 @@ import { jsonLd, SITE } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "Work: processes taken from pilot to daily operation",
   description:
-    "Client work from Decifer in the UAE, UK, Spain and Singapore, anonymised unless a client has agreed in writing to be named. Each case states what was built, what changed, how it was measured, and what we deliberately did not automate.",
+    "Client work from Decifer in the UAE, UK, Spain and Singapore, anonymised unless a client has agreed in writing to be named, plus the two Decifer products we run ourselves. Each case states what was built, what changed, how it was measured, and what we deliberately did not automate.",
   alternates: { canonical: "/work" },
 };
 
@@ -37,7 +37,7 @@ export default function WorkPage() {
       <PageHero
         kicker="Work"
         title="Described by shape. Named only by agreement."
-        lede="Most clients are not named on this site, by their own request and as a matter of policy. Where a client has agreed in writing to be named, we say so. Every case states the sector, the problem, what we built, what changed, how it is measured, and what we chose not to automate."
+        lede="Most clients are not named on this site, by their own request and as a matter of policy. Where a client has agreed in writing to be named, we say so. Our own products are named, because there is nobody to ask. Every case states the industry, the problem, what we built, what changed, how it is measured, and what we chose not to automate."
       >
         <Link href="/legal/client-confidentiality" className="link text-[0.9375rem]">
           How we handle client confidentiality

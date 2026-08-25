@@ -91,7 +91,7 @@ export const capabilities: Capability[] = [
     name: "Knowing exactly where AI should not be used",
     pattern:
       "We decide where AI is genuinely too risky, and remove it from that part of the system completely: no field to type a number into, no AI in that step at all, a person alerted before anything happens.",
-    provenIn: ["counselling-practice-intake"],
+    provenIn: ["counselling-practice-intake", "curriculum-learning-companion"],
     provenSummary: "Zero client-facing AI in a clinical intake system; screening scored by arithmetic against published cutoffs.",
     transfersTo: ["Healthcare and clinical operations", "HR and people decisions", "Legal advice", "Regulated financial advice"],
     buyerAngle:
@@ -104,7 +104,11 @@ export const capabilities: Capability[] = [
     name: "Built to run with nobody watching it",
     pattern:
       "Every engagement held to the bar of a public product: monitoring, an eval suite, a runbook and a proper handover.",
-    provenIn: ["catering-quotes-and-kitchen", "private-event-concierge"],
+    provenIn: [
+      "catering-quotes-and-kitchen",
+      "private-event-concierge",
+      "market-intelligence-platform",
+    ],
     provenSummary: "Decifer Markets has run for five months on a broker paper account, behind more than nine thousand automated tests.",
     transfersTo: ["Any implementation where the real question is whether it survives without supervision"],
     buyerAngle:
