@@ -75,7 +75,13 @@ failure); "eight-case suite fails the build" for the property agent (seven
 cases, not wired to any build; the live guardrail is real); "a consultant
 approves itineraries" (no consultant exists; the event concierge's hosts
 approve suggestions); "continuously" for the five months (~25 missing
-trading days in the record); "nine operating companies" (eleven).
+trading days in the record).
+
+The "nine operating companies" figure was queried in this audit and marked
+as eleven. That was the audit's error, not the site's. Amit confirmed nine
+on 2026-08-25. The site says nine in `caseShapes.ts` and `capabilities.ts`,
+and the where-we-deleted-the-ai post was corrected from eleven to nine to
+match. Nine is the figure.
 
 Unverifiable locally: the outreach agent (creator-business-engine repo not
 on this machine). Left as is; confirm or remove.

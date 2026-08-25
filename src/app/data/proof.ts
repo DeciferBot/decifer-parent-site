@@ -37,6 +37,7 @@ export type ProofKey =
   | "tables"
   | "scheduledJobs"
   | "integrations"
+  | "dataStreams"
   | "testFunctions"
   | "paperAccount"
   | "documentsLiberated"
@@ -136,6 +137,16 @@ export const proof: ProofPoint[] = [
       "Brokers, market data, analytics, advertising, messaging, payments, email and four model providers. Wiring your systems together is work we have already done elsewhere, not work we learn on your budget.",
     source: "integration clients per repo, deduplicated",
     verifiedAt: "2026-08-22",
+  },
+  {
+    key: "dataStreams",
+    value: "11",
+    label: "live data streams read and cross-checked while nobody is watching",
+    detail:
+      "Alpaca, Financial Modeling Prep, SEC EDGAR, FRED, Alpha Vantage, Yahoo Finance, Finviz, Interactive Brokers, Reddit, X and Wikipedia all arrive on their own schedule. The system pulls them, checks them against each other and writes the result up as a brief, around the clock, with nobody starting it. That is the mechanism any business with more feeds than readers needs, whether the feeds are markets, shipments or claims.",
+    source:
+      "decifer-trading: distinct external data providers called from the code, counted 2026-08-25",
+    verifiedAt: "2026-08-25",
   },
   {
     key: "testFunctions",

@@ -1,5 +1,13 @@
 -- DECIFER leads table. One queue for enquiries and early-access signups.
 --
+-- NOT DEPLOYED as of 2026-08-25. Checked against every Supabase project on
+-- the account: none carries this table. Production (decifer-parent-site) has
+-- BLOB_READ_WRITE_TOKEN and no SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY, so
+-- insertLead() in src/lib/leads.ts takes the Vercel Blob path (store
+-- decifer-leads) and never reaches the code below. No enquiry is being lost.
+-- This file is the schema for the day Supabase is chosen instead; run it
+-- whole, then set both env vars, because Blob wins while its token is set.
+--
 -- Apply once to the chosen Supabase project (SQL editor or supabase CLI).
 -- RLS is enabled with NO policies on purpose: the anon and publishable keys
 -- can do nothing. Only the service role key, used server-side in

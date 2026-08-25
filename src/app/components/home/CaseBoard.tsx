@@ -19,9 +19,13 @@ import Icon, { type IconName } from "../Icon";
  * read it" is a markets problem, a logistics problem and a claims problem,
  * and the same pipeline answers all three.
  *
- * Counts stay off this board. A figure needs its method and its permission
- * (see proof.ts), which is a case-page job; here a wrong one would be the
- * first thing a stranger reads.
+ * Counts stay off this board, with one deliberate exception. A figure needs
+ * its method and its permission (see proof.ts), which is a case-page job;
+ * here a wrong one would be the first thing a stranger reads. The exception
+ * is the stream count on the markets row (proof.ts:dataStreams), because
+ * "many feeds, nobody to read them" is the whole shape of that capability
+ * and a stranger cannot picture the scale without it. Build-quality stats,
+ * test counts and eval scores stay on the case page.
  *
  * Every row is a published case shape (caseShapes.ts), in the same order.
  * The mechanism label is that case's leading serviceKey in plain words, so
@@ -87,7 +91,7 @@ const rows: Row[] = [
     icon: "markets",
     hue: "blue",
     problem: "Live data arriving faster than anyone can read it.",
-    solved: "Ingested, cross-checked and written up as a decision brief, around the clock, unattended.",
+    solved: "Eleven live streams ingested, cross-checked and written up as a decision brief, around the clock, unattended.",
     mechanism: "Autonomous pipeline",
   },
   {
