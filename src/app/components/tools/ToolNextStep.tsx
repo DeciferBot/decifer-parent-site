@@ -2,11 +2,10 @@ import Link from "next/link";
 import Arrow from "@/app/components/Arrow";
 
 /**
- * The step after the verdict. Every outcome a tool can reach ends here,
- * including the outcomes that say do not build. An honest no is still a
- * decision the reader has to act on, so the tool names the next move
- * instead of stopping at the bad news. The link is chosen by the verdict,
- * so it stays useful rather than becoming a pitch stapled to the bottom.
+ * The step after the result. Every outcome a tool can reach ends here,
+ * including the weak ones: a reader whose numbers did not work still has
+ * work to do, and this names it. The link is chosen by the outcome, so it
+ * stays useful rather than becoming a pitch stapled to the bottom.
  */
 export default function ToolNextStep({
   line,

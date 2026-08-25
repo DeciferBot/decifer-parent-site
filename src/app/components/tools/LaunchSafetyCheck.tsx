@@ -9,9 +9,10 @@ import ToolNextStep from "./ToolNextStep";
  * "Not sure" counts as a fail on purpose: on security, not knowing is the
  * same as no. Runs entirely in the browser; nothing is stored or sent.
  *
- * Every score ends with a next step. A fix list nobody has the time to work
- * through is the same as no fix list, so the page says who does it if the
- * reader will not.
+ * Every score ends with the work to do and a next step, never with a
+ * verdict telling the reader to stop. A fix list nobody has the time to
+ * work through is the same as no fix list, so the page also says who does
+ * it if the reader will not.
  */
 
 const POST = "/blog/is-your-vibe-coded-app-safe-to-launch";
@@ -75,8 +76,8 @@ export default function LaunchSafetyCheck() {
     : score === CHECKS.length
       ? "All six pass. Launch, then keep going: passing the checks makes the app safe enough to improve in public, not finished."
       : score >= 4
-        ? `${score} of 6. Close. Fix the items below before real users arrive; each is typically a day or less.`
-        : `${score} of 6. Do not launch yet. The gaps below are the ones attackers and accidents find first.`;
+        ? `${score} of 6. Close. Clear the items below and you are ready for real users; each is typically a day or less.`
+        : `${score} of 6, and the gaps below are the ones attackers and accidents find first. Close them and the launch is a different proposition.`;
 
   /** The failing checks, carried into the enquiry form as the brief. */
   const failingBrief = failing.map((c) => c.q.replace(/\?$/, "").toLowerCase()).join("; ");

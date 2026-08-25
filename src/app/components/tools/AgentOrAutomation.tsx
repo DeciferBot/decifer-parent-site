@@ -8,9 +8,10 @@ import ToolNextStep from "./ToolNextStep";
  * The three-question decision rule from the article, as a tool. The verdict
  * is a lookup, not a model: same answers, same verdict, every time.
  *
- * Each verdict carries the next step that goes with it, including the two
- * that say do not buy an agent. Telling someone they need something simpler
- * is only useful if the page also says where the simpler thing comes from.
+ * Each verdict is stated as the thing to build first, never as a reason to
+ * stop, and carries the next step that goes with it. Steering someone to
+ * the cheaper build is only useful if the page also says where that build
+ * comes from.
  */
 
 const QUESTIONS = [
@@ -55,9 +56,9 @@ export default function AgentOrAutomation() {
         },
       };
     } else if (steps) {
-      heading = "Automation. Do not buy an agent for this.";
+      heading = "Start with automation. It is the cheaper build and it does this job.";
       body =
-        "The steps fit on a page, so a fixed workflow does the job: triggers, templates, rules. It will be cheaper to build, cheaper to run, and readable when something goes wrong. An agent here is paying improvisation prices for repetition work.";
+        "The steps fit on a page, so a fixed workflow does it: triggers, templates, rules. Cheaper to build, cheaper to run, and readable when something goes wrong. Keep the agent budget for the part of the business where the input is genuinely messy; this part does not need it.";
       next = {
         line: "This is the cheaper half of what we do, and it is usually where a first project should start. Before you commission it, put the hours and the quote through the arithmetic: it takes a minute and it tells you whether the price you have been given makes sense.",
         cta: "Run the payback numbers",
@@ -70,9 +71,9 @@ export default function AgentOrAutomation() {
         },
       };
     } else {
-      heading = "Neither, yet. The process needs writing down first.";
+      heading = "Start by writing the process down. That is the first piece of work.";
       body =
-        "If the steps cannot be written on a page and the input is not the problem, the process itself is undefined. Automating an undefined process produces an automated mess. Sit with the person who does the task and write the page first; the answer usually becomes obvious halfway down.";
+        "If the steps cannot be written on a page and the input is not the problem, the process is still undefined, and automating an undefined process produces an automated mess. Write the page first, with the person who actually does the task. The answer usually becomes obvious halfway down, and the page is the specification for whatever gets built next.";
       next = {
         line: "Writing that page is work, and it is the work most projects skip. If nobody internally has the time, it is exactly what the two-week assessment produces: the process mapped, costed, a shortlist of what to automate first and an explicit list of what to leave alone. Fixed fee, credited in full against any build that follows.",
         cta: "Ask about the assessment",

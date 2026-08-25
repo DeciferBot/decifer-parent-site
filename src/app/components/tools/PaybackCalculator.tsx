@@ -8,9 +8,12 @@ import ToolNextStep from "./ToolNextStep";
  * network call, nothing stored: the rule the site is built by (code
  * computes the numbers) applies to the tools too.
  *
- * Every verdict, including the ones that say do not build, ends with the
- * levers that would change the answer and a next step. A no on one task is
- * a fact about that task, not a reason to stop the conversation.
+ * The arithmetic is reported exactly as it comes out, including when the
+ * saving is negative. What the tool never does is tell a reader to walk
+ * away: every outcome is stated as what it would take to make the task
+ * work, with the numbers that would do it, and a next step. The reader
+ * decides; our job is to show them the lever and be there when they pull
+ * it.
  */
 
 const fmt = (n: number) =>
@@ -97,23 +100,23 @@ export default function PaybackCalculator() {
 
   let verdict = "";
   /** Heading over the levers: what would change the answer, or what room there is. */
-  let leversLabel = "What would change the answer";
+  let leversLabel = "What makes this work";
   let levers: string[] = [];
   let next: ComponentProps<typeof ToolNextStep> | null = null;
 
   if (ready) {
     if (yearlyLabour === 0) {
       verdict =
-        "The task costs nothing on these numbers, so there is nothing to save. Check the hours and the salary.";
+        "There is nothing to save on these numbers yet. Worth checking the hours and the salary before you rule the task out: most people undercount by leaving out the checking and the chasing.";
       next = {
-        line: "If the hours are right and the task really is that small, the money is somewhere else in the business. The assessment finds where the hours actually go before anyone builds anything.",
+        line: "If the hours really are that small, the money is somewhere else in the business, and it is usually in a process nobody has counted. The two-week assessment maps where the hours actually go and costs each one.",
         cta: "See the two-week assessment",
         href: "/services/ai-advisory",
         event: "tools_payback_advisory_no_cost",
       };
     } else if (yearlySaving <= 0) {
       verdict =
-        "Not this task, not at this running cost. The running cost eats the saving before the build cost is even counted.";
+        `This one turns on the running cost. At AED ${fmt(parsed.running)} a month it is above the value of the hours, which is a pricing question rather than a fact about the task.`;
       levers = [
         `Running cost under AED ${fmt(runningToBreakEven)} a month and the task at least breaks even.`,
         Number.isFinite(hoursToBreakEven)
@@ -125,7 +128,7 @@ export default function PaybackCalculator() {
       ].filter(Boolean);
       next = {
         line: "Two things move that running cost: how much of the job actually needs a model, and how much of it is plain rules. Most quotes we see are priced as though all of it needs a model. Send us the numbers and we will tell you which parts do, whether or not you build it with us.",
-        cta: "Send these numbers to us",
+        cta: "Get the running cost checked",
         href: enquiryHref(
           `We are looking at automating a task that takes ${values.hours} hours a week. On your payback calculator it does not work: about AED ${fmt(yearlyLabour)} a year of staff time against a build of AED ${fmt(parsed.build)} and AED ${fmt(parsed.running)} a month to run. We want to know whether that running cost is realistic.`,
           "not-sure"
@@ -138,7 +141,7 @@ export default function PaybackCalculator() {
         },
       };
     } else if (paybackMonths <= 12) {
-      verdict = "Worth pricing properly. On these numbers the build pays for itself inside a year.";
+      verdict = "The numbers work. On these figures the build pays for itself inside a year, which is the bar most owners set.";
       leversLabel = "How much room the numbers have";
       levers = Number.isFinite(hoursForPayback(24))
         ? [
@@ -156,35 +159,35 @@ export default function PaybackCalculator() {
         event: "tools_payback_contact_strong",
       };
     } else if (paybackMonths <= 24) {
-      verdict = "Borderline. Look for a cheaper build, or a task that costs you more hours.";
+      verdict = "This works, and it works faster with a smaller first build. Two numbers get the payback inside a year:";
       levers = [
-        `A build at AED ${fmt(buildForPayback(12))} or under pays back inside a year.`,
+        `A build at AED ${fmt(buildForPayback(12))} or under pays it back inside a year.`,
         Number.isFinite(hoursForPayback(12))
           ? `So does this build if the task is closer to ${fmtHours(hoursForPayback(12))} hours a week.`
           : "",
       ].filter(Boolean);
       next = {
-        line: "Borderline usually means the build is doing too much. There is often a smaller first version that carries most of the saving and costs a fraction to build. That is a half-hour conversation, not a project.",
+        line: "A payback in this range usually means the build is doing more than it needs to. There is almost always a smaller first version that carries most of the saving at a fraction of the cost, and finding it is a half-hour conversation, not a project.",
         cta: "Ask about a smaller first build",
         href: enquiryHref(
-          `A task taking ${values.hours} hours a week, worth about AED ${fmt(yearlyLabour)} a year in staff time. On your calculator a build at AED ${fmt(parsed.build)} with AED ${fmt(parsed.running)} a month to run pays back in about ${fmt(paybackMonths)} months, which is borderline. We want to know whether a smaller first version would carry most of the saving.`,
+          `A task taking ${values.hours} hours a week, worth about AED ${fmt(yearlyLabour)} a year in staff time. On your calculator a build at AED ${fmt(parsed.build)} with AED ${fmt(parsed.running)} a month to run pays back in about ${fmt(paybackMonths)} months. We want to know whether a smaller first version would carry most of the saving and land it sooner.`,
           "not-sure"
         ),
         event: "tools_payback_contact_borderline",
       };
     } else {
-      verdict = "Leave it for now. A payback beyond two years rarely survives contact with reality.";
+      verdict = "This one needs a smaller build or a bigger task before the payback lands inside two years. Both are findable, and here is what each would have to be:";
       levers = [
-        `This one works at a build cost of about AED ${fmt(buildForPayback(24))}.`,
+        `It works at a build cost of about AED ${fmt(buildForPayback(24))}.`,
         Number.isFinite(hoursForPayback(24))
           ? `Or on a task of about ${fmtHours(hoursForPayback(24))} hours a week at this build cost.`
           : "",
       ].filter(Boolean);
       next = {
-        line: "Leave this task, not the question. In a business this size there are usually two or three tasks where the same arithmetic comes out well inside a year. Finding and costing them is what the two-week assessment does, and it is credited in full against any build that follows.",
+        line: "There are usually two or three tasks in a business this size where the same arithmetic comes out well inside a year, and they are rarely the ones people expect. Finding and costing them is what the two-week assessment does, and it is credited in full against any build that follows.",
         cta: "Ask about the assessment",
         href: enquiryHref(
-          `We ran a task of ${values.hours} hours a week through your calculator, worth about AED ${fmt(yearlyLabour)} a year in staff time, and the payback on a AED ${fmt(parsed.build)} build comes out beyond two years. We would rather find the tasks in the business where the numbers work.`,
+          `We ran a task of ${values.hours} hours a week through your calculator, worth about AED ${fmt(yearlyLabour)} a year in staff time, and the payback on a AED ${fmt(parsed.build)} build lands beyond two years. We want help finding the tasks in the business where the numbers work, and a smaller build for this one.`,
           "ai-advisory"
         ),
         event: "tools_payback_contact_long",
