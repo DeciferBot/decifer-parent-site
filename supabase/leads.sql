@@ -53,6 +53,19 @@ create table if not exists public.leads (
   user_agent       text
 );
 
+-- Migrations for a table that already exists.
+--
+-- `create table if not exists` above is a no-op against a deployed table, so
+-- a column added to it later never appears in the running database, and the
+-- insert in src/lib/leads.ts fails as a whole: PostgREST rejects the request
+-- when any key has no column, so one missing column drops every lead
+-- silently. These three arrived with the 2026-08 repositioning
+-- (cf6c063), after the table had shipped. Add every future column here as
+-- well as above, and keep both in step.
+alter table public.leads add column if not exists cost_today text;
+alter table public.leads add column if not exists systems    text;
+alter table public.leads add column if not exists outcome    text;
+
 create index if not exists leads_created_at_idx on public.leads (created_at desc);
 create index if not exists leads_status_new_idx on public.leads (status) where status = 'new';
 create index if not exists leads_kind_idx       on public.leads (kind);

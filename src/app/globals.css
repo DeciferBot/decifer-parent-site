@@ -92,7 +92,7 @@
   --color-a-teal: oklch(54% 0.11 195);
   --color-a-violet: oklch(55% 0.17 300);
   --color-a-green: oklch(52% 0.13 155);
-  --color-a-amber: oklch(58% 0.13 70);
+  --color-a-amber: oklch(55% 0.13 70);
   --color-a-plum: oklch(54% 0.15 350);
 
   --color-a-orange-on-dark: oklch(74% 0.16 45);
@@ -1189,7 +1189,7 @@ p {
       opacity: 1;
       transform: none;
     }
-    .board-st::before {
+    .board-live-dot {
       animation: none;
     }
     .faq[open] .faq-body {

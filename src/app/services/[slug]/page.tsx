@@ -193,8 +193,8 @@ export default async function ServicePage({ params }: Params) {
               ))}
             </ul>
             <p className="mt-6 border-t border-line pt-4 text-sm text-muted">
-              If that describes you, the audit is still useful. It will say so
-              plainly.
+              If that describes you, the assessment is still useful. It will
+              say so plainly.
             </p>
           </div>
         </div>

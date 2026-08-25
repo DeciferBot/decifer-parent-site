@@ -20,9 +20,11 @@ import type { StackKey } from "../data/stack";
  * A tool's brand mark, from the simple-icons set (CC0), drawn in that brand's
  * own colour. Shared by LogoRow and /stack so there is one icon table.
  *
- * Two tools have no mark in the set: OpenAI and Meta's Llama. Those fall back
- * to a plain monogram tile. We do not draw a substitute or borrow a parent
- * company's logo, because an approximated mark is a wrong one.
+ * Three tools have no mark in the set: OpenAI, Meta's Llama and Twilio
+ * (checked against simple-icons 16.28.0 — Twilio is not in it under any
+ * spelling). Those fall back to a plain monogram tile. We do not draw a
+ * substitute or borrow a parent company's logo, because an approximated mark
+ * is a wrong one. Re-check this list when simple-icons is upgraded.
  *
  * Listing a tool means we have shipped production systems on it, not that its
  * maker endorses us. Every surface that renders these says so in its caption.

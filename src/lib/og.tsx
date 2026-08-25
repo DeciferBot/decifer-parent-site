@@ -24,7 +24,7 @@ export const ogFrameStyle = {
   flexDirection: "column" as const,
   justifyContent: "space-between",
   padding: "64px 72px",
-  fontFamily: '"Schibsted Grotesk", Helvetica, Arial, sans-serif',
+  fontFamily: '"Figtree", Helvetica, Arial, sans-serif',
   color: OG_COLORS.ink,
 };
 
