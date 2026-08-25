@@ -291,6 +291,9 @@ p {
     font-weight: 600;
     line-height: 1;
     padding: 0.875rem 1.25rem;
+    /* Floor, not a fixed height: utility overrides such as `py-2.5 text-sm`
+       otherwise shrink a button below the 44px minimum touch target. */
+    min-height: 2.75rem;
     white-space: nowrap;
     cursor: pointer;
     border: 1px solid transparent;
