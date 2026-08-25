@@ -152,17 +152,23 @@ export default async function ServicePage({ params }: Params) {
             </ul>
           </div>
           <div className="md:col-span-6 md:col-start-7">
-            <h2 className="t-h3 text-ink">Not a fit when</h2>
-            <ul className="mt-5 space-y-3">
-              {s.notAFit.map((n) => (
-                <li key={n} className="flex gap-3 text-[1.0625rem] leading-relaxed text-body">
+            <h2 className="t-h3 text-ink">The right starting point when</h2>
+            <ul className="mt-5 space-y-5">
+              {s.elsewhere.map((e) => (
+                <li key={e.situation} className="flex gap-3">
                   <span className="mt-[0.7rem] h-1.5 w-1.5 shrink-0 rounded-full bg-orange" aria-hidden="true" />
-                  {n}
+                  <p className="text-[1.0625rem] leading-relaxed text-body">
+                    <span className="font-semibold text-ink">{e.situation}.</span>{" "}
+                    <Link href={e.href} className="link">
+                      {e.solution}
+                    </Link>
+                  </p>
                 </li>
               ))}
             </ul>
             <p className="mt-6 text-sm text-muted">
-              If that describes you, the audit is still useful. It will say so plainly.
+              Not sure which of these is you? Describe the process and we will point you at the
+              right one, on this page or another.
             </p>
           </div>
         </div>

@@ -102,11 +102,11 @@ export default async function CaseShapePage({ params }: Params) {
         <div className="container-x grid gap-12 md:grid-cols-2 md:gap-x-10">
           <Block title="What we built" items={c.work} />
           <Block title="What changed" items={c.outcome} />
-          <Block title="What we deliberately did not automate" items={c.boundaries} marker="orange" />
+          <Block title="Where a person stays in charge" items={c.boundaries} marker="orange" />
           <div className="border-t border-line pt-5">
             <h2 className="t-h3 text-ink">How it is measured</h2>
             <p className="t-body mt-5">{c.measurement}</p>
-            <h2 className="t-h3 mt-10 text-ink">What we cannot tell you</h2>
+            <h2 className="t-h3 mt-10 text-ink">What stays confidential</h2>
             <p className="t-body mt-5">{c.withheld}</p>
           </div>
         </div>

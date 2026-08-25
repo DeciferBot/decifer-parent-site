@@ -23,7 +23,7 @@ decifer.io is the company site for Decifer, an AI implementation company. Its pu
 
 Plain, exacting, accountable.
 
-Voice: a senior engineer explaining to a business owner what will be built, what it will not do, and how they will be able to check. Short sentences. Specific nouns. Numbers only when they come from `src/app/data/proof.ts`. The company says "we" and the founder says "I". Never "empower", "transform", "seamless", "cutting-edge", "world-class". No em dashes.
+Voice: a senior engineer explaining to a business owner what will be built, what it will do for the business, and how they will be able to check. Short sentences. Specific nouns. Numbers only when they come from `src/app/data/proof.ts`. The company says "we" and the founder says "I". Never "empower", "transform", "seamless", "cutting-edge", "world-class". No em dashes.
 
 The emotional goal is relief: "these people will tell me the truth and they will actually ship."
 
@@ -37,7 +37,7 @@ The emotional goal is relief: "these people will tell me the truth and they will
 ## Design Principles
 
 1. Proof before pitch. Real screenshots of real products, real figures with a source, a real founder, before any claim.
-2. Say what you will not do. Every service lists who it is not for. Every case lists what was deliberately not automated. This is the differentiator; design must give it room.
+2. The right solution for each problem. Every service names the situations it is the right first step for, and routes every other situation to the step that is, on this site rather than off it. Every case shows where a person stays in charge by design. Specificity is the differentiator; design must give it room.
 3. The client owns it. Tools are shown as things the client will hold, not as partner badges we collect.
 4. One idea per section, each with one job and each scannable in three seconds. The home page runs to twelve sections after the 2026-08-24 repositioning; the market-evidence and failure-point bands were added ahead of the first proof block.
 5. The parent of a family. Three products have three visual worlds. This site is the calm, neutral parent that makes them look related.

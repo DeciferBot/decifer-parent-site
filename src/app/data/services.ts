@@ -41,8 +41,12 @@ export interface Service {
   deliverables: string[];
   /** Qualifying signals so the reader can self-select in. */
   goodFit: string[];
-  /** Disqualifying signals so the sales conversation stays honest. */
-  notAFit: string[];
+  /**
+   * Situations this service is not the first step for, each pointed at the
+   * step that is. Never a closed door: the reader always leaves with the
+   * right starting point for their problem, on a page that can serve it.
+   */
+  elsewhere: { situation: string; solution: string; href: string }[];
   stackKeys: StackKey[];
   /** Which verified figures this page may cite. */
   proofRefs: ProofKey[];
@@ -87,10 +91,25 @@ export const services: Service[] = [
       "The task has a clear definition of done",
       "Someone inside the business can own the agent after launch",
     ],
-    notAFit: [
-      "The process has never been written down",
-      "Every case needs a licensed professional to sign it off",
-      "The main goal is to cut headcount rather than cut delay",
+    elsewhere: [
+      {
+        situation: "The process has never been written down",
+        solution:
+          "Start with the two-week assessment. Mapping and costing the process is its first deliverable, and it is credited in full against the build that follows.",
+        href: "/services/ai-advisory",
+      },
+      {
+        situation: "Every case needs a licensed professional to sign it off",
+        solution:
+          "Then the agent prepares and the professional approves. We build that shape often: the system gathers, drafts and checks, and a named person releases the work.",
+        href: "/how-we-work",
+      },
+      {
+        situation: "You are measuring this in headcount",
+        solution:
+          "The assessment gives you the number that actually moves: what the process costs today, so the saving after it is measurable either way.",
+        href: "/services/ai-advisory",
+      },
     ],
     stackKeys: ["claude", "supabase", "resend", "vercel", "cloudflare"],
     proofRefs: ["dishesPriced", "conciergeEvals", "scheduledJobs"],
@@ -127,9 +146,19 @@ export const services: Service[] = [
       "The same fact lives in three places and they disagree",
       "You are about to spend money on AI or marketing and cannot measure the before",
     ],
-    notAFit: [
-      "The real problem is that two teams disagree about what the numbers should say",
-      "There is no data yet, only plans",
+    elsewhere: [
+      {
+        situation: "Two teams disagree about what the numbers should say",
+        solution:
+          "Start with the assessment. One agreed definition per figure is what makes a report worth building, and settling that is week one of the work.",
+        href: "/services/ai-advisory",
+      },
+      {
+        situation: "There is no data yet, only plans",
+        solution:
+          "Then the system that produces the data comes first. We build the product, and the reporting layer goes in on top of it once real numbers are flowing.",
+        href: "/services/ai-product-development",
+      },
     ],
     stackKeys: ["supabase", "bigquery", "ga4", "claude", "vercel"],
     proofRefs: ["documentsLiberated", "connectors", "tables"],
@@ -166,9 +195,19 @@ export const services: Service[] = [
       "Someone on your side can make decisions within a day",
       "You want to own what gets built",
     ],
-    notAFit: [
-      "The scope is still a list of everything competitors do",
-      "The product needs to be perfect before anyone can see it",
+    elsewhere: [
+      {
+        situation: "The scope is still a list of everything competitors do",
+        solution:
+          "Bring it anyway. The first call cuts it to the version that ships in weeks and earns the right to the rest; that conversation is free.",
+        href: "/contact",
+      },
+      {
+        situation: "It has to be right before anyone outside sees it",
+        solution:
+          "That is what the staging environment is for. You watch it come together privately and it goes live on the day you say so, not before.",
+        href: "/how-we-work",
+      },
     ],
     stackKeys: ["nextjs", "vercel", "supabase", "stripe", "resend", "cloudflare", "github", "claude", "codex"],
     proofRefs: ["repositories", "routes", "tables", "commits"],
@@ -206,9 +245,19 @@ export const services: Service[] = [
       "You want a decision, not a demo",
       "You are willing to let us talk to your team",
     ],
-    notAFit: [
-      "You have already chosen the tool and want it justified",
-      "The outcome has to be a headcount number",
+    elsewhere: [
+      {
+        situation: "You already know what you want built",
+        solution:
+          "Then skip the assessment and go straight to the build conversation. We scope, price and start; the assessment exists to find the target, not to delay one you already have.",
+        href: "/contact",
+      },
+      {
+        situation: "You need the business case in a number",
+        solution:
+          "That is exactly what it produces: the process costed as it runs today, so every automation after it is measured against a real baseline.",
+        href: "/tools/automation-payback-calculator",
+      },
     ],
     stackKeys: ["claude"],
     proofRefs: ["deletedAi", "liveProducts", "monthsLive"],

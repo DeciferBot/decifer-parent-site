@@ -30,12 +30,26 @@ write site copy that tells a visitor not to buy, not to build, not to launch,
 or to leave it for now. That is a delivery conversation, and it happens after
 the enquiry, on a call, where it is worth something.
 
+## Positive framing, always
+
+Every problem gets the right solution, not a door. The site never tells a
+reader what we will not do, who we are not for, or what they should not buy.
+Qualification still happens, but it runs forwards: name the situations a page
+is right for, and route every other situation to the page that fits it. A
+reader who is wrong for one service is right for another, and they should
+land on it without leaving the site.
+
+Negative framing to keep out of copy: "not a fit when", "we do not work
+with", "do not build this", "leave it for now", "what we will not do". The
+positive version says the same thing and converts: "the right starting point
+when", "start with", "this works once", "what makes this work".
+
 ## Rules for anything on this site
 
 - **State facts, recommend action.** Numbers, scores and arithmetic are
   reported exactly as they come out, including when they are unflattering.
   What follows them is always what it would take to make the thing work, never
-  a verdict to walk away. Accurate is required; discouraging is not.
+  a verdict to stop. Accurate is required; discouraging is not.
 - **Every interaction ends somewhere.** A verdict, a score, a calculation, an
   article, a case: hand the reader a next step that fits what they just told
   you, not a generic footer. A dead end is a lost lead however good the
