@@ -5,6 +5,7 @@ import CtaBand from "@/app/components/CtaBand";
 import ProofStrip from "@/app/components/ProofStrip";
 import SectionHead from "@/app/components/SectionHead";
 import ModelRoutingDiagram from "@/app/components/stack/ModelRoutingDiagram";
+import StackMark from "@/app/components/StackMark";
 import { stack, stackCategories } from "@/app/data/stack";
 import { jsonLd, SITE } from "@/lib/jsonld";
 
@@ -128,8 +129,9 @@ export default function StackPage() {
                         <li key={t.key} className="px-6 py-6 sm:px-8 sm:py-7">
                           <div className="grid gap-4 md:grid-cols-12 md:gap-8">
                             <div className="md:col-span-3">
-                              <h4 className="text-[1.0625rem] font-semibold text-ink">
-                                {t.name}
+                              <h4 className="flex items-center gap-2.5 text-[1.0625rem] font-semibold text-ink">
+                                <StackMark stackKey={t.key} name={t.name} size={24} />
+                                <span>{t.name}</span>
                               </h4>
                               {/* Every row uses the same visible label, so the
                                   accessible name carries the tool and the fact

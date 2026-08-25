@@ -1,70 +1,15 @@
 import Link from "next/link";
-import {
-  siClaude,
-  siDigitalocean,
-  siDocker,
-  siTelegram,
-  siNextdotjs,
-  siVercel,
-  siSupabase,
-  siGooglebigquery,
-  siCloudflare,
-  siGithub,
-  siResend,
-  siStripe,
-  siGoogleanalytics,
-  type SimpleIcon,
-} from "simple-icons";
+import StackMark, { LABELS } from "./StackMark";
 import { stack, getStackItems } from "../data/stack";
 import type { StackKey } from "../data/stack";
 
 /**
- * The tools we build with, as monochrome marks. Marks come from the
- * simple-icons set (CC0). Listing a tool means we use it, not that its maker
- * endorses us; the caption says so. No OpenAI mark exists in the set, so
- * Codex renders as text.
+ * The tools we build with, as their real brand marks. Icons and the monogram
+ * fallback live in StackMark, which is shared with /stack.
+ *
+ * Listing a tool means we use it, not that its maker endorses us; the caption
+ * on every surface that renders this says so.
  */
-
-/** Display names that differ from StackItem.name in this compact row. */
-const LABELS: Partial<Record<StackKey, string>> = {
-  codex: "OpenAI Codex",
-  llama: "Llama",
-};
-
-const ICONS: Partial<Record<StackKey, SimpleIcon>> = {
-  claude: siClaude,
-  digitalocean: siDigitalocean,
-  docker: siDocker,
-  telegram: siTelegram,
-  nextjs: siNextdotjs,
-  vercel: siVercel,
-  supabase: siSupabase,
-  bigquery: siGooglebigquery,
-  cloudflare: siCloudflare,
-  github: siGithub,
-  resend: siResend,
-  stripe: siStripe,
-  ga4: siGoogleanalytics,
-};
-
-function Mark({ icon, label }: { icon?: SimpleIcon; label: string }) {
-  return (
-    <span className="inline-flex items-center gap-2.5">
-      {icon ? (
-        <svg
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path d={icon.path} />
-        </svg>
-      ) : null}
-      <span className="text-[0.9375rem] font-semibold">{label}</span>
-    </span>
-  );
-}
 
 export default function LogoRow({
   keys,
@@ -81,9 +26,21 @@ export default function LogoRow({
   return (
     <ul className="flex flex-wrap items-center gap-x-10 gap-y-6">
       {items.map((t) => {
-        const inner = <Mark icon={ICONS[t.key]} label={LABELS[t.key] ?? t.name} />;
+        const label = LABELS[t.key] ?? t.name;
+        const inner = (
+          <span className="inline-flex items-center gap-2.5">
+            {/* On the dark board the brand colours lose contrast, so the marks
+                inherit the text colour there instead. */}
+            <StackMark
+              stackKey={t.key}
+              name={t.name}
+              tone={light ? "current" : "brand"}
+            />
+            <span className="text-[0.9375rem] font-semibold">{label}</span>
+          </span>
+        );
         return (
-          <li key={t.key} className={`${color} opacity-70 transition-opacity hover:opacity-100`}>
+          <li key={t.key} className={`${color} transition-opacity hover:opacity-70`}>
             {linkTo ? (
               <Link href={linkTo} title={t.role} className="inline-flex">
                 {inner}
