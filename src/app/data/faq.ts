@@ -32,11 +32,11 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Do you build AI agents?",
-    a: `Yes, where the workflow benefits from one. Where plain automation, retrieval or code does the same job, we build that instead. It costs less to run and your team can own it. We have made that swap ${proofByKey.deletedAi.value} times in our own systems.`,
+    a: `Yes, where the workflow benefits from one. Where plain automation or a simple lookup does the same job, we build that instead: it costs less every month and your team can own it. We have made that swap ${proofByKey.deletedAi.value} times in our own systems.`,
   },
   {
     q: "How do you deal with AI errors?",
-    a: "We design around them: deterministic validation, restricted actions, human review where a mistake is expensive, audit logs and defined exception paths. A test fails the build if a model writes a figure the code did not compute. The controls scale with the consequence of a wrong output.",
+    a: "We design around them. Figures are checked against what the code calculated, actions are limited to what the job needs, a person reviews anything expensive, every step is logged, and unusual cases have a route out. The system will not publish a number it did not work out. How tight the controls are depends on what a wrong answer would cost you.",
   },
   {
     q: "How do you calculate ROI?",

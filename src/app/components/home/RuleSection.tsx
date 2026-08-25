@@ -2,22 +2,28 @@ import Link from "next/link";
 import { proofByKey } from "../../data/proof";
 
 /**
- * The one doctrine block on the home page, on the orange surface. The three
- * examples are real mechanisms from our own systems.
+ * The doctrine block, rendered on /how-we-work. The three examples are real
+ * mechanisms from our own systems.
+ *
+ * Each is titled by what it means for the reader's business, not by the
+ * component that does it (rewritten 2026-08-25). "A validator that refuses
+ * invented numbers" describes our code; "a price a customer sees is one the
+ * system worked out" describes their risk. The mechanism follows in the
+ * body, where it is evidence rather than the headline.
  */
 
 const examples = [
   {
-    title: "A validator that refuses invented numbers",
-    body: "Every figure in a sentence the model writes must already exist in the set the code computed. If it does not, the sentence is discarded and a template is used instead.",
+    title: "Every price a customer sees is one the system worked out",
+    body: "A figure can only appear in a sentence if the code calculated it first. If it did not, the sentence never leaves the building, and a plain template goes out instead.",
   },
   {
-    title: "A maths engine that owns the answer",
-    body: "Algebra is checked by a symbolic solver and grammar by a grammar engine. The model writes the question. It never decides what is correct.",
+    title: "A child's homework is marked by arithmetic, not by opinion",
+    body: "In our learning product, maths is settled by a solver and grammar by a grammar engine. The model sets the question and explains the answer. It never decides who is right.",
   },
   {
-    title: "A schema with nowhere to put a passport number",
-    body: "When a model reads a guest's travel document, the output format has no field for an ID number. It cannot record what it has no place to record.",
+    title: "A passport number the system has no way to keep",
+    body: "When a model reads a guest's travel document, there is nowhere in the record to write an ID number. It cannot store what it has no place to store, so the exposure does not exist.",
   },
 ];
 
@@ -27,16 +33,16 @@ export default function RuleSection() {
       <div className="container-x">
         <div className="rounded-md bg-orange px-8 py-12 text-ink sm:px-10 sm:py-14">
           <h2 className="t-h2 max-w-3xl">
-            Code computes the numbers. The model writes the sentence. A test
-            enforces the line.
+            Code works out the numbers. AI writes the words. Nothing goes out
+            with a figure the system did not calculate.
           </h2>
           <p className="mt-5 max-w-2xl text-[1.0625rem] leading-relaxed">
             That is the standard we hold every system to, ours and yours. A
-            model may write the words around a figure or pull a fact from a
-            document. It never decides the figure, and a test fails the build
-            if it tries. Where a plain check beats a model, we use the plain
-            check: we have removed AI from our own working systems{" "}
-            {proofByKey.deletedAi.value} times.
+            model may write the words around a figure, or pull a fact out of a
+            document. It never decides the figure, and the build stops if it
+            tries. Where plain code does the job, we use plain code: it costs
+            less to run and cannot invent anything. We have made that swap in
+            our own systems {proofByKey.deletedAi.value} times.
           </p>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {examples.map((e) => (

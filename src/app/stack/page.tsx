@@ -95,7 +95,7 @@ export default function StackPage() {
         <div className="container-x">
           <div className="panel">
             <div className="panel-head">
-              <h2 className="label">What is wired, counted rather than claimed</h2>
+              <h2 className="label">What is already connected and running</h2>
             </div>
             <div className="panel-pad">
               <ProofStrip keys={["integrations", "scheduledJobs", "tables", "routes"]} />

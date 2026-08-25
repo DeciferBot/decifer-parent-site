@@ -178,7 +178,7 @@ export const caseShapes: CaseShape[] = [
       "The concierge scored 40 out of 40 on a test set of real guest questions, including seven where the right answer was to refuse",
     ],
     measurement:
-      "The eval suite runs against the live database and is graded on required and forbidden phrases. The host's own count of questions answered by message before and after launch.",
+      "The test set runs against the live database, and every answer is graded on what it must say and what it must never say. Alongside it, the host's own count of questions answered by message before and after launch.",
     boundaries: [
       "The concierge refuses to claim a change it cannot verify. If a write fails, it says so.",
       "A nightly check that looked for gaps in the plan had its AI removed after it researched the wrong country. It is now a plain rules check, because it needs to be right and cheap, not clever.",
@@ -271,7 +271,7 @@ export const caseShapes: CaseShape[] = [
     work: [
       "Built a collection layer that pulls market data, filings and news on a schedule, and computes every figure in code before a model sees it",
       "Held the model to narration and extraction: it writes the sentence around a number it was given, and is never the source of the number",
-      "Wrote 9,064 test functions across 411 files, plus eval suites that grade the output against the live database rather than a fixture",
+      "Built 9,064 automatic checks that run before any change reaches a reader, graded against the live database rather than a rehearsal copy, so a fault is caught by the build and not by the audience",
       "Put a watchdog in front of the scheduler that restores it from a known-good copy the moment a job goes missing, and pages a human when it cannot",
       "Ran the strategy engine against a broker paper account behind a written live-trading gate that has never been opened",
     ],
@@ -281,7 +281,7 @@ export const caseShapes: CaseShape[] = [
       "No figure in the briefing exists that the code did not compute",
     ],
     measurement:
-      "The test and eval suites run against the live database on every change. Operation and incidents are read from the system's own run log, which is why we say five months of production operation and not five months of uninterrupted output: the record shows the gaps.",
+      "Those checks run against the live database on every change. Operation and incidents are read from the system's own run log, which is why we say five months of daily operation and not five months of uninterrupted output: the record shows the gaps.",
     boundaries: [
       "The system trades a broker paper account. It has never submitted a live order, and a written gate has to be opened before it ever could. We say that everywhere it is mentioned.",
       "It is intelligence and research context, not financial advice, and the product says so next to the intelligence rather than only in a footer.",

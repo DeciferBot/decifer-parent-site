@@ -54,7 +54,7 @@ const points: {
     icon: "rule",
     hue: "orange",
     body: "One invented figure in front of a customer, and the team quietly goes back to the old way.",
-    fix: "Figures are computed in code, and a test fails the build if a model writes a number the code did not compute.",
+    fix: "Every figure is worked out in code, and the system will not publish one it did not calculate.",
   },
   {
     title: "Nobody took a baseline",

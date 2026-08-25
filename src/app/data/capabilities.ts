@@ -79,7 +79,7 @@ export const capabilities: Capability[] = [
     provenSummary: "Nine operating companies now read from one dashboard, refreshed nightly instead of assembled by hand each quarter.",
     transfersTo: ["FP&A and board reporting", "Multi-brand or multi-subsidiary groups", "PE portfolio company roll-ups"],
     buyerAngle:
-      "Nobody has to fact-check the board deck: the validator that blocks an invented figure already runs in production. The same rule marks a child's maths homework in one of our own products, where the solver decides right or wrong and the model never gets a vote.",
+      "Nobody has to fact-check the board deck. The check that stops an invented figure is already running in production, and the same rule marks a child's maths homework in one of our own products.",
     serviceKeys: ["data-and-reporting"],
     order: 2,
   },
@@ -91,7 +91,7 @@ export const capabilities: Capability[] = [
     pattern:
       "An agent scoped to one job, wired into the systems it needs, with a written definition of what it may do, what it hands to a person, and a log of every action it takes.",
     provenIn: ["private-event-concierge", "creator-business-engine"],
-    provenSummary: "A concierge scored 40 out of 40 on a graded eval, partly by refusing what it could not verify. A second build hard-caps ad spend in code and gates every brand-outreach number to what the data actually says right now.",
+    provenSummary: "A concierge answered 40 out of 40 test questions correctly, partly by refusing the ones it could not verify. A second build cannot exceed its ad budget, because the limit is written into the code rather than into a prompt.",
     transfersTo: ["Contact centres and support queues", "Sales development and qualification", "Claims intake", "Internal helpdesks"],
     buyerAngle:
       "Real autonomy, with proof it still works when someone tries to trip it up. Most AI vendors offer one of those two things, not both.",
@@ -109,7 +109,7 @@ export const capabilities: Capability[] = [
     provenSummary: "Zero client-facing AI in a clinical intake system; screening scored by arithmetic against published cutoffs.",
     transfersTo: ["Healthcare and clinical operations", "HR and people decisions", "Legal advice", "Regulated financial advice"],
     buyerAngle:
-      `The same team that ships AI can tell you, in writing, what should not ship, and has done exactly that ${proofByKey.deletedAi.value} times on its own systems.`,
+      `The same team that builds the AI will tell you in writing where plain code is the cheaper buy, and has made that swap ${proofByKey.deletedAi.value} times in its own systems.`,
     serviceKeys: ["ai-advisory"],
     order: 4,
   },
@@ -119,16 +119,16 @@ export const capabilities: Capability[] = [
     hue: "blue",
     name: "Built to run with nobody watching it",
     pattern:
-      "Every engagement held to the bar of a public product: monitoring, an eval suite, a runbook and a proper handover.",
+      "Every engagement held to the bar of a public product: it monitors itself, tests itself, and arrives with a runbook and a proper handover.",
     provenIn: [
       "catering-quotes-and-kitchen",
       "private-event-concierge",
       "market-intelligence-platform",
     ],
-    provenSummary: "Decifer Markets has run for five months on a broker paper account, behind more than nine thousand automated tests.",
+    provenSummary: "Decifer Markets has run every day since March on a broker paper account, with every change checked automatically before it goes near a user.",
     transfersTo: ["Any implementation where the real question is whether it survives without supervision"],
     buyerAngle:
-      "What gets handed over already carries its own monitoring and evals, because that is the only way we have ever shipped anything.",
+      "What you take over already watches and tests itself, because that is the only way we have ever shipped anything. Nothing is added at the end to make the handover look finished.",
     serviceKeys: ["ai-product-development"],
     order: 5,
   },

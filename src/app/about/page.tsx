@@ -60,7 +60,7 @@ const principles = [
     body: "Outputs are connected to checked inputs, references or defined logic.",
   },
   {
-    title: "Uncertainty is visible",
+    title: "The system says when it does not know",
     body: "AI should not sound certain when the information is incomplete or changing. Neither should we.",
   },
   {
@@ -138,28 +138,31 @@ export default function AboutPage() {
             className="statement text-ink md:col-span-6"
             style={{ "--accent": "var(--color-orange)" } as React.CSSProperties}
           >
-            Code computes the numbers. The model writes the sentence. A test
-            enforces the line.
+            Code works out the numbers. AI writes the words. Nothing goes out
+            with a figure the system did not calculate.
           </h2>
           <div className="space-y-5 text-[1.0625rem] leading-relaxed text-body md:col-span-5 md:col-start-8">
             <p>
               That is the whole method in one sentence. Every figure a customer
-              sees is produced by ordinary code that can be read and tested. A
+              sees is produced by ordinary code that can be read and checked. A
               model may write the sentence around the figure, or pull a fact out
-              of a document, but it never invents the number, and a test fails
-              the build if it tries.
+              of a document, but it never invents the number, and the build
+              stops if it tries.
             </p>
             <p>
-              It shows up in different ways. A validator that rejects any number
-              in a model&apos;s text that the code did not compute. A maths
-              engine that owns the answer so the model never has to. A guardrail
-              that blocks a quoted price above the real inventory ceiling. An
-              extraction schema with no field for a passport number.
+              It shows up in different ways. A figure that cannot appear in a
+              sentence unless the code produced it. A child&apos;s maths marked
+              by arithmetic rather than by opinion. A quote that cannot be
+              issued above what the kitchen can actually deliver. A guest
+              record with nowhere to write a passport number, so it cannot be
+              kept.
             </p>
             <p>
-              Sometimes the right move is to take the AI out. We have removed it
-              from working systems {proofByKey.deletedAi.value} times because a
-              plain check was cheaper, faster, and could not make anything up.
+              Sometimes the right move is to take the AI out. We have done that
+              in working systems {proofByKey.deletedAi.value} times, because a
+              plain check was cheaper to run, faster, and could not make
+              anything up. A client pays for the result, not for a model doing
+              work that does not need one.
             </p>
           </div>
           <div className="md:col-span-12">

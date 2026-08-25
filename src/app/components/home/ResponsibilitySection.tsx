@@ -36,7 +36,7 @@ const steps: {
     icon: "agent",
     hue: "orange",
     title: "Build the system",
-    body: "Agents, document intelligence, workflow automation, decision and reporting systems, internal applications, data pipelines and integrations. The architecture follows the requirement, and anything that must be right runs as tested, deterministic code.",
+    body: "Agents, document reading, workflow automation, reporting, internal applications and the connections between your systems. The design follows the requirement, and anything that has to be right is calculated by tested code rather than left to a model.",
   },
   {
     n: "04",

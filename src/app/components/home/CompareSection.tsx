@@ -19,8 +19,8 @@ const rows = [
   },
   {
     q: "Can a number in the output be invented",
-    them: "Usually possible; rarely tested for",
-    us: "No; a test fails the build if a model-written sentence contains a figure the code didn't compute",
+    them: "Usually possible; rarely checked for",
+    us: "No. The system will not publish a figure it did not calculate, and the build stops if it tries",
   },
   {
     q: "A written list of what not to automate",
@@ -28,9 +28,9 @@ const rows = [
     us: "In every assessment and every agent scope sheet",
   },
   {
-    q: "Evidence the boundary holds under load",
+    q: "Evidence it holds up once nobody is watching",
     them: "A demo, on request",
-    us: "Five months of production operation on a broker paper account, behind more than nine thousand automated tests",
+    us: "Three systems of ours have run daily since March, unattended. They are public, so you can open them and judge for yourself",
   },
   {
     q: "The first step",

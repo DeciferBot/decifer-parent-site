@@ -10,12 +10,25 @@ import type { AccentHue } from "../../data/accents";
  * offer. The three figures under the buttons exist because the board grew
  * to seven industries: without them the left column ran out of content
  * halfway down, and proof above the fold is worth more than white space.
+ *
+ * The figures are outcomes, not engineering counts (changed 2026-08-25).
+ * This slot used to run months live, test count and "times we removed AI",
+ * which are three facts about our repositories: a stranger five seconds
+ * into the page cannot tell what any of them buys them, and "five months"
+ * reads as a young supplier rather than a dependable one. What survives the
+ * five-second test is a thing they can go and open, and two results a
+ * business actually asked for. The operating figures still appear lower
+ * down, in "Built by Decifer", where the section has already explained why
+ * they matter.
  */
 
-const HERO_PROOF: { key: "monthsLive" | "testFunctions" | "deletedAi"; hue: AccentHue }[] = [
-  { key: "monthsLive", hue: "blue" },
-  { key: "testFunctions", hue: "green" },
-  { key: "deletedAi", hue: "orange" },
+const HERO_PROOF: {
+  key: "liveProducts" | "documentsLiberated" | "connectors";
+  hue: AccentHue;
+}[] = [
+  { key: "liveProducts", hue: "blue" },
+  { key: "documentsLiberated", hue: "green" },
+  { key: "connectors", hue: "orange" },
 ];
 
 export default function HeroSection() {

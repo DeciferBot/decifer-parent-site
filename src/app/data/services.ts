@@ -235,7 +235,7 @@ export const services: Service[] = [
       },
     ],
     stackKeys: ["nextjs", "vercel", "supabase", "stripe", "resend", "cloudflare", "github", "claude", "codex"],
-    proofRefs: ["repositories", "routes", "tables", "commits"],
+    proofRefs: ["liveProducts", "routes", "tables"],
     proofProduct: "learning",
     typicalEngagement:
       "Six to twelve weeks depending on scope, fixed fee with staged payments. The repository is transferred at handover, always.",
@@ -243,7 +243,7 @@ export const services: Service[] = [
     commercial: "Fixed fee",
     commercialSub: "The repository transfers at handover",
     event: "service_product_build_clicked",
-    updatedAt: "2026-08-24",
+    updatedAt: "2026-08-25",
     order: 3,
   },
   {
@@ -261,7 +261,7 @@ export const services: Service[] = [
     problem:
       "You keep being told to adopt AI. Every vendor has a pilot. Nobody has told you which three things in your business would actually change, what it would cost to run, or what could go wrong. So nothing starts, or the wrong thing does.",
     description:
-      "We talk to the people doing the work, not just the people describing it. We map where the hours go, score each candidate task on how often it repeats, how clear the rules are, and how expensive a mistake would be, and we hand you a short written recommendation. It includes an explicit list of things not to automate yet. We have removed AI from our own working systems five times because a simpler check was better. We will tell you the same thing about yours when it is true.",
+      "We talk to the people doing the work, not just the people describing it. We map where the hours go, score each candidate task on how often it repeats, how clear the rules are, and how expensive a mistake would be, and we hand you a short written recommendation. Where plain code beats a model, the recommendation says so and prices both: we have made that swap five times in our own systems, and it costs less to run every month.",
     deliverables: [
       "Interviews with the people who actually do the work",
       "A map of where the time goes, with the delays marked",
@@ -298,7 +298,7 @@ export const services: Service[] = [
     commercial: "Fixed fee",
     commercialSub: "Credited in full against any build",
     event: "service_ai_advisory_clicked",
-    updatedAt: "2026-08-24",
+    updatedAt: "2026-08-25",
     order: 4,
   },
 ];

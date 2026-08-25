@@ -8,6 +8,12 @@ import { proofByKey } from "../../data/proof";
  * boundary principles that make a system dependable, and the mechanism they
  * add up to, drawn rather than described.
  *
+ * Each principle is titled by what the buyer gets, not by the engineering
+ * rule that produces it (rewritten 2026-08-25). "Calculations belong in
+ * code" is a sentence for a developer; "numbers your customers see cannot
+ * be invented" is the same rule and is the reason a finance director keeps
+ * reading. The mechanism stays in the body, one clause at most.
+ *
  * The diagram sits on the ink panel inside the orange band. That inversion
  * is deliberate: the band is the argument, the panel is the architecture,
  * and a reader who only looks at pictures still leaves knowing the rule.
@@ -16,33 +22,33 @@ import { proofByKey } from "../../data/proof";
 const principles: { title: string; body: string; icon: IconName }[] = [
   {
     icon: "rule",
-    title: "Calculations belong in code",
-    body: "Prices, scores, metrics, validation and business rules are computed deterministically. A model is never responsible for arithmetic software can calculate exactly, and a test fails the build if a model writes a figure the code did not compute.",
+    title: "Numbers your customers see cannot be invented",
+    body: "Prices, scores, totals and business rules are calculated by ordinary software, the way your finance system calculates them. A model never decides a figure, and the system refuses to publish one the code did not produce.",
   },
   {
     icon: "agent",
-    title: "Models handle interpretation",
-    body: "Language, classification, synthesis and reading documents, where the input cannot be reduced to a fixed rule. That is where a model earns its place.",
+    title: "AI does the reading and writing, not the arithmetic",
+    body: "Reading documents, sorting enquiries, summarising, drafting the reply: work where the input is messy and no fixed rule would cope. That is where a model earns its cost, and it is a smaller part of most jobs than vendors suggest.",
   },
   {
     icon: "handover",
-    title: "People keep defined responsibility",
-    body: "Higher-risk decisions have named owners. Approval, review and escalation are designed into the workflow, not left to users to remember.",
+    title: "Anything expensive has a named person on it",
+    body: "Approval, review and escalation are built into the workflow, so a higher-risk decision reaches the person who owns it. Nobody has to remember to check.",
   },
   {
     icon: "boundary",
-    title: "Uncertainty is visible",
-    body: "A system should say when the available information is not sufficient. Confidence thresholds and exception paths are part of the design.",
+    title: "The system says when it does not know",
+    body: "When the information is missing or contradictory, the case goes to a person, with the gap named. Nobody spends a morning unpicking a confident answer that was wrong.",
   },
   {
     icon: "log",
-    title: "Every important action is traceable",
-    body: "Logs a team can read without an engineer: what the system received, what it did, what happened next.",
+    title: "Your team can see what happened, without calling us",
+    body: "A plain record of what came in, what the system did and what followed. Written to be read by the people who run the process, not by a developer.",
   },
   {
     icon: "record",
-    title: "You can own what we build",
-    body: "Systems deploy to your accounts and are handed over with documentation, tests and a runbook. Dependency on Decifer is a commercial choice, never a technical trap.",
+    title: "You own it, and you can leave",
+    body: "Everything runs on your accounts and transfers to you with documentation, tests and a runbook. Staying with us is a decision you make each year, not a position you are stuck in.",
   },
 ];
 
@@ -53,13 +59,16 @@ export default function HowWeBuildSection() {
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="label text-ink/70">The rule we build by</p>
-            <h2 className="t-h2 mt-4">Production systems need clear boundaries.</h2>
+            <h2 className="t-h2 mt-4">
+              What makes a system safe to run the business on.
+            </h2>
           </div>
           <p className="text-[1.0625rem] leading-relaxed lg:col-span-6 lg:col-start-7">
             Every part of a system gets a defined job, decided by one question:
-            does this step need judgement, or does it need to be right? Where a
-            plain check beats a model, we use the plain check. We have removed
-            AI from our own working systems {proofByKey.deletedAi.value} times.
+            does this step need judgement, or does it need to be right? Where
+            plain code does the job, we use plain code: it costs less to run
+            every month and it cannot invent anything. We have made that swap
+            in our own systems {proofByKey.deletedAi.value} times.
           </p>
         </div>
 
