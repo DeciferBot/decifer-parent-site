@@ -36,7 +36,7 @@ Rules:
 
 ## Typography
 
-Two families. Source Serif 4 at weight 500 for every heading: quiet authority, nothing shouts. Schibsted Grotesk for body, labels, buttons and data (it was drawn for a newspaper group, built for reporting and dense text). The one uppercase device is the `label` class, used only as a panel or board header.
+Two families. Source Serif 4 at weight 500 for every heading: quiet authority, nothing shouts. Figtree for body, labels, buttons and data (set 2026-08-25 as the brand sans, replacing Schibsted Grotesk; the Schibsted `ss01`/`cv05` feature settings came out with it, since they address nothing in Figtree). The one uppercase device is the `label` class, used only as a panel or board header.
 
 | Level | Size | Weight | Tracking | Leading |
 | --- | --- | --- | --- | --- |
