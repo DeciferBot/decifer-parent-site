@@ -29,10 +29,17 @@ const PATH: {
   hue: AccentHue;
 }[] = [
   {
+    slug: "the-ai-supply-chain-what-you-are-actually-buying",
+    icon: "record",
+    hue: "teal",
+    stage: "Start here",
+    note: "What one AI answer is actually made of: which parts you rent, which part has to be built, and the three ways this supply chain behaves unlike any other you run.",
+  },
+  {
     slug: "what-production-ready-actually-means",
     icon: "boundary",
     hue: "blue",
-    stage: "Start here",
+    stage: "Set the standard",
     note: "The standard everything else builds to: six questions that separate a demo from a product, each answerable with evidence.",
   },
   {
