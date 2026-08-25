@@ -66,7 +66,9 @@ export default function PaybackCalculator() {
 
   const verdict = !ready
     ? ""
-    : yearlySaving <= 0
+    : yearlyLabour === 0
+      ? "The task costs nothing on these numbers, so there is nothing to save. Check the hours and the salary."
+      : yearlySaving <= 0
       ? "Do not build this one. The running cost eats the saving before the build cost is even counted."
       : paybackMonths <= 12
         ? "Worth pricing properly. On these numbers the build pays for itself inside a year."

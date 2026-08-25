@@ -50,7 +50,7 @@ export const tools: Tool[] = [
     name: "Agent or automation?",
     question: "Do I need an AI agent, or something simpler?",
     summary:
-      "Three questions about the task, one verdict. Most agent projects should have been automations; this tells you which side yours is on.",
+      "Three questions about the task, one verdict. Many agent projects should have been simpler automations; this tells you which side yours is on.",
     seoTitle: "AI agent or automation? A three-question decision tool",
     seoDescription:
       "Free decision tool: answer three questions about the task and get a plain verdict on whether it needs an AI agent, a simple automation, or a person. Nothing stored.",
