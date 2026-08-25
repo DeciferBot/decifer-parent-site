@@ -2,11 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ToolNextStep from "./ToolNextStep";
 
 /**
  * The six pre-launch checks from the article, as an interactive scorecard.
  * "Not sure" counts as a fail on purpose: on security, not knowing is the
  * same as no. Runs entirely in the browser; nothing is stored or sent.
+ *
+ * Every score ends with a next step. A fix list nobody has the time to work
+ * through is the same as no fix list, so the page says who does it if the
+ * reader will not.
  */
 
 const POST = "/blog/is-your-vibe-coded-app-safe-to-launch";
@@ -73,6 +78,22 @@ export default function LaunchSafetyCheck() {
         ? `${score} of 6. Close. Fix the items below before real users arrive; each is typically a day or less.`
         : `${score} of 6. Do not launch yet. The gaps below are the ones attackers and accidents find first.`;
 
+  const next = !done
+    ? null
+    : score === CHECKS.length
+      ? {
+          line: "The checks that matter next are the ones that only appear under real use: what happens when the traffic, the data and the edge cases arrive. That is the work after launch, and it is the work we take on.",
+          cta: "See how we build and hand over",
+          href: "/services/ai-product-development",
+          event: "tools_safety_services_pass",
+        }
+      : {
+          line: `${failing.length} ${failing.length === 1 ? "gap" : "gaps"} to close, each typically a day or less if you know the codebase. If nobody on your side has that day, this is the first thing we do on any codebase we inherit, and we tell you what we find whether or not you hire us for the rest.`,
+          cta: "Send us the app",
+          href: "/contact",
+          event: "tools_safety_contact_failing",
+        };
+
   return (
     <div className="panel">
       <div className="panel-head">
@@ -127,6 +148,7 @@ export default function LaunchSafetyCheck() {
               &quot;Not sure&quot; counts as a fail on purpose: on security, not knowing is the same
               as no. Answers stay in your browser; nothing is stored or sent.
             </p>
+            {next ? <ToolNextStep {...next} /> : null}
           </div>
         ) : (
           <p className="text-[15px] leading-relaxed text-muted">
