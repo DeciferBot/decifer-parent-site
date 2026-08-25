@@ -44,6 +44,12 @@ with", "do not build this", "leave it for now", "what we will not do". The
 positive version says the same thing and converts: "the right starting point
 when", "start with", "this works once", "what makes this work".
 
+## Write like a business, not an essay
+
+Short sentences. Plain business English. Say the point first, then stop. A
+buyer skims: if a paragraph runs past four lines, cut it. No throat-clearing,
+no build-up, no explaining the reasoning behind the reasoning.
+
 ## Rules for anything on this site
 
 - **State facts, recommend action.** Numbers, scores and arithmetic are
