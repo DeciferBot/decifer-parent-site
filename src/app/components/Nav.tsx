@@ -9,9 +9,9 @@ import DeciferLogo from "./DeciferLogo";
  * The nav is the buying path and nothing else, in reading order: what we
  * sell (Services, and the Workflows catalogue, the highest-intent page on
  * the site), the proof (Case studies), the method (How we work), the
- * self-serve numbers (Tools), and who is behind it (About). Content pages
- * (/learn, /blog) are found by search and internal links, which is their
- * actual job; they stay one click away in the footer, not here.
+ * self-serve numbers (Tools), and the authority content (Insights). About
+ * and Learn stay one click away in the footer; About returns to the nav
+ * when the company story there is ready to carry it.
  *
  * Labels are the conventional words a visitor scans for: "Services" not
  * "What we do", "Case studies" rather than "Work" so it cannot be misread
@@ -23,7 +23,7 @@ const navLinks = [
   { label: "Case studies", href: "/work" },
   { label: "How we work", href: "/how-we-work" },
   { label: "Tools", href: "/tools" },
-  { label: "About", href: "/about" },
+  { label: "Insights", href: "/blog" },
 ];
 
 export default function Nav() {
