@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Arrow from "./Arrow";
 import Icon from "./Icon";
-import type { Service } from "../data/services";
+import type { ServiceLike } from "../data/services";
 import { accent } from "../data/accents";
 
 /**
@@ -12,8 +12,11 @@ import { accent } from "../data/accents";
  * The row leads with the service's own mark and hue (services.ts), which is
  * the same pair used on the service page, in the capability matrix and
  * anywhere else the service is named.
+ *
+ * Takes a ServiceLike, so the named workflows in workflows.ts render as rows
+ * here too.
  */
-export default function ServiceRow({ service: s }: { service: Service }) {
+export default function ServiceRow({ service: s }: { service: ServiceLike }) {
   return (
     <li>
       <Link

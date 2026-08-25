@@ -77,6 +77,16 @@ export interface Service {
   order: number;
 }
 
+/**
+ * The fields a service row and a /services/[slug] page render.
+ *
+ * The four services here and the named workflows in workflows.ts both satisfy
+ * it, which is how both use the same row component and the same page
+ * template. Only the key differs: a service key is one of four, a workflow
+ * key is a search term.
+ */
+export type ServiceLike = Omit<Service, "key"> & { key: string };
+
 export const services: Service[] = [
   {
     key: "ai-agents",
