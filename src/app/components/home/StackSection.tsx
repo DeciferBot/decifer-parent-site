@@ -5,7 +5,7 @@ const expertise = [
   "Front-end experience design",
   "Data and reporting architecture",
   "AI agents and automation",
-  "Chatbots across WhatsApp, Telegram and Instagram",
+  "Chatbots across WhatsApp and Telegram",
   "Security and access control",
   "Email and Meta marketing integrations",
 ];
