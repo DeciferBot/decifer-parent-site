@@ -269,7 +269,7 @@ export const caseShapes: CaseShape[] = [
     situation:
       "Anyone following markets reads all day and still cannot say plainly what moved, why it moved, or what to watch next. The general-purpose assistants will answer that question confidently and sometimes invent the number in the answer. We built the system we wanted to exist, and it became the hardest test of the method we have: real market data, real cost, unattended runs, and nobody else to hand the pager to.",
     work: [
-      "Built a collection layer that pulls market data, filings and news on a schedule, and computes every figure in code before a model sees it",
+      "Built a collection layer that pulls eleven live streams of market data, filings and news on a schedule, and computes every figure in code before a model sees it",
       "Held the model to narration and extraction: it writes the sentence around a number it was given, and is never the source of the number",
       "Built 9,064 automatic checks that run before any change reaches a reader, graded against the live database rather than a rehearsal copy, so a fault is caught by the build and not by the audience",
       "Put a watchdog in front of the scheduler that restores it from a known-good copy the moment a job goes missing, and pages a human when it cannot",

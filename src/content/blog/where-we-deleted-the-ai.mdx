@@ -57,7 +57,7 @@ We put this case on our website because it is the clearest example of the rule w
 
 ## 5. The group dashboard where the model extracts and a person ratifies
 
-We built a marketing dashboard for a group with eleven operating companies. It pulls from Google Analytics, Google Ads, Meta, LinkedIn and X, snapshots the numbers every day, and produces a weekly memo for the board.
+We built a marketing dashboard for a group with nine operating companies. It pulls from Google Analytics, Google Ads, Meta, LinkedIn and X, snapshots the numbers every day, and produces a weekly memo for the board.
 
 The document-reading step makes exactly one call to a model. It reads contract documents and proposes the dates and values it finds. Its output is always marked as proposed, a human ratifies it with one click, and underneath it sits a plain rules parser that produces the same fields without the model at all. The model's answer is laid over the parser's answer, so the reliable fields can never be made worse.
 
