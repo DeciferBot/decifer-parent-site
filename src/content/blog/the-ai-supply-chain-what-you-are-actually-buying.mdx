@@ -1,0 +1,91 @@
+---
+title: "The AI supply chain: what you are actually buying"
+description: "Most AI decisions go wrong because nobody has drawn the supply chain. Here is what one AI answer is made of, which parts you rent, which part you have to build, and the three ways this supply chain behaves unlike any other you run."
+publishedAt: "2026-08-25"
+author: "Amit Chopra"
+topic: "Buying AI"
+tags: ["buying ai", "ai strategy", "ai costs", "board decisions"]
+readingMinutes: 8
+relatedServiceKeys: ["ai-advisory", "ai-product-development"]
+relatedPostSlugs: ["how-much-does-an-ai-agent-cost-to-build-and-run", "seven-ai-myths-dubai-business-owners-keep-paying-for"]
+---
+
+Every leadership team is being asked to approve AI spending, and almost nobody has been shown what they are buying. The pitch arrives as a demo and a monthly figure. What is missing is the thing any business leader would insist on before signing off a physical product: the supply chain. What goes into one unit, who supplies each part, what each part costs, and what happens when a supplier lets you down.
+
+So here it is. Take one unit of output, meaning one answer, one drafted contract, one resolved ticket, and follow everything that goes into making it.
+
+## The raw material: your own data
+
+Your records, documents, emails, transactions and history. This is the only ingredient that makes your output different from your competitor's, and it is the one ingredient nobody can sell you, because you already own it.
+
+It is also rarely in a fit state to use. Data sits in four systems that disagree, in PDFs nobody has read since 2019, in a spreadsheet on one person's laptop. Getting it usable is the first real invoice on any AI project, and it is the one buyers are least prepared for.
+
+The question to ask: if we had a perfect assistant tomorrow, what would it need to read to be useful, and where does that live today?
+
+## The commodity input: the model
+
+GPT, Claude, Gemini and the rest. Bought by the unit, from a handful of suppliers, metered like electricity.
+
+This is the part everyone means when they say "AI", and it is the part that matters least to your strategy, because your competitor can buy the identical input at the identical price. Buying a better model is buying better flour. Every bakery on the street can buy the same sack. What you sell is the bakery.
+
+The question to ask: if this model doubled in price, or was withdrawn, what would we do on the Monday?
+
+## The factory: everything between your business and the model
+
+This is where your raw material and that commodity become your product, and it is the part with no supplier at all. Nobody sells it to you. It gets built.
+
+It covers a dozen jobs: deciding what information the model sees for this particular request, keeping that within the size it can handle, forcing answers into a format your systems can read, checking the answer before it reaches a customer, retrying when a supplier fails mid-request, tracking what a conversation has already established, and enforcing what the system is allowed to do without a person.
+
+A demo needs two of these. A system your business depends on needs all of them, and needs them to hold at three in the morning when nobody is watching.
+
+This is the product. The model is a component inside it.
+
+## The production line, the warehouse and the machinery
+
+Three parts of the factory are worth naming separately, because they are the three questions that decide whether a system can be trusted with real work.
+
+**What runs, and who signs off.** Steps in order, queues, schedules, and the point where a human approves before anything leaves the building. This is where you decide what the system does on its own authority and what it brings to a person first.
+
+**What it remembers.** What the system knows about a customer between Tuesday and Friday, and what it is required to forget. Memory is a policy decision wearing a technical costume, and it is usually made by accident.
+
+**What it is allowed to touch.** Sending the email, issuing the refund, writing to your finance system. Every one of these is a permission you granted, and the list of them is the honest measure of your exposure.
+
+The question to ask: show me the list of things this can do without a person, and who approved that list.
+
+## Distribution, quality control and the paper trail
+
+**Distribution** is how the output reaches somebody: the app, Slack, the inbox, the phone. Cheap to add, and the reason a good system quietly spreads through a business.
+
+**Quality control** is how you know the output is still good this month. Not a one-off inspection at launch, a standing check that runs against known cases and tells you when the answers drift. Most AI projects have none, which is why "it was working fine" is the most common sentence in a post mortem.
+
+**The paper trail** is who approved which version of what, and whether you can show it to a regulator, an insurer or a customer's lawyer. In a physical supply chain this is routine. In AI projects it is usually missing entirely, and it is the thing that turns an incident into a crisis.
+
+**Utilities**, meaning the computing power underneath, are metered and boring and somebody else's problem, right up until the bill arrives.
+
+## Three ways this supply chain is not like your others
+
+The comparison earns its keep, and then it breaks in three specific places. Each break is a thing that costs money.
+
+**Your supplier changes the spec without telling you.** Flour is flour. A model provider ships a new version and your output changes overnight with nothing changed on your side. There is no equivalent in a physical supply chain, and it is the single strongest argument for standing quality control rather than a launch inspection.
+
+**The same input does not give an identical output.** Ask twice, get two phrasings, and occasionally two different answers. No factory works this way. It is why "it worked in the demo" and "it works every time" are different claims, and why the second one has to be measured rather than assumed.
+
+**The unit cost moves with the job, and falls over time.** A long document costs more to process than a short one, so your cost of goods varies with what customers happen to send you. Meanwhile the price per unit has fallen sharply, year after year. Software used to have almost no cost per user. AI features have a real one, and most finance functions have never modelled it. We put real figures on this in [what an AI agent costs to build and run](/blog/how-much-does-an-ai-agent-cost-to-build-and-run).
+
+## What the picture tells you to do
+
+**Rent the commodity, own the factory.** The model and the computing power are rented, and should be easy to swap. The factory is where your advantage accumulates, so it belongs to you, in accounts in your own name.
+
+**Second source your intelligence.** If your product only runs on one provider's model, you have a single source supply chain and no negotiating position with a supplier who reprices twice a year. Being able to change model without changing your product is a commercial position, not a technical detail.
+
+**Price the unit before you launch the feature.** Know what one answer costs you and what it is worth. Our [payback calculator](/tools/automation-payback-calculator) does the arithmetic on a process before anybody writes code.
+
+**Look for where pilots actually die.** They almost never fail on the material or the model. They fail at the factory: no quality control, no paper trail, nobody accountable. "Our AI pilot failed" usually means "we bought an input and skipped the plant", which is a solvable problem and a much better place to be starting from.
+
+## Where to start
+
+If you are early, the useful first question is not which model to use. It is which process you would put through this chain first, and whether it needs a model at all. [Agent or automation](/tools/agent-or-automation) settles that in a few minutes, and some of the best results come from [taking the model out](/blog/where-we-deleted-the-ai).
+
+If something is already running and you are not sure it is sound, the standard to measure it against is [what production-ready actually means](/blog/what-production-ready-actually-means): six questions, each answerable with evidence.
+
+And if you want the chain drawn for your business specifically, with the parts you already have marked off, the parts to rent named, and the build priced, that is what our fixed-fee assessment produces, in writing, credited against any build that follows. [Tell us what you are trying to do](/contact) and we will show you the map before you commit to the journey.
