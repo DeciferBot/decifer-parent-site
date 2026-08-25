@@ -17,8 +17,8 @@ export default function StackSection() {
         <div className="panel">
           <div className="panel-head">
             <h2 className="label">What we build on, and what you keep</h2>
-            <Link href="/work" className="link text-sm">
-              Where each tool shipped
+            <Link href="/stack" className="link text-sm">
+              Why each one, and which model runs which job
             </Link>
           </div>
           <div className="panel-pad">
@@ -34,9 +34,9 @@ export default function StackSection() {
             </p>
             <p className="mt-6 text-sm text-muted">Built on tools you will own at handover:</p>
             <div className="mt-3">
-              {/* linkTo={null}: StackSection renders on /how-we-work, so the
-                  default target would make every logo link to this same page. */}
-              <LogoRow linkTo={null} />
+              {/* Logos link to /stack, which carries the role and the reasoning
+                  for each tool. StackSection itself renders on /how-we-work. */}
+              <LogoRow />
             </div>
             <p className="mt-8 max-w-3xl text-sm text-muted">
               Every account is opened in your name. At handover the repository,

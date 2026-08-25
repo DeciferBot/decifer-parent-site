@@ -2,6 +2,8 @@ import Link from "next/link";
 import {
   siClaude,
   siDigitalocean,
+  siDocker,
+  siTelegram,
   siNextdotjs,
   siVercel,
   siSupabase,
@@ -23,9 +25,17 @@ import type { StackKey } from "../data/stack";
  * Codex renders as text.
  */
 
+/** Display names that differ from StackItem.name in this compact row. */
+const LABELS: Partial<Record<StackKey, string>> = {
+  codex: "OpenAI Codex",
+  llama: "Llama",
+};
+
 const ICONS: Partial<Record<StackKey, SimpleIcon>> = {
   claude: siClaude,
   digitalocean: siDigitalocean,
+  docker: siDocker,
+  telegram: siTelegram,
   nextjs: siNextdotjs,
   vercel: siVercel,
   supabase: siSupabase,
@@ -59,7 +69,7 @@ function Mark({ icon, label }: { icon?: SimpleIcon; label: string }) {
 export default function LogoRow({
   keys,
   tone = "ink",
-  linkTo = "/how-we-work",
+  linkTo = "/stack",
 }: {
   keys?: StackKey[];
   tone?: "ink" | "light";
@@ -71,7 +81,7 @@ export default function LogoRow({
   return (
     <ul className="flex flex-wrap items-center gap-x-10 gap-y-6">
       {items.map((t) => {
-        const inner = <Mark icon={ICONS[t.key]} label={t.key === "codex" ? "OpenAI Codex" : t.name} />;
+        const inner = <Mark icon={ICONS[t.key]} label={LABELS[t.key] ?? t.name} />;
         return (
           <li key={t.key} className={`${color} opacity-70 transition-opacity hover:opacity-100`}>
             {linkTo ? (

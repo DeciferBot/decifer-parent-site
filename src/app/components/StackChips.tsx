@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getStackItems } from "../data/stack";
 import type { StackKey } from "../data/stack";
 
-/** Plain inline list of tools, linking to /stack. */
+/** Plain inline list of tools, linking to /stack, which carries the reasoning. */
 export default function StackList({ keys }: { keys: StackKey[] }) {
   const items = getStackItems(keys);
   return (
@@ -10,7 +10,7 @@ export default function StackList({ keys }: { keys: StackKey[] }) {
       <span className="font-semibold text-ink">Built with </span>
       {items.map((t, i) => (
         <span key={t.key}>
-          <Link href="/how-we-work" className="link-quiet" title={t.role}>
+          <Link href="/stack" className="link-quiet" title={t.role}>
             {t.name}
           </Link>
           {i < items.length - 1 ? ", " : "."}
