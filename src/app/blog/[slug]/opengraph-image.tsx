@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPost, formatDate } from "@/lib/blog";
-import { loadOgFonts } from "@/lib/og-fonts";
+import { ogFontOptions } from "@/lib/og-fonts";
 import { OG_SIZE, OG_COLORS, ogFrameStyle, OgHeader, OgFooter } from "@/lib/og";
 
 export const alt = "A Decifer article";
@@ -25,7 +25,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
-  const fonts = await loadOgFonts();
+  const fontOptions = await ogFontOptions();
   const titleSize = post.title.length > 55 ? 56 : 66;
 
   return new ImageResponse(
@@ -63,6 +63,6 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         <OgFooter left={`${post.author}, ${formatDate(post.publishedAt)}`} right="decifer.io/blog" />
       </div>
     ),
-    { ...size, fonts }
+    { ...size, ...fontOptions }
   );
 }
