@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { loadOgFonts } from "@/lib/og-fonts";
+import { ogFontOptions } from "@/lib/og-fonts";
 import { OG_SIZE, OG_COLORS, ogFrameStyle, OgHeader, OgFooter } from "@/lib/og";
 
 export const alt = "Decifer: turn AI investment into operating results. AI implementation, Dubai.";
@@ -7,7 +7,7 @@ export const size = OG_SIZE;
 export const contentType = "image/png";
 
 export default async function Image() {
-  const fonts = await loadOgFonts();
+  const fontOptions = await ogFontOptions();
   return new ImageResponse(
     (
       <div style={ogFrameStyle}>
@@ -44,6 +44,6 @@ export default async function Image() {
         <OgFooter left="Dubai, United Arab Emirates" right="decifer.io" />
       </div>
     ),
-    { ...size, fonts }
+    { ...size, ...fontOptions }
   );
 }
