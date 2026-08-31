@@ -1,0 +1,81 @@
+---
+title: "AI for general trading and import export companies in Dubai"
+description: "Enquiries land on WhatsApp, email and the phone, and a landed cost is worked out by hand every time. The four systems that fix that for a trading business, in build order, and where a model must never touch the price."
+publishedAt: "2026-08-31"
+author: "Amit Chopra"
+topic: "Playbooks"
+tags: ["general trading", "import export", "dubai", "quoting", "ai agents", "landed cost"]
+readingMinutes: 6
+relatedServiceKeys: ["data-and-reporting", "ai-agents"]
+relatedPostSlugs: ["ai-for-catering-and-events-companies-in-dubai", "ai-agent-vs-automation-which-does-your-business-need", "why-ai-gets-your-numbers-wrong-and-how-to-stop-it", "how-to-automate-three-business-processes-with-ai"]
+---
+
+A Dubai general trading business runs on the same four moves whatever it sells: source a product, land it, price it with a margin on top, and keep the customer for the next order. Most of that work is still done by hand, and it happens in a specific place.
+
+An enquiry comes in on WhatsApp for a container of something, a follow-up comes by email from the same buyer under a different spelling of their company name, and a price has to be worked out from a supplier quote in one currency, freight in another, customs duty, and whatever margin the owner keeps in their head. Somebody who knows the business does that arithmetic, once, from memory, and the buyer waits. By the time the number lands, they have two other quotes from other trading houses in the same free zone.
+
+This is the shape we build for. Here is what works, in the order it pays back.
+
+## Start with one record per customer and supplier
+
+Before anything else, the business needs one place where every enquiry, supplier, customer and past order actually lives, joined up rather than spread across a phone, an inbox and a spreadsheet per product line.
+
+The same buyer usually contacts a trading house more than once, from more than one channel, under more than one version of their company name. Until those are recognised as one customer, every report built on top is wrong, and every quote starts from scratch instead of from the last one.
+
+This is mostly not AI. Matching rules on a phone number, an email domain and a company name catch most of it, with a model used only for the genuinely ambiguous cases, which is [the right split between code and judgement](/blog/ai-agent-vs-automation-which-does-your-business-need).
+
+**What good looks like:** one timeline per customer, showing every enquiry, every quote sent, and what they actually ordered last time.
+
+**Related:** [data and reporting automation](/services/data-and-reporting).
+
+## Then let the landed cost compute itself
+
+Once supplier prices, freight rates and duty rules live in one system instead of one person's head, the quote itself stops being a manual calculation.
+
+A landed cost is arithmetic: unit cost, freight, insurance, customs duty, any agent fee, converted to one currency, with the margin applied on top. That calculation belongs in code, run against the numbers actually on file for that supplier and that route, not produced by a model asked to estimate a price.
+
+The reason this matters more here than almost anywhere else is the currency mix. A supplier quote in yuan, a freight rate in dollars and a customer invoice in dirhams is normal in one transaction, and a model asked to work that out from a prompt will produce a confident, plausible, wrong number. [That failure mode is well documented](/blog/why-ai-gets-your-numbers-wrong-and-how-to-stop-it) and it is exactly why the figure has to come from a calculation the business can check, not from a paragraph.
+
+**What good looks like:** a quote goes out inside the hour it was asked for, built from the current supplier rate and the current freight rate, not last quarter's.
+
+**Related:** [AI agent development](/services/ai-agents).
+
+## Make the handoffs happen on their own
+
+The next win is the least exciting one and the most reliably dropped: what happens the moment a quote turns into a confirmed order.
+
+Purchasing needs to raise the supplier PO. Someone needs to confirm the shipping method and book the freight. The customer needs an order confirmation with the right documents attached. Finance needs the invoice on the terms actually agreed. Right now, all of that depends on the same person who built the quote also remembering to do all four.
+
+Wire it to the stage change instead. Moving the deal to confirmed is the trigger, and each handoff fires whether or not anyone remembers it that day. Almost none of this needs a model at all. It is automation on a well-modelled pipeline, which is the highest-return part of a project like this precisely because it is unglamorous.
+
+**Related:** [document generation automation](/services/document-generation-automation).
+
+## Then find out which lines actually carry the margin
+
+With a joined-up customer record and a real landed-cost history, the business can finally answer the question every trading owner has an instinct about and no evidence for: which products, which suppliers and which customers are actually worth the working capital they tie up.
+
+Volume and margin are not the same list. A product that moves in bulk on thin margin can be propping up a business while a slower, higher-margin line gets ignored because it feels less busy. That comparison only exists once the cost and the sale price for every order sit in one place rather than in a dozen invoices.
+
+**What good looks like:** a sourcing decision made on margin per line and per supplier, ahead of the season, instead of on what felt busy last time.
+
+## Where to keep AI away from the customer
+
+Three boundaries we hold in this sector, and recommend to anyone building here:
+
+**Never let a model quote a landed cost.** The figure comes from the calculation, against the supplier and freight rates on file. The model may draft the covering message. It may not touch the number inside it.
+
+**Financial answers are role-gated.** An assistant that can answer "what is our margin on this customer" must refuse that question for an account that should not see it, rather than estimate around the gap. A refusal is a correct answer. An estimate is a leak.
+
+**Outreach to suppliers and customers is templates chosen by rules, sent by a person.** A trading relationship is often decades old and runs on trust between two named people. Generated messages at volume are a fast way to spend that.
+
+## What this looks like in practice
+
+The shape above is the same one we have built for a catering business turning thirty years of orders into a quoting engine: [one database first, then a computed quote, then the handoffs, then the margin view](/blog/ai-for-catering-and-events-companies-in-dubai). A trading house has a currency and a customs layer a caterer does not, which is why the landed-cost step gets its own build here, but the order of operations and the guardrail on the price are identical.
+
+The measurement to agree before you start is simple and easy to check afterwards from your own data: **time from enquiry to priced quote**, and **the share of confirmed orders where the landed cost matched what was actually invoiced**. Both are readable before and after without anyone's opinion involved.
+
+## Where to start
+
+If a quote still takes a phone call, a spreadsheet and a day, start with the customer record and the landed-cost calculation and measure only those two numbers. It is the shortest route from a build to a difference the desk feels within the first month.
+
+Our [two-week assessment](/services/ai-advisory) prices this for your business at a fixed fee: what to build, in what order, what it costs to run, and what it should move.
