@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HeroSection from "./components/home/HeroSection";
+import SystemField from "./components/SystemField";
 import EvidenceSection from "./components/home/EvidenceSection";
 import StallSection from "./components/home/StallSection";
 import DiagramSection from "./components/home/DiagramSection";
@@ -34,6 +35,7 @@ export default function Home() {
         each of them as a part somebody left out.
       */}
       <HeroSection />
+      <SystemField />
       <EvidenceSection />
       <StallSection />
       <DiagramSection />

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Figtree, Source_Serif_4 } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -12,17 +12,29 @@ import { servicesOrdered } from "./data/services";
 import { stack } from "./data/stack";
 import { jsonLd, RSS_ALTERNATE_TYPES } from "@/lib/jsonld";
 
-// Figtree is the brand sans (set 2026-08-25, replacing Schibsted Grotesk).
-// Headings stay on Source Serif 4: see DESIGN.md on the two-family system.
-const figtree = Figtree({
+// Daylight Operations, set 2026-09-01, replacing Figtree + Source Serif 4.
+// Three families, each with one job. Instrument Sans carries every sentence a
+// buyer reads; Instrument Serif does the headings and pull quotes; IBM Plex
+// Mono sets every figure and every instrument label, always tabular.
+// The variable names are kept so nothing downstream has to change.
+const sans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-figtree",
   display: "swap",
 });
 
-const serif = Source_Serif_4({
+const serif = Instrument_Serif({
   subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
   variable: "--font-serif",
+  display: "swap",
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono-brand",
   display: "swap",
 });
 
@@ -169,7 +181,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${figtree.variable} ${serif.variable} h-full antialiased`}>
+    <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-canvas text-ink">
         <Nav />
         <main className="flex-1">{children}</main>
