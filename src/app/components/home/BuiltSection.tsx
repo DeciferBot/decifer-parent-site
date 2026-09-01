@@ -98,7 +98,7 @@ export default function BuiltSection({ compact = false }: { compact?: boolean })
           </>
         ) : null}
 
-        <ul className="mt-12 grid gap-10 md:grid-cols-3 md:gap-6">
+        <ul className="mt-12 card-grid md:grid-cols-3">
           {products.map((p, i) => (
             <li key={p.key}>
               <ProductFrame product={p} tone="light" priority={i === 0} />

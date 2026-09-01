@@ -84,7 +84,7 @@ export default function ServicesPage() {
             title="Twenty workflows we have already built."
             lede="Named jobs, each one running in production for a client or inside one of our own products. If your problem is one of these, start on its page: it names what the workflow does, where it already runs and what you receive."
           />
-          <div className="mt-11 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-11 card-grid md:grid-cols-2 lg:grid-cols-3">
             {workflowsByFamily.map((g) => (
               <div key={g.family} className="rounded-sm border border-line bg-panel px-6 py-6">
                 <p className="label">{g.family}</p>
@@ -129,7 +129,7 @@ export default function ServicesPage() {
             title="How an engagement runs."
             lede="Three steps, each with a fixed shape. You can stop after any of them with something useful in hand."
           />
-          <ol className="mt-11 grid gap-4 md:grid-cols-3">
+          <ol className="mt-11 card-grid md:grid-cols-3">
             {steps.map((st, i) => (
               <li
                 key={st.title}

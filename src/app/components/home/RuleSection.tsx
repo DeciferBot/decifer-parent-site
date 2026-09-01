@@ -44,7 +44,7 @@ export default function RuleSection() {
             less to run and cannot invent anything. We have made that swap in
             our own systems {proofByKey.deletedAi.value} times.
           </p>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
+          <div className="mt-12 card-grid md:grid-cols-3">
             {examples.map((e) => (
               <div key={e.title} className="border-t border-white/30 pt-4">
                 <h3 className="text-[1.0625rem] font-semibold leading-snug">{e.title}</h3>

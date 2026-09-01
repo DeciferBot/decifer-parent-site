@@ -193,7 +193,7 @@ export default async function ServicePage({ params }: Params) {
             title="What you receive."
             lede="Concrete things, not outcomes on a slide. This list is the scope of the engagement."
           />
-          <ol className="mt-11 grid gap-3 sm:grid-cols-2">
+          <ol className="mt-11 card-grid sm:grid-cols-2">
             {s.deliverables.map((d, i) => (
               <li
                 key={d}
@@ -209,7 +209,7 @@ export default async function ServicePage({ params }: Params) {
 
       {/* Fit */}
       <section className="band">
-        <div className="container-x grid gap-4 md:grid-cols-2">
+        <div className="container-x card-grid md:grid-cols-2">
           <div
             className="accent-cap rounded-sm border border-line bg-panel px-6 py-6"
             style={accent("green")}
