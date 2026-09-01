@@ -1,17 +1,25 @@
 @import "tailwindcss";
 
 /*
-  decifer.io visual system. See DESIGN.md for the reasoning.
+  decifer.io visual system — "Daylight Operations", set 2026-09-01.
 
-  Light theme, cool-neutral greys, one committed orange. One type family
-  (Schibsted Grotesk) doing all the hierarchy work through weight and size.
+  Everyone building AI went dark with an orange accent. Staying in daylight is
+  now the harder thing to copy, so the ground is near-white paper and the type
+  is ink. Three families: Instrument Sans for sentences, Instrument Serif for
+  headings, IBM Plex Mono for every figure and every instrument label.
+
+  One hard rule, and it is the one most often broken: NO COLOUR INSIDE A
+  SENTENCE. Tinting the last three words of a headline is the house style of
+  every AI company on earth and it reads as a template. Emphasis comes from
+  size, weight and the change of face. The orange marks the live thing and the
+  one action, and nothing else.
 */
 
 @theme {
-  /* Surfaces. canvas is the grey ground; panel is the white card on it. */
-  --color-canvas: oklch(96% 0.004 250);
+  /* Surfaces. canvas is the paper; panel is the white card lifted off it. */
+  --color-canvas: oklch(98.2% 0.003 250);
   --color-panel: #ffffff;
-  --color-surface: oklch(97.5% 0.004 250);
+  --color-surface: oklch(96.4% 0.004 250);
   --color-surface-alt: oklch(94% 0.006 250);
   --color-dark: oklch(17% 0.014 255);
   --color-dark-2: oklch(21% 0.014 255);
@@ -25,13 +33,19 @@
   --color-on-dark-2: oklch(76% 0.008 250);
 
   /* Lines */
-  --color-line: oklch(88% 0.006 250);
-  --color-line-strong: oklch(78% 0.008 250);
+  --color-line: oklch(90% 0.005 250);
+  --color-line-strong: oklch(80% 0.008 250);
   --color-line-dark: oklch(30% 0.012 250);
 
   /* Brand. The orange is locked; never change the hex. */
   --color-orange: #f05a28;
   --color-orange-deep: oklch(58% 0.2 36);
+  /* The band orange. #F05A28 is the mark colour and it is locked, but as a
+     full-width background it is too light to carry white text: white on it
+     lands at about 3.4 to 1, under the 4.5 a paragraph needs. This is the
+     same hue taken down until white clears the bar. The mark itself is
+     never drawn in it. */
+  --color-orange-band: oklch(50% 0.19 36);
   --color-orange-text: oklch(52% 0.19 36);
   --color-orange-tint: oklch(96% 0.02 40);
   --color-mark: #f05a28;
@@ -57,10 +71,11 @@
   --radius-xl: 0.75rem;
   --radius-2xl: 0.75rem;
 
-  /* Type */
+  /* Type. Fallbacks are chosen for close metrics: the page must not reflow
+     when Google Fonts is slow, and social card images render the fallback. */
   --font-sans: var(--font-figtree), "Helvetica Neue", Arial, sans-serif;
   --font-display: var(--font-serif), Georgia, "Times New Roman", serif;
-  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-mono: var(--font-mono-brand), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   /* Motion.
      fluid   entrances and hovers, the default
@@ -168,36 +183,55 @@ p {
 
   /* ── Type scale ────────────────────────────────────── */
 
+  /* Instrument Serif ships one weight, 400. Asking for 500 makes the browser
+     fake a bolder face, which smears the thin strokes — so every display size
+     is 400 and the hierarchy is carried by size and tracking instead. The
+     display sizes are larger and tighter than the old ramp on purpose: a big
+     serif headline against small grey supporting type is what replaces the
+     tinted phrase we used to lean on. */
   .t-display {
     font-family: var(--font-display);
-    font-size: clamp(2.375rem, 1.3rem + 3.7vw, 3.875rem);
+    font-size: clamp(2.75rem, 1.4rem + 4.6vw, 5.25rem);
+    font-weight: 400;
+    letter-spacing: -0.024em;
+    line-height: 1.0;
+  }
+
+  /* The first half of a two-voice headline. Deliberately the home page only:
+     used on every page it would become the next formula. */
+  .t-hero-setup {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-family: var(--font-sans);
+    font-size: clamp(1.375rem, 1rem + 1.4vw, 2.125rem);
     font-weight: 500;
     letter-spacing: -0.012em;
-    line-height: 1.08;
+    line-height: 1.1;
+    color: var(--color-muted);
   }
 
   .t-h1 {
     font-family: var(--font-display);
-    font-size: clamp(2.125rem, 1.4rem + 2.6vw, 3.25rem);
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    line-height: 1.1;
+    font-size: clamp(2.375rem, 1.5rem + 3.2vw, 4rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
   }
 
   .t-h2 {
     font-family: var(--font-display);
-    font-size: clamp(1.625rem, 1.2rem + 1.7vw, 2.5rem);
-    font-weight: 500;
-    letter-spacing: -0.008em;
-    line-height: 1.14;
+    font-size: clamp(1.75rem, 1.25rem + 2vw, 2.75rem);
+    font-weight: 400;
+    letter-spacing: -0.016em;
+    line-height: 1.1;
   }
 
   .t-h3 {
     font-family: var(--font-display);
-    font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.625rem);
-    font-weight: 500;
-    letter-spacing: -0.005em;
-    line-height: 1.22;
+    font-size: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
   }
 
   .t-lede {
@@ -230,10 +264,47 @@ p {
 
   /* ── Panels: white cards on the grey ground ───────── */
 
+  /* A card is lifted off the paper by shadow, never by a heavier border.
+     Three layers, because one is what makes a card look pasted on:
+       contact  — the hairline directly under the edge, where the card meets
+                  the paper. This is the layer that sells the lift.
+       mid      — the short falloff that gives the card its thickness.
+       ambient  — the wide, very transparent pool that separates it from
+                  whatever sits behind it.
+     The border drops to a hairline because with real shadow underneath, a
+     visible outline reads as a drawn box rather than an object. All three
+     layers vanish in print, which is correct. */
   .panel {
     background: var(--color-panel);
-    border: 1px solid var(--color-line);
+    border: 1px solid oklch(93% 0.004 250);
     border-radius: var(--radius-md);
+    box-shadow:
+      0 1px 2px -1px oklch(25% 0.02 250 / 0.10),
+      0 8px 16px -10px oklch(25% 0.02 250 / 0.12),
+      0 26px 50px -30px oklch(25% 0.02 250 / 0.30);
+  }
+
+  /* A card that is itself a link gets a lift on hover: the contact shadow
+     softens and the ambient pool spreads, which is what happens when you
+     pick something up off a table. Two hundred milliseconds, ease-out, and
+     only on a device that actually has a pointer. */
+  @media (hover: hover) and (pointer: fine) {
+    a.panel,
+    .panel-lift {
+      transition:
+        transform 200ms var(--ease-fluid),
+        box-shadow 200ms var(--ease-fluid),
+        border-color 200ms var(--ease-fluid);
+    }
+    a.panel:hover,
+    .panel-lift:hover {
+      transform: translateY(-2px);
+      border-color: oklch(89% 0.005 250);
+      box-shadow:
+        0 2px 4px -2px oklch(25% 0.02 250 / 0.10),
+        0 14px 24px -12px oklch(25% 0.02 250 / 0.14),
+        0 40px 70px -34px oklch(25% 0.02 250 / 0.34);
+    }
   }
 
   .panel-head {
@@ -245,18 +316,37 @@ p {
     border-bottom: 1px solid var(--color-line);
   }
 
-  /* Instrument label: the one uppercase device in the system.
-     Used only as a panel or board header, never above a heading. */
+  /* Instrument label: the one uppercase device in the system, now set in the
+     mono so it reads as machine chrome rather than as small shouting text. */
+  /* 12px, not 11: this label appears 52 times across the site as the header
+     of a section, and uppercase mono at wide tracking is already hard work
+     for the eye. Buying decisions are made by people reading on a laptop at
+     arm's length, not by anyone with their nose against a design tool. */
   .label {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-muted);
   }
 
+  /* Card padding grows with the viewport. A fixed 24px looked right on a
+     narrow card and mean on a wide one, which is why the cards read as
+     cramped at desktop width. */
   .panel-pad {
-    padding: 1.5rem;
+    padding: clamp(1.25rem, 0.9rem + 1.1vw, 2rem);
+  }
+
+  /* One gap between cards, everywhere. The card grids were running at five
+     different gaps (16, 24, 32, 40 and 48px) depending on which section you
+     were in, which is why the page had no rhythm: the eye reads inconsistent
+     spacing as accidental. Row gap is deliberately larger than column gap,
+     because rows of cards need more air to separate than columns do. */
+  .card-grid {
+    display: grid;
+    column-gap: clamp(1rem, 0.7rem + 0.9vw, 1.5rem);
+    row-gap: clamp(1.25rem, 0.85rem + 1.3vw, 2rem);
   }
 
   /* ── The systems board ─────────────────────────────── */
@@ -396,6 +486,9 @@ p {
     background-color: var(--color-orange);
     border-color: var(--color-orange);
     color: var(--color-ink);
+    /* The one action on a screen glows very slightly in its own colour, so it
+       is findable at a glance without being a second colour on the page. */
+    box-shadow: 0 12px 26px -12px oklch(58% 0.2 36 / 0.6);
   }
   @media (hover: hover) and (pointer: fine) {
     .btn-primary:hover {
@@ -440,15 +533,18 @@ p {
     }
   }
 
+  /* On a white-on-orange band the button inverts the other way: white block,
+     dark text, so the one action is still the brightest thing in the band. */
   .btn-on-orange {
-    background-color: var(--color-ink);
-    border-color: var(--color-ink);
-    color: #fff;
+    background-color: #fff;
+    border-color: #fff;
+    color: var(--color-ink);
+    box-shadow: none;
   }
   @media (hover: hover) and (pointer: fine) {
     .btn-on-orange:hover {
       background-color: transparent;
-      color: var(--color-ink);
+      color: #fff;
     }
   }
 
@@ -649,8 +745,8 @@ p {
     color: var(--color-on-dark);
   }
   .band-orange {
-    background: var(--color-orange);
-    color: var(--color-ink);
+    background: var(--color-orange-band);
+    color: #fff;
   }
 
   /* A measured field of dots, for the dark band and the hero. Texture at
@@ -673,12 +769,14 @@ p {
   /* ── Figure tiles: proof you can see from the door ─── */
 
   /* Fifteen verified figures used to sit at body size inside paragraphs.
-     A figure is data, so it is set in the sans with tabular numerals, and
-     it never appears without the source line underneath it. */
+     A figure is data, so it is set in the mono with tabular numerals — the
+     same face every readout on the site uses — and it never appears without
+     the source line underneath it. */
   .figure-num {
-    font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.375rem);
-    font-weight: 600;
-    letter-spacing: -0.03em;
+    font-family: var(--font-mono);
+    font-size: clamp(1.625rem, 1.3rem + 1.3vw, 2.125rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
     line-height: 1;
     font-variant-numeric: tabular-nums;
   }
@@ -724,7 +822,9 @@ p {
   .statement {
     font-family: var(--font-display);
     font-size: clamp(1.5rem, 1.1rem + 1.9vw, 2.25rem);
-    font-weight: 500;
+    /* 400, like every other serif size: Instrument Serif ships one weight and
+       asking for 500 makes the browser fake a bolder face. */
+    font-weight: 400;
     letter-spacing: -0.015em;
     line-height: 1.18;
     border-left: 3px solid var(--accent, var(--color-orange));
@@ -907,8 +1007,14 @@ p {
     content: "";
     width: 0.625rem;
     height: 0.625rem;
-    transform: scale(0);
-    transition: transform 120ms var(--ease-fluid);
+    /* Not scale(0): nothing in the real world appears out of nothing. The
+       tick starts small and faint and grows, which reads as a mark being
+       made rather than an object teleporting in. */
+    transform: scale(0.4);
+    opacity: 0;
+    transition:
+      transform 140ms var(--ease-fluid),
+      opacity 100ms var(--ease-fluid);
     background: var(--color-ink);
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
   }
@@ -918,6 +1024,7 @@ p {
   }
   input[type="checkbox"].form-check:checked::before {
     transform: scale(1);
+    opacity: 1;
   }
 
   /* ── FAQ (native details) ──────────────────────────── */
@@ -1194,8 +1301,157 @@ p {
     .row-link:focus-visible .row-arrow,
     .btn:hover .row-arrow { transform: none; }
     .arrow-link:hover svg { transform: none; }
+    .field-stream,
+    .field-gate,
+    .field-settled {
+      animation: none;
+    }
+    /* With the pulses stopped the drawing must still read, so the travelling
+       strokes become a plain solid line rather than vanishing. */
+    .field-stream {
+      stroke-dasharray: none;
+      opacity: 0.5;
+    }
     *, *::before, *::after {
       transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ── The system field: the signature drawing ─────────── */
+
+@layer components {
+  .field-band {
+    position: relative;
+    padding: 0 0 3.5rem;
+    overflow: hidden;
+  }
+
+  .field-wrap {
+    position: relative;
+  }
+
+  .field-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .field-label {
+    position: absolute;
+    z-index: 1;
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  .field-label-in {
+    top: 0;
+    left: 0;
+  }
+
+  .field-label-gate {
+    top: 14%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: var(--color-orange-text);
+  }
+
+  .field-label-sub {
+    display: block;
+    margin-top: 0.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--color-muted);
+  }
+
+  .field-label-out {
+    bottom: 12%;
+    right: 0;
+    text-align: right;
+  }
+
+  /* Work travelling the line: exactly ONE parcel per line, never a dashed
+     line in motion. Each path carries pathLength="100", so the dash is 3% of
+     that path and the gap is the other 97% whatever the path's real length
+     is. Without pathLength the dash period was a fixed 216 user units against
+     paths over a thousand long, which put five parcels on every line — eighty
+     moving dots at once, which is exactly the busyness the system forbids. */
+  .field-stream {
+    stroke-dasharray: 3 97;
+    animation-name: field-travel;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes field-travel {
+    from { stroke-dashoffset: 100; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  .field-gate {
+    opacity: 0.3;
+    animation: field-gate 5.5s ease-in-out infinite;
+  }
+
+  @keyframes field-gate {
+    0%, 100% { opacity: 0.18; }
+    50% { opacity: 0.42; }
+  }
+
+  .field-settled {
+    animation: field-settle 9s ease-in-out infinite;
+  }
+
+  @keyframes field-settle {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
+
+  /* The drawing draws itself as you arrive at it: the lines are wiped in
+     from the left, at exactly the rate you scroll, so the picture is being
+     made by your own movement down the page rather than playing at you on a
+     timer. Then it settles into the loop.
+
+     This is tied to scroll rather than to a timer on purpose. A timed
+     entrance is the fade-up-on-scroll template the product rules call an
+     anti-reference; a scroll-linked one is the page responding to the
+     reader. It also runs off the main thread, so it stays smooth while the
+     rest of the page is still loading.
+
+     Browsers without scroll-linked animation simply get the loop with no
+     entrance, which is a complete picture, not a broken one. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .field-svg {
+        animation: field-draw linear both;
+        animation-timeline: view();
+        animation-range: entry 12% cover 42%;
+      }
+
+      @keyframes field-draw {
+        from { clip-path: inset(0 100% 0 0); }
+        to   { clip-path: inset(0 -8% 0 0); }
+      }
+    }
+  }
+
+  /* On a phone the labels would sit on top of the drawing. */
+  @media (max-width: 40rem) {
+    .field-label-in,
+    .field-label-out {
+      position: static;
+      text-align: left;
+      margin-bottom: 0.5rem;
+    }
+    .field-label-out {
+      margin: 0.5rem 0 0;
+    }
+    .field-label-gate {
+      display: none;
     }
   }
 }

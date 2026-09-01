@@ -43,27 +43,28 @@ export default function FounderSection({ compact = false }: { compact?: boolean 
                 <div className="frame max-w-[240px]">
                   <Image
                     src={PHOTO}
-                    alt="Amit Chopra, founder of Decifer, in Dubai."
+                    alt="The person who builds the work at Decifer, in Dubai."
                     width={640}
                     height={800}
                     sizes="(min-width: 768px) 20vw, 60vw"
                   />
                 </div>
               ) : null}
-              <p className={`${photo ? "mt-4" : ""} text-[1.0625rem] font-semibold text-ink`}>
-                Amit Chopra
+              <p className={`${photo ? "mt-4" : ""} text-[0.9375rem] text-body`}>
+                Decifer. Dubai, UAE.
               </p>
-              <p className="text-[0.9375rem] text-body">Founder, Decifer. Dubai, UAE.</p>
 
-              {/* No stock photo and no initials avatar when the portrait is
-                  missing (DESIGN.md). These three lines are what a reader
-                  actually wants to know about dealing with one person, and
-                  they keep the column from ending in blank paper. */}
+              {/* The name and title used to sit here and were taken out on
+                  2026-09-02 at the founder's request. The heading above
+                  already promises one person, so these three lines carry the
+                  point on their own and are written without a pronoun.
+                  No stock photo and no initials avatar when the portrait is
+                  missing (DESIGN.md). */}
               <ul className="mt-6 space-y-3 border-t border-line pt-5">
                 {[
-                  { icon: "handover" as const, text: "Reads every enquiry himself" },
-                  { icon: "measure" as const, text: "Replies within one working day" },
-                  { icon: "boundary" as const, text: "Will say when AI is the wrong answer" },
+                  { icon: "handover" as const, text: "Every enquiry read by the person who builds the work" },
+                  { icon: "measure" as const, text: "A reply within one working day" },
+                  { icon: "boundary" as const, text: "You will be told when AI is the wrong answer" },
                 ].map((f) => (
                   <li
                     key={f.text}

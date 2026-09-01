@@ -124,7 +124,7 @@ export default async function CaseShapePage({ params }: Params) {
       </section>
 
       <section className="band">
-        <div className="container-x grid gap-4 md:grid-cols-2">
+        <div className="container-x card-grid md:grid-cols-2">
           <Block title="What we built" items={c.work} icon="agent" hue={mark.hue} />
           <Block title="What changed" items={c.outcome} icon="measure" hue="green" />
           <Block

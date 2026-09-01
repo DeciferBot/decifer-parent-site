@@ -36,7 +36,7 @@ export default function CtaBand({
               <a
                 href="mailto:hello@decifer.io"
                 data-event={`${eventPrefix}_email`}
-                className="btn border-ink/50 text-ink hover:border-ink"
+                className="btn border-white/50 text-white hover:border-white"
               >
                 Email hello@decifer.io
               </a>

@@ -37,8 +37,15 @@ export default function HeroSection() {
       <div className="container-x grid items-start gap-12 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-7">
           <p className="label rise mb-5">AI implementation, Dubai</p>
-          <h1 className="t-display rise text-ink">
-            Turn AI investment into operating results.
+          {/* The sentence changes voice as it resolves: the setup small and
+              grey in the grotesque, the payoff large in the serif. That is
+              what carries the emphasis now. We used to tint the last few
+              words in the brand orange, which is the house style of every AI
+              company on the internet and read as a template. The orange is
+              back to marking the live thing and the one action, only. */}
+          <h1 className="rise text-ink">
+            <span className="t-hero-setup">Turn AI investment</span>
+            <span className="t-display block">into operating results.</span>
           </h1>
           <p className="t-lede rise-1 mt-6 max-w-[34rem]">
             Decifer takes an AI project the whole way into daily use: the

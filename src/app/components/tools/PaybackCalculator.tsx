@@ -205,7 +205,7 @@ export default function PaybackCalculator() {
       <div className="panel-head">
         <h2 className="label">Your numbers</h2>
       </div>
-      <div className="grid gap-6 px-6 py-7 md:grid-cols-2">
+      <div className="card-grid px-6 py-7 md:grid-cols-2">
         <div className="space-y-4">
           {FIELDS.map((f) => (
             <div key={f.key}>

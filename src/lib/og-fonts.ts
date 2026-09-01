@@ -1,12 +1,14 @@
 /**
- * Figtree is the brand sans (set 2026-08-25, replacing Schibsted Grotesk).
- * The social cards were left on the retired face for two weeks because the
- * font swap happened in layout.tsx and nothing links the two files: keep
- * this in step with `figtree` in src/app/layout.tsx.
+ * Instrument Sans is the brand sans (set 2026-09-01, replacing Figtree, which
+ * replaced Schibsted Grotesk). The social cards were left on the retired face
+ * for two weeks the last time this changed, because the swap happens in
+ * layout.tsx and nothing links the two files: keep this in step with `sans`
+ * in src/app/layout.tsx. It happened again on 2026-09-01 and was caught in
+ * review, so the reminder stays.
  */
-const FONT_FAMILY = "Figtree";
+const FONT_FAMILY = "Instrument Sans";
 const FONT_CSS =
-  "https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap";
+  "https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap";
 
 type OgFont = { name: string; data: ArrayBuffer; weight: 400 | 700; style: "normal" };
 
