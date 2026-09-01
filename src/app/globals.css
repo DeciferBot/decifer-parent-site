@@ -40,6 +40,12 @@
   /* Brand. The orange is locked; never change the hex. */
   --color-orange: #f05a28;
   --color-orange-deep: oklch(58% 0.2 36);
+  /* The band orange. #F05A28 is the mark colour and it is locked, but as a
+     full-width background it is too light to carry white text: white on it
+     lands at about 3.4 to 1, under the 4.5 a paragraph needs. This is the
+     same hue taken down until white clears the bar. The mark itself is
+     never drawn in it. */
+  --color-orange-band: oklch(50% 0.19 36);
   --color-orange-text: oklch(52% 0.19 36);
   --color-orange-tint: oklch(96% 0.02 40);
   --color-mark: #f05a28;
@@ -480,15 +486,18 @@ p {
     }
   }
 
+  /* On a white-on-orange band the button inverts the other way: white block,
+     dark text, so the one action is still the brightest thing in the band. */
   .btn-on-orange {
-    background-color: var(--color-ink);
-    border-color: var(--color-ink);
-    color: #fff;
+    background-color: #fff;
+    border-color: #fff;
+    color: var(--color-ink);
+    box-shadow: none;
   }
   @media (hover: hover) and (pointer: fine) {
     .btn-on-orange:hover {
       background-color: transparent;
-      color: var(--color-ink);
+      color: #fff;
     }
   }
 
@@ -689,8 +698,8 @@ p {
     color: var(--color-on-dark);
   }
   .band-orange {
-    background: var(--color-orange);
-    color: var(--color-ink);
+    background: var(--color-orange-band);
+    color: #fff;
   }
 
   /* A measured field of dots, for the dark band and the hero. Texture at

@@ -31,7 +31,7 @@ export default function RuleSection() {
   return (
     <section className="pb-7 sm:pb-10">
       <div className="container-x">
-        <div className="rounded-md bg-orange px-8 py-12 text-ink sm:px-10 sm:py-14">
+        <div className="rounded-md bg-orange-band px-8 py-12 text-white sm:px-10 sm:py-14">
           <h2 className="t-h2 max-w-3xl">
             Code works out the numbers. AI writes the words. Nothing goes out
             with a figure the system did not calculate.
@@ -46,7 +46,7 @@ export default function RuleSection() {
           </p>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {examples.map((e) => (
-              <div key={e.title} className="border-t border-ink/30 pt-4">
+              <div key={e.title} className="border-t border-white/30 pt-4">
                 <h3 className="text-[1.0625rem] font-semibold leading-snug">{e.title}</h3>
                 <p className="mt-2.5 text-[0.9375rem] leading-relaxed">{e.body}</p>
               </div>

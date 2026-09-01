@@ -58,7 +58,7 @@ export default function HowWeBuildSection() {
       <div className="container-x">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <p className="label text-ink/70">The rule we build by</p>
+            <p className="label text-white/70">The rule we build by</p>
             <h2 className="t-h2 mt-4">
               What makes a system safe to run the business on.
             </h2>
@@ -79,9 +79,9 @@ export default function HowWeBuildSection() {
 
         <div className="mt-12 grid gap-x-8 gap-y-9 md:grid-cols-2 lg:grid-cols-3">
           {principles.map((p) => (
-            <div key={p.title} className="border-t border-ink/30 pt-5">
+            <div key={p.title} className="border-t border-white/30 pt-5">
               <div className="flex items-center gap-3">
-                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-sm border border-ink/30 bg-ink/10 text-ink">
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-sm border border-white/30 bg-white/15 text-white">
                   <Icon name={p.icon} size={18} />
                 </span>
                 <h3 className="text-[1.0625rem] font-semibold leading-snug">
