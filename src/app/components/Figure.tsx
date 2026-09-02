@@ -29,15 +29,19 @@ export default function Figure({
   icon?: IconName;
   hue: AccentHue;
   index?: number;
-  tone?: "light" | "dark";
+  /** "rail" is the compare treatment: no box, no background, no shadow, just
+   *  the coloured rule from .figure-rail. Use it wherever figures are meant
+   *  to be scanned against each other rather than picked from. */
+  tone?: "light" | "dark" | "rail";
   size?: "md" | "lg";
 }) {
   const dark = tone === "dark";
+  const rail = tone === "rail";
   return (
     <div
-      className={`accent-cap px-5 py-6 sm:px-6 ${
-        dark ? "bg-dark-2" : "bg-panel"
-      }`}
+      className={
+        rail ? "" : `accent-cap px-5 py-6 sm:px-6 ${dark ? "bg-dark-2" : "bg-panel"}`
+      }
       style={
         dark
           ? ({

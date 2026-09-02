@@ -338,6 +338,37 @@ p {
     padding: clamp(1.25rem, 0.9rem + 1.1vw, 2rem);
   }
 
+  /* ── Compare or choose: the rule for grouped components ──
+     Shadow means "pick me". Hairline means "compare me".
+
+     CHOOSE — a set you pick one of (a workflow, a case, a service). Each
+     item must feel like a separate liftable object: .panel, shadowed,
+     spaced with .card-grid, hover lift.
+
+     COMPARE — items that differ only by value and are read against each
+     other (research figures, operating counts). Shadows fight comparison:
+     each one says "I am a separate object" when the eye needs to scan
+     straight across. These go in a .figure-rail: no boxes, no dividers, no
+     shadow. Open ground, one thin coloured rule per item.
+
+     THE PART THAT ACTUALLY MAKES COMPARISON WORK, and the part that was
+     broken here: every item must be the SAME SHAPE. One figure, one unit,
+     and a claim of roughly equal length. The evidence band had claims of
+     six, thirty-four, twenty-two and sixteen words, and one item carrying
+     two numbers — so a reader read four boxes one after another and never
+     compared anything. Budget: ONE number per item, and a claim of eight
+     to twelve words. Anything longer belongs in the line under the rail. */
+  .figure-rail {
+    display: grid;
+    column-gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+    row-gap: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+  }
+
+  .figure-rail > * {
+    padding-top: 1rem;
+    border-top: 2px solid var(--accent, var(--color-orange));
+  }
+
   /* One gap between cards, everywhere. The card grids were running at five
      different gaps (16, 24, 32, 40 and 48px) depending on which section you
      were in, which is why the page had no rhythm: the eye reads inconsistent
