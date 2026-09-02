@@ -1381,24 +1381,6 @@ p {
     left: 0;
   }
 
-  .field-label-gate {
-    top: 14%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: var(--color-orange-text);
-  }
-
-  .field-label-sub {
-    display: block;
-    margin-top: 0.25rem;
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    letter-spacing: normal;
-    text-transform: none;
-    color: var(--color-muted);
-  }
-
   .field-label-out {
     bottom: 12%;
     right: 0;
@@ -1470,6 +1452,114 @@ p {
     }
   }
 
+  /* ── The control under the drawing ─────────────────── */
+
+  .field-control {
+    max-width: 40rem;
+    margin: 0.5rem auto 0;
+    text-align: center;
+  }
+
+  .field-control-label {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .field-slider-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+  }
+
+  .field-end {
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    white-space: nowrap;
+  }
+
+  /* A real range input, restyled. Keyboard, touch and screen readers all
+     work without any of it being rebuilt by hand, which is the only good
+     reason to use a native control for something that looks like this. */
+  .field-slider {
+    flex-grow: 1;
+    appearance: none;
+    -webkit-appearance: none;
+    height: 2.75rem; /* the hit target, not the visible track */
+    background: transparent;
+    cursor: grab;
+  }
+  .field-slider:active {
+    cursor: grabbing;
+  }
+
+  .field-slider::-webkit-slider-runnable-track {
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-line-strong);
+  }
+  .field-slider::-moz-range-track {
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-line-strong);
+  }
+
+  /* The handle is the gate: same orange, same 6px round ends, so the thing
+     under your thumb is visibly the thing moving in the drawing. */
+  .field-slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 12px;
+    height: 34px;
+    margin-top: -16px;
+    border: none;
+    border-radius: 6px;
+    background: var(--color-orange);
+    box-shadow: 0 4px 12px -4px oklch(58% 0.2 36 / 0.7);
+    transition: transform 140ms var(--ease-fluid);
+  }
+  .field-slider::-moz-range-thumb {
+    width: 12px;
+    height: 34px;
+    border: none;
+    border-radius: 6px;
+    background: var(--color-orange);
+    box-shadow: 0 4px 12px -4px oklch(58% 0.2 36 / 0.7);
+    transition: transform 140ms var(--ease-fluid);
+  }
+  .field-slider:active::-webkit-slider-thumb {
+    transform: scaleY(1.12);
+  }
+  .field-slider:active::-moz-range-thumb {
+    transform: scaleY(1.12);
+  }
+  .field-slider:focus-visible::-webkit-slider-thumb {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 3px;
+  }
+  .field-slider:focus-visible::-moz-range-thumb {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 3px;
+  }
+  .field-slider:focus {
+    outline: none;
+  }
+
+  .field-state {
+    min-height: 3.5rem; /* held, so the page does not jump as the words change */
+    margin: 1rem auto 0;
+    max-width: 34rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-body);
+    text-wrap: pretty;
+  }
+
+  .field-state-title {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
   /* On a phone the labels would sit on top of the drawing. */
   @media (max-width: 40rem) {
     .field-label-in,
@@ -1481,8 +1571,11 @@ p {
     .field-label-out {
       margin: 0.5rem 0 0;
     }
-    .field-label-gate {
-      display: none;
+    .field-end {
+      font-size: 0.75rem;
+    }
+    .field-state {
+      min-height: 5rem;
     }
   }
 }
